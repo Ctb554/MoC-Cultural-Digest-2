@@ -4,14 +4,42 @@ Build the MoC Daily Cultural Digest .docx from its canonical markdown, using
 python-docx. The canonical markdown is the single source of truth; this
 script is a faithful renderer, not an editor.
 
+FORMATTING VALUES BELOW ARE NOT GUESSES: they were reverse-engineered
+directly from the OOXML of a real delivered edition
+(MOC_Daily_Cultural_Digest_19Jul26_D1.docx) on 2026-07-19 by unzipping the
+.docx and inspecting word/document.xml, word/styles.xml, and
+word/theme/theme1.xml. If a future reference edition contradicts these
+values, re-derive from that edition the same way, not from this comment.
+
+Confirmed values:
+- Body font: Aptos, 12pt (docDefaults in styles.xml: rFonts ascii/hAnsi/cs
+  "Aptos", sz 24 half-points = 12pt). NOT Arial 11pt.
+- Section/title headings ("Headlines, <date>", "Saudi Arabia/Regional",
+  "Negative Articles", "Global", "Risks and Opportunities"): bold, color
+  #4A86E8 (blue), spacing 120/60 twips = 6pt before / 3pt after. Same 12pt
+  size as body text -- the hierarchy is color+bold+spacing, not a bigger font.
+- Commission subheadings (e.g. "Heritage (التراث)"): bold, color #000000
+  (black), NOT italic, spacing 80/20 twips = 4pt before / 1pt after.
+- "Risks" subsection heading: bold, color #C00000 (dark red).
+- "Opportunities" subsection heading: bold, color #A66500 (dark gold/amber),
+  not green.
+- Numbered item headlines inside Risks/Opportunities (e.g. "1. Renewed
+  Saudi-Houthi..."): bold, color #000000 (black) -- only the Risks/
+  Opportunities subsection headings themselves get the red/gold treatment.
+- Body bullets: spacing 40 twips = 2pt after each item, not bold.
+- Hyperlinks: color #0563C1, single underline (matches styles.xml's built-in
+  "Hyperlink" character style exactly).
+- "Source:"/"Consideration:" labels: bold, black, no color override.
+
 WHY python-docx INSTEAD OF DIRECT XML ON A PINNED TEMPLATE:
 The conflict-monitoring skill this repo was adapted from edits a pre-branded,
 SHA-256-pinned template directly via XML, for exact brand fidelity. This repo
 does not yet have a real branded MoC Word template to pin, so it builds a
-clean, professionally formatted document from scratch instead. Once a real
-branded template (letterhead, logo, house styles) is supplied, swap this
-script for the pinned-template direct-XML-edit approach the same way the
-conflict-monitoring skill does -- see templates/README.md for how to pin one.
+clean, professionally formatted document from scratch instead, now styled to
+match the real reference edition's actual formatting values above. Once a
+real branded template (letterhead, logo, house styles) is supplied, swap
+this script for the pinned-template direct-XML-edit approach the same way
+the conflict-monitoring skill does -- see templates/README.md.
 
 CANONICAL MARKDOWN FORMAT this script expects (see SKILL.md Stage 3,
 confirmed against a real delivered edition on 2026-07-19):
@@ -80,13 +108,28 @@ import sys
 from pathlib import Path
 
 from docx import Document
-from docx.shared import Pt
+from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
-FONT_NAME = "Arial"
-FONT_SIZE = 11
+FONT_NAME = "Aptos"
+FONT_SIZE = 12
+
+# Colors, confirmed from the real reference edition's OOXML (see docstring)
+COLOR_HEADING_BLUE = RGBColor(0x4A, 0x86, 0xE8)
+COLOR_BLACK = RGBColor(0x00, 0x00, 0x00)
+COLOR_RISK_RED = RGBColor(0xC0, 0x00, 0x00)
+COLOR_OPPORTUNITY_GOLD = RGBColor(0xA6, 0x65, 0x00)
+COLOR_HYPERLINK = "0563C1"  # hex string form, used in raw OxmlElement below
+
+# Spacing, confirmed from the real reference edition (twips -> points, /20)
+SPACING_HEADING_BEFORE = Pt(6)
+SPACING_HEADING_AFTER = Pt(3)
+SPACING_SUBHEADING_BEFORE = Pt(4)
+SPACING_SUBHEADING_AFTER = Pt(1)
+SPACING_BULLET_AFTER = Pt(2)
+SPACING_SOURCE_AFTER = Pt(3)
 
 MD_LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 NUMBERED_ITEM_RE = re.compile(r"^\s*(\d+)\.\s*(.*)$")
@@ -102,7 +145,9 @@ def add_hyperlink(paragraph, text, url):
     """
     Insert a real clickable hyperlink run into a python-docx paragraph.
     python-docx has no native hyperlink API, so this builds the relationship
-    and run XML directly -- the standard recipe for this library.
+    and run XML directly -- the standard recipe for this library. Color and
+    underline match the real reference edition's built-in Hyperlink style
+    (#0563C1, single underline) exactly.
     """
     part = paragraph.part
     r_id = part.relate_to(
@@ -118,7 +163,7 @@ def add_hyperlink(paragraph, text, url):
     rpr = OxmlElement("w:rPr")
 
     color = OxmlElement("w:color")
-    color.set(qn("w:val"), "0563C1")
+    color.set(qn("w:val"), COLOR_HYPERLINK)
     rpr.append(color)
 
     underline = OxmlElement("w:u")
@@ -148,7 +193,6 @@ def add_mixed_text_with_links(paragraph, text_with_md_links, bold=False):
     Plain text is added as normal runs; each link becomes a real hyperlink.
     """
     remainder = text_with_md_links
-    any_match = False
     while True:
         match = MD_LINK_RE.search(remainder)
         if not match:
@@ -156,16 +200,15 @@ def add_mixed_text_with_links(paragraph, text_with_md_links, bold=False):
                 run = paragraph.add_run(remainder)
                 run.bold = bold
             break
-        any_match = True
         if remainder[: match.start()]:
             run = paragraph.add_run(remainder[: match.start()])
             run.bold = bold
         add_hyperlink(paragraph, match.group(1), match.group(2))
         remainder = remainder[match.end() :]
-    return any_match
 
 
 def set_base_style(doc):
+    """Sets the Normal style to Aptos 12pt, matching the real reference edition."""
     style = doc.styles["Normal"]
     style.font.name = FONT_NAME
     style.font.size = Pt(FONT_SIZE)
@@ -176,6 +219,38 @@ def set_base_style(doc):
         rpr.append(rFonts)
     rFonts.set(qn("w:ascii"), FONT_NAME)
     rFonts.set(qn("w:hAnsi"), FONT_NAME)
+
+
+def add_heading_paragraph(doc, text, color):
+    """Section/title-level heading: bold, colored, 12pt, 6pt/3pt spacing."""
+    p = doc.add_paragraph()
+    p.paragraph_format.space_before = SPACING_HEADING_BEFORE
+    p.paragraph_format.space_after = SPACING_HEADING_AFTER
+    run = p.add_run(text)
+    run.bold = True
+    run.font.size = Pt(FONT_SIZE)
+    run.font.color.rgb = color
+    return p
+
+
+def add_subheading_paragraph(doc, text, color=COLOR_BLACK):
+    """Commission subheading: bold, black by default, 4pt/1pt spacing, no italic."""
+    p = doc.add_paragraph()
+    p.paragraph_format.space_before = SPACING_SUBHEADING_BEFORE
+    p.paragraph_format.space_after = SPACING_SUBHEADING_AFTER
+    run = p.add_run(text)
+    run.bold = True
+    run.font.size = Pt(FONT_SIZE)
+    run.font.color.rgb = color
+    return p
+
+
+def add_bullet_paragraph(doc, text_with_links):
+    """Body bullet: List Bullet style, 2pt after, real hyperlinks embedded."""
+    p = doc.add_paragraph(style="List Bullet")
+    p.paragraph_format.space_after = SPACING_BULLET_AFTER
+    add_mixed_text_with_links(p, text_with_links)
+    return p
 
 
 def split_h1_blocks(md_text):
@@ -257,7 +332,6 @@ def parse_risks_opportunities_block(h1_lines):
             return
 
         lines = text.split("\n")
-        # First line: strip the leading "N. " if present, then strip **bold**
         first_line = lines[0]
         num_match = NUMBERED_ITEM_RE.match(first_line)
         headline_raw = num_match.group(2).strip() if num_match else first_line.strip()
@@ -288,7 +362,6 @@ def parse_risks_opportunities_block(h1_lines):
             item_lines = []
             current_h2 = line[3:].strip()
         elif NUMBERED_ITEM_RE.match(line.strip()) and item_lines:
-            # A new numbered item starts -- flush the previous one first
             flush_item()
             item_lines = [line.strip()]
         elif line.strip():
@@ -337,87 +410,77 @@ def build_docx(parsed, output_path):
     doc = Document()
     set_base_style(doc)
 
-    # Title
-    title_p = doc.add_paragraph()
-    title_run = title_p.add_run(parsed["title"] or "MoC Daily Cultural Digest")
-    title_run.bold = True
-    title_run.font.size = Pt(16)
-    title_p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+    # Title -- same styling as the section headings (blue, bold, 12pt)
+    add_heading_paragraph(doc, parsed["title"] or "MoC Daily Cultural Digest", COLOR_HEADING_BLUE)
 
     # Headline bullets FIRST (confirmed real ordering), three sections
     for section_name in REQUIRED_SECTIONS:
         bullets = parsed["headline_bullets"].get(section_name, [])
-        heading = doc.add_paragraph()
-        run = heading.add_run(section_name)
-        run.bold = True
-        run.font.size = Pt(13)
+        add_heading_paragraph(doc, section_name, COLOR_HEADING_BLUE)
         for bullet_text in bullets:
             p = doc.add_paragraph(style="List Bullet")
-            p.add_run(bullet_text)
+            p.paragraph_format.space_after = SPACING_BULLET_AFTER
+            run = p.add_run(bullet_text)
+            run.font.size = Pt(FONT_SIZE)
 
     doc.add_page_break()
 
     # Full summaries, grouped by section then (where applicable) commission
     for section_name in REQUIRED_SECTIONS:
-        section_heading = doc.add_paragraph()
-        run = section_heading.add_run(section_name)
-        run.bold = True
-        run.font.size = Pt(15)
+        add_heading_paragraph(doc, section_name, COLOR_HEADING_BLUE)
 
         commissions = parsed["sections"].get(section_name, {})
         for commission_name, bullets in commissions.items():
             if not bullets:
                 continue
             if commission_name:  # empty string = no subheading (Negative Articles)
-                commission_heading = doc.add_paragraph()
-                run = commission_heading.add_run(commission_name)
-                run.bold = True
-                run.italic = True
-                run.font.size = Pt(12)
+                add_subheading_paragraph(doc, commission_name)
 
             for bullet_text in bullets:
-                p = doc.add_paragraph(style="List Bullet")
-                add_mixed_text_with_links(p, bullet_text)
+                add_bullet_paragraph(doc, bullet_text)
 
     doc.add_page_break()
 
     # Risks and Opportunities: multiple numbered items per subsection
-    ro_heading = doc.add_paragraph()
-    run = ro_heading.add_run("Risks and Opportunities")
-    run.bold = True
-    run.font.size = Pt(15)
+    add_heading_paragraph(doc, "Risks and Opportunities", COLOR_HEADING_BLUE)
 
     ro = parsed.get("risks_and_opportunities", {})
+    subsection_colors = {"risks": COLOR_RISK_RED, "opportunities": COLOR_OPPORTUNITY_GOLD}
+
     for label in ["risks", "opportunities"]:
         items = ro.get(label, [])
         if not items:
             continue
 
-        sub_heading = doc.add_paragraph()
-        run = sub_heading.add_run(label.capitalize())
-        run.bold = True
-        run.font.size = Pt(13)
+        add_subheading_paragraph(doc, label.capitalize(), color=subsection_colors[label])
 
         for idx, item in enumerate(items, start=1):
             headline_p = doc.add_paragraph()
             run = headline_p.add_run(f"{idx}. {item['headline']}")
             run.bold = True
+            run.font.size = Pt(FONT_SIZE)
+            run.font.color.rgb = COLOR_BLACK
 
             if item.get("paragraph"):
                 p = doc.add_paragraph()
-                p.add_run(item["paragraph"])
+                run = p.add_run(item["paragraph"])
+                run.font.size = Pt(FONT_SIZE)
 
             if item.get("source"):
                 p = doc.add_paragraph()
+                p.paragraph_format.space_after = SPACING_SOURCE_AFTER
                 run = p.add_run("Source: ")
                 run.bold = True
+                run.font.size = Pt(FONT_SIZE)
                 add_mixed_text_with_links(p, item["source"])
 
             if item.get("consideration"):
                 p = doc.add_paragraph()
                 run = p.add_run("Consideration: ")
                 run.bold = True
-                p.add_run(item["consideration"])
+                run.font.size = Pt(FONT_SIZE)
+                run2 = p.add_run(item["consideration"])
+                run2.font.size = Pt(FONT_SIZE)
 
     doc.save(output_path)
     print(f"Wrote {output_path}")
