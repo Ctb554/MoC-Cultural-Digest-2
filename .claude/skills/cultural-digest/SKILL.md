@@ -169,6 +169,48 @@ free WebSearch at a cost.
 **Saudi Culture Boolean (broad):**
 `("Saudi culture" OR "Saudi cultural" OR "Saudi heritage" OR "Saudi arts" OR "Saudi artists" OR "Saudi music" OR "Saudi film" OR "Saudi cinema" OR "Saudi filmmakers" OR "Saudi fashion" OR "Saudi design" OR "Saudi literature" OR "Saudi cuisine" OR "Saudi gastronomy" OR "Saudi hospitality")`
 
+**Named Entity Searches** — one unified category, covering outlets, people,
+and places. The broad Saudi Culture Boolean above only catches stories using
+generic phrasing ("Saudi fashion", "Saudi film", "Saudi heritage"). It misses
+coverage that names a specific outlet, person, brand, or site directly
+without ever using those generic words — e.g. Vogue covering a named Saudi
+designer, or a story about new findings at Hegra that never says "heritage"
+or "archaeological." These three groups exist to catch exactly that gap.
+Named individuals and sites were verified via live web search as of July
+2026 — **all three lists below will go stale**; re-verify periodically and
+add newly prominent names/sites as they surface in real coverage rather than
+treating any of this as fixed. Run each bullet below as its own separate
+search, not one combined query — a combined query dilutes results the same
+way the negative themes would. If a search returns nothing on a given day,
+that's a normal outcome for a narrow named-entity search, not a failure; do
+not pad or force a result, and every hit still passes the standard
+verification gates (real, in-window, not previously used).
+
+*Outlets* — pairs `"Saudi Arabia" OR Saudi` with named prestige/trade press, by sector:
+- **Fashion:** `("Saudi Arabia" OR Saudi) AND (Vogue OR "Vogue Arabia" OR WWD OR "Harper's Bazaar Arabia" OR Elle OR GQ OR "Business of Fashion" OR Hypebeast)`
+- **Film:** `("Saudi Arabia" OR Saudi) AND (Variety OR "Hollywood Reporter" OR "Screen Daily" OR Deadline OR IndieWire)`
+- **Architecture and Design:** `("Saudi Arabia" OR Saudi) AND ("Architectural Digest" OR Dezeen OR ArchDaily OR "Wallpaper*" OR Designboom)`
+- **Music:** `("Saudi Arabia" OR Saudi) AND (Billboard OR "Rolling Stone" OR Pitchfork)`
+- **Visual Arts and Heritage:** `("Saudi Arabia" OR Saudi) AND (Artforum OR ArtNews OR "The Art Newspaper" OR Hyperallergic OR Frieze)`
+- **Culinary Arts:** `("Saudi Arabia" OR Saudi) AND (Eater OR "Bon Appétit" OR "Food and Wine")`
+- **Literature, Publishing, and Translation:** `("Saudi Arabia" OR Saudi) AND ("Publishers Weekly" OR "The Bookseller")`
+- **Museums:** `("Saudi Arabia" OR Saudi) AND ("Museums Journal" OR "Apollo Magazine")`
+- **Travel/lifestyle (heritage and tourism crossover):** `("Saudi Arabia" OR Saudi) AND ("Condé Nast Traveler" OR "Travel and Leisure" OR AFAR)`
+
+*People* — named cultural figures, by sector:
+- **Visual Arts:** `"Ahmed Mater" OR "Abdulnasser Gharem" OR "Ashraf Fayadh" OR "Manal Al Dowayan" OR "Dana Awartani" OR "Shadia Alem" OR "Sarah Abu Abdallah" OR "Sarah Mohanna Al Abdali" OR "Zahrah Al Ghamdi" OR "Safeya Binzagr"`
+- **Film:** `"Haifaa Al-Mansour" OR "Haifaa Al Mansour"`
+- **Fashion:** `"Waad Aloqaili" OR "Yahya Albishri" OR "Razan Alazzouni" OR "Mona Al Shebil" OR "Adnan Akbar" OR "Tima Abid" OR "Kawthar Alhoraish" OR "Eman Alajlan" OR "Khadija Al Sunaydi"`
+
+*Places* — named heritage and archaeological sites, verified against
+UNESCO's official list (Saudi Arabia currently has 8 inscribed World
+Heritage properties, most recently Al-Faw in 2024) plus other frequently-
+covered named sites, including three from Saudi Arabia's tentative list
+(Hejaz Railway, Farasan Islands, Rijal Almaa Heritage Village):
+- **Heritage sites (one combined query — named places don't dilute each other the way broad topics do):** `(Hegra OR "Al-Hijr" OR "Madain Salih" OR "Mada'in Salih" OR Diriyah OR "At-Turaif" OR "Historic Jeddah" OR "Al-Balad" OR "Jubbah rock art" OR "Rock Art in the Hail Region" OR "Al-Ahsa Oasis" OR "Hima Cultural Area" OR "Najran rock art" OR "Al-Faw archaeological" OR AlUla OR Dadan OR "Jabal Ikmah" OR "Hejaz Railway" OR "Farasan Islands" OR "Rijal Almaa")`
+  Classify hits under **Heritage** unless the story is clearly museum-led (→
+  Museums) or architecture/design-led (→ Architecture and Design).
+
 **Negative/reputational coverage** — run as separate searches per theme, not
 one combined query (a combined query drowns culture-adjacent reputational
 stories under pure geopolitics on any heavy news day): human rights, labour/
