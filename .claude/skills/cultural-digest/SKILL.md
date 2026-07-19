@@ -187,6 +187,7 @@ not pad or force a result, and every hit still passes the standard
 verification gates (real, in-window, not previously used).
 
 *Outlets* — pairs `"Saudi Arabia" OR Saudi` with named prestige/trade press, by sector:
+- **General/Macro Press (leads the Saudi Arabia/Regional section — see Stage 3 ordering rule):** `("Saudi Arabia" OR Saudi OR KSA) AND (Bloomberg OR "Financial Times" OR Semafor OR "The Economist" OR "Wall Street Journal" OR Axios OR Politico)`
 - **Fashion:** `("Saudi Arabia" OR Saudi) AND (Vogue OR "Vogue Arabia" OR WWD OR "Harper's Bazaar Arabia" OR Elle OR GQ OR "Business of Fashion" OR Hypebeast)`
 - **Film:** `("Saudi Arabia" OR Saudi) AND (Variety OR "Hollywood Reporter" OR "Screen Daily" OR Deadline OR IndieWire)`
 - **Architecture and Design:** `("Saudi Arabia" OR Saudi) AND ("Architectural Digest" OR Dezeen OR ArchDaily OR "Wallpaper*" OR Designboom)`
@@ -275,6 +276,18 @@ Two blocks, in this order:
    **Negative Articles has no commission subheadings** — its bullets sit
    directly under the section heading.
 
+**Saudi Arabia/Regional ordering rule:** lead the section with up to 3-4
+General items sourced from the General/Macro Press search (Bloomberg, FT,
+Semafor, The Economist, WSJ, Axios, Politico) — broad, high-authority
+context on Saudi Arabia, not necessarily culture-specific — before moving
+into the more specific commission subsections (Heritage, Visual Arts, etc.).
+This gives the section a strong opening anchor. Use up to 3-4 if that many
+genuine, verified items exist; use fewer if they don't. Never pad to reach
+the count — the same "don't force it" principle applies here as everywhere
+else in this playbook. The headline-bullet block at the top of the document
+inherits this same ordering automatically, since it must match the full
+summary's article order.
+
 Then a final **Risks and Opportunities** section (see format below).
 
 Do not invent thematic labels (no "tourism and hospitality", "creative
@@ -289,7 +302,7 @@ headline). Labels confirmed against real production:
 
 | English | Arabic | Classification rule |
 |---|---|---|
-| General | عام | Fallback; also all Saudi/Regional general-interest stories not tied to a specific commission |
+| General | عام | Fallback for anything not fitting a specific commission; **also the home for general/macro/business/policy coverage of Saudi Arabia from elite press** (Bloomberg, FT, Semafor, The Economist, WSJ, Axios, Politico) surfaced by the General/Macro Press search above — see the Stage 3 ordering rule for how these lead the Saudi Arabia/Regional section |
 | Heritage | التراث | Archaeology, UNESCO, monuments, preservation, intangible heritage, cultural memory |
 | Museums | المتاحف | Museums, museum programming, museum-led exhibitions |
 | Visual Arts | الفنون البصرية | Galleries, biennales, artists, exhibitions, art markets, unless museum-led |
