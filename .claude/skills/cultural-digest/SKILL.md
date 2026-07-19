@@ -14,16 +14,37 @@ delivers. Run every stage in order. If a hard failure occurs (no web access,
 no readable priors), stop and fail loudly; never fabricate around a missing
 capability.
 
-**ASSUMPTION FLAGGED FOR REVIEW:** two format specs exist for this digest — an
-original detailed brief (2-3 paragraph Risks/Opportunities, headline bullets
-first) and a later handoff note (one-paragraph Risks/Opportunities, links
-embedded only in the outlet name, headline bullets after the summaries). This
-playbook follows **the handoff note's formatting** throughout, since it is the
-more recent and more precise spec, while keeping the original brief's
-sourcing Booleans, commission classification rules, and analytical depth
-guidance where the two don't conflict. If the intent was actually to keep the
-original's longer Risks/Opportunities paragraphs or headline-bullets-first
-ordering, that's a one-line edit to Stage 3 below, not a rebuild.
+**FORMAT CONFIRMED AGAINST REAL PRODUCTION (2026-07-19):** two written specs
+existed for this digest (an original detailed brief and a later handoff
+note), and they disagreed with each other on several points. Rather than
+choosing between them, this playbook was corrected against an actual,
+currently-delivered live edition
+(`MOC_Daily_Cultural_Digest_19Jul26_D1.docx`, produced by the existing manual
+process this repo is meant to automate). Where the live edition settles a
+disagreement between the two written specs, the live edition wins. Confirmed
+findings:
+
+- **Headline bullets come first**, before the full summaries (matches the
+  original brief, not the handoff note).
+- **Commission labels are bilingual**, e.g. "Heritage (التراث)", "Visual Arts
+  (الفنون البصرية)" — the handoff note's "no Arabic anywhere in the output"
+  rule does not match real practice and is dropped.
+- **Bullet style is free-form analytical prose ending in a plain "(Outlet)"
+  citation** — not the handoff's rigid "[Outlet] reported that X. The
+  article is relevant as a Y item..." template. This matches the original
+  brief's looser instruction ("one concise analytical bullet explaining why
+  it matters") much more closely.
+- **Risks and Opportunities each contain multiple numbered items** (the
+  reference edition has two of each), every item with a short bold headline,
+  an analytical paragraph, then Source and Consideration lines. This matches
+  neither original spec exactly and is its own confirmed pattern.
+- **The Negative Articles section has no commission subheadings** — bullets
+  sit directly under the section, since negative/reputational stories are
+  almost never culture-commission stories anyway.
+
+If practice drifts further, or a different reference edition contradicts
+this one, re-derive from the most recent real delivered edition, not from
+either original written spec.
 
 ## Routine run constants
 
@@ -32,6 +53,19 @@ ordering, that's a one-line edit to Stage 3 below, not a rebuild.
   and pushed before the run ends.
 - Coverage window: last 24 hours from run start, unless the run is invoked
   with an explicit different window.
+- **Delivery destination, for now, is a test folder** (`05_Claude Test`
+  inside the real MoC Dropbox workstream), **not** the live production folder
+  the manual process delivers into. This automation is meant to eventually
+  replace that manual process, but has not been cut over yet — do not write
+  to, or infer the path of, the live production delivery folder.
+- **This pipeline produces the English digest only.** The real production
+  workflow also produces a full Arabic translation of the entire document as
+  a separate downstream step (see the live workstream's own
+  `Instructions for AR Translation` material), handled outside this
+  automation for now. Do not attempt to generate a full Arabic translation
+  of the digest; the bilingual `English (Arabic)` commission labels inside
+  the English digest (Stage 3) are the only Arabic text this pipeline
+  produces.
 
 ## Critical context
 
@@ -186,47 +220,66 @@ Designboom, The Art Newspaper, Artforum.
 
 ## Stage 3: write the content
 
-### Output structure (per the handoff note's format)
+### Output structure (confirmed against real production)
 
-Three sections only, in this order: **Saudi Arabia/Regional**, **Negative
-Articles**, **Global**. Within each, group articles under the approved
-commission labels — **General, Heritage, Museums, Visual Arts, Film, Fashion,
-Music, Theatre and Performing Arts, Literature Publishing and Translation,
-Libraries, Culinary Arts, Architecture and Design** — using the classification
-rules below. Do not invent thematic labels (no "tourism and hospitality",
-"creative economy", etc.); anything not clearly fitting a commission goes
-under General.
+Two blocks, in this order:
 
-### Classification rules
+1. **Headline bullets first** — three sections (Saudi Arabia/Regional,
+   Negative Articles, Global), each just a plain list of exact article
+   headlines, no links, no subheadings.
+2. **Full summaries** — the same three sections again, this time with the
+   analytical bullets. Within Saudi Arabia/Regional and Global, group
+   articles under the approved bilingual commission labels (see table below).
+   **Negative Articles has no commission subheadings** — its bullets sit
+   directly under the section heading.
 
-- Museums: museums, museum programming, museum-led exhibitions.
-- Film: cinema, production, rebates, festivals, filmmaking.
-- Architecture and Design: architecture, design, urbanism, built environment.
-- Fashion: designers, fashion weeks, style, luxury fashion, fashion education.
-- Heritage: archaeology, UNESCO, monuments, preservation, intangible
-  heritage, cultural memory.
-- Culinary Arts: food, cuisine, gastronomy, chefs, culinary heritage, food
-  festivals.
-- Literature, Publishing, and Translation: books, authors, publishing,
-  translation, manuscripts, unless library-specific.
-- Libraries: libraries, archives, library policy.
-- Theatre and Performing Arts: theatre, dance, opera, stage/live performance.
-- Visual Arts: galleries, biennales, artists, exhibitions, art markets,
-  unless museum-led.
-- General: everything else, including non-culture negative/reputational
-  stories that don't fit a commission.
-- If a story fits multiple labels, use the most specific and strategically
-  relevant one — a judgment call, not a keyword match.
+Then a final **Risks and Opportunities** section (see format below).
 
-### Bullet format (per the handoff note, verbatim pattern)
+Do not invent thematic labels (no "tourism and hospitality", "creative
+economy", etc.); anything not clearly fitting a commission goes under
+General.
 
-One bullet per article, usually two sentences:
+### Classification rules and bilingual labels
 
-`<Outlet name> reported that <clear factual summary>. The article is relevant as a <sector/risk/opportunity> item, <why it matters for Saudi Arabia, the Ministry of Culture, cultural positioning, reputation, investment, tourism, or global cultural trends>. (Outlet)`
+Every commission label is written as `English (Arabic)` in the full-summary
+section (headline bullets stay English-only, since they're just the article
+headline). Labels confirmed against real production:
 
-(The angle brackets above mark where to substitute real text — write the
-actual outlet name and summary, never literal square-bracket placeholders in
-the output.)
+| English | Arabic | Classification rule |
+|---|---|---|
+| General | عام | Fallback; also all Saudi/Regional general-interest stories not tied to a specific commission |
+| Heritage | التراث | Archaeology, UNESCO, monuments, preservation, intangible heritage, cultural memory |
+| Museums | المتاحف | Museums, museum programming, museum-led exhibitions |
+| Visual Arts | الفنون البصرية | Galleries, biennales, artists, exhibitions, art markets, unless museum-led |
+| Film | الأفلام | Cinema, production, rebates, festivals, filmmaking |
+| Fashion | الأزياء | Designers, fashion weeks, style, luxury fashion, fashion education |
+| Music | الموسيقى | Music industry, artists, concerts, releases |
+| Theatre and Performing Arts | المسرح والفنون الأدائية | Theatre, dance, opera, stage/live performance |
+| Literature, Publishing, and Translation | الأدب والنشر والترجمة | Books, authors, publishing, translation, manuscripts, unless library-specific |
+| Libraries | المكتبات | Libraries, archives, library policy |
+| Culinary Arts | فنون الطهي | Food, cuisine, gastronomy, chefs, culinary heritage, food festivals |
+| Architecture and Design | فنون العمارة والتصميم | Architecture, design, urbanism, built environment |
+
+If a story fits multiple labels, use the most specific and strategically
+relevant one — a judgment call, not a keyword match. If Arabic-label
+convention drifts in a future reference edition, re-derive from that edition
+rather than this table.
+
+### Bullet format (confirmed against real production)
+
+One bullet per article, free-form analytical prose — not a rigid template.
+Two to three sentences: what happened (with attribution and concrete
+facts), then the analytical read — why it matters for Saudi Arabia, the
+Ministry of Culture, cultural positioning, reputation, investment, tourism,
+or global cultural trends. Close with a plain `(Outlet)` citation, the link
+attached to the outlet name only.
+
+Example (paraphrased from the reference edition, not to be reused verbatim):
+"W Hotels has opened its first Saudi property in Riyadh, with interiors
+drawing directly on Saudi cultural heritage — Najdi textiles, Al Sadu
+weaving patterns, and a lobby tapestry by a Saudi artist. The design signals
+how heritage-rooted storytelling is becoming part of the Kingdom's luxury
+hospitality identity. (BW Hotelier)"
 
 - The link lives **only** in the outlet name at the end — never in the first
   sentence, never as a raw URL.
@@ -237,42 +290,55 @@ the output.)
 - Avoid inflated language ("groundbreaking", "world-leading", "landmark",
   "unprecedented", "unusually broad pickup") unless clearly and specifically
   evidenced.
-- Preferred synthesis phrases: "The article is relevant as...", "The coverage
-  reinforces...", "The story highlights...", "The Ministry should build on
-  this coverage by...", "Messaging should foreground...".
+- Write in analytical, editorial prose — not the mechanical "[Outlet]
+  reported that... The article is relevant as a... item" template; vary
+  sentence structure the way a human analyst would.
 
 ### Headline bullets
 
-After the full summaries (per the handoff note's ordering — not before),
-produce headline bullets using the exact article headline (verify by opening
-the link), in the same order as the summaries, no links, no subheadings,
-only the three main sections.
+Written **first**, before the full summaries. Exact article headline (verify
+by opening the link), in the same order the full summary will later use, no
+links, no subheadings, only the three main sections, English only.
 
-### Risks and Opportunities
+### Risks and Opportunities (confirmed against real production)
 
-One numbered item each, per the handoff note:
+**Multiple numbered items per subsection** (two is typical, not a fixed
+count) — not a single paragraph each. Every item has a short bold headline
+naming the specific risk or opportunity, then an analytical paragraph, then
+Source and Consideration lines:
 
 ```
 Risks and Opportunities
 
 Risks
 
-1. [One paragraph synthesizing the key risks across today's negative and
-   relevant general coverage.]
+1. [Short bold headline naming the specific risk]
+[Analytical paragraph synthesizing the risk from today's coverage.]
+Source: Outlet, Outlet
+Consideration: [What the Ministry should consider in response.]
 
-Source: Outlet, Outlet, Outlet
-
-Consideration: [One paragraph on what the Ministry should consider in response.]
+2. [Short bold headline naming a second risk, if the day's coverage supports it]
+[Paragraph.]
+Source: Outlet
+Consideration: [Response.]
 
 Opportunities
 
-2. [One paragraph synthesizing the key opportunities from Saudi/regional and
-   relevant global cultural coverage.]
+1. [Short bold headline naming the specific opportunity]
+[Analytical paragraph synthesizing the opportunity from today's coverage.]
+Source: Outlet, Outlet, Outlet, Outlet
+Consideration: [How the Ministry can build on this coverage.]
 
-Source: Outlet, Outlet, Outlet
-
-Consideration: [One paragraph on how the Ministry can build on the coverage.]
+2. [Short bold headline naming a second opportunity, if supported]
+[Paragraph.]
+Source: Outlet
+Consideration: [Response.]
 ```
+
+Each subsection (Risks, Opportunities) restarts its own numbering at 1. Item
+count should reflect what the day's coverage actually supports — don't force
+a second item if only one genuine risk or opportunity exists, and don't
+inflate beyond what's honestly supported by sourced material.
 
 Risk angles to draw from: regional conflict/security instability, geopolitical
 spillover, human rights scrutiny, labour rights, sportswashing, PIF-linked
@@ -298,8 +364,10 @@ MoC ownership of stories where the Ministry isn't stated as involved.
 - GB English throughout.
 - No raw URLs anywhere in the body text.
 - No casual phrasing, no unsupported claims, no overly long dense paragraphs.
-- Write entirely in English — no Arabic in the output (Arabic is fine only in
-  the internal Boolean search strings above, never in the produced digest).
+- Article summaries, headline bullets, and Risks/Opportunities prose are
+  written in English. Arabic appears **only** inside commission subheadings
+  in the `English (Arabic)` bilingual format confirmed above — never
+  elsewhere in the body text.
 
 ## Stage 3.5: adversarial review (single pass)
 
@@ -308,12 +376,15 @@ from an editor's perspective, checking:
 
 - Every hard rule above: source exclusion (no Saudi-owned outlets slipped
   through), link-in-outlet-name-only, no raw URLs, GB English, no invented
-  labels, no banned inflated phrases.
+  labels, no banned inflated phrases, bilingual commission labels present and
+  correctly paired.
 - The standing preferences in `reports/editorial_learnings.md`, so edits the
   team has made before are caught pre-delivery.
-- Headline-bullet accuracy against the actual linked article.
-- Risks/Opportunities structure: exactly one numbered paragraph each, with
-  Source and Consideration lines.
+- Headline bullets appear first (before full summaries) and match the
+  full-summary article order and count.
+- Negative Articles has no commission subheadings.
+- Risks/Opportunities structure: at least one numbered item per subsection,
+  each with a bold headline, paragraph, Source line, and Consideration line.
 
 Findings are applied unless they'd require fabrication or out-of-window
 sourcing; every disposition is logged. Exactly one pass — the reviewer never
@@ -334,12 +405,14 @@ Run `scripts/audit_report.py <built-docx> --md <canonical-markdown>`. This is
 an independent gate — a clean-but-wrong digest can never ship green. It
 checks: no excluded-outlet source slipped through, every article has a
 working direct link, no raw URLs in body text, link lives only in the outlet
-name, three main sections present and in order, only approved commission
-labels used, no invented labels, headline bullets present after summaries and
-match the article order, GB spelling scan, no banned inflated phrases,
-Risks/Opportunities structure (exactly one numbered paragraph each with
-Source/Consideration), no reused headlines/links against the register.
-Failures are fixed and the audit re-run; a failing digest is never delivered.
+name, three main sections present and in order, only approved bilingual
+commission labels used (correct English/Arabic pairing), no invented labels,
+Negative Articles has no commission subheadings, headline bullets present
+**before** the full summaries and match the article order and count, GB
+spelling scan, no banned inflated phrases, Risks/Opportunities structure (at
+least one numbered item per subsection with a headline, Source, and
+Consideration), no reused headlines/links against the register. Failures are
+fixed and the audit re-run; a failing digest is never delivered.
 
 ## Stage 6: housekeeping and delivery
 

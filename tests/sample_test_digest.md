@@ -2,7 +2,7 @@
 
 ## Saudi Arabia/Regional
 - Hail Region highlighted for urban and cultural innovation at Baku Forum
-- Not even Mecca is safe from the pressures of consumer culture
+- Rare manuscript goes on display at heritage exhibition in Jeddah
 
 ## Negative Articles
 - PIF reportedly weighs selling minority stake in Newcastle United
@@ -12,36 +12,36 @@
 
 # Saudi Arabia/Regional
 
-## Architecture and Design
-- [Travel and Tour World] reported that Saudi Arabia's Hail Region was highlighted at the Baku Forum for combining cultural heritage, urban development and sustainable tourism. The article is relevant as an opportunity item, positioning Hail within Saudi Arabia's wider heritage-led development strategy. ([Travel and Tour World](https://www.travelandtourworld.com/news/article/example))
+## Architecture and Design (فنون العمارة والتصميم)
+- Saudi Arabia's Hail Region was highlighted at the Baku Forum for combining cultural heritage, urban development, and sustainable tourism. The presentation focused on UNESCO-recognized sites and infrastructure modernization designed to balance preservation with economic growth. It positions Hail within the Kingdom's wider heritage-led development strategy. ([Travel and Tour World](https://www.travelandtourworld.com/news/article/example))
 
-## General
-- [Hyphen] reported that an opinion piece examined the growing commercialization of pilgrimage in Mecca. The article is relevant as a risk item, raising questions around the balance between religious authenticity and commercial expansion. ([Hyphen](https://hyphenonline.com/example))
+## Heritage (التراث)
+- A centuries-old manuscript is on display as part of a heritage exhibition in Jeddah, drawing attention to Islamic manuscript traditions and the craftsmanship behind preserving historic texts. The display situates the Kingdom's religious and cultural heritage within a broader narrative of preservation and public access. ([Siasat](https://www.siasat.com/example))
 
 # Negative Articles
-
-## General
-- [Reuters] reported that Saudi Arabia's Public Investment Fund is reportedly considering the sale of a minority stake in Newcastle United. The article is relevant as a reputational-risk item, reflecting broader pressure on sovereign wealth funds to balance international assets with local development commitments. ([Reuters](https://www.reuters.com/example))
+- Saudi Arabia's Public Investment Fund is reportedly considering the sale of a minority stake in Newcastle United as part of efforts to support domestic infrastructure financing. The discussion reflects broader pressure on sovereign wealth funds to balance international assets with rising local development commitments. ([Reuters](https://www.reuters.com/example))
 
 # Global
 
-## Museums
-- [ArtForum] reported that Hong Kong's M+ museum and Paris's Centre Pompidou have announced a strategic partnership. The article is relevant as a global cultural trend item, reflecting growing emphasis on international museum cooperation. ([ArtForum](https://www.artforum.com/example))
+## Museums (المتاحف)
+- Hong Kong's M+ museum and Paris's Centre Pompidou have announced a strategic partnership focused on exhibitions, research, and collection-sharing. The agreement reflects growing emphasis on international museum cooperation between Asian and European cultural institutions. ([ArtForum](https://www.artforum.com/example))
 
 # Risks and Opportunities
 
 ## Risks
 
-1. Today's coverage highlights the risk that Saudi Arabia's cultural narrative continues to compete with international scrutiny around commercialization and sovereign investment priorities. Reporting on PIF's Newcastle stake reinforces perceptions of the Kingdom's investment strategy as tied to reputational debates.
-
-Source: [Reuters](https://www.reuters.com/example), [Hyphen](https://hyphenonline.com/example)
-
-Consideration: Continue reinforcing Saudi Arabia's cultural transformation through heritage preservation and institutional development, while ensuring tourism and investment messaging stays connected to long-term cultural value.
+1. **PIF's Newcastle stake sale reinforces investment-scrutiny narratives**
+Reporting on a possible sale of PIF's Newcastle United stake ties back into wider debates about sovereign wealth fund strategy and reputational management. This risks framing Saudi Arabia's international investments as primarily transactional rather than connected to genuine cultural or sporting engagement.
+Source: [Reuters](https://www.reuters.com/example)
+Consideration: Continue reinforcing Saudi Arabia's cultural transformation through institutional development and heritage stewardship, keeping messaging distinct from sovereign investment strategy debates.
 
 ## Opportunities
 
-2. Today's coverage reinforces Saudi Arabia's growing position within a broader global movement toward integrated cultural ecosystems, with Hail Region's heritage-led development strategy aligning with international museum partnerships like M+ and Centre Pompidou.
-
-Source: [Travel and Tour World](https://www.travelandtourworld.com/news/article/example), [ArtForum](https://www.artforum.com/example)
-
-Consideration: Position Hail's development within the same narrative as the Kingdom's other cultural infrastructure investments under Vision 2030.
+1. **Heritage and architecture converging into a unified cultural narrative**
+Today's coverage of Hail Region's heritage-led development strategy and the Jeddah manuscript exhibition both demonstrate a Kingdom where architectural modernization and historic preservation reinforce a shared cultural identity.
+Source: [Travel and Tour World](https://www.travelandtourworld.com/news/article/example), [Siasat](https://www.siasat.com/example)
+Consideration: Bundle heritage-led regional development and manuscript preservation into a single culture-forward narrative that showcases the Kingdom's cultural richness beyond flagship megaprojects.
+2. **International museum cooperation signals rising global cultural-tourism momentum**
+Hong Kong's M+ and Centre Pompidou's partnership reflects growing international demand for museum collaboration and cultural exchange.
+Source: [ArtForum](https://www.artforum.com/example)
+Consideration: Position Saudi museums to plug into similar international cooperation frameworks, presenting the Kingdom as an active partner in global cultural exchange.
