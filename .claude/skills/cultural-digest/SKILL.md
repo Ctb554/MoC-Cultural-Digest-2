@@ -320,6 +320,21 @@ surfaces another credible outlet this pipeline missed.
   (Al-Awsat), Saudi Gazette, SPA, and any other Saudi-owned outlet, even if
   it surfaces via a broad search. When in doubt about ownership, check before
   using; if still uncertain, don't use it.
+- **Exclude all Israeli outlets, always, as a hard rule** — jpost.com,
+  Times of Israel, Haaretz, Ynet, i24NEWS, TheMarker, and any other
+  Israeli-owned outlet, even if it surfaces via a broad search and even for
+  an otherwise neutral or factually solid citation. **This is a deliberate
+  reputational-caution decision for a Saudi government deliverable, not a
+  claim about these outlets' factual reliability** — the reputational risk
+  of citing Israeli media exists for this client regardless of how credible
+  or neutral the specific article is. This closes a prior inconsistency
+  where jpost.com alone was excluded while Times of Israel/Haaretz/Ynet/i24/
+  TheMarker were only flagged as a warning; all are now hard exclusions,
+  enforced identically to Saudi-owned outlets in Stage 5's audit. This rule
+  is overridable **only by a human editing the digest directly** (e.g. the
+  team deciding a specific citation is warranted for a specific edition) —
+  no stage of this playbook should ever treat one of these outlets as usable
+  on its own initiative.
 - **UAE-based credible outlets are allowed.** The National and Al Arabiya are
   explicitly allowed, along with Campaign Middle East.
 - Avoid weak, hyper-local, or poor-quality outlets and raw press-release
@@ -550,7 +565,8 @@ alongside the `.docx`; the markdown is the continuity record for future runs.
 Run `scripts/audit_report.py <canonical-markdown> --docx <built-docx> --register reports/do_not_reuse_register.md --search-log reports/search_log.json`.
 This is an independent gate — a clean-but-wrong digest can never ship green.
 It checks: no excluded-outlet source slipped through (Saudi-owned outlets,
-**and, separately, the Israeli-outlet posture below**), every article link
+**and, separately, all Israeli outlets — see the Source Eligibility rule in
+Stage 2, enforced identically as a hard fail**), every article link
 **actually resolves live** (not just correct formatting — see below), no raw
 URLs in body text, link lives only in the outlet name, three main sections
 present and in order, only approved bilingual commission labels used

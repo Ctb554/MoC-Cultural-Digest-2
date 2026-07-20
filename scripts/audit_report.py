@@ -62,11 +62,35 @@ APPROVED_LABEL_STRINGS = {
     f"{en} ({ar})" for en, ar in APPROVED_COMMISSIONS.items()
 }
 
-# Domains excluded per the source-eligibility rule (Saudi-owned outlets)
-EXCLUDED_DOMAINS = [
+# Domains excluded per the source-eligibility rule (Saudi-owned outlets).
+EXCLUDED_SAUDI_DOMAINS = [
     "arabnews.com", "saudigazette.com.sa", "spa.gov.sa", "aleqt.com",
     "okaz.com.sa", "sabq.org", "argaam.com", "asharq.com", "aawsat.com",
 ]
+
+# Israeli-outlet posture (item 5, deliberate reputational-caution decision,
+# separate from the Saudi-ownership rule above): for a Saudi government
+# client, the reputational risk of citing Israeli media exists regardless of
+# whether the outlet is itself credible or the citation is neutral -- this is
+# a client-specific sensitivity call, not a factual-accuracy judgment about
+# these outlets. ALL are hard-fails, not warnings; jpost.com was previously
+# the only one treated this strictly while Times of Israel/Haaretz/Ynet/i24/
+# TheMarker were warn-only, which was an inconsistency this closes. This is
+# overridable ONLY by a human editing the digest directly (e.g. the team
+# deciding a specific citation is warranted) -- no automated logic in this
+# pipeline should ever add one of these domains to ALLOWED_OVERRIDE_DOMAINS
+# or otherwise bypass this list.
+EXCLUDED_ISRAELI_DOMAINS = [
+    "jpost.com", "timesofisrael.com", "haaretz.com", "haaretz.co.il",
+    "ynetnews.com", "ynet.co.il", "i24news.tv", "themarker.com",
+]
+
+# Combined lookup: domain -> human-readable reason, used in failure messages.
+EXCLUDED_DOMAINS = {
+    **{d: "Saudi-owned" for d in EXCLUDED_SAUDI_DOMAINS},
+    **{d: "Israeli outlet -- reputational-caution policy" for d in EXCLUDED_ISRAELI_DOMAINS},
+}
+
 ALLOWED_OVERRIDE_DOMAINS = [
     "alarabiya.net", "thenationalnews.com", "campaignme.com",
 ]
@@ -378,11 +402,13 @@ def check_links_and_sources(blocks, result, recent_register_urls, stale_register
                     url_lower = url.lower()
                     if any(allowed in url_lower for allowed in ALLOWED_OVERRIDE_DOMAINS):
                         continue
-                    if any(excluded in url_lower for excluded in EXCLUDED_DOMAINS):
-                        result.fail(
-                            f"[{h1_name} / {label}] Excluded (Saudi-owned) "
-                            f"outlet used: {url}"
-                        )
+                    for excluded_domain, reason in EXCLUDED_DOMAINS.items():
+                        if excluded_domain in url_lower:
+                            result.fail(
+                                f"[{h1_name} / {label}] Excluded outlet used "
+                                f"({reason}): {url}"
+                            )
+                            break
 
                 for _, url in links:
                     if url in recent_register_urls:
