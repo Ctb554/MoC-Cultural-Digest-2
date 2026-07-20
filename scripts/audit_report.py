@@ -23,7 +23,11 @@ Format checked here is the one confirmed against a real delivered edition
 
 import argparse
 import re
+import socket
 import sys
+import time
+import urllib.error
+import urllib.request
 import zipfile
 from pathlib import Path
 
@@ -80,6 +84,18 @@ MD_LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 URL_RE = re.compile(r"https?://\S+")
 ARABIC_RE = re.compile(r"[\u0600-\u06FF]")
 NUMBERED_ITEM_RE = re.compile(r"^\s*(\d+)\.\s*(.*)$")
+
+# --- URL resolution (item 1: dead/fabricated links must hard-fail) ----------
+#
+# A bot wall or rate limit on the LIVE site still proves the URL exists; only
+# a genuinely dead link (404, DNS/connection failure, timeout) means the link
+# is fabricated or stale. 401/403/429 are treated as "exists" for this reason
+# -- the same "bot wall is normal, not a policy problem" principle SKILL.md's
+# Stage 0 capability check already applies to WebFetch.
+SOFT_BLOCK_STATUSES = {401, 403, 429}
+URL_CHECK_USER_AGENT = "Mozilla/5.0 (compatible; MoC-Digest-Audit/1.0)"
+DEFAULT_URL_TIMEOUT = 10
+DEFAULT_URL_DELAY = 0.5  # seconds between checks -- polite rate limiting
 
 
 class AuditResult:
@@ -259,6 +275,121 @@ def check_links_and_sources(blocks, result, register_urls):
                         )
 
 
+def collect_all_urls(blocks):
+    """
+    Returns {url: [context_str, ...]} for every article link (in the three
+    required sections) and every Risks/Opportunities Source-line link in the
+    digest. Used by check_url_resolution so every citation the digest makes
+    -- not just article bullets -- gets checked.
+    """
+    urls = {}
+
+    def add(url, context):
+        urls.setdefault(url, []).append(context)
+
+    for h1_name, h1_lines in blocks:
+        if h1_name in REQUIRED_SECTIONS:
+            if h1_name in SECTIONS_WITH_SUBHEADINGS:
+                bullets_by_label = get_h2_bullets(h1_lines)
+            else:
+                bullets_by_label = {"(no subheading)": get_direct_bullets(h1_lines)}
+            for label, bullets in bullets_by_label.items():
+                for bullet in bullets:
+                    for _, url in MD_LINK_RE.findall(bullet):
+                        add(url, f"{h1_name} / {label}")
+        elif h1_name == "Risks and Opportunities":
+            current_h2 = None
+            for line in h1_lines:
+                if line.startswith("## "):
+                    current_h2 = line[3:].strip()
+                elif line.strip().startswith("Source:"):
+                    for _, url in MD_LINK_RE.findall(line):
+                        add(url, f"Risks and Opportunities / {current_h2 or '?'}")
+
+    return urls
+
+
+def _resolve_url_status(url, timeout):
+    """
+    Returns (ok: bool, detail: str). ok=True covers a live 2xx/3xx response
+    AND a bot-wall/rate-limit response (401/403/429) -- both prove the URL
+    exists. ok=False covers a real dead link: 404 and other 4xx/5xx, DNS/
+    connection failure, or a timeout.
+
+    Tries HEAD first (cheap, no body download); a site that rejects HEAD
+    (405) is retried once with a ranged GET.
+    """
+    headers = {"User-Agent": URL_CHECK_USER_AGENT}
+    try:
+        req = urllib.request.Request(url, method="HEAD", headers=headers)
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            code = resp.getcode()
+    except urllib.error.HTTPError as exc:
+        if exc.code == 405:
+            return _resolve_url_status_get(url, timeout)
+        code = exc.code
+    except urllib.error.URLError as exc:
+        return False, f"unreachable ({exc.reason})"
+    except (TimeoutError, socket.timeout):
+        return False, "timeout"
+    except Exception as exc:  # noqa: BLE001 -- any other network failure is a hard fail
+        return False, f"error ({exc})"
+
+    if code < 400:
+        return True, f"HTTP {code}"
+    if code in SOFT_BLOCK_STATUSES:
+        return True, f"HTTP {code} (bot wall/rate limit, treated as exists)"
+    return False, f"HTTP {code}"
+
+
+def _resolve_url_status_get(url, timeout):
+    """GET fallback for sites that reject HEAD (405). Range header keeps the
+    download to a single byte so this stays cheap even for large pages."""
+    headers = {"User-Agent": URL_CHECK_USER_AGENT, "Range": "bytes=0-0"}
+    try:
+        req = urllib.request.Request(url, method="GET", headers=headers)
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            code = resp.getcode()
+    except urllib.error.HTTPError as exc:
+        code = exc.code
+    except urllib.error.URLError as exc:
+        return False, f"unreachable ({exc.reason})"
+    except (TimeoutError, socket.timeout):
+        return False, "timeout"
+    except Exception as exc:  # noqa: BLE001
+        return False, f"error ({exc})"
+
+    if code < 400:
+        return True, f"HTTP {code}"
+    if code in SOFT_BLOCK_STATUSES:
+        return True, f"HTTP {code} (bot wall/rate limit, treated as exists)"
+    return False, f"HTTP {code}"
+
+
+def check_url_resolution(blocks, result, skip=False, timeout=DEFAULT_URL_TIMEOUT,
+                          delay=DEFAULT_URL_DELAY, resolver=_resolve_url_status):
+    """
+    Hard-fails on any dead or unreachable link. ON by default -- callers pass
+    skip=True (--skip-url-check) only for offline testing. `resolver` is
+    injectable so tests can verify the pass/fail logic without real network
+    calls; production always uses the default `_resolve_url_status`.
+    """
+    if skip:
+        result.warn("URL-resolution check skipped (--skip-url-check) -- "
+                     "links were NOT verified to be live; do not use this "
+                     "for a real delivery run")
+        return
+
+    urls = collect_all_urls(blocks)
+    for i, (url, contexts) in enumerate(sorted(urls.items())):
+        if i > 0 and delay:
+            time.sleep(delay)
+        ok, detail = resolver(url, timeout)
+        if not ok:
+            ctx = "; ".join(sorted(set(contexts)))
+            result.fail(f"Dead or unreachable link ({detail}): {url} [{ctx}]")
+
+
 def check_banned_phrases(md_text, result):
     text_lower = md_text.lower()
     for phrase in BANNED_PHRASES:
@@ -378,7 +509,8 @@ def check_docx_parity(docx_path, result):
             result.fail(f"Section heading '{section}' missing from built .docx text")
 
 
-def run_audit(md_path, docx_path, register_path):
+def run_audit(md_path, docx_path, register_path, skip_url_check=False,
+              url_timeout=DEFAULT_URL_TIMEOUT, url_delay=DEFAULT_URL_DELAY):
     result = AuditResult()
     md_text = Path(md_path).read_text(encoding="utf-8")
     blocks = split_h1_blocks(md_text)
@@ -394,6 +526,8 @@ def run_audit(md_path, docx_path, register_path):
     check_american_spellings(md_text, result)
     check_arabic_only_in_labels(md_text, blocks, result)
     check_docx_parity(docx_path, result)
+    check_url_resolution(blocks, result, skip=skip_url_check,
+                          timeout=url_timeout, delay=url_delay)
 
     return result
 
@@ -404,9 +538,19 @@ def main():
     parser.add_argument("--docx", default=None, help="Path to the built .docx (optional parity check)")
     parser.add_argument("--register", default="reports/do_not_reuse_register.md",
                          help="Path to the do-not-reuse register")
+    parser.add_argument("--skip-url-check", action="store_true",
+                         help="Skip live URL-resolution checks (offline testing only -- "
+                              "ON by default in real runs; never skip for a real delivery)")
+    parser.add_argument("--url-timeout", type=float, default=DEFAULT_URL_TIMEOUT,
+                         help=f"Per-URL request timeout in seconds (default {DEFAULT_URL_TIMEOUT})")
+    parser.add_argument("--url-delay", type=float, default=DEFAULT_URL_DELAY,
+                         help=f"Delay between URL checks in seconds, for polite rate-limiting "
+                              f"(default {DEFAULT_URL_DELAY})")
     args = parser.parse_args()
 
-    result = run_audit(args.markdown_path, args.docx, args.register)
+    result = run_audit(args.markdown_path, args.docx, args.register,
+                        skip_url_check=args.skip_url_check,
+                        url_timeout=args.url_timeout, url_delay=args.url_delay)
 
     print("=== MoC Digest Audit ===")
     if result.warnings:
