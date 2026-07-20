@@ -30,7 +30,7 @@ import time
 import urllib.error
 import urllib.request
 import zipfile
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 # --- Structure constants (must match SKILL.md exactly) ----------------------
@@ -810,6 +810,89 @@ def run_audit(md_path, docx_path, register_path, skip_url_check=False,
     return result
 
 
+# --- Run-status reporting (item 6: reliable machine-readable run summary) --
+
+DEFAULT_SKILL_MD_PATH = Path(__file__).resolve().parent.parent / ".claude" / "skills" / "cultural-digest" / "SKILL.md"
+DEFAULT_STATUS_OUT_PATH = "reports/last_run_status.json"
+NAMED_ENTITY_STALE_AFTER_DAYS = 180
+LAST_VERIFIED_RE = re.compile(r"LAST VERIFIED:\s*(\d{4}-\d{2}-\d{2})")
+
+
+def check_named_entity_freshness(skill_md_path=None, max_age_days=NAMED_ENTITY_STALE_AFTER_DAYS, as_of=None):
+    """
+    Parses SKILL.md's "LAST VERIFIED: YYYY-MM-DD" header for the Named
+    Entity People/Places lists (item 4b) and flags staleness -- non-blocking,
+    just a signal in the run status that those lists need re-verification.
+    Returns {"last_verified": "YYYY-MM-DD" or None, "days_old": int or None,
+    "stale": bool or None}; None values mean the date couldn't be found (not
+    an error -- some deployments may not ship SKILL.md at this path).
+    """
+    if skill_md_path is None:
+        skill_md_path = DEFAULT_SKILL_MD_PATH
+    path = Path(skill_md_path)
+    if not path.exists():
+        return {"last_verified": None, "days_old": None, "stale": None}
+
+    match = LAST_VERIFIED_RE.search(path.read_text(encoding="utf-8"))
+    if not match:
+        return {"last_verified": None, "days_old": None, "stale": None}
+
+    last_verified = date.fromisoformat(match.group(1))
+    today = as_of if as_of is not None else date.today()
+    days_old = (today - last_verified).days
+    return {
+        "last_verified": last_verified.isoformat(),
+        "days_old": days_old,
+        "stale": days_old > max_age_days,
+    }
+
+
+def build_run_status(args, result=None, run_error=None, as_of=None):
+    """
+    Builds the reports/last_run_status.json payload. Called from main()'s
+    `finally` block so a status file is written whether the audit passed,
+    failed, or crashed with an exception -- result=None + run_error set
+    covers the crash path.
+    """
+    status = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "markdown_path": args.markdown_path,
+        "reader_used": args.reader_used,
+        "delivery_result": args.delivery_result,
+        "url_resolution_check": "skipped" if args.skip_url_check else "enabled",
+        "register_window_days": args.register_window_days,
+        "run_error": run_error,
+    }
+
+    if result is not None:
+        status["section_item_counts"] = {
+            section: data["count"] for section, data in result.coverage_ladder.items()
+        }
+        status["minimum_coverage_ladder"] = result.coverage_ladder
+        status["audit"] = {
+            "result": "pass" if result.ok() else "fail",
+            "hard_failures": result.hard_failures,
+            "warnings": result.warnings,
+        }
+    else:
+        status["section_item_counts"] = {}
+        status["minimum_coverage_ladder"] = {}
+        status["audit"] = {"result": "error", "hard_failures": [], "warnings": []}
+
+    freshness = check_named_entity_freshness(as_of=as_of)
+    status["named_entity_lists_last_verified"] = freshness["last_verified"]
+    status["named_entity_lists_days_old"] = freshness["days_old"]
+    status["stale_named_entity_lists"] = freshness["stale"]
+
+    return status
+
+
+def write_status_file(path, status):
+    out_path = Path(path)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(status, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Stage 5 audit for the MoC Daily Cultural Digest")
     parser.add_argument("markdown_path", help="Path to the canonical markdown digest")
@@ -835,18 +918,50 @@ def main():
     parser.add_argument("--as-of-date", default=None,
                          help="Override 'today' (YYYY-MM-DD) for register-window calculations -- "
                               "testing only, defaults to the real current date")
+    parser.add_argument("--reader-used", choices=["tavily", "connector", "none"], default="none",
+                         help="Which reader path this run actually used for bot-walled premium "
+                              "wires -- informational, recorded verbatim in the run-status file")
+    parser.add_argument("--delivery-result", default="not_attempted",
+                         help="Free-form delivery outcome for this run (e.g. 'success', "
+                              "'failed: <reason>', 'skipped: no credentials', 'not_attempted') -- "
+                              "informational, recorded verbatim in the run-status file")
+    parser.add_argument("--status-out", default=DEFAULT_STATUS_OUT_PATH,
+                         help=f"Where to write the machine-readable run-status JSON "
+                              f"(default {DEFAULT_STATUS_OUT_PATH}). Written reliably even if the "
+                              f"audit itself crashes -- see --no-status-out to disable for testing")
+    parser.add_argument("--no-status-out", action="store_true",
+                         help="Do not write the run-status file (testing convenience only -- "
+                              "a real run should always leave a status file behind)")
     args = parser.parse_args()
 
     as_of = date.fromisoformat(args.as_of_date) if args.as_of_date else None
 
-    result = run_audit(args.markdown_path, args.docx, args.register,
-                        skip_url_check=args.skip_url_check,
-                        url_timeout=args.url_timeout, url_delay=args.url_delay,
-                        search_log_path=args.search_log,
-                        register_window_days=args.register_window_days,
-                        as_of_date=as_of)
+    # Wrapped so a crash anywhere in run_audit still leaves a failure status
+    # behind (item 6) -- reports/last_run_status.json is written in `finally`
+    # regardless of whether the audit passed, failed, or raised.
+    result = None
+    run_error = None
+    try:
+        result = run_audit(args.markdown_path, args.docx, args.register,
+                            skip_url_check=args.skip_url_check,
+                            url_timeout=args.url_timeout, url_delay=args.url_delay,
+                            search_log_path=args.search_log,
+                            register_window_days=args.register_window_days,
+                            as_of_date=as_of)
+    except Exception as exc:  # noqa: BLE001 -- any crash must still write a status file
+        run_error = f"{type(exc).__name__}: {exc}"
+    finally:
+        if not args.no_status_out:
+            status = build_run_status(args, result=result, run_error=run_error, as_of=as_of)
+            write_status_file(args.status_out, status)
 
     print("=== MoC Digest Audit ===")
+
+    if result is None:
+        print(f"\nRESULT: ERROR -- {run_error}")
+        print("A failure status was recorded; this digest must not be delivered.")
+        sys.exit(1)
+
     if result.warnings:
         print(f"\n{len(result.warnings)} WARNING(S):")
         for w in result.warnings:

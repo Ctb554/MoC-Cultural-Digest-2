@@ -562,7 +562,7 @@ alongside the `.docx`; the markdown is the continuity record for future runs.
 
 ## Stage 5: programmatic audit (hard gate)
 
-Run `scripts/audit_report.py <canonical-markdown> --docx <built-docx> --register reports/do_not_reuse_register.md --search-log reports/search_log.json`.
+Run `scripts/audit_report.py <canonical-markdown> --docx <built-docx> --register reports/do_not_reuse_register.md --search-log reports/search_log.json --reader-used <tavily|connector|none> --delivery-result <result-once-known>`.
 This is an independent gate — a clean-but-wrong digest can never ship green.
 It checks: no excluded-outlet source slipped through (Saudi-owned outlets,
 **and, separately, all Israeli outlets — see the Source Eligibility rule in
@@ -644,6 +644,29 @@ genuinely quiet news day, which is worse than an honest empty section.
 5. End with an explicit pass/fail run log: capability check results, reader
    path used, articles sourced per section (with verification method per
    article), audit result, delivery result per channel.
+6. `scripts/audit_report.py` writes `reports/last_run_status.json` itself as
+   part of running Stage 5 (pass `--reader-used` and `--delivery-result`
+   once those are known, so they're captured in the same file rather than
+   requiring a second pass) — this is the machine-readable counterpart to
+   the run log in step 5, the foundation for any future external alerting,
+   and it is written reliably even if the audit call itself crashes (see
+   Stage 5). It captures: timestamp, per-section item counts, the full
+   minimum-coverage ladder result, audit pass/fail with the complete list of
+   hard failures and warnings, whether the URL-resolution check ran or was
+   skipped, the register rolling-window size, reader used, delivery result,
+   and named-entity-list staleness. Commit this file alongside the `.docx`
+   and `.md` in step 2 so it's part of the same continuity record. **This
+   step does not itself send an alert anywhere** — only emitting the status
+   file reliably is in scope for now; do not build email/Slack notification
+   on top of it without being asked.
+
+   A hard failure at an earlier stage (Stage 0's capability check, Stage 1's
+   unreadable priors) is the one class of failure `scripts/audit_report.py`
+   cannot wrap, since it never gets invoked. In that case, write a minimal
+   `reports/last_run_status.json` by hand before stopping —
+   `{"timestamp": "...", "audit": {"result": "error"}, "run_error": "<what
+   failed and why>"}` at minimum — so the run never simply vanishes without
+   a trace.
 
 ## Learning from manual edits
 
