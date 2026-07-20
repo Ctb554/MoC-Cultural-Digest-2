@@ -176,10 +176,18 @@ coverage that names a specific outlet, person, brand, or site directly
 without ever using those generic words — e.g. Vogue covering a named Saudi
 designer, or a story about new findings at Hegra that never says "heritage"
 or "archaeological." These three groups exist to catch exactly that gap.
-Named individuals and sites were verified via live web search as of July
-2026 — **all three lists below will go stale**; re-verify periodically and
-add newly prominent names/sites as they surface in real coverage rather than
-treating any of this as fixed. Run each bullet below as its own separate
+
+**LAST VERIFIED: 2026-07-20.** Named individuals and sites were verified via
+live web search as of this date — **all three lists below will go stale**;
+re-verify periodically and add newly prominent names/sites as they surface
+in real coverage rather than treating any of this as fixed. Update this date
+every time the People/Places lists (not just the Outlets Booleans, which
+carry their own dated notes above) are re-verified. **Every run must check
+this date against today and flag it in the run log/status
+(`stale_named_entity_lists` in `reports/last_run_status.json` — see Stage 6)
+if it is more than 180 days old** — a stale flag doesn't block the run, but
+it's a signal the People/Places lists need a re-verification pass before
+they're trusted much further. Run each bullet below as its own separate
 search, not one combined query — a combined query dilutes results the same
 way the negative themes would. If a search returns nothing on a given day,
 that's a normal outcome for a narrow named-entity search, not a failure; do
@@ -605,7 +613,13 @@ genuinely quiet news day, which is worse than an honest empty section.
 ## Stage 6: housekeeping and delivery
 
 1. Append every article link and headline used today to
-   `reports/do_not_reuse_register.md` (append-only, nothing ever removed).
+   `reports/do_not_reuse_register.md` (append-only, nothing ever removed),
+   one line per entry: `<YYYY-MM-DD> | <section> | <outlet> | <headline> | <url>`
+   using today's date. `scripts/audit_report.py` enforces a rolling 60-day
+   reuse window against this file (`--register-window-days`, default 60):
+   entries within the window hard-block reuse, older entries stay on file
+   for the permanent record but no longer block a future edition from
+   citing that outlet again.
 2. Commit the `.docx` and canonical `.md` to `main`.
 3. If Dropbox credentials are configured, upload via
    `scripts/dropbox_upload.py` (binary-safe; never use a connector's

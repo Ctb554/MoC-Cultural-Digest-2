@@ -30,6 +30,7 @@ import time
 import urllib.error
 import urllib.request
 import zipfile
+from datetime import date, timedelta
 from pathlib import Path
 
 # --- Structure constants (must match SKILL.md exactly) ----------------------
@@ -108,6 +109,17 @@ DEFAULT_URL_DELAY = 0.5  # seconds between checks -- polite rate limiting
 # presence in a digest being audited is always a hard failure.
 DO_NOT_SHIP_MARKER = "DO-NOT-SHIP: FIXTURE CONTENT -- NEVER DELIVER THIS DIGEST"
 FIXTURE_FILENAMES = ["sample_test_digest.md", "sample_broken_digest.md"]
+
+# --- Do-not-reuse register rolling window (item 4a) -------------------------
+#
+# Entry format: "<YYYY-MM-DD> | <section> | <outlet> | <headline> | <url>".
+# Only entries dated within the last N days are enforced for reuse-blocking;
+# older entries stay in the file for record (append-only, nothing removed)
+# but no longer block a new edition from citing the same outlet again.
+REGISTER_ENTRY_RE = re.compile(
+    r"^\s*(\d{4}-\d{2}-\d{2})\s*\|[^|]*\|[^|]*\|[^|]*\|\s*(\S+)\s*$"
+)
+DEFAULT_REGISTER_WINDOW_DAYS = 60
 
 
 class AuditResult:
@@ -323,7 +335,8 @@ def check_minimum_coverage(blocks, result, search_log_path=None):
             )
 
 
-def check_links_and_sources(blocks, result, register_urls):
+def check_links_and_sources(blocks, result, recent_register_urls, stale_register_urls,
+                             register_window_days=DEFAULT_REGISTER_WINDOW_DAYS):
     for h1_name, h1_lines in blocks:
         if h1_name not in REQUIRED_SECTIONS:
             continue
@@ -372,10 +385,19 @@ def check_links_and_sources(blocks, result, register_urls):
                         )
 
                 for _, url in links:
-                    if url in register_urls:
+                    if url in recent_register_urls:
                         result.fail(
                             f"[{h1_name} / {label}] Reused link from a prior "
-                            f"edition's do-not-reuse register: {url}"
+                            f"edition's do-not-reuse register (within the "
+                            f"last {register_window_days} days): {url}"
+                        )
+                    elif url in stale_register_urls:
+                        result.warn(
+                            f"[{h1_name} / {label}] Link appears in the "
+                            f"do-not-reuse register, but from an entry older "
+                            f"than the {register_window_days}-day reuse "
+                            f"window -- not blocking, flagged for awareness: "
+                            f"{url}"
                         )
 
 
@@ -671,11 +693,49 @@ def check_risks_and_opportunities(blocks, result):
             )
 
 
-def load_register_urls(register_path):
+def load_register_urls(register_path, window_days=DEFAULT_REGISTER_WINDOW_DAYS, as_of=None):
+    """
+    Returns (recent_urls, stale_urls). recent_urls are from entries dated
+    within the last `window_days` days of `as_of` (defaults to real today)
+    -- reusing one of these is a hard failure. stale_urls are older entries,
+    kept in the register for record (it's append-only, nothing is ever
+    removed) but no longer enforced -- reusing one of these is a warning
+    only. A line that can't be parsed as "<date> | ... | ... | ... | <url>",
+    or whose date is malformed, falls back to being treated as always-recent
+    (never expires) -- fail-safe, since we can't confirm it's actually old.
+    """
     if not register_path or not Path(register_path).exists():
-        return set()
+        return set(), set()
+    if as_of is None:
+        as_of = date.today()
+    cutoff = as_of - timedelta(days=window_days)
+
+    recent, stale = set(), set()
     text = Path(register_path).read_text(encoding="utf-8")
-    return set(URL_RE.findall(text))
+    for line in text.split("\n"):
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#") or stripped.startswith("<!--"):
+            continue
+
+        m = REGISTER_ENTRY_RE.match(stripped)
+        if not m:
+            # Malformed/unstructured line -- fail-safe: enforce any URL on it.
+            recent.update(URL_RE.findall(stripped))
+            continue
+
+        entry_date_str, url = m.groups()
+        try:
+            entry_date = date.fromisoformat(entry_date_str)
+        except ValueError:
+            recent.add(url)  # can't confirm age -- fail-safe, always enforce
+            continue
+
+        if entry_date >= cutoff:
+            recent.add(url)
+        else:
+            stale.add(url)
+
+    return recent, stale
 
 
 def check_docx_parity(docx_path, result):
@@ -696,18 +756,22 @@ def check_docx_parity(docx_path, result):
 
 def run_audit(md_path, docx_path, register_path, skip_url_check=False,
               url_timeout=DEFAULT_URL_TIMEOUT, url_delay=DEFAULT_URL_DELAY,
-              search_log_path=None):
+              search_log_path=None, register_window_days=DEFAULT_REGISTER_WINDOW_DAYS,
+              as_of_date=None):
     result = AuditResult()
     md_text = Path(md_path).read_text(encoding="utf-8")
     blocks = split_h1_blocks(md_text)
-    register_urls = load_register_urls(register_path)
+    recent_register_urls, stale_register_urls = load_register_urls(
+        register_path, window_days=register_window_days, as_of=as_of_date
+    )
 
     check_required_blocks(blocks, result)
     check_headline_block_ordering(blocks, result)
     check_commission_labels(blocks, result)
     check_negative_articles_no_subheadings(blocks, result)
     check_minimum_coverage(blocks, result, search_log_path=search_log_path)
-    check_links_and_sources(blocks, result, register_urls)
+    check_links_and_sources(blocks, result, recent_register_urls, stale_register_urls,
+                             register_window_days=register_window_days)
     check_risks_and_opportunities(blocks, result)
     check_banned_phrases(md_text, result)
     check_american_spellings(md_text, result)
@@ -738,12 +802,23 @@ def main():
                          help="Path to the search-log JSON confirming which searches ran this "
                               "cycle (default reports/search_log.json) -- required evidence for "
                               "an empty Negative Articles section to be allowed")
+    parser.add_argument("--register-window-days", type=int, default=DEFAULT_REGISTER_WINDOW_DAYS,
+                         help=f"Rolling window in days for do-not-reuse register enforcement "
+                              f"(default {DEFAULT_REGISTER_WINDOW_DAYS}); older register entries "
+                              f"stay on file but no longer block reuse")
+    parser.add_argument("--as-of-date", default=None,
+                         help="Override 'today' (YYYY-MM-DD) for register-window calculations -- "
+                              "testing only, defaults to the real current date")
     args = parser.parse_args()
+
+    as_of = date.fromisoformat(args.as_of_date) if args.as_of_date else None
 
     result = run_audit(args.markdown_path, args.docx, args.register,
                         skip_url_check=args.skip_url_check,
                         url_timeout=args.url_timeout, url_delay=args.url_delay,
-                        search_log_path=args.search_log)
+                        search_log_path=args.search_log,
+                        register_window_days=args.register_window_days,
+                        as_of_date=as_of)
 
     print("=== MoC Digest Audit ===")
     if result.warnings:
