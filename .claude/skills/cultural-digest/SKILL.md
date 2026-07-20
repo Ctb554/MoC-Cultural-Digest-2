@@ -193,10 +193,10 @@ verification gates (real, in-window, not previously used).
 - **Architecture and Design:** `("Saudi Arabia" OR Saudi) AND ("Architectural Digest" OR Dezeen OR ArchDaily OR "Wallpaper*" OR Designboom)`
 - **Music:** `("Saudi Arabia" OR Saudi) AND (Billboard OR "Rolling Stone" OR Pitchfork)`
 - **Visual Arts and Heritage:** `("Saudi Arabia" OR Saudi) AND (Artforum OR ArtNews OR "The Art Newspaper" OR Hyperallergic OR Frieze)`
-- **Culinary Arts:** `("Saudi Arabia" OR Saudi) AND (Eater OR "Bon Appétit" OR "Food and Wine")`
-- **Literature, Publishing, and Translation:** `("Saudi Arabia" OR Saudi) AND ("Publishers Weekly" OR "The Bookseller")`
+- **Culinary Arts:** `("Saudi Arabia" OR Saudi) AND (Eater OR "Bon Appétit" OR "Food and Wine" OR Michelin OR "Michelin Guide")`
+- **Literature, Publishing, and Translation:** `("Saudi Arabia" OR Saudi) AND ("Publishers Weekly" OR "The Bookseller" OR "London Review of Books" OR "LRB")`
 - **Museums:** `("Saudi Arabia" OR Saudi) AND ("Museums Journal" OR "Apollo Magazine")`
-- **Travel/lifestyle (heritage and tourism crossover):** `("Saudi Arabia" OR Saudi) AND ("Condé Nast Traveler" OR "Travel and Leisure" OR AFAR)`
+- **Travel/lifestyle (heritage and tourism crossover):** `("Saudi Arabia" OR Saudi) AND ("Condé Nast Traveler" OR "Travel and Leisure" OR AFAR OR "Travel and Tour World" OR "Hotelier Middle East" OR "Outlook Traveller")`
 
 *People* — named cultural figures, by sector:
 - **Visual Arts:** `"Ahmed Mater" OR "Abdulnasser Gharem" OR "Ashraf Fayadh" OR "Manal Al Dowayan" OR "Dana Awartani" OR "Shadia Alem" OR "Sarah Abu Abdallah" OR "Sarah Mohanna Al Abdali" OR "Zahrah Al Ghamdi" OR "Safeya Binzagr"`
@@ -222,12 +222,23 @@ reputation risk.
 
 **Global culture** — run broad culture/arts/heritage/museum/film/music/theatre/
 fashion/architecture/literature/culinary searches, prioritizing Tier 1 outlets:
-BBC, Guardian, FT, NYT, WaPo, AP, Bloomberg, Xinhua, China Daily, CGTN, The
-Hindu, Indian Express, Kathimerini, ANSA, Repubblica, Corriere, Il Sole 24 Ore,
-DW, Spiegel, FAZ, Le Monde, Le Figaro, France24, AFP, Reuters, Eater, Saveur,
-ArchDaily, Dezeen, Domus, Architectural Digest, Vogue Business, WWD,
-FashionNetwork, FashionUnited, Billboard, ArtReview, Frieze, Art Basel,
-Designboom, The Art Newspaper, Artforum.
+BBC, Guardian, FT, NYT, WaPo, AP, Bloomberg, Xinhua, China Daily, CGTN, Global
+Times, The Hindu, Indian Express, Kathimerini, ANSA, Repubblica, Corriere, Il
+Sole 24 Ore, DW, Spiegel, FAZ, Le Monde, Le Figaro, France24, AFP, Reuters,
+Eater, Saveur, ArchDaily, Dezeen, Domus, Architectural Digest, Vogue Business,
+WWD, FashionNetwork, FashionUnited, Billboard, ArtReview, Frieze, Art Basel,
+Designboom, The Art Newspaper, Artforum, Daily Times (Pakistan), Antara News
+(Indonesia), Taipei Times, The Standard (Hong Kong), Korea Times, Korea
+Economic Daily. This list was expanded 2026-07-20 after a real-edition
+comparison showed the earlier Western-leaning list missing legitimate
+Asia-Pacific and South Asia cultural-diplomacy coverage (a Naadam Festival
+story, a Pakistani cultural festival in Australia, Indonesia's creative-
+economy push, a Taiwan culture-budget story, and a Hong Kong Book Fair piece
+all ran that day in outlets not on the prior list). Also added: "London
+Review of Books" (literature) and Michelin/"Michelin Guide" (culinary).
+Treat this list as inherently incomplete — broaden it further whenever a
+comparison against a real edition surfaces another credible outlet this
+pipeline missed.
 
 ### Source eligibility (hard rule, enforced by Stage 5 audit)
 
@@ -246,7 +257,13 @@ Designboom, The Art Newspaper, Artforum.
   a given day — a short Saudi/Regional section is more honest than a padded
   one, per the original brief's explicit instruction on this point.
 - Wider GCC/regional culture stories are includable only when useful for
-  benchmarking and from credible outlets.
+  benchmarking and from credible outlets. **Placement: these go under Saudi
+  Arabia/Regional, not Global** — confirmed against a real edition
+  (2026-07-20) that placed a UAE exhibitions roundup under Saudi Arabia/
+  Regional as GCC-benchmarking context, not under Global. This repo's own
+  routine had previously placed an equivalent UAE story under Global, which
+  was an inconsistency; Saudi Arabia/Regional is the correct section for
+  any non-Saudi GCC story used for regional benchmarking.
 
 ### Verification gates (every article passes all)
 
