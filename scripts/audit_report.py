@@ -11,10 +11,21 @@ clean-but-wrong digest can never ship green.
 Usage:
     python3 scripts/audit_report.py reports/MoC_Digest_2026-07-19.md \\
         --docx reports/MoC_Digest_2026-07-19.docx \\
-        --register reports/do_not_reuse_register.md
+        --register reports/do_not_reuse_register.md \\
+        --search-log reports/search_log.json \\
+        --reader-used tavily --delivery-result success
 
 Exit code 0 = all hard checks pass (warnings may still be printed).
-Exit code 1 = at least one hard check failed; the digest must not be delivered.
+Exit code 1 = at least one hard check failed, or the audit itself crashed;
+the digest must not be delivered either way.
+
+Notable flags (see full --help for all of them): --skip-url-check disables
+the live URL-resolution check for offline testing ONLY (on by default, never
+skip for a real run); --search-log points at the evidence file that allows
+an empty Negative Articles section; --register-window-days controls the
+do-not-reuse register's rolling reuse window (default 60); --status-out
+controls where the machine-readable run summary is written (default
+reports/last_run_status.json, written reliably even if this script crashes).
 
 Format checked here is the one confirmed against a real delivered edition
 (2026-07-19), NOT either of the two original written specs -- see SKILL.md's
