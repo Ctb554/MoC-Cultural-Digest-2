@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-07-20T14:45:45.848418+00:00",
+  "markdown_path": "reports/MOC_Daily_Cultural_Digest_20Jul26_D1.md",
+  "reader_used": "none",
+  "delivery_result": "success: uploaded to Dropbox /05_Claude Test/ (team namespace 4361675552)",
+  "url_resolution_check": "enabled",
+  "register_window_days": 60,
+  "run_error": null,
+  "section_item_counts": {
+    "Saudi Arabia/Regional": 3,
+    "Global": 7,
+    "Negative Articles": 0
+  },
+  "minimum_coverage_ladder": {
+    "Saudi Arabia/Regional": {
+      "count": 3,
+      "minimum_required": 1,
+      "met": true,
+      "rung": "has-content"
+    },
+    "Global": {
+      "count": 7,
+      "minimum_required": 1,
+      "met": true,
+      "rung": "has-content"
+    },
+    "Negative Articles": {
+      "count": 0,
+      "minimum_required": 0,
+      "met": true,
+      "rung": "empty-justified"
+    }
+  },
+  "audit": {
+    "result": "pass",
+    "hard_failures": [],
+    "warnings": [
+      "'Negative Articles' is empty; justified by reports/search_log.json confirming the negative/watchdog searches were run and returned nothing in-window -- this is a legitimate outcome, not a sourcing failure"
+    ]
+  },
+  "named_entity_lists_last_verified": "2026-07-20",
+  "named_entity_lists_days_old": 0,
+  "stale_named_entity_lists": false
+}
