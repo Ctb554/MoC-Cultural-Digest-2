@@ -535,10 +535,10 @@ MoC ownership of stories where the Ministry isn't stated as involved.
 Before building the document, one reviewer pass attacks the complete draft
 from an editor's perspective, checking:
 
-- Every hard rule above: source exclusion (no Saudi-owned outlets slipped
-  through), link-in-outlet-name-only, no raw URLs, GB English, no invented
-  labels, no banned inflated phrases, bilingual commission labels present and
-  correctly paired.
+- Every hard rule above: source exclusion (no Saudi-owned outlets, and no
+  Israeli outlets of any kind, slipped through), link-in-outlet-name-only,
+  no raw URLs, GB English, no invented labels, no banned inflated phrases,
+  bilingual commission labels present and correctly paired.
 - The standing preferences in `reports/editorial_learnings.md`, so edits the
   team has made before are caught pre-delivery.
 - Headline bullets appear first (before full summaries) and match the
@@ -546,6 +546,12 @@ from an editor's perspective, checking:
 - Negative Articles has no commission subheadings.
 - Risks/Opportunities structure: at least one numbered item per subsection,
   each with a bold headline, paragraph, Source line, and Consideration line.
+- The minimum-coverage ladder (Stage 5): Saudi Arabia/Regional and Global
+  are not empty; if Negative Articles is empty, `reports/search_log.json`
+  has already been written confirming the negative/watchdog searches ran.
+- Every link genuinely resolves — this pass can't run the live Stage 5 URL
+  check itself, but it should sanity-check that no link looks fabricated or
+  copy-pasted from a different article before Stage 5 catches it mechanically.
 
 Findings are applied unless they'd require fabrication or out-of-window
 sourcing; every disposition is logged. Exactly one pass — the reviewer never
