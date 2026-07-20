@@ -153,10 +153,54 @@ below across the last 24 hours (adjust the window only if explicitly told to).
 Same split as the conflict-monitoring skill: discovery, verification, and
 selection run entirely on free WebSearch/WebFetch (snippets, syndicated
 copies, second-source corroboration for bot-walled premium wires). The
-metered Tavily reader (or fallback connector) is spent only afterward, as one
-batched basic-depth extraction of the selected articles WebFetch can't read
-— typically 1-2 credits per edition. Never use Tavily search; it duplicates
-free WebSearch at a cost.
+metered Tavily reader is spent only afterward, on the selected articles
+WebFetch can't read.
+
+**Verified 2026-07-20 via a dedicated 9-article diagnostic (3 each from
+Bloomberg, Reuters, FT) — use these findings, not assumptions, when deciding
+how to spend Tavily credits:**
+
+- **Use `extract_depth: advanced`, not `basic`.** At `basic` depth, Tavily
+  only succeeded on 2 of 9 test articles — essentially luck. At `advanced`
+  depth, it succeeded on all 6 Bloomberg and Reuters articles. `basic` was
+  the original spec's assumption for cost reasons; the diagnostic showed
+  that assumption throws away roughly two-thirds of Tavily's real value.
+  Accept the higher per-call cost of `advanced` — it's the difference
+  between "barely helps" and "genuinely unlocks two major wire services."
+- **Bloomberg and Reuters: Tavily at `advanced` depth works well.** Both
+  went from completely unreachable (Bloomberg hard-403s on WebFetch;
+  Reuters can't even be attempted — see below) to fully readable, correct
+  title, real byline, substantive content.
+- **FT: currently a dead end regardless of method.** 0 of 3 test articles
+  succeeded at any depth. Some calls returned HTTP 200 but the actual
+  content was a paywall interstitial ("Subscribe to read") or bare page
+  navigation chrome with zero substantive text — verified by checking
+  actual content (byline presence, on-topic mention count, title match),
+  not just Tavily's own success/failure flag, which can be misleading on
+  its own. **Do not keep retrying FT expecting a different result** — treat
+  it as unreachable for now. A larger future sample could revisit this, but
+  three clean failures is enough to stop treating FT as "should eventually
+  work."
+- **Reuters and FT can't even be discovered via plain WebSearch** — this is
+  a separate, more structural problem than the extraction/paywall issue
+  above. WebSearch itself returns a categorical "not accessible" error for
+  both domains, meaning the normal "free WebSearch discovers, Tavily only
+  extracts" split doesn't work for these two outlets specifically — there's
+  nothing for WebFetch/Tavily to extract if WebSearch can never surface a
+  URL in the first place. **Workaround: when a Reuters or FT lead needs
+  discovering specifically** (e.g., the General/Macro Press search is
+  clearly missing coverage from one of these two), use Tavily's own search
+  function to find the URL, then its extraction to read it — both steps
+  spend credits, which is a real cost increase versus the original
+  free-discovery assumption. Don't do this routinely for every search; only
+  when there's a specific, otherwise-unfindable lead worth spending the
+  extra credit on.
+- **Credit usage will be higher than originally planned** as a direct
+  result of the two points above (`advanced` depth costing more per call,
+  and Reuters/FT sometimes needing search credits too, not just
+  extraction). Monitor actual monthly usage against the 1,000 free-tier
+  credits over the first few weeks rather than assuming the original
+  "1-2 credits per edition" estimate still holds.
 
 ### Search Booleans to run
 
