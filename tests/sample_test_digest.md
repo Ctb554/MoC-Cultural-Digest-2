@@ -1,3 +1,5 @@
+<!-- DO-NOT-SHIP: FIXTURE CONTENT -- NEVER DELIVER THIS DIGEST -->
+
 # Headlines, 19 July 2026
 
 ## Saudi Arabia/Regional

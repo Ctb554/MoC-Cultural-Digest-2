@@ -1,0 +1,11 @@
+{
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights", "labour/workers", "sportswashing", "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics", "oil", "academic freedom",
+    "tourism criticism", "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism", "investment scrutiny", "soft power criticism",
+    "general reputation risk", "watchdog/NGO monitoring"
+  ],
+  "negative_hits_found_in_window": 0
+}

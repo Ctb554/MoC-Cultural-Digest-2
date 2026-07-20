@@ -43,7 +43,7 @@ this is the map.
 | **3. Write the content** | Three sections (Saudi Arabia/Regional, Negative Articles, Global), grouped by the approved commission labels, in the required bullet format with the link only in the outlet name, headline bullets after the summaries, and a one-paragraph-each Risks/Opportunities close. |
 | **3.5 Adversarial review (single pass)** | One reviewer pass checks the draft against every hard rule and the standing preferences in editorial learnings before building the document. |
 | **4. Build the Word document** | `scripts/build_docx.py` renders the canonical markdown into a `.docx`. See `templates/README.md` for swapping to a real branded template once one exists. |
-| **5. Programmatic audit** | `scripts/audit_report.py` — a hard gate. Checks source exclusion, link placement, commission-label validity, banned phrases, GB spelling, no reused links, and the Risks/Opportunities structure. A failing digest is never delivered. |
+| **5. Programmatic audit** | `scripts/audit_report.py` — a hard gate. Checks source exclusion (Saudi-owned outlets, and separately all Israeli outlets), that every link actually resolves live (not just formatting), fixture-content leakage, the minimum-coverage ladder (Negative Articles may be legitimately empty only with search-log evidence), link placement, commission-label validity, banned phrases, GB spelling, reused links against a rolling 60-day register window, and the Risks/Opportunities structure. A failing digest is never delivered. Also writes `reports/last_run_status.json`, reliably even on crash. |
 | **6. Housekeeping and delivery** | Appends today's articles to the do-not-reuse register, commits to `main`, uploads via Dropbox if configured, ends with a pass/fail run log. |
 
 ## The learning loop
@@ -64,12 +64,14 @@ source-eligibility gates.
 | `templates/` | Where a real branded MoC template will live once available; currently just guidance on pinning one. |
 | `reports/*.md` | Canonical markdown of every edition; the continuity record future runs read. |
 | `reports/*.docx` | The delivered Word documents. |
-| `reports/do_not_reuse_register.md` | Append-only ledger of every article link/headline used. |
+| `reports/do_not_reuse_register.md` | Append-only ledger of every article link/headline used; enforced on a rolling 60-day window. |
 | `reports/editorial_learnings.md` | Standing preferences and the dated observation log. |
+| `reports/search_log.json` | Written each run before Stage 3: which negative/watchdog searches ran and what they found — the evidence Stage 5 needs to allow an empty Negative Articles section. |
+| `reports/last_run_status.json` | Machine-readable run summary Stage 5 writes every run (pass, fail, or crash) — the foundation for any future external alerting. |
 | `scripts/build_docx.py` | Renders canonical markdown into the `.docx`. |
-| `scripts/audit_report.py` | Stage 5 hard-gate audit. |
+| `scripts/audit_report.py` | Stage 5 hard-gate audit: structure, source exclusion, live URL resolution, fixture-safety, minimum-coverage ladder, register rolling window, run-status output. |
 | `scripts/dropbox_upload.py` | Optional binary docx upload via the Dropbox API. |
-| `tests/` | Sample markdown fixtures (one clean, one deliberately broken) used to verify `build_docx.py` and `audit_report.py` — not real editions. |
+| `tests/` | Fixtures plus `tests/run_tests.py`, an automated regression suite for `build_docx.py`/`audit_report.py` — not real editions. |
 
 ## Things to watch for
 

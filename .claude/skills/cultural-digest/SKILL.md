@@ -176,10 +176,18 @@ coverage that names a specific outlet, person, brand, or site directly
 without ever using those generic words — e.g. Vogue covering a named Saudi
 designer, or a story about new findings at Hegra that never says "heritage"
 or "archaeological." These three groups exist to catch exactly that gap.
-Named individuals and sites were verified via live web search as of July
-2026 — **all three lists below will go stale**; re-verify periodically and
-add newly prominent names/sites as they surface in real coverage rather than
-treating any of this as fixed. Run each bullet below as its own separate
+
+**LAST VERIFIED: 2026-07-20.** Named individuals and sites were verified via
+live web search as of this date — **all three lists below will go stale**;
+re-verify periodically and add newly prominent names/sites as they surface
+in real coverage rather than treating any of this as fixed. Update this date
+every time the People/Places lists (not just the Outlets Booleans, which
+carry their own dated notes above) are re-verified. **Every run must check
+this date against today and flag it in the run log/status
+(`stale_named_entity_lists` in `reports/last_run_status.json` — see Stage 6)
+if it is more than 180 days old** — a stale flag doesn't block the run, but
+it's a signal the People/Places lists need a re-verification pass before
+they're trusted much further. Run each bullet below as its own separate
 search, not one combined query — a combined query dilutes results the same
 way the negative themes would. If a search returns nothing on a given day,
 that's a normal outcome for a narrow named-entity search, not a failure; do
@@ -242,6 +250,27 @@ report; prefer a credible news outlet's coverage of the NGO's findings where
 one exists, and treat the raw NGO statement as a fallback for verification,
 not the ideal citation for a bullet.
 
+**Record the negative/watchdog search results in `reports/search_log.json`**
+before moving to Stage 3, regardless of what they turned up. This is the
+evidence Stage 5's minimum-coverage ladder (see Stage 5 below) requires to
+allow a legitimately empty Negative Articles section — its absence is a hard
+audit failure, not a free pass. Minimum schema:
+
+```json
+{
+  "negative_searches_run": true,
+  "negative_themes_searched": ["human rights", "labour/workers", "...", "watchdog/NGO monitoring"],
+  "negative_hits_found_in_window": 0
+}
+```
+
+Set `negative_searches_run: true` only once every theme in this section
+(including the watchdog/NGO search) was actually run this cycle — not
+planned, not "mostly." If any theme was skipped for any reason, this must
+say `false` (or the file must not claim `true`), and the run must then
+either go back and run the missing searches or accept the resulting hard
+audit failure honestly rather than fabricate the log.
+
 **Global culture** — run broad culture/arts/heritage/museum/film/music/theatre/
 fashion/architecture/literature/culinary searches, prioritizing Tier 1 outlets:
 BBC, Guardian, FT, NYT, WaPo, AP, Bloomberg, Reuters, AFP, CNBC, Forbes,
@@ -291,6 +320,21 @@ surfaces another credible outlet this pipeline missed.
   (Al-Awsat), Saudi Gazette, SPA, and any other Saudi-owned outlet, even if
   it surfaces via a broad search. When in doubt about ownership, check before
   using; if still uncertain, don't use it.
+- **Exclude all Israeli outlets, always, as a hard rule** — jpost.com,
+  Times of Israel, Haaretz, Ynet, i24NEWS, TheMarker, and any other
+  Israeli-owned outlet, even if it surfaces via a broad search and even for
+  an otherwise neutral or factually solid citation. **This is a deliberate
+  reputational-caution decision for a Saudi government deliverable, not a
+  claim about these outlets' factual reliability** — the reputational risk
+  of citing Israeli media exists for this client regardless of how credible
+  or neutral the specific article is. This closes a prior inconsistency
+  where jpost.com alone was excluded while Times of Israel/Haaretz/Ynet/i24/
+  TheMarker were only flagged as a warning; all are now hard exclusions,
+  enforced identically to Saudi-owned outlets in Stage 5's audit. This rule
+  is overridable **only by a human editing the digest directly** (e.g. the
+  team deciding a specific citation is warranted for a specific edition) —
+  no stage of this playbook should ever treat one of these outlets as usable
+  on its own initiative.
 - **UAE-based credible outlets are allowed.** The National and Al Arabiya are
   explicitly allowed, along with Campaign Middle East.
 - Avoid weak, hyper-local, or poor-quality outlets and raw press-release
@@ -491,10 +535,10 @@ MoC ownership of stories where the Ministry isn't stated as involved.
 Before building the document, one reviewer pass attacks the complete draft
 from an editor's perspective, checking:
 
-- Every hard rule above: source exclusion (no Saudi-owned outlets slipped
-  through), link-in-outlet-name-only, no raw URLs, GB English, no invented
-  labels, no banned inflated phrases, bilingual commission labels present and
-  correctly paired.
+- Every hard rule above: source exclusion (no Saudi-owned outlets, and no
+  Israeli outlets of any kind, slipped through), link-in-outlet-name-only,
+  no raw URLs, GB English, no invented labels, no banned inflated phrases,
+  bilingual commission labels present and correctly paired.
 - The standing preferences in `reports/editorial_learnings.md`, so edits the
   team has made before are caught pre-delivery.
 - Headline bullets appear first (before full summaries) and match the
@@ -502,6 +546,12 @@ from an editor's perspective, checking:
 - Negative Articles has no commission subheadings.
 - Risks/Opportunities structure: at least one numbered item per subsection,
   each with a bold headline, paragraph, Source line, and Consideration line.
+- The minimum-coverage ladder (Stage 5): Saudi Arabia/Regional and Global
+  are not empty; if Negative Articles is empty, `reports/search_log.json`
+  has already been written confirming the negative/watchdog searches ran.
+- Every link genuinely resolves — this pass can't run the live Stage 5 URL
+  check itself, but it should sanity-check that no link looks fabricated or
+  copy-pasted from a different article before Stage 5 catches it mechanically.
 
 Findings are applied unless they'd require fabrication or out-of-window
 sourcing; every disposition is logged. Exactly one pass — the reviewer never
@@ -518,23 +568,80 @@ alongside the `.docx`; the markdown is the continuity record for future runs.
 
 ## Stage 5: programmatic audit (hard gate)
 
-Run `scripts/audit_report.py <built-docx> --md <canonical-markdown>`. This is
-an independent gate — a clean-but-wrong digest can never ship green. It
-checks: no excluded-outlet source slipped through, every article has a
-working direct link, no raw URLs in body text, link lives only in the outlet
-name, three main sections present and in order, only approved bilingual
-commission labels used (correct English/Arabic pairing), no invented labels,
-Negative Articles has no commission subheadings, headline bullets present
-**before** the full summaries and match the article order and count, GB
-spelling scan, no banned inflated phrases, Risks/Opportunities structure (at
-least one numbered item per subsection with a headline, Source, and
-Consideration), no reused headlines/links against the register. Failures are
-fixed and the audit re-run; a failing digest is never delivered.
+Run `scripts/audit_report.py <canonical-markdown> --docx <built-docx> --register reports/do_not_reuse_register.md --search-log reports/search_log.json --reader-used <tavily|connector|none> --delivery-result <result-once-known>`.
+This is an independent gate — a clean-but-wrong digest can never ship green.
+It checks: no excluded-outlet source slipped through (Saudi-owned outlets,
+**and, separately, all Israeli outlets — see the Source Eligibility rule in
+Stage 2, enforced identically as a hard fail**), every article link
+**actually resolves live** (not just correct formatting — see below), no raw
+URLs in body text, link lives only in the outlet name, three main sections
+present and in order, only approved bilingual commission labels used
+(correct English/Arabic pairing), no invented labels, Negative Articles has
+no commission subheadings, headline bullets present **before** the full
+summaries and match the article order and count, GB spelling scan, no
+banned inflated phrases, Risks/Opportunities structure (at least one
+numbered item per subsection with a headline, Source, and Consideration),
+no reused headlines/links against the register (rolling 60-day window — see
+Stage 6), the minimum-coverage ladder below, and the fixture-safety guard
+below. Failures are fixed and the audit re-run; a failing digest is never
+delivered.
+
+### URL resolution (hard gate)
+
+Correct markdown formatting is not enough — a fabricated or dead link with
+perfect formatting used to sail through. Every article/source URL now gets
+a real HEAD request (GET fallback for servers that reject HEAD). A live
+2xx/3xx passes. A bot-wall or rate-limit response (401/403/429) also
+passes — that still proves the URL exists, the same "bot wall is normal"
+principle Stage 0 already applies to WebFetch. A 404, other 4xx/5xx, DNS/
+connection failure, or timeout hard-fails. Checks run with a short delay
+between requests for polite rate-limiting. `--skip-url-check` disables this
+for offline testing only — **never pass it on a real run**; it is not a
+substitute for verifying links actually resolve.
+
+Known limitation, not a bug: a domain that bot-walls with a blanket 401/403
+for *any* path, including a nonexistent one, will pass even if the specific
+article path is fabricated, because 401/403 is deliberately treated as
+"exists" per the rule above. This is an accepted trade-off, not something to
+work around by treating 401/403 as a failure (that would make every
+legitimately bot-walled premium-wire citation fail).
+
+### Fixture safety (hard gate)
+
+`tests/*.md` fixtures live inside the cloned repo and are deliberately
+well-formed, so a confused run that built a digest from (or copied) fixture
+content would otherwise pass every other check. The audit hard-fails if the
+digest: contains any URL with `/example` in it (the fixtures' placeholder
+pattern); contains a known fixture headline verbatim; is identical to a
+known fixture file; or contains the `DO-NOT-SHIP: FIXTURE CONTENT` marker
+that both `tests/sample_test_digest.md` and `tests/sample_broken_digest.md`
+carry. None of this should ever trigger on a real, live-sourced edition —
+if it does, stop and treat it as a serious process failure, not a false
+positive to suppress.
+
+### Minimum-coverage ladder
+
+| Section | Minimum | Empty allowed? |
+|---|---|---|
+| Saudi Arabia/Regional | ≥1 article | **No.** Hard-fails if empty, no exception. A short section (per the "don't pad" rule elsewhere in this playbook) is fine; an empty one is not. |
+| Global | ≥1 article | **No.** Same as above. |
+| Negative Articles | 0 allowed | **Yes, but only with evidence.** Empty is legitimate — a culture digest must never manufacture criticism of the client to fill a quota — but ONLY if `reports/search_log.json` confirms `negative_searches_run: true` (see Stage 2's watchdog/NGO paragraph for the schema). Missing or absent evidence is a hard failure, not a free pass: fail-closed, not fail-open. |
+
+This ladder replaces the earlier undocumented assumption (never actually
+implemented) that every section hard-fails on empty; that would have forced
+Negative Articles to be padded with weak or manufactured criticism on a
+genuinely quiet news day, which is worse than an honest empty section.
 
 ## Stage 6: housekeeping and delivery
 
 1. Append every article link and headline used today to
-   `reports/do_not_reuse_register.md` (append-only, nothing ever removed).
+   `reports/do_not_reuse_register.md` (append-only, nothing ever removed),
+   one line per entry: `<YYYY-MM-DD> | <section> | <outlet> | <headline> | <url>`
+   using today's date. `scripts/audit_report.py` enforces a rolling 60-day
+   reuse window against this file (`--register-window-days`, default 60):
+   entries within the window hard-block reuse, older entries stay on file
+   for the permanent record but no longer block a future edition from
+   citing that outlet again.
 2. Commit the `.docx` and canonical `.md` to `main`.
 3. If Dropbox credentials are configured, upload via
    `scripts/dropbox_upload.py` (binary-safe; never use a connector's
@@ -543,6 +650,29 @@ fixed and the audit re-run; a failing digest is never delivered.
 5. End with an explicit pass/fail run log: capability check results, reader
    path used, articles sourced per section (with verification method per
    article), audit result, delivery result per channel.
+6. `scripts/audit_report.py` writes `reports/last_run_status.json` itself as
+   part of running Stage 5 (pass `--reader-used` and `--delivery-result`
+   once those are known, so they're captured in the same file rather than
+   requiring a second pass) — this is the machine-readable counterpart to
+   the run log in step 5, the foundation for any future external alerting,
+   and it is written reliably even if the audit call itself crashes (see
+   Stage 5). It captures: timestamp, per-section item counts, the full
+   minimum-coverage ladder result, audit pass/fail with the complete list of
+   hard failures and warnings, whether the URL-resolution check ran or was
+   skipped, the register rolling-window size, reader used, delivery result,
+   and named-entity-list staleness. Commit this file alongside the `.docx`
+   and `.md` in step 2 so it's part of the same continuity record. **This
+   step does not itself send an alert anywhere** — only emitting the status
+   file reliably is in scope for now; do not build email/Slack notification
+   on top of it without being asked.
+
+   A hard failure at an earlier stage (Stage 0's capability check, Stage 1's
+   unreadable priors) is the one class of failure `scripts/audit_report.py`
+   cannot wrap, since it never gets invoked. In that case, write a minimal
+   `reports/last_run_status.json` by hand before stopping —
+   `{"timestamp": "...", "audit": {"result": "error"}, "run_error": "<what
+   failed and why>"}` at minimum — so the run never simply vanishes without
+   a trace.
 
 ## Learning from manual edits
 
