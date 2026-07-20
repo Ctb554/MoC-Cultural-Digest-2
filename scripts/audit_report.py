@@ -97,6 +97,17 @@ URL_CHECK_USER_AGENT = "Mozilla/5.0 (compatible; MoC-Digest-Audit/1.0)"
 DEFAULT_URL_TIMEOUT = 10
 DEFAULT_URL_DELAY = 0.5  # seconds between checks -- polite rate limiting
 
+# --- Fixture safety (item 2: a confused run must never ship test content) --
+#
+# tests/*.md live inside the cloned repo and use placeholder "/example" URLs
+# and generic headlines. Without a defensive check, a confused run that
+# accidentally builds a digest FROM a fixture (or copies its content) would
+# pass every other check -- the fixture is deliberately well-formed. This
+# marker must appear in every fixture under tests/ and nowhere else; its
+# presence in a digest being audited is always a hard failure.
+DO_NOT_SHIP_MARKER = "DO-NOT-SHIP: FIXTURE CONTENT -- NEVER DELIVER THIS DIGEST"
+FIXTURE_FILENAMES = ["sample_test_digest.md", "sample_broken_digest.md"]
+
 
 class AuditResult:
     def __init__(self):
@@ -390,6 +401,87 @@ def check_url_resolution(blocks, result, skip=False, timeout=DEFAULT_URL_TIMEOUT
             result.fail(f"Dead or unreachable link ({detail}): {url} [{ctx}]")
 
 
+def load_fixture_guard_data(tests_dir=None):
+    """
+    Reads tests/*.md (if present) to build the comparison data
+    check_fixture_content_leak needs: each fixture's full text (for an
+    exact-content match) and every headline string from its headline-bullet
+    block (for a literal-headline match). Missing fixture files degrade
+    gracefully -- those specific sub-checks are skipped, not a hard failure,
+    since some deployments may not ship tests/ at all.
+    """
+    if tests_dir is None:
+        tests_dir = Path(__file__).resolve().parent.parent / "tests"
+    else:
+        tests_dir = Path(tests_dir)
+
+    fixture_texts = {}
+    fixture_headlines = set()
+
+    for filename in FIXTURE_FILENAMES:
+        path = tests_dir / filename
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8")
+        fixture_texts[filename] = text
+        blocks = split_h1_blocks(text)
+        for h1_name, h1_lines in blocks:
+            if not h1_name.startswith("Headlines,"):
+                continue
+            for h2_name, headlines in get_h2_bullets(h1_lines).items():
+                fixture_headlines.update(headlines)
+
+    return {"texts": fixture_texts, "headlines": fixture_headlines}
+
+
+def check_fixture_content_leak(md_text, result, fixture_data=None):
+    """
+    Defends against a confused run building a real digest from (or matching)
+    the test fixtures in tests/, which would otherwise pass every other
+    check since the fixtures are deliberately well-formed. Four independent
+    tripwires, any one of which is a hard failure on its own:
+      (a) any URL containing "/example" (the fixtures' placeholder pattern)
+      (b) any exact fixture headline appearing verbatim in the digest
+      (c) the digest's content being identical to a known fixture file
+      (d) the DO-NOT-SHIP marker appearing anywhere in the digest
+    """
+    if fixture_data is None:
+        fixture_data = load_fixture_guard_data()
+
+    if "/example" in md_text.lower():
+        count = md_text.lower().count("/example")
+        result.fail(
+            f"Found {count} URL(s) containing '/example' -- this is the "
+            f"tests/ fixtures' placeholder pattern; this digest looks like "
+            f"it was built from (or copied) test fixture content, not a "
+            f"real sourced edition"
+        )
+
+    for headline in fixture_data["headlines"]:
+        if headline and headline in md_text:
+            result.fail(
+                f"Digest contains a known test-fixture headline verbatim: "
+                f"'{headline}' -- this looks like fixture content, not a "
+                f"real sourced edition"
+            )
+
+    normalized_md = md_text.strip()
+    for filename, fixture_text in fixture_data["texts"].items():
+        if normalized_md == fixture_text.strip():
+            result.fail(
+                f"Digest content is identical to test fixture "
+                f"'tests/{filename}' -- this is fixture content and must "
+                f"never be delivered"
+            )
+
+    if DO_NOT_SHIP_MARKER in md_text:
+        result.fail(
+            f"Found the DO-NOT-SHIP marker in the digest -- this text only "
+            f"exists in tests/ fixtures and must never appear in a real "
+            f"edition"
+        )
+
+
 def check_banned_phrases(md_text, result):
     text_lower = md_text.lower()
     for phrase in BANNED_PHRASES:
@@ -528,6 +620,7 @@ def run_audit(md_path, docx_path, register_path, skip_url_check=False,
     check_docx_parity(docx_path, result)
     check_url_resolution(blocks, result, skip=skip_url_check,
                           timeout=url_timeout, delay=url_delay)
+    check_fixture_content_leak(md_text, result)
 
     return result
 

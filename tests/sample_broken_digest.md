@@ -1,3 +1,5 @@
+<!-- DO-NOT-SHIP: FIXTURE CONTENT -- NEVER DELIVER THIS DIGEST -->
+
 # Saudi Arabia/Regional
 
 - Hail Region highlighted for urban and cultural innovation at Baku Forum
