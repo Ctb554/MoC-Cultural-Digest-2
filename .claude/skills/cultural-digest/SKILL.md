@@ -187,15 +187,17 @@ not pad or force a result, and every hit still passes the standard
 verification gates (real, in-window, not previously used).
 
 *Outlets* — pairs `"Saudi Arabia" OR Saudi` with named prestige/trade press, by sector:
-- **General/Macro Press (leads the Saudi Arabia/Regional section — see Stage 3 ordering rule):** `("Saudi Arabia" OR Saudi OR KSA) AND (Bloomberg OR "Financial Times" OR Semafor OR "The Economist" OR "Wall Street Journal" OR Axios OR Politico)`
-- **Fashion:** `("Saudi Arabia" OR Saudi) AND (Vogue OR "Vogue Arabia" OR WWD OR "Harper's Bazaar Arabia" OR Elle OR GQ OR "Business of Fashion" OR Hypebeast)`
-- **Film:** `("Saudi Arabia" OR Saudi) AND (Variety OR "Hollywood Reporter" OR "Screen Daily" OR Deadline OR IndieWire)`
-- **Architecture and Design:** `("Saudi Arabia" OR Saudi) AND ("Architectural Digest" OR Dezeen OR ArchDaily OR "Wallpaper*" OR Designboom)`
-- **Music:** `("Saudi Arabia" OR Saudi) AND (Billboard OR "Rolling Stone" OR Pitchfork)`
-- **Visual Arts and Heritage:** `("Saudi Arabia" OR Saudi) AND (Artforum OR ArtNews OR "The Art Newspaper" OR Hyperallergic OR Frieze)`
-- **Culinary Arts:** `("Saudi Arabia" OR Saudi) AND (Eater OR "Bon Appétit" OR "Food and Wine" OR Michelin OR "Michelin Guide")`
+- **General/Macro Press (leads the Saudi Arabia/Regional section — see Stage 3 ordering rule):** `("Saudi Arabia" OR Saudi OR KSA) AND (Bloomberg OR "Financial Times" OR Semafor OR "The Economist" OR "Wall Street Journal" OR Axios OR Politico OR Reuters OR "Associated Press" OR AFP OR "New York Times" OR "The Times" OR "Sunday Times" OR "The Telegraph" OR "Nikkei Asia" OR "Foreign Policy" OR "Foreign Affairs" OR "The Diplomat" OR AGBI OR "Arabian Business" OR "Al-Monitor" OR "Amwaj.media" OR MEED OR "Gulf News" OR "Middle East Eye" OR "Al Jazeera")`. Reuters and AP were missing from this search entirely until 2026-07-20 — they previously only appeared in the generic Global-culture outlet list, which doesn't pair them with Saudi Arabia at all. This was a real gap, not a deliberate exclusion; verified additions here (Nikkei Asia, Foreign Policy, Foreign Affairs, The Diplomat, AGBI, Arabian Business, Al-Monitor, Amwaj.media, MEED, Gulf News, The Telegraph) come from a dedicated outlet-verification research pass and are all confirmed active, credible, non-Saudi sources as of 2026. **Middle East Eye and Al Jazeera are included but flagged**: Middle East Eye's funding is opaque and widely linked to Qatar; Al Jazeera is funded by the Qatari state (Qatar Media Corporation). Neither is excluded, but their framing on politically sensitive Gulf topics should be read as reflecting Doha's interests, not treated as neutral.
+- **Fashion:** `("Saudi Arabia" OR Saudi) AND (Vogue OR "Vogue Arabia" OR WWD OR "Harper's Bazaar Arabia" OR Elle OR GQ OR "Business of Fashion" OR Hypebeast OR "The Fashion Law")`
+- **Film:** `("Saudi Arabia" OR Saudi) AND (Variety OR "Hollywood Reporter" OR "Screen Daily" OR Deadline OR IndieWire OR "Sight and Sound" OR "Little White Lies" OR "MUBI Notebook")`
+- **Architecture and Design:** `("Saudi Arabia" OR Saudi) AND ("Architectural Digest" OR Dezeen OR ArchDaily OR "Wallpaper*" OR Designboom OR "The Architectural Review" OR Metropolis OR "The Architect's Newspaper")`
+- **Music:** `("Saudi Arabia" OR Saudi) AND (Billboard OR "Rolling Stone" OR Pitchfork OR NME OR "Resident Advisor" OR "DJ Mag")`
+- **Visual Arts and Heritage:** `("Saudi Arabia" OR Saudi) AND (Artforum OR ArtNews OR "The Art Newspaper" OR Hyperallergic OR Frieze OR Ocula OR Colossal OR "Artnet News" OR "ArtReview" OR Apollo)`
+- **Archaeology and Heritage News:** `("Saudi Arabia" OR Saudi) AND (HeritageDaily OR Arkeonews OR "Archaeology Magazine" OR "Live Science" OR "Current Archaeology" OR "Popular Archaeology" OR "Ancient Origins")`. New category added 2026-07-20 — the Places search below only catches stories naming a specific site; this catches heritage/archaeology news outlets covering Saudi Arabia's archaeology sector generally, even when no specific named site is mentioned.
+- **Culinary Arts:** `("Saudi Arabia" OR Saudi) AND (Eater OR "Bon Appétit" OR "Food and Wine" OR Michelin OR "Michelin Guide" OR "Fine Dining Lovers" OR "World's 50 Best")`
 - **Literature, Publishing, and Translation:** `("Saudi Arabia" OR Saudi) AND ("Publishers Weekly" OR "The Bookseller" OR "London Review of Books" OR "LRB")`
-- **Museums:** `("Saudi Arabia" OR Saudi) AND ("Museums Journal" OR "Apollo Magazine")`
+- **Museums:** `("Saudi Arabia" OR Saudi) AND ("Museums Journal" OR "Apollo Magazine" OR Blooloop OR "MuseumNext" OR "Museum-iD")`
+- **Theatre and Performing Arts:** `("Saudi Arabia" OR Saudi) AND ("The Stage" OR Playbill OR "American Theatre")`. New category added 2026-07-20 — this commission previously had no dedicated named-outlet search at all, only the generic Commissions Boolean.
 - **Travel/lifestyle (heritage and tourism crossover):** `("Saudi Arabia" OR Saudi) AND ("Condé Nast Traveler" OR "Travel and Leisure" OR AFAR OR "Travel and Tour World" OR "Hotelier Middle East" OR "Outlook Traveller")`
 
 *People* — named cultural figures, by sector:
@@ -220,25 +222,68 @@ academic freedom, tourism criticism, religious tourism/Mecca commercialization,
 Vision 2030 criticism, investment scrutiny, soft power criticism, general
 reputation risk.
 
+**Watchdog/NGO monitoring (new category, added 2026-07-20)** — a dedicated
+search pairing Saudi Arabia with named human-rights and press-freedom
+organizations, run as its own search separate from the themes above. These
+organizations regularly publish primary reports and statements on Saudi
+Arabia that a generic "human rights" phrase search can miss if the
+organization's own release doesn't use that exact wording:
+`("Saudi Arabia" OR Saudi) AND ("Amnesty International" OR "Human Rights Watch" OR "Freedom House" OR "Reporters Without Borders" OR RSF OR "Committee to Protect Journalists" OR CPJ OR CIVICUS OR ALQST OR "Democracy for the Arab World Now" OR DAWN OR "PEN International")`.
+ALQST and DAWN (Democracy for the Arab World Now, founded after Jamal
+Khashoggi's killing) are Saudi-specific human-rights organizations, not
+general MENA-wide ones — their statements are usually directly about Saudi
+Arabia rather than requiring the "Saudi Arabia" pairing to be relevant, but
+the pairing is kept for consistency and to filter out unrelated organizational
+news. As with every other search in this section, a hit here still has to
+pass the standard verification gates (real, in-window, not previously used,
+non-Saudi-owned source reporting on it) before inclusion — an NGO's own
+press release is a primary source, not automatically a "verified" media
+report; prefer a credible news outlet's coverage of the NGO's findings where
+one exists, and treat the raw NGO statement as a fallback for verification,
+not the ideal citation for a bullet.
+
 **Global culture** — run broad culture/arts/heritage/museum/film/music/theatre/
 fashion/architecture/literature/culinary searches, prioritizing Tier 1 outlets:
-BBC, Guardian, FT, NYT, WaPo, AP, Bloomberg, Xinhua, China Daily, CGTN, Global
-Times, The Hindu, Indian Express, Kathimerini, ANSA, Repubblica, Corriere, Il
-Sole 24 Ore, DW, Spiegel, FAZ, Le Monde, Le Figaro, France24, AFP, Reuters,
-Eater, Saveur, ArchDaily, Dezeen, Domus, Architectural Digest, Vogue Business,
-WWD, FashionNetwork, FashionUnited, Billboard, ArtReview, Frieze, Art Basel,
-Designboom, The Art Newspaper, Artforum, Daily Times (Pakistan), Antara News
+BBC, Guardian, FT, NYT, WaPo, AP, Bloomberg, Reuters, AFP, CNBC, Forbes,
+Fortune, The Atlantic, The New Yorker, "The Telegraph", "Al Jazeera",
+"Middle East Eye", MEED, "Gulf News", Xinhua, China Daily, CGTN, Global
+Times, The Hindu, Indian Express, Nikkei Asia, "Foreign Policy", "Foreign
+Affairs", "The Diplomat", Kathimerini, ANSA, Repubblica, Corriere, Il Sole 24
+Ore, DW, Spiegel, FAZ, Le Monde, Le Figaro, France24, Eater, Saveur,
+ArchDaily, Dezeen, Domus, "The Architectural Review", Metropolis,
+"The Architect's Newspaper", Architectural Digest, Vogue Business, WWD,
+FashionNetwork, FashionUnited, "The Fashion Law", Billboard, NME,
+"Resident Advisor", "DJ Mag", ArtReview, Frieze, Art Basel, Designboom,
+"The Art Newspaper", Artforum, Ocula, Colossal, "Artnet News", HeritageDaily,
+Arkeonews, "Archaeology Magazine", Blooloop, "MuseumNext", "Museum-iD",
+"Sight and Sound", "Little White Lies", "MUBI Notebook", "The Stage",
+Playbill, "American Theatre", "London Review of Books", Michelin,
+"Fine Dining Lovers", "World's 50 Best", AGBI, "Arabian Business",
+"Al-Monitor", "Amwaj.media", "Korea Herald", "South China Morning Post",
+"The Jakarta Post", "Bangkok Post", Daily Times (Pakistan), Antara News
 (Indonesia), Taipei Times, The Standard (Hong Kong), Korea Times, Korea
-Economic Daily. This list was expanded 2026-07-20 after a real-edition
-comparison showed the earlier Western-leaning list missing legitimate
-Asia-Pacific and South Asia cultural-diplomacy coverage (a Naadam Festival
-story, a Pakistani cultural festival in Australia, Indonesia's creative-
-economy push, a Taiwan culture-budget story, and a Hong Kong Book Fair piece
-all ran that day in outlets not on the prior list). Also added: "London
-Review of Books" (literature) and Michelin/"Michelin Guide" (culinary).
-Treat this list as inherently incomplete — broaden it further whenever a
-comparison against a real edition surfaces another credible outlet this
-pipeline missed.
+Economic Daily. This list was expanded 2026-07-20 twice in one day: first
+after a real-edition comparison showed the earlier Western-leaning list
+missing legitimate Asia-Pacific and South Asia cultural-diplomacy coverage
+(a Naadam Festival story, a Pakistani cultural festival in Australia,
+Indonesia's creative-economy push, a Taiwan culture-budget story, and a Hong
+Kong Book Fair piece all ran that day in outlets not on the prior list), then
+again after a dedicated outlet-verification research pass covering general/
+macro press, every sector-specific trade press vertical, and non-Western
+culture outlets. **Ownership/state-alignment notes carried over from that
+research**, since these affect how coverage should be read even though the
+outlets remain includable: The National (UAE) is state-owned via
+International Media Investments and has documented self-censorship; Middle
+East Eye's funding is opaque and widely linked to Qatar; Xinhua, China Daily,
+CGTN, and Global Times are Chinese state media; Antara is Indonesian
+state-owned; The Standard (Hong Kong) and South China Morning Post lean
+pro-Beijing. None of this excludes them, but framing from these outlets on
+politically sensitive topics should be treated as reflecting their backers'
+interests, not as neutral reporting. Al Jazeera (Qatari state-funded) and
+Middle East Eye (opaque, widely linked to Qatar) carry the same caveat here
+as in the General/Macro Press note above. Treat this whole list as inherently
+incomplete — broaden it further whenever a comparison against a real edition
+surfaces another credible outlet this pipeline missed.
 
 ### Source eligibility (hard rule, enforced by Stage 5 audit)
 
