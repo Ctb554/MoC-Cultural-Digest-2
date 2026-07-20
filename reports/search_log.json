@@ -1,0 +1,34 @@
+{
+  "run_date": "2026-07-20",
+  "coverage_window": "2026-07-19/2026-07-20 (last 24 hours from run start)",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers rights",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran / regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism / Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "negative_hits_found_in_window": 0,
+  "notes": "All 13 negative/reputational themes and all 9 watchdog/NGO organisations were run this cycle as individual 'Saudi Arabia'-paired searches. No eligible (non-Saudi-owned, non-Israeli) article with a confirmed 2026-07-19 or 2026-07-20 publication date was found. Strongest recent candidates were verified out-of-window (Amnesty domestic-workers report 2026-07-09; CPJ/4-NGO detained-creators call 2026-07-10; CIVICUS sportswashing item March 2026) and are therefore excluded. Empty Negative Articles section is a genuine quiet-window outcome, not a skipped search."
+}
