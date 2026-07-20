@@ -239,7 +239,24 @@ not pad or force a result, and every hit still passes the standard
 verification gates (real, in-window, not previously used).
 
 *Outlets* — pairs `"Saudi Arabia" OR Saudi` with named prestige/trade press, by sector:
-- **General/Macro Press (leads the Saudi Arabia/Regional section — see Stage 3 ordering rule):** `("Saudi Arabia" OR Saudi OR KSA) AND (Bloomberg OR "Financial Times" OR Semafor OR "The Economist" OR "Wall Street Journal" OR Axios OR Politico OR Reuters OR "Associated Press" OR AFP OR "New York Times" OR "The Times" OR "Sunday Times" OR "The Telegraph" OR "Nikkei Asia" OR "Foreign Policy" OR "Foreign Affairs" OR "The Diplomat" OR AGBI OR "Arabian Business" OR "Al-Monitor" OR "Amwaj.media" OR MEED OR "Gulf News" OR "Middle East Eye" OR "Al Jazeera")`. Reuters and AP were missing from this search entirely until 2026-07-20 — they previously only appeared in the generic Global-culture outlet list, which doesn't pair them with Saudi Arabia at all. This was a real gap, not a deliberate exclusion; verified additions here (Nikkei Asia, Foreign Policy, Foreign Affairs, The Diplomat, AGBI, Arabian Business, Al-Monitor, Amwaj.media, MEED, Gulf News, The Telegraph) come from a dedicated outlet-verification research pass and are all confirmed active, credible, non-Saudi sources as of 2026. **Middle East Eye and Al Jazeera are included but flagged**: Middle East Eye's funding is opaque and widely linked to Qatar; Al Jazeera is funded by the Qatari state (Qatar Media Corporation). Neither is excluded, but their framing on politically sensitive Gulf topics should be read as reflecting Doha's interests, not treated as neutral.
+- **General/Macro Press (leads the Saudi Arabia/Regional section — see Stage 3 ordering rule).** Rewritten 2026-07-20 to fix the same dilution problem the Global section had before its direct outlet sweep: previously this was one combined query across ~25 outlets at once (`("Saudi Arabia" OR Saudi OR KSA) AND (Bloomberg OR "Financial Times" OR ...)`), which underperforms for exactly the same reason a single "Direct outlet sweep" call for Global would have — one giant OR-query buries individual outlets' results rather than actually checking each one. **Go through the outlets below one at a time, in order, each its own search pairing that single outlet's name with "Saudi Arabia" — not one combined query.** Work through the entire list every run; don't stop once the Stage 3 ordering rule's "up to 3-4" leading items are found, since a later outlet in the list might still turn up something better than an earlier one. Record which outlets yielded nothing, same as the Global sweep:
+  Bloomberg, Financial Times, Semafor, The Economist, Wall Street Journal,
+  Axios, Politico, Reuters, Associated Press, AFP, New York Times, The Times,
+  Sunday Times, The Telegraph, Nikkei Asia, Foreign Policy, Foreign Affairs,
+  The Diplomat, AGBI, Arabian Business, Al-Monitor, Amwaj.media, MEED, Gulf
+  News, Middle East Eye, Al Jazeera.
+  Reuters and AP were missing from this list entirely until 2026-07-20 — they
+  previously only appeared in the generic Global-culture outlet list, which
+  doesn't pair them with Saudi Arabia at all. This was a real gap, not a
+  deliberate exclusion; verified additions here (Nikkei Asia, Foreign Policy,
+  Foreign Affairs, The Diplomat, AGBI, Arabian Business, Al-Monitor,
+  Amwaj.media, MEED, Gulf News, The Telegraph) come from a dedicated
+  outlet-verification research pass and are all confirmed active, credible,
+  non-Saudi sources as of 2026. **Middle East Eye and Al Jazeera are included
+  but flagged**: Middle East Eye's funding is opaque and widely linked to
+  Qatar; Al Jazeera is funded by the Qatari state (Qatar Media Corporation).
+  Neither is excluded, but their framing on politically sensitive Gulf topics
+  should be read as reflecting Doha's interests, not treated as neutral.
 - **Fashion:** `("Saudi Arabia" OR Saudi) AND (Vogue OR "Vogue Arabia" OR WWD OR "Harper's Bazaar Arabia" OR Elle OR GQ OR "Business of Fashion" OR Hypebeast OR "The Fashion Law")`
 - **Film:** `("Saudi Arabia" OR Saudi) AND (Variety OR "Hollywood Reporter" OR "Screen Daily" OR Deadline OR IndieWire OR "Sight and Sound" OR "Little White Lies" OR "MUBI Notebook")`
 - **Architecture and Design:** `("Saudi Arabia" OR Saudi) AND ("Architectural Digest" OR Dezeen OR ArchDaily OR "Wallpaper*" OR Designboom OR "The Architectural Review" OR Metropolis OR "The Architect's Newspaper")`
@@ -364,20 +381,40 @@ above only as a loose "prefer these if they turn up" signal attached to
 generic topic searches (e.g. "heritage news," "museum exhibition"), and
 never directly checked what these specialist outlets had actually published
 that day. That's not what was intended and undersells exactly the trade
-press this list was built for. **In addition to the topic searches, directly
-check the latest articles from each of the following specialist outlets on
-their own terms** — i.e. "what did Ocula publish in the last 24 hours,"
-not "does a heritage search happen to surface an Ocula piece":
+press this list was built for.
+
+**Process (made explicit and mechanical 2026-07-20 — this is not optional
+and not a loose suggestion):** Go through the outlet list below one at a
+time, in order. For each outlet, run one search checking specifically what
+that outlet published in the last 24 hours (e.g. "Ocula latest articles" or
+an outlet-restricted search), not a generic topic search that might
+happen to surface it. Record, for every single outlet, whether it yielded
+an in-window, verified candidate or nothing — do not skip an outlet because
+earlier ones already produced enough, and do not stop partway through the
+list once a target is hit. Work through the entire list every run:
+
 The Art Newspaper, Ocula, Artnet News, ARTnews, Hyperallergic, HeritageDaily,
 Arkeonews, Archaeology Magazine, Blooloop, Variety, The Hollywood Reporter,
 Deadline, Screen Daily, Dezeen, ArchDaily, Business of Fashion, WWD,
 Billboard, Publishers Weekly, The Bookseller, The Stage, Michelin, Eater.
+
+**Target: compile 8-10 verified, in-window, non-duplicate articles for the
+Global section from working through this full list**, supplemented by the
+broad topic search above only if the sweep alone doesn't reach that range.
 This is the same distinction as the Named Entity Searches for Saudi Arabia/
 Regional (Stage 2 above) — those pair the outlet with "Saudi Arabia"; this
-is the same outlets, unpaired, checked for their own latest global output,
-feeding the Global section. A zero result from a direct sweep is a normal,
-legitimate outcome on a quiet day for that outlet — but it must actually be
-attempted, not silently skipped in favor of only the broader topic search.
+is the same outlets, unpaired, checked for their own latest global output.
+
+**This target does not override the verification gates or the "never
+pad" principle stated throughout this playbook.** Every one of the 8-10
+must still be real, in-window, non-duplicate, and from a non-excluded
+outlet — reaching the number with a weak or marginal story is worse than
+falling short of it honestly. A zero result from any single outlet in the
+sweep is a normal, legitimate outcome for that outlet on a quiet day; the
+target is about total volume across the full list, not forcing a hit on
+every individual outlet. `scripts/audit_report.py` warns (does not hard-
+fail) if the section ends up below 8 — see the minimum-coverage ladder
+below for why this stays a warning rather than a block.
 
 ### Source eligibility (hard rule, enforced by Stage 5 audit)
 
