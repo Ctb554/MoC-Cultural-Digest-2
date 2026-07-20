@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-07-20T13:58:56.199532+00:00",
+  "markdown_path": "reports/MoC_Daily_Cultural_Digest_20Jul26_D1.md",
+  "reader_used": "tavily",
+  "delivery_result": "success: Dropbox 05_Claude Test",
+  "url_resolution_check": "enabled",
+  "register_window_days": 60,
+  "run_error": null,
+  "section_item_counts": {
+    "Saudi Arabia/Regional": 2,
+    "Global": 3,
+    "Negative Articles": 2
+  },
+  "minimum_coverage_ladder": {
+    "Saudi Arabia/Regional": {
+      "count": 2,
+      "minimum_required": 1,
+      "met": true,
+      "rung": "has-content"
+    },
+    "Global": {
+      "count": 3,
+      "minimum_required": 1,
+      "met": true,
+      "rung": "has-content"
+    },
+    "Negative Articles": {
+      "count": 2,
+      "minimum_required": 0,
+      "met": true,
+      "rung": "has-content"
+    }
+  },
+  "audit": {
+    "result": "pass",
+    "hard_failures": [],
+    "warnings": []
+  },
+  "named_entity_lists_last_verified": "2026-07-20",
+  "named_entity_lists_days_old": 0,
+  "stale_named_entity_lists": false
+}
