@@ -1,0 +1,23 @@
+{
+  "edition_date": "2026-07-20",
+  "coverage_window": "last 24 hours from run start (2026-07-19 to 2026-07-20)",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "negative_hits_found_in_window": 1,
+  "notes": "Quiet day for Saudi culture-specific coverage; the cycle was dominated by a regional security escalation (Iran war; Yemen's Houthis declared a naval blockade against Saudi Arabia, Reuters 2026-07-20, corroborated by NBC News). No eligible, in-window Saudi human-rights, labour, sportswashing, PIF, academic-freedom, Mecca, or watchdog/NGO story surfaced from a non-Saudi, non-Israeli outlet. The one genuine in-window negative/reputational Saudi story (the Houthi naval blockade) is carried in the Negative Articles section, so the empty-section exception is not relied upon this edition. Multiple Israeli-outlet (jpost.com, ynetnews.com) hits were surfaced and excluded per the hard source-eligibility rule."
+}
