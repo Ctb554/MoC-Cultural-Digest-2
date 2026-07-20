@@ -239,24 +239,35 @@ not pad or force a result, and every hit still passes the standard
 verification gates (real, in-window, not previously used).
 
 *Outlets* — pairs `"Saudi Arabia" OR Saudi` with named prestige/trade press, by sector:
-- **General/Macro Press (leads the Saudi Arabia/Regional section — see Stage 3 ordering rule).** Rewritten 2026-07-20 to fix the same dilution problem the Global section had before its direct outlet sweep: previously this was one combined query across ~25 outlets at once (`("Saudi Arabia" OR Saudi OR KSA) AND (Bloomberg OR "Financial Times" OR ...)`), which underperforms for exactly the same reason a single "Direct outlet sweep" call for Global would have — one giant OR-query buries individual outlets' results rather than actually checking each one. **Go through the outlets below one at a time, in order, each its own search pairing that single outlet's name with "Saudi Arabia" — not one combined query.** Work through the entire list every run; don't stop once the Stage 3 ordering rule's "up to 3-4" leading items are found, since a later outlet in the list might still turn up something better than an earlier one. Record which outlets yielded nothing, same as the Global sweep:
+- **General/Macro Press (leads the Saudi Arabia/Regional section — see Stage 3 ordering rule; targets and outlet list both expanded 2026-07-20).** Rewritten to fix the same dilution problem the Global section had before its direct outlet sweep: previously this was one combined query across ~25 outlets at once (`("Saudi Arabia" OR Saudi OR KSA) AND (Bloomberg OR "Financial Times" OR ...)`), which underperforms for exactly the same reason a single "Direct outlet sweep" call for Global would have — one giant OR-query buries individual outlets' results rather than actually checking each one. **Go through the outlets below one at a time, in order, each its own search pairing that single outlet's name with "Saudi Arabia" — not one combined query.** Work through the entire list every run; don't stop early once the target below is hit, since a later outlet in the list might still turn up something better than an earlier one. Record which outlets yielded nothing, same as the Global sweep:
   Bloomberg, Financial Times, Semafor, The Economist, Wall Street Journal,
   Axios, Politico, Reuters, Associated Press, AFP, New York Times, The Times,
-  Sunday Times, The Telegraph, Nikkei Asia, Foreign Policy, Foreign Affairs,
-  The Diplomat, AGBI, Arabian Business, Al-Monitor, Amwaj.media, MEED, Gulf
-  News, Middle East Eye, Al Jazeera.
-  Reuters and AP were missing from this list entirely until 2026-07-20 — they
-  previously only appeared in the generic Global-culture outlet list, which
-  doesn't pair them with Saudi Arabia at all. This was a real gap, not a
-  deliberate exclusion; verified additions here (Nikkei Asia, Foreign Policy,
+  Sunday Times, The Telegraph, BBC, Guardian, Washington Post, CNBC, Deutsche
+  Welle, Le Monde, Le Figaro, Der Spiegel, Nikkei Asia, Foreign Policy,
   Foreign Affairs, The Diplomat, AGBI, Arabian Business, Al-Monitor,
-  Amwaj.media, MEED, Gulf News, The Telegraph) come from a dedicated
-  outlet-verification research pass and are all confirmed active, credible,
-  non-Saudi sources as of 2026. **Middle East Eye and Al Jazeera are included
-  but flagged**: Middle East Eye's funding is opaque and widely linked to
-  Qatar; Al Jazeera is funded by the Qatari state (Qatar Media Corporation).
-  Neither is excluded, but their framing on politically sensitive Gulf topics
-  should be read as reflecting Doha's interests, not treated as neutral.
+  Amwaj.media, MEED, Gulf News, Middle East Eye, Al Jazeera.
+  **Target: 3-4 verified, in-window geopolitical/general-news items about
+  Saudi Arabia to lead the Saudi Arabia/Regional section**, per the Stage 3
+  ordering rule below — this is the concrete number the ordering rule's "up
+  to 3-4" cap was always meant to describe, made explicit and tied directly
+  to working through the outlet list above, not left as a vague ceiling.
+  Same discipline as everywhere else in this playbook: hit the target with
+  real, verified items or fall genuinely short — never pad with a weak or
+  marginal story to reach 3-4.
+  BBC, Guardian, Washington Post, CNBC, DW, Le Monde, Le Figaro, and Der
+  Spiegel were missing from this Saudi-paired list entirely until this
+  revision — they previously only existed in the generic Global-culture
+  outlet list (which doesn't pair them with Saudi Arabia at all), the exact
+  same gap Reuters and AP had before the 2026-07-20 fix earlier that day.
+  Verified additions here (Nikkei Asia, Foreign Policy, Foreign Affairs, The
+  Diplomat, AGBI, Arabian Business, Al-Monitor, Amwaj.media, MEED, Gulf News,
+  The Telegraph) come from a dedicated outlet-verification research pass and
+  are all confirmed active, credible, non-Saudi sources as of 2026. **Middle
+  East Eye and Al Jazeera are included but flagged**: Middle East Eye's
+  funding is opaque and widely linked to Qatar; Al Jazeera is funded by the
+  Qatari state (Qatar Media Corporation). Neither is excluded, but their
+  framing on politically sensitive Gulf topics should be read as reflecting
+  Doha's interests, not treated as neutral.
 - **Fashion:** `("Saudi Arabia" OR Saudi) AND (Vogue OR "Vogue Arabia" OR WWD OR "Harper's Bazaar Arabia" OR Elle OR GQ OR "Business of Fashion" OR Hypebeast OR "The Fashion Law")`
 - **Film:** `("Saudi Arabia" OR Saudi) AND (Variety OR "Hollywood Reporter" OR "Screen Daily" OR Deadline OR IndieWire OR "Sight and Sound" OR "Little White Lies" OR "MUBI Notebook")`
 - **Architecture and Design:** `("Saudi Arabia" OR Saudi) AND ("Architectural Digest" OR Dezeen OR ArchDaily OR "Wallpaper*" OR Designboom OR "The Architectural Review" OR Metropolis OR "The Architect's Newspaper")`
@@ -291,25 +302,31 @@ academic freedom, tourism criticism, religious tourism/Mecca commercialization,
 Vision 2030 criticism, investment scrutiny, soft power criticism, general
 reputation risk.
 
-**Watchdog/NGO monitoring (new category, added 2026-07-20)** — a dedicated
-search pairing Saudi Arabia with named human-rights and press-freedom
-organizations, run as its own search separate from the themes above. These
-organizations regularly publish primary reports and statements on Saudi
-Arabia that a generic "human rights" phrase search can miss if the
+**Watchdog/NGO monitoring — made mechanical 2026-07-20, same fix as the
+other two outlet lists above.** This was previously one combined query
+across all named organizations at once — the identical dilution problem
+General/Macro Press and the Global outlet list both had before their fixes
+earlier the same day. **Go through the organizations below one at a time,
+each its own search pairing that single organization's name with "Saudi
+Arabia," not one combined query.** Work through the entire list every run.
+These organizations regularly publish primary reports and statements on
+Saudi Arabia that a generic "human rights" phrase search can miss if the
 organization's own release doesn't use that exact wording:
-`("Saudi Arabia" OR Saudi) AND ("Amnesty International" OR "Human Rights Watch" OR "Freedom House" OR "Reporters Without Borders" OR RSF OR "Committee to Protect Journalists" OR CPJ OR CIVICUS OR ALQST OR "Democracy for the Arab World Now" OR DAWN OR "PEN International")`.
-ALQST and DAWN (Democracy for the Arab World Now, founded after Jamal
-Khashoggi's killing) are Saudi-specific human-rights organizations, not
-general MENA-wide ones — their statements are usually directly about Saudi
-Arabia rather than requiring the "Saudi Arabia" pairing to be relevant, but
-the pairing is kept for consistency and to filter out unrelated organizational
-news. As with every other search in this section, a hit here still has to
-pass the standard verification gates (real, in-window, not previously used,
-non-Saudi-owned source reporting on it) before inclusion — an NGO's own
-press release is a primary source, not automatically a "verified" media
-report; prefer a credible news outlet's coverage of the NGO's findings where
-one exists, and treat the raw NGO statement as a fallback for verification,
-not the ideal citation for a bullet.
+Amnesty International, Human Rights Watch, Freedom House, Reporters Without
+Borders (RSF), Committee to Protect Journalists (CPJ), CIVICUS, ALQST,
+Democracy for the Arab World Now (DAWN), PEN International.
+ALQST and DAWN (founded after Jamal Khashoggi's killing) are Saudi-specific
+human-rights organizations, not general MENA-wide ones — their statements
+are usually directly about Saudi Arabia rather than requiring the "Saudi
+Arabia" pairing to be relevant, but the pairing is kept for consistency and
+to filter out unrelated organizational news. As with every other search in
+this section, a hit here still has to pass the standard verification gates
+(real, in-window, not previously used, non-Saudi-owned source reporting on
+it) before inclusion — an NGO's own press release is a primary source, not
+automatically a "verified" media report; prefer a credible news outlet's
+coverage of the NGO's findings where one exists, and treat the raw NGO
+statement as a fallback for verification, not the ideal citation for a
+bullet.
 
 **Record the negative/watchdog search results in `reports/search_log.json`**
 before moving to Stage 3, regardless of what they turned up. This is the
@@ -484,17 +501,19 @@ Two blocks, in this order:
    **Negative Articles has no commission subheadings** — its bullets sit
    directly under the section heading.
 
-**Saudi Arabia/Regional ordering rule:** lead the section with up to 3-4
-General items sourced from the General/Macro Press search (Bloomberg, FT,
-Semafor, The Economist, WSJ, Axios, Politico) — broad, high-authority
-context on Saudi Arabia, not necessarily culture-specific — before moving
-into the more specific commission subsections (Heritage, Visual Arts, etc.).
-This gives the section a strong opening anchor. Use up to 3-4 if that many
-genuine, verified items exist; use fewer if they don't. Never pad to reach
-the count — the same "don't force it" principle applies here as everywhere
-else in this playbook. The headline-bullet block at the top of the document
-inherits this same ordering automatically, since it must match the full
-summary's article order.
+**Saudi Arabia/Regional ordering rule:** lead the section with a **target of
+3-4** General items sourced from the General/Macro Press search (the full
+outlet list above — Bloomberg, FT, BBC, Reuters, AP, Guardian, and the rest,
+each checked individually, not a combined query) — broad, high-authority
+geopolitical and general-news context on Saudi Arabia, not necessarily
+culture-specific — before moving into the more specific commission
+subsections (Heritage, Visual Arts, etc.). This gives the section a strong
+opening anchor. Hit the target with real, verified items; use fewer only if
+that many genuinely don't exist after working through the entire outlet
+list. Never pad to reach the count — the same "don't force it" principle
+applies here as everywhere else in this playbook. The headline-bullet block
+at the top of the document inherits this same ordering automatically, since
+it must match the full summary's article order.
 
 Then a final **Risks and Opportunities** section (see format below).
 
