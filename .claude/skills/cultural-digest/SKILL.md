@@ -242,6 +242,27 @@ report; prefer a credible news outlet's coverage of the NGO's findings where
 one exists, and treat the raw NGO statement as a fallback for verification,
 not the ideal citation for a bullet.
 
+**Record the negative/watchdog search results in `reports/search_log.json`**
+before moving to Stage 3, regardless of what they turned up. This is the
+evidence Stage 5's minimum-coverage ladder (see Stage 5 below) requires to
+allow a legitimately empty Negative Articles section — its absence is a hard
+audit failure, not a free pass. Minimum schema:
+
+```json
+{
+  "negative_searches_run": true,
+  "negative_themes_searched": ["human rights", "labour/workers", "...", "watchdog/NGO monitoring"],
+  "negative_hits_found_in_window": 0
+}
+```
+
+Set `negative_searches_run: true` only once every theme in this section
+(including the watchdog/NGO search) was actually run this cycle — not
+planned, not "mostly." If any theme was skipped for any reason, this must
+say `false` (or the file must not claim `true`), and the run must then
+either go back and run the missing searches or accept the resulting hard
+audit failure honestly rather than fabricate the log.
+
 **Global culture** — run broad culture/arts/heritage/museum/film/music/theatre/
 fashion/architecture/literature/culinary searches, prioritizing Tier 1 outlets:
 BBC, Guardian, FT, NYT, WaPo, AP, Bloomberg, Reuters, AFP, CNBC, Forbes,
@@ -518,18 +539,68 @@ alongside the `.docx`; the markdown is the continuity record for future runs.
 
 ## Stage 5: programmatic audit (hard gate)
 
-Run `scripts/audit_report.py <built-docx> --md <canonical-markdown>`. This is
-an independent gate — a clean-but-wrong digest can never ship green. It
-checks: no excluded-outlet source slipped through, every article has a
-working direct link, no raw URLs in body text, link lives only in the outlet
-name, three main sections present and in order, only approved bilingual
-commission labels used (correct English/Arabic pairing), no invented labels,
-Negative Articles has no commission subheadings, headline bullets present
-**before** the full summaries and match the article order and count, GB
-spelling scan, no banned inflated phrases, Risks/Opportunities structure (at
-least one numbered item per subsection with a headline, Source, and
-Consideration), no reused headlines/links against the register. Failures are
-fixed and the audit re-run; a failing digest is never delivered.
+Run `scripts/audit_report.py <canonical-markdown> --docx <built-docx> --register reports/do_not_reuse_register.md --search-log reports/search_log.json`.
+This is an independent gate — a clean-but-wrong digest can never ship green.
+It checks: no excluded-outlet source slipped through (Saudi-owned outlets,
+**and, separately, the Israeli-outlet posture below**), every article link
+**actually resolves live** (not just correct formatting — see below), no raw
+URLs in body text, link lives only in the outlet name, three main sections
+present and in order, only approved bilingual commission labels used
+(correct English/Arabic pairing), no invented labels, Negative Articles has
+no commission subheadings, headline bullets present **before** the full
+summaries and match the article order and count, GB spelling scan, no
+banned inflated phrases, Risks/Opportunities structure (at least one
+numbered item per subsection with a headline, Source, and Consideration),
+no reused headlines/links against the register (rolling 60-day window — see
+Stage 6), the minimum-coverage ladder below, and the fixture-safety guard
+below. Failures are fixed and the audit re-run; a failing digest is never
+delivered.
+
+### URL resolution (hard gate)
+
+Correct markdown formatting is not enough — a fabricated or dead link with
+perfect formatting used to sail through. Every article/source URL now gets
+a real HEAD request (GET fallback for servers that reject HEAD). A live
+2xx/3xx passes. A bot-wall or rate-limit response (401/403/429) also
+passes — that still proves the URL exists, the same "bot wall is normal"
+principle Stage 0 already applies to WebFetch. A 404, other 4xx/5xx, DNS/
+connection failure, or timeout hard-fails. Checks run with a short delay
+between requests for polite rate-limiting. `--skip-url-check` disables this
+for offline testing only — **never pass it on a real run**; it is not a
+substitute for verifying links actually resolve.
+
+Known limitation, not a bug: a domain that bot-walls with a blanket 401/403
+for *any* path, including a nonexistent one, will pass even if the specific
+article path is fabricated, because 401/403 is deliberately treated as
+"exists" per the rule above. This is an accepted trade-off, not something to
+work around by treating 401/403 as a failure (that would make every
+legitimately bot-walled premium-wire citation fail).
+
+### Fixture safety (hard gate)
+
+`tests/*.md` fixtures live inside the cloned repo and are deliberately
+well-formed, so a confused run that built a digest from (or copied) fixture
+content would otherwise pass every other check. The audit hard-fails if the
+digest: contains any URL with `/example` in it (the fixtures' placeholder
+pattern); contains a known fixture headline verbatim; is identical to a
+known fixture file; or contains the `DO-NOT-SHIP: FIXTURE CONTENT` marker
+that both `tests/sample_test_digest.md` and `tests/sample_broken_digest.md`
+carry. None of this should ever trigger on a real, live-sourced edition —
+if it does, stop and treat it as a serious process failure, not a false
+positive to suppress.
+
+### Minimum-coverage ladder
+
+| Section | Minimum | Empty allowed? |
+|---|---|---|
+| Saudi Arabia/Regional | ≥1 article | **No.** Hard-fails if empty, no exception. A short section (per the "don't pad" rule elsewhere in this playbook) is fine; an empty one is not. |
+| Global | ≥1 article | **No.** Same as above. |
+| Negative Articles | 0 allowed | **Yes, but only with evidence.** Empty is legitimate — a culture digest must never manufacture criticism of the client to fill a quota — but ONLY if `reports/search_log.json` confirms `negative_searches_run: true` (see Stage 2's watchdog/NGO paragraph for the schema). Missing or absent evidence is a hard failure, not a free pass: fail-closed, not fail-open. |
+
+This ladder replaces the earlier undocumented assumption (never actually
+implemented) that every section hard-fails on empty; that would have forced
+Negative Articles to be padded with weak or manufactured criticism on a
+genuinely quiet news day, which is worse than an honest empty section.
 
 ## Stage 6: housekeeping and delivery
 

@@ -22,6 +22,7 @@ Format checked here is the one confirmed against a real delivered edition
 """
 
 import argparse
+import json
 import re
 import socket
 import sys
@@ -113,6 +114,11 @@ class AuditResult:
     def __init__(self):
         self.hard_failures = []
         self.warnings = []
+        # Populated by check_minimum_coverage: {section: {"count": int,
+        # "minimum_required": int, "met": bool, "rung": str}}. Exposed here
+        # (rather than only as pass/fail messages) so a run-status writer can
+        # report "which ladder rungs were used" without re-deriving it.
+        self.coverage_ladder = {}
 
     def fail(self, msg):
         self.hard_failures.append(msg)
@@ -227,6 +233,93 @@ def check_negative_articles_no_subheadings(blocks, result):
                 f"'Negative Articles' full-summary section has {h2_count} "
                 f"commission subheading(s) -- this section must have none, "
                 f"per confirmed real production"
+            )
+
+
+def _count_section_bullets(h1_name, h1_lines):
+    if h1_name in SECTIONS_WITH_SUBHEADINGS:
+        return sum(len(bullets) for bullets in get_h2_bullets(h1_lines).values())
+    return len(get_direct_bullets(h1_lines))
+
+
+def load_search_log(search_log_path):
+    """
+    Returns the parsed reports/search_log.json dict, or None if it's
+    missing/unreadable/invalid JSON. None is treated as "no evidence" by
+    check_minimum_coverage -- fail-closed, not fail-open: an empty Negative
+    Articles section is only excused when the log positively confirms the
+    negative/watchdog searches were run.
+    """
+    if not search_log_path:
+        return None
+    path = Path(search_log_path)
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None
+
+
+def check_minimum_coverage(blocks, result, search_log_path=None):
+    """
+    Minimum-coverage ladder (item 3 of the hardening pass):
+      - Saudi Arabia/Regional and Global must have at least one article --
+        hard-fail if empty, no exceptions.
+      - Negative Articles may legitimately be empty (a culture digest should
+        never manufacture criticism of the client to fill a quota), but ONLY
+        if reports/search_log.json confirms the negative/watchdog searches
+        were actually run this cycle. Absence of that evidence is a hard
+        failure, not a free pass -- fail-closed by design.
+    """
+    bullet_counts = {}
+    for h1_name, h1_lines in blocks:
+        if h1_name in REQUIRED_SECTIONS:
+            bullet_counts[h1_name] = _count_section_bullets(h1_name, h1_lines)
+
+    for section in ["Saudi Arabia/Regional", "Global"]:
+        count = bullet_counts.get(section, 0)
+        met = count >= 1
+        result.coverage_ladder[section] = {
+            "count": count, "minimum_required": 1, "met": met,
+            "rung": "has-content" if met else "empty-FAIL",
+        }
+        if not met:
+            result.fail(
+                f"'{section}' has zero articles -- minimum coverage requires "
+                f"at least one; a short section is fine, an empty one is not "
+                f"(unlike Negative Articles, this section has no legitimate-"
+                f"empty exception)"
+            )
+
+    negative_count = bullet_counts.get("Negative Articles", 0)
+    if negative_count >= 1:
+        result.coverage_ladder["Negative Articles"] = {
+            "count": negative_count, "minimum_required": 0, "met": True,
+            "rung": "has-content",
+        }
+    else:
+        search_log = load_search_log(search_log_path)
+        searches_confirmed_run = bool(search_log and search_log.get("negative_searches_run") is True)
+        result.coverage_ladder["Negative Articles"] = {
+            "count": 0, "minimum_required": 0, "met": searches_confirmed_run,
+            "rung": "empty-justified" if searches_confirmed_run else "empty-unjustified-FAIL",
+        }
+        if searches_confirmed_run:
+            result.warn(
+                "'Negative Articles' is empty; justified by "
+                f"{search_log_path} confirming the negative/watchdog "
+                f"searches were run and returned nothing in-window -- this "
+                f"is a legitimate outcome, not a sourcing failure"
+            )
+        else:
+            result.fail(
+                "'Negative Articles' is empty but no search-log evidence "
+                f"(expected at {search_log_path}) confirms the negative/"
+                f"watchdog searches were actually run this cycle -- an "
+                f"empty section is only excused with that evidence; "
+                f"otherwise this looks like a skipped search, not a quiet "
+                f"news day"
             )
 
 
@@ -602,7 +695,8 @@ def check_docx_parity(docx_path, result):
 
 
 def run_audit(md_path, docx_path, register_path, skip_url_check=False,
-              url_timeout=DEFAULT_URL_TIMEOUT, url_delay=DEFAULT_URL_DELAY):
+              url_timeout=DEFAULT_URL_TIMEOUT, url_delay=DEFAULT_URL_DELAY,
+              search_log_path=None):
     result = AuditResult()
     md_text = Path(md_path).read_text(encoding="utf-8")
     blocks = split_h1_blocks(md_text)
@@ -612,6 +706,7 @@ def run_audit(md_path, docx_path, register_path, skip_url_check=False,
     check_headline_block_ordering(blocks, result)
     check_commission_labels(blocks, result)
     check_negative_articles_no_subheadings(blocks, result)
+    check_minimum_coverage(blocks, result, search_log_path=search_log_path)
     check_links_and_sources(blocks, result, register_urls)
     check_risks_and_opportunities(blocks, result)
     check_banned_phrases(md_text, result)
@@ -639,11 +734,16 @@ def main():
     parser.add_argument("--url-delay", type=float, default=DEFAULT_URL_DELAY,
                          help=f"Delay between URL checks in seconds, for polite rate-limiting "
                               f"(default {DEFAULT_URL_DELAY})")
+    parser.add_argument("--search-log", default="reports/search_log.json",
+                         help="Path to the search-log JSON confirming which searches ran this "
+                              "cycle (default reports/search_log.json) -- required evidence for "
+                              "an empty Negative Articles section to be allowed")
     args = parser.parse_args()
 
     result = run_audit(args.markdown_path, args.docx, args.register,
                         skip_url_check=args.skip_url_check,
-                        url_timeout=args.url_timeout, url_delay=args.url_delay)
+                        url_timeout=args.url_timeout, url_delay=args.url_delay,
+                        search_log_path=args.search_log)
 
     print("=== MoC Digest Audit ===")
     if result.warnings:

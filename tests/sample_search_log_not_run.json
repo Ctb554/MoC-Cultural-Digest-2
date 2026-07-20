@@ -1,0 +1,6 @@
+{
+  "negative_searches_run": false,
+  "negative_themes_searched": [],
+  "negative_hits_found_in_window": 0,
+  "note": "Illustrative fixture for the FAIL case: searches were skipped, not genuinely empty."
+}
