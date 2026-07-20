@@ -137,11 +137,26 @@ Skip silently if no delivery destination is configured yet.
    preferences** while writing. Treat **Observations** as context.
 4. Build the do-not-reuse lists across the priors and the register combined:
    article URLs (and near-duplicates) and headlines already used.
-5. Note recurring Risks/Opportunities themes from the prior digest (e.g. an
+5. **Cross-edition consistency check (strengthened 2026-07-20).** Note
+   recurring Risks/Opportunities themes from the prior digests (e.g. an
    ongoing regional tension, an ongoing positive narrative arc like a
    festival season or Vision 2030 milestone) so today's synthesis reads as a
    continuation where genuinely still live, not a restart — without forcing
-   continuity where the news cycle has actually moved on.
+   continuity where the news cycle has actually moved on. **This is not
+   just about tone continuity — it is a hard check against direct
+   contradiction.** Before finalizing today's Risks/Opportunities, compare
+   each item against what the prior editions said about the same or a
+   closely related ongoing situation (an active conflict, a recurring
+   reputational theme, an ongoing infrastructure or policy story). If
+   today's Consideration would recommend something that contradicts a
+   prior edition's Consideration on the same live situation — e.g.
+   yesterday said "keep the cultural story deliberately separate from this
+   narrative" and today would say "lean into direct engagement with it" —
+   do not write the contradiction silently. Either the situation has
+   genuinely changed enough to justify a different recommendation, in which
+   case say so explicitly ("unlike yesterday's assessment, X has now
+   changed because Y"), or the framing should stay consistent with the
+   prior edition rather than drift for no stated reason.
 
 ## Stage 2: source the news (live web, window-bounded)
 
@@ -670,6 +685,11 @@ from an editor's perspective, checking:
 - The minimum-coverage ladder (Stage 5): Saudi Arabia/Regional and Global
   are not empty; if Negative Articles is empty, `reports/search_log.json`
   has already been written confirming the negative/watchdog searches ran.
+- **Cross-edition consistency** (Stage 1, item 5): does any Consideration
+  in today's Risks/Opportunities contradict what a prior edition said about
+  the same ongoing situation, without explicitly stating that the situation
+  changed? If so, fix before delivery — either add the explicit change note
+  or bring the framing back in line with the prior edition.
 - Every link genuinely resolves — this pass can't run the live Stage 5 URL
   check itself, but it should sanity-check that no link looks fabricated or
   copy-pasted from a different article before Stage 5 catches it mechanically.
