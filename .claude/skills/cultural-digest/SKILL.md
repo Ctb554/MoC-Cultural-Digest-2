@@ -358,6 +358,27 @@ as in the General/Macro Press note above. Treat this whole list as inherently
 incomplete — broaden it further whenever a comparison against a real edition
 surfaces another credible outlet this pipeline missed.
 
+**Direct outlet sweep — a required step, separate from the topic searches
+above (added 2026-07-20).** A run on 2026-07-20 treated the outlet list
+above only as a loose "prefer these if they turn up" signal attached to
+generic topic searches (e.g. "heritage news," "museum exhibition"), and
+never directly checked what these specialist outlets had actually published
+that day. That's not what was intended and undersells exactly the trade
+press this list was built for. **In addition to the topic searches, directly
+check the latest articles from each of the following specialist outlets on
+their own terms** — i.e. "what did Ocula publish in the last 24 hours,"
+not "does a heritage search happen to surface an Ocula piece":
+The Art Newspaper, Ocula, Artnet News, ARTnews, Hyperallergic, HeritageDaily,
+Arkeonews, Archaeology Magazine, Blooloop, Variety, The Hollywood Reporter,
+Deadline, Screen Daily, Dezeen, ArchDaily, Business of Fashion, WWD,
+Billboard, Publishers Weekly, The Bookseller, The Stage, Michelin, Eater.
+This is the same distinction as the Named Entity Searches for Saudi Arabia/
+Regional (Stage 2 above) — those pair the outlet with "Saudi Arabia"; this
+is the same outlets, unpaired, checked for their own latest global output,
+feeding the Global section. A zero result from a direct sweep is a normal,
+legitimate outcome on a quiet day for that outlet — but it must actually be
+attempted, not silently skipped in favor of only the broader topic search.
+
 ### Source eligibility (hard rule, enforced by Stage 5 audit)
 
 - **Exclude all Saudi-based/Saudi-owned outlets** — Arab News, Asharq
