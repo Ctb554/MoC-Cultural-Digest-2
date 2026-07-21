@@ -30,7 +30,7 @@
 
 # Global
 
-## Museums (المتاحف)
+## Museums:
 - Hong Kong's M+ and Centre Pompidou announced a groundbreaking and unprecedented partnership using the color of collaboration. ([ArtForum](https://www.artforum.com/example))
 
 # Risks and Opportunities

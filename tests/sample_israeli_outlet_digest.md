@@ -11,7 +11,7 @@
 
 # Saudi Arabia/Regional
 
-## General (عام)
+## General:
 - Placeholder bullet with a benign citation. ([Regional Wire](https://www.regionalwire.invalid/articles/placeholder))
 
 # Negative Articles
@@ -19,7 +19,7 @@
 
 # Global
 
-## Museums (المتاحف)
+## Museums:
 - Placeholder bullet with a benign citation. ([Global Wire](https://www.globalwire.invalid/articles/placeholder))
 
 # Risks and Opportunities

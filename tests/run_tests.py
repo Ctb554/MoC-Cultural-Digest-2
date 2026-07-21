@@ -81,7 +81,7 @@ def test_fixture_safety_does_not_false_positive_on_unrelated_content():
 
 # Saudi Arabia/Regional
 
-## General (عام)
+## General:
 - Fully unrelated bullet text. ([Wire](https://www.unrelatedwire.invalid/a))
 
 # Negative Articles
@@ -89,7 +89,7 @@ def test_fixture_safety_does_not_false_positive_on_unrelated_content():
 
 # Global
 
-## Music (الموسيقى)
+## Music:
 - Fully unrelated global bullet text. ([Wire](https://www.unrelatedwire.invalid/c))
 
 # Risks and Opportunities
@@ -125,8 +125,8 @@ def test_broken_fixture_still_catches_original_defects():
     result = run_audit_on(TESTS_DIR / "sample_broken_digest.md")
     expected_substrings = [
         "headline bullets must come first",
-        "Invalid/invented or non-bilingual commission label 'Tourism and Hospitality'",
-        "Invalid/invented or non-bilingual commission label 'Heritage'",
+        "Invalid/invented commission label 'Tourism and Hospitality'",
+        "Invalid/invented commission label 'Heritage'",
         "commission subheading(s)",
         "Excluded outlet used (Saudi-owned)",
         "'Risks' item 1 missing a 'Source:' line",
@@ -302,14 +302,14 @@ def test_register_rolling_window():
 
 # Saudi Arabia/Regional
 
-## General (عام)
+## General:
 - Placeholder bullet reusing a stale link. ([Wire](https://www.stalewire.invalid/stale))
 
 # Negative Articles
 
 # Global
 
-## Museums (المتاحف)
+## Museums:
 - Placeholder bullet reusing a recent link. ([Wire](https://www.recentwire.invalid/recent))
 
 # Risks and Opportunities

@@ -5,44 +5,63 @@ python-docx. The canonical markdown is the single source of truth; this
 script is a faithful renderer, not an editor.
 
 FORMATTING VALUES BELOW ARE NOT GUESSES: they were reverse-engineered
-directly from the OOXML of a real delivered edition
-(MOC_Daily_Cultural_Digest_19Jul26_D1.docx) on 2026-07-19 by unzipping the
-.docx and inspecting word/document.xml, word/styles.xml, and
-word/theme/theme1.xml. If a future reference edition contradicts these
-values, re-derive from that edition the same way, not from this comment.
+directly from the OOXML of real delivered editions by unzipping each .docx
+and inspecting word/document.xml, word/styles.xml, and word/theme/theme1.xml.
+If a future reference edition contradicts these values, re-derive from that
+edition the same way, not from this comment.
 
-Confirmed values:
-- Body font: Aptos, 12pt (docDefaults in styles.xml: rFonts ascii/hAnsi/cs
-  "Aptos", sz 24 half-points = 12pt). NOT Arial 11pt.
-- Section/title headings ("Headlines, <date>", "Saudi Arabia/Regional",
-  "Negative Articles", "Global", "Risks and Opportunities"): bold, color
-  #4A86E8 (blue), spacing 120/60 twips = 6pt before / 3pt after. Same 12pt
-  size as body text -- the hierarchy is color+bold+spacing, not a bigger font.
-- Commission subheadings (e.g. "Heritage (التراث)"): bold, color #000000
-  (black), NOT italic, spacing 80/20 twips = 4pt before / 1pt after.
+REVISION HISTORY:
+- 2026-07-19/20: first pass, built against the 19 July real edition. Used
+  bilingual "English (Arabic)" commission labels, Aptos 12pt, hyperlinks
+  #0563C1, explicit point-based paragraph spacing.
+- 2026-07-21: corrected against the 16 July real edition, which is
+  chronologically EARLIER than the 19 July one but was confirmed by the
+  user as the actual target to match, with two explicit clarifications:
+  (a) commission labels should be plain English, no Arabic -- the whole
+  document gets translated into Arabic as a separate downstream step, so
+  the English edition's own labels don't need to carry Arabic; (b) base
+  font size is 11pt, not 12pt; (c) paragraph spacing should use Word's
+  built-in "No Spacing" style (0pt before/after) with real blank paragraphs
+  between sections for visual separation, not explicit point values.
+
+Confirmed current values (2026-07-21, font corrected same day):
+- Body font: Times New Roman, 11pt. The reference edition's docDefaults
+  explicitly set Times New Roman as the base font; most individual runs
+  additionally carried a `w:rFonts asciiTheme="majorBidi"` override which
+  resolves to "Aptos Display" via the document's theme -- an earlier pass
+  on 2026-07-21 assumed that per-run theme override was the one that
+  actually renders, and built against Aptos. Directly corrected by the
+  user: the real, intended font is Times New Roman throughout, not Aptos.
+- Section headings ("Headlines, <date>", "Saudi Arabia/Regional", "Global"):
+  bold, color #4A86E8 (blue).
+- "Negative Articles" heading: bold, color #EE0000 (red) -- CONFIRMED
+  DIFFERENT from the other two section headings in the 16 July reference;
+  this was not visible in the 19 July reference and is a real, newly
+  confirmed per-section color convention, not a guess.
+- Commission subheadings (e.g. "Heritage:"): bold, black, plain English,
+  colon-terminated -- no Arabic, no parentheses.
 - "Risks" subsection heading: bold, color #C00000 (dark red).
-- "Opportunities" subsection heading: bold, color #A66500 (dark gold/amber),
-  not green.
-- Numbered item headlines inside Risks/Opportunities (e.g. "1. Renewed
-  Saudi-Houthi..."): bold, color #000000 (black) -- only the Risks/
-  Opportunities subsection headings themselves get the red/gold treatment.
-- Body bullets: spacing 40 twips = 2pt after each item, not bold.
-- Hyperlinks: color #0563C1, single underline (matches styles.xml's built-in
-  "Hyperlink" character style exactly).
-- "Source:"/"Consideration:" labels: bold, black, no color override.
+- "Opportunities" subsection heading: bold, color #A66500 (dark gold).
+- Numbered item headlines inside Risks/Opportunities: bold, black.
+- Hyperlinks: color #0000FF (plain blue), single underline -- CORRECTED
+  from #0563C1, which was confirmed accurate for the 19 July edition but
+  not the 16 July one; #0000FF is what the 16 July reference actually uses.
+- Paragraph spacing: Word's built-in "No Spacing" paragraph style (0pt
+  before/after) throughout, INCLUDING bullets -- not explicit point values.
+  Visual separation between sections comes from real blank paragraphs
+  ("line drops"), not from paragraph-level spacing settings.
 
 WHY python-docx INSTEAD OF DIRECT XML ON A PINNED TEMPLATE:
 The conflict-monitoring skill this repo was adapted from edits a pre-branded,
 SHA-256-pinned template directly via XML, for exact brand fidelity. This repo
 does not yet have a real branded MoC Word template to pin, so it builds a
-clean, professionally formatted document from scratch instead, now styled to
-match the real reference edition's actual formatting values above. Once a
+clean, professionally formatted document from scratch instead, styled to
+match the real reference editions' actual formatting values above. Once a
 real branded template (letterhead, logo, house styles) is supplied, swap
 this script for the pinned-template direct-XML-edit approach the same way
 the conflict-monitoring skill does -- see templates/README.md.
 
-CANONICAL MARKDOWN FORMAT this script expects (see SKILL.md Stage 3,
-confirmed against a real delivered edition on 2026-07-19):
+CANONICAL MARKDOWN FORMAT this script expects (see SKILL.md Stage 3):
 
     # Headlines, <DATE>
 
@@ -58,10 +77,10 @@ confirmed against a real delivered edition on 2026-07-19):
 
     # Saudi Arabia/Regional
 
-    ## General (عام)
+    ## General:
     - Free-form analytical bullet ending in a plain citation. ([Outlet](url))
 
-    ## Heritage (التراث)
+    ## Heritage:
     - ...
 
     # Negative Articles
@@ -70,7 +89,7 @@ confirmed against a real delivered edition on 2026-07-19):
 
     # Global
 
-    ## Museums (المتاحف)
+    ## Museums:
     - ...
 
     # Risks and Opportunities
@@ -109,27 +128,28 @@ from pathlib import Path
 
 from docx import Document
 from docx.shared import Pt, RGBColor
-from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
-FONT_NAME = "Aptos"
-FONT_SIZE = 12
+FONT_NAME = "Times New Roman"
+FONT_SIZE = 11
 
-# Colors, confirmed from the real reference edition's OOXML (see docstring)
+# Colors, confirmed from the 16 July real reference edition's OOXML (see
+# module docstring above for the revision history and rationale).
 COLOR_HEADING_BLUE = RGBColor(0x4A, 0x86, 0xE8)
+COLOR_NEGATIVE_RED = RGBColor(0xEE, 0x00, 0x00)
 COLOR_BLACK = RGBColor(0x00, 0x00, 0x00)
 COLOR_RISK_RED = RGBColor(0xC0, 0x00, 0x00)
 COLOR_OPPORTUNITY_GOLD = RGBColor(0xA6, 0x65, 0x00)
-COLOR_HYPERLINK = "0563C1"  # hex string form, used in raw OxmlElement below
+COLOR_HYPERLINK = "0000FF"  # hex string form, used in raw OxmlElement below
 
-# Spacing, confirmed from the real reference edition (twips -> points, /20)
-SPACING_HEADING_BEFORE = Pt(6)
-SPACING_HEADING_AFTER = Pt(3)
-SPACING_SUBHEADING_BEFORE = Pt(4)
-SPACING_SUBHEADING_AFTER = Pt(1)
-SPACING_BULLET_AFTER = Pt(2)
-SPACING_SOURCE_AFTER = Pt(3)
+# Per-section heading color -- confirmed 2026-07-21 that Negative Articles
+# gets its own distinct red, not the same blue as the other two sections.
+SECTION_HEADING_COLORS = {
+    "Saudi Arabia/Regional": COLOR_HEADING_BLUE,
+    "Negative Articles": COLOR_NEGATIVE_RED,
+    "Global": COLOR_HEADING_BLUE,
+}
 
 MD_LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 NUMBERED_ITEM_RE = re.compile(r"^\s*(\d+)\.\s*(.*)$")
@@ -146,8 +166,8 @@ def add_hyperlink(paragraph, text, url):
     Insert a real clickable hyperlink run into a python-docx paragraph.
     python-docx has no native hyperlink API, so this builds the relationship
     and run XML directly -- the standard recipe for this library. Color and
-    underline match the real reference edition's built-in Hyperlink style
-    (#0563C1, single underline) exactly.
+    underline match the 16 July reference edition's actual hyperlink runs
+    (#0000FF, single underline) exactly.
     """
     part = paragraph.part
     r_id = part.relate_to(
@@ -208,7 +228,7 @@ def add_mixed_text_with_links(paragraph, text_with_md_links, bold=False):
 
 
 def set_base_style(doc):
-    """Sets the Normal style to Aptos 12pt, matching the real reference edition."""
+    """Sets the Normal style to Times New Roman 11pt, matching the 16 July reference edition."""
     style = doc.styles["Normal"]
     style.font.name = FONT_NAME
     style.font.size = Pt(FONT_SIZE)
@@ -221,34 +241,49 @@ def set_base_style(doc):
     rFonts.set(qn("w:hAnsi"), FONT_NAME)
 
 
-def add_heading_paragraph(doc, text, color):
-    """Section/title-level heading: bold, colored, 12pt, 6pt/3pt spacing."""
-    p = doc.add_paragraph()
-    p.paragraph_format.space_before = SPACING_HEADING_BEFORE
-    p.paragraph_format.space_after = SPACING_HEADING_AFTER
+def no_spacing_paragraph(doc):
+    """
+    Every non-bulleted paragraph uses Word's built-in "No Spacing" style
+    (0pt before/after), confirmed against the 16 July reference. Visual
+    separation between sections comes from real blank paragraphs, not from
+    paragraph-level spacing settings -- see add_blank_line() below.
+    """
+    return doc.add_paragraph(style="No Spacing")
+
+
+def add_blank_line(doc):
+    """
+    A real empty paragraph, used to create the visual "line drop" between
+    sections that the 16 July reference achieves this way, rather than
+    through paragraph spacing settings.
+    """
+    doc.add_paragraph(style="No Spacing")
+
+
+def add_heading_paragraph(doc, text, section_name_for_color):
+    """
+    Section/title-level heading: bold, colored per SECTION_HEADING_COLORS
+    (Negative Articles is red, others are blue), No Spacing style.
+    """
+    p = no_spacing_paragraph(doc)
     run = p.add_run(text)
     run.bold = True
-    run.font.size = Pt(FONT_SIZE)
-    run.font.color.rgb = color
+    run.font.color.rgb = SECTION_HEADING_COLORS.get(section_name_for_color, COLOR_HEADING_BLUE)
     return p
 
 
 def add_subheading_paragraph(doc, text, color=COLOR_BLACK):
-    """Commission subheading: bold, black by default, 4pt/1pt spacing, no italic."""
-    p = doc.add_paragraph()
-    p.paragraph_format.space_before = SPACING_SUBHEADING_BEFORE
-    p.paragraph_format.space_after = SPACING_SUBHEADING_AFTER
+    """Commission subheading: bold, black by default, No Spacing style, plain English."""
+    p = no_spacing_paragraph(doc)
     run = p.add_run(text)
     run.bold = True
-    run.font.size = Pt(FONT_SIZE)
     run.font.color.rgb = color
     return p
 
 
 def add_bullet_paragraph(doc, text_with_links):
-    """Body bullet: List Bullet style, 2pt after, real hyperlinks embedded."""
+    """Body bullet: List Bullet style, No Spacing-equivalent (no explicit override), real hyperlinks embedded."""
     p = doc.add_paragraph(style="List Bullet")
-    p.paragraph_format.space_after = SPACING_BULLET_AFTER
     add_mixed_text_with_links(p, text_with_links)
     return p
 
@@ -287,10 +322,10 @@ def parse_headline_block(h1_lines):
 def parse_full_summary_block(h1_name, h1_lines):
     """
     Parses a full-summary section into {commission_label: [bullet, ...]}.
-    Sections in SECTIONS_WITH_SUBHEADINGS use ## commission subheadings;
-    Negative Articles (and any other section not in that set) has bullets
-    directly under the H1, with no subheading -- stored under a single
-    implicit "" key.
+    Sections in SECTIONS_WITH_SUBHEADINGS use ## commission subheadings
+    (plain English, e.g. "Heritage:"); Negative Articles (and any other
+    section not in that set) has bullets directly under the H1, with no
+    subheading -- stored under a single implicit "" key.
     """
     result = {}
     if h1_name in SECTIONS_WITH_SUBHEADINGS:
@@ -410,24 +445,24 @@ def build_docx(parsed, output_path):
     doc = Document()
     set_base_style(doc)
 
-    # Title -- same styling as the section headings (blue, bold, 12pt)
-    add_heading_paragraph(doc, parsed["title"] or "MoC Daily Cultural Digest", COLOR_HEADING_BLUE)
+    # Title -- same styling as the section headings (blue, bold)
+    add_heading_paragraph(doc, parsed["title"] or "MoC Daily Cultural Digest", "Saudi Arabia/Regional")
+    add_blank_line(doc)
 
     # Headline bullets FIRST (confirmed real ordering), three sections
     for section_name in REQUIRED_SECTIONS:
         bullets = parsed["headline_bullets"].get(section_name, [])
-        add_heading_paragraph(doc, section_name, COLOR_HEADING_BLUE)
+        add_heading_paragraph(doc, section_name, section_name)
         for bullet_text in bullets:
             p = doc.add_paragraph(style="List Bullet")
-            p.paragraph_format.space_after = SPACING_BULLET_AFTER
-            run = p.add_run(bullet_text)
-            run.font.size = Pt(FONT_SIZE)
+            p.add_run(bullet_text)
+        add_blank_line(doc)
 
     doc.add_page_break()
 
     # Full summaries, grouped by section then (where applicable) commission
     for section_name in REQUIRED_SECTIONS:
-        add_heading_paragraph(doc, section_name, COLOR_HEADING_BLUE)
+        add_heading_paragraph(doc, section_name, section_name)
 
         commissions = parsed["sections"].get(section_name, {})
         for commission_name, bullets in commissions.items():
@@ -439,10 +474,13 @@ def build_docx(parsed, output_path):
             for bullet_text in bullets:
                 add_bullet_paragraph(doc, bullet_text)
 
+        add_blank_line(doc)
+
     doc.add_page_break()
 
     # Risks and Opportunities: multiple numbered items per subsection
-    add_heading_paragraph(doc, "Risks and Opportunities", COLOR_HEADING_BLUE)
+    add_heading_paragraph(doc, "Risks and Opportunities", "Saudi Arabia/Regional")
+    add_blank_line(doc)
 
     ro = parsed.get("risks_and_opportunities", {})
     subsection_colors = {"risks": COLOR_RISK_RED, "opportunities": COLOR_OPPORTUNITY_GOLD}
@@ -455,32 +493,28 @@ def build_docx(parsed, output_path):
         add_subheading_paragraph(doc, label.capitalize(), color=subsection_colors[label])
 
         for idx, item in enumerate(items, start=1):
-            headline_p = doc.add_paragraph()
+            headline_p = no_spacing_paragraph(doc)
             run = headline_p.add_run(f"{idx}. {item['headline']}")
             run.bold = True
-            run.font.size = Pt(FONT_SIZE)
             run.font.color.rgb = COLOR_BLACK
 
             if item.get("paragraph"):
-                p = doc.add_paragraph()
-                run = p.add_run(item["paragraph"])
-                run.font.size = Pt(FONT_SIZE)
+                p = no_spacing_paragraph(doc)
+                p.add_run(item["paragraph"])
 
             if item.get("source"):
-                p = doc.add_paragraph()
-                p.paragraph_format.space_after = SPACING_SOURCE_AFTER
+                p = no_spacing_paragraph(doc)
                 run = p.add_run("Source: ")
                 run.bold = True
-                run.font.size = Pt(FONT_SIZE)
                 add_mixed_text_with_links(p, item["source"])
 
             if item.get("consideration"):
-                p = doc.add_paragraph()
+                p = no_spacing_paragraph(doc)
                 run = p.add_run("Consideration: ")
                 run.bold = True
-                run.font.size = Pt(FONT_SIZE)
-                run2 = p.add_run(item["consideration"])
-                run2.font.size = Pt(FONT_SIZE)
+                p.add_run(item["consideration"])
+
+            add_blank_line(doc)
 
     doc.save(output_path)
     print(f"Wrote {output_path}")

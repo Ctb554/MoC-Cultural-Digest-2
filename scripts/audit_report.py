@@ -52,26 +52,30 @@ REQUIRED_SECTIONS = ["Saudi Arabia/Regional", "Negative Articles", "Global"]
 # Negative Articles deliberately has none, per confirmed real production.
 SECTIONS_WITH_SUBHEADINGS = {"Saudi Arabia/Regional", "Global"}
 
-# Approved bilingual commission labels: English -> Arabic, confirmed against
-# real production. A label must match one of these pairs exactly.
-APPROVED_COMMISSIONS = {
-    "General": "عام",
-    "Heritage": "التراث",
-    "Museums": "المتاحف",
-    "Visual Arts": "الفنون البصرية",
-    "Film": "الأفلام",
-    "Fashion": "الأزياء",
-    "Music": "الموسيقى",
-    "Theatre and Performing Arts": "المسرح والفنون الأدائية",
-    "Literature, Publishing, and Translation": "الأدب والنشر والترجمة",
-    "Libraries": "المكتبات",
-    "Culinary Arts": "فنون الطهي",
-    "Architecture and Design": "فنون العمارة والتصميم",
-}
-# Build the exact "English (Arabic)" strings expected in the markdown
-APPROVED_LABEL_STRINGS = {
-    f"{en} ({ar})" for en, ar in APPROVED_COMMISSIONS.items()
-}
+# Approved commission labels. Changed 2026-07-21: previously bilingual
+# "English (Arabic)" pairs, reverse-engineered from the 19/20/21 July real
+# editions. A separately-reviewed real edition (16 July) showed plain
+# English-only labels ("General:", not "General (عام)"), and the user
+# confirmed this directly: the digest gets fully translated into Arabic as
+# a separate downstream step, so the English edition's own labels don't
+# need to carry Arabic at all. Plain English labels, colon-terminated, are
+# now the standard -- see SKILL.md's Stage 3 for the full rationale.
+APPROVED_COMMISSIONS = [
+    "General",
+    "Heritage",
+    "Museums",
+    "Visual Arts",
+    "Film",
+    "Fashion",
+    "Music",
+    "Theatre and Performing Arts",
+    "Literature, Publishing, and Translation",
+    "Libraries",
+    "Culinary Arts",
+    "Architecture and Design",
+]
+# Build the exact "Label:" strings expected in the markdown
+APPROVED_LABEL_STRINGS = {f"{label}:" for label in APPROVED_COMMISSIONS}
 
 # Domains excluded per the source-eligibility rule (Saudi-owned outlets).
 EXCLUDED_SAUDI_DOMAINS = [
@@ -264,9 +268,9 @@ def check_commission_labels(blocks, result):
         for h2 in h2_names:
             if h2 not in APPROVED_LABEL_STRINGS:
                 result.fail(
-                    f"Invalid/invented or non-bilingual commission label "
-                    f"'{h2}' under section '{h1_name}' -- must be an approved "
-                    f"'English (Arabic)' pair"
+                    f"Invalid/invented commission label '{h2}' under section "
+                    f"'{h1_name}' -- must be an approved label from "
+                    f"APPROVED_COMMISSIONS, written as 'Label:'"
                 )
 
 
@@ -651,21 +655,23 @@ def check_american_spellings(md_text, result):
             )
 
 
-def check_arabic_only_in_labels(md_text, blocks, result):
+def check_no_arabic_anywhere(md_text, result):
     """
-    Arabic is allowed ONLY inside the approved bilingual commission label
-    strings. Any Arabic text elsewhere in the document body is a failure.
+    Changed 2026-07-21: labels are no longer bilingual (see APPROVED_COMMISSIONS
+    docstring), so Arabic is not expected ANYWHERE in this pipeline's English
+    edition -- the full document gets translated into Arabic as a separate
+    downstream step, and that translation is out of scope for this repo (see
+    SKILL.md's routine run constants). Any Arabic character in the English
+    digest is a hard failure.
     """
-    text_without_labels = md_text
-    for label in APPROVED_LABEL_STRINGS:
-        text_without_labels = text_without_labels.replace(label, "")
-
-    if ARABIC_RE.search(text_without_labels):
+    if ARABIC_RE.search(md_text):
         result.fail(
-            "Arabic characters found outside the approved bilingual "
-            "commission labels -- Arabic is only allowed inside "
-            "'English (Arabic)' subheadings"
+            "Arabic characters found in the English digest -- this pipeline "
+            "produces the English edition only (full Arabic translation is a "
+            "separate downstream step, not part of this repo's output); "
+            "Arabic should not appear anywhere in this document"
         )
+
 
 
 def check_risks_and_opportunities(blocks, result):
@@ -812,7 +818,7 @@ def run_audit(md_path, docx_path, register_path, skip_url_check=False,
     check_risks_and_opportunities(blocks, result)
     check_banned_phrases(md_text, result)
     check_american_spellings(md_text, result)
-    check_arabic_only_in_labels(md_text, blocks, result)
+    check_no_arabic_anywhere(md_text, result)
     check_docx_parity(docx_path, result)
     check_url_resolution(blocks, result, skip=skip_url_check,
                           timeout=url_timeout, delay=url_delay)

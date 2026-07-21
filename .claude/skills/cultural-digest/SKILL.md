@@ -14,11 +14,11 @@ delivers. Run every stage in order. If a hard failure occurs (no web access,
 no readable priors), stop and fail loudly; never fabricate around a missing
 capability.
 
-**FORMAT CONFIRMED AGAINST REAL PRODUCTION (2026-07-19):** two written specs
-existed for this digest (an original detailed brief and a later handoff
-note), and they disagreed with each other on several points. Rather than
-choosing between them, this playbook was corrected against an actual,
-currently-delivered live edition
+**FORMAT CONFIRMED AGAINST REAL PRODUCTION (2026-07-19, corrected 2026-07-21):**
+two written specs existed for this digest (an original detailed brief and a
+later handoff note), and they disagreed with each other on several points.
+Rather than choosing between them, this playbook was corrected against an
+actual, currently-delivered live edition
 (`MOC_Daily_Cultural_Digest_19Jul26_D1.docx`, produced by the existing manual
 process this repo is meant to automate). Where the live edition settles a
 disagreement between the two written specs, the live edition wins. Confirmed
@@ -26,9 +26,14 @@ findings:
 
 - **Headline bullets come first**, before the full summaries (matches the
   original brief, not the handoff note).
-- **Commission labels are bilingual**, e.g. "Heritage (التراث)", "Visual Arts
-  (الفنون البصرية)" — the handoff note's "no Arabic anywhere in the output"
-  rule does not match real practice and is dropped.
+- **Commission labels are plain English, colon-terminated (e.g. "Heritage:",
+  "Visual Arts:"), NOT bilingual.** This was corrected 2026-07-21 against an
+  earlier real edition (16 July, chronologically before the 19 July one
+  above) which used no Arabic anywhere. The user confirmed directly: the
+  whole document gets translated into Arabic as a separate downstream step,
+  so the English edition's own labels don't need to carry Arabic at all.
+  The bilingual convention this playbook used between 2026-07-20 and
+  2026-07-21 is superseded — see the Classification rules section below.
 - **Bullet style is free-form analytical prose ending in a plain "(Outlet)"
   citation** — not the handoff's rigid "[Outlet] reported that X. The
   article is relevant as a Y item..." template. This matches the original
@@ -41,6 +46,10 @@ findings:
 - **The Negative Articles section has no commission subheadings** — bullets
   sit directly under the section, since negative/reputational stories are
   almost never culture-commission stories anyway.
+- **Base font is 11pt, not 12pt** (corrected 2026-07-21 against the 16 July
+  edition's docDefaults) — see the formatting values in `scripts/build_docx.py`
+  for the complete, current, confirmed set (colors, hyperlink color,
+  paragraph spacing convention).
 
 If practice drifts further, or a different reference edition contradicts
 this one, re-derive from the most recent real delivered edition, not from
@@ -63,9 +72,11 @@ either original written spec.
   a separate downstream step (see the live workstream's own
   `Instructions for AR Translation` material), handled outside this
   automation for now. Do not attempt to generate a full Arabic translation
-  of the digest; the bilingual `English (Arabic)` commission labels inside
-  the English digest (Stage 3) are the only Arabic text this pipeline
-  produces.
+  of the digest. **As of 2026-07-21, this pipeline produces NO Arabic text
+  at all** — commission labels are plain English (see the Classification
+  rules in Stage 3), since the confirmed downstream translation step makes
+  bilingual labels in the English edition unnecessary. Arabic anywhere in
+  this pipeline's output is a hard audit failure (Stage 5).
 
 ## Critical context
 
@@ -268,14 +279,26 @@ operational evidence like this when the two conflict.
 
 ### Search Booleans to run
 
+**These three Booleans were made bilingual on 2026-07-21**, after a real
+Arabic-language article (`hiamag.com`, a Gulf lifestyle/culture site) was
+surfaced by a backup monitoring tool (Talkwalker) that this pipeline's
+English-only searches had no way to find. This exposed a structural blind
+spot: a large amount of genuine Gulf culture coverage happens in Arabic, and
+every search in this playbook was English-only until this fix. The Arabic
+terms below are provided directly from a tested, working configuration, not
+newly guessed. **Note: these Arabic search terms are internal search inputs,
+not output** — they don't conflict with the "no Arabic anywhere in the
+digest" rule elsewhere in this playbook, which applies to the delivered
+document, not to how the routine searches for content.
+
 **MoC / Minister Boolean:**
-`("Saudi Arabia" OR Saudi OR "KSA") AND ("Saudi Ministry of Culture" OR "Saudi Arabia's Ministry of Culture" OR "Saudi culture ministry" OR "Saudi MoC" OR "Saudi Minister of Culture" OR "Saudi Culture Minister" OR "Prince Badr bin Abdullah bin Farhan" OR "Badr bin Farhan" OR "Vice Minister of Culture" OR "Deputy Minister of Culture" OR "Hamed Fayez")`
+`("Saudi Arabia" OR Saudi OR "KSA" OR "السعودية" OR "المملكة العربية السعودية") AND ("Saudi Ministry of Culture" OR "Saudi Arabia's Ministry of Culture" OR "Saudi culture ministry" OR "Saudi MoC" OR "Saudi MOC" OR "وزارة الثقافة" OR "وزارة الثقافة السعودية" OR "Saudi Minister of Culture" OR "Saudi Culture Minister" OR "Saudi Arabia's Culture Minister" OR "Minister of Culture Prince Badr" OR "Saudi Culture Minister Prince Badr" OR "Prince Badr bin Abdullah bin Farhan" OR "Prince Badr bin Abdullah bin Farhan Al Saud" OR "Badr bin Abdullah bin Farhan" OR "Badr bin Abdullah bin Farhan Al Saud" OR "Badr bin Farhan" OR "Prince Badr bin Farhan" OR "الأمير بدر بن عبد الله بن فرحان" OR "بدر بن عبد الله بن فرحان آل سعود" OR "Vice Minister of Culture" OR "Deputy Minister of Culture" OR "Saudi Vice Minister of Culture" OR "وزير الثقافة" OR "معالي وزير الثقافة" OR "نائب وزير الثقافة" OR "معالي نائب وزير الثقافة" OR "Vice Minister of Culture Hamed Fayez")`
 
 **Commissions Boolean:**
-`("Film Commission" OR "Saudi Film Commission" OR "Fashion Commission" OR "Music Commission" OR "Heritage Commission" OR "Culinary Arts Commission" OR "Theater and Performing Arts Commission" OR "Museums Commission" OR "Architecture and Design Commission" OR "Visual Arts Commission" OR "Literature, Publishing and Translation Commission" OR "Library Commission" OR "Language Commission" OR "Saudi culture commission")`
+`("Film Commission" OR "Saudi Film Commission" OR "Fashion Commission" OR "Saudi Fashion Commission" OR "Music Commission" OR "Saudi Music Commission" OR "Heritage Commission" OR "Saudi Heritage Commission" OR "Culinary Arts Commission" OR "Theater and Performing Arts Commission" OR "Museums Commission" OR "Museum Commission" OR "Architecture and Design Commission" OR "Visual Arts Commission" OR "Literature, Publishing and Translation Commission" OR "Library Commission" OR "Language Commission" OR "Saudi culture commission" OR "Saudi cultural commission" OR "هيئة الأفلام" OR "هيئة الأزياء" OR "هيئة الموسيقى" OR "هيئة التراث" OR "هيئة فنون الطهي" OR "هيئة المسرح والفنون الأدائية" OR "هيئة المتاحف" OR "هيئة العمارة والتصميم" OR "هيئة الفنون البصرية" OR "هيئة الأدب والنشر والترجمة" OR "هيئة المكتبات" OR "هيئة اللغة")`
 
 **Saudi Culture Boolean (broad):**
-`("Saudi culture" OR "Saudi cultural" OR "Saudi heritage" OR "Saudi arts" OR "Saudi artists" OR "Saudi music" OR "Saudi film" OR "Saudi cinema" OR "Saudi filmmakers" OR "Saudi fashion" OR "Saudi design" OR "Saudi literature" OR "Saudi cuisine" OR "Saudi gastronomy" OR "Saudi hospitality")`
+`("Saudi culture" OR "Saudi cultural" OR "Saudi heritage" OR "Saudi traditions" OR "Saudi traditional" OR "Saudi arts" OR "Saudi art" OR "Saudi artists" OR "Saudi music" OR "Saudi musicians" OR "Saudi film" OR "Saudi cinema" OR "Saudi filmmakers" OR "Saudi fashion" OR "Saudi design" OR "Saudi literature" OR "Saudi cuisine" OR "Saudi food" OR "Saudi dishes" OR "Saudi gastronomy" OR "Saudi coffee" OR "Saudi hospitality" OR "الثقافة السعودية" OR "التراث السعودي" OR "الفنون السعودية" OR "الموسيقى السعودية" OR "السينما السعودية" OR "الموضة السعودية" OR "المطبخ السعودي" OR "القهوة السعودية" OR "الضيافة السعودية")`
 
 **Named Entity Searches** — one unified category, covering outlets, people,
 and places. The broad Saudi Culture Boolean above only catches stories using
@@ -348,6 +371,7 @@ verification gates (real, in-window, not previously used).
 - **Visual Arts:** `"Ahmed Mater" OR "Abdulnasser Gharem" OR "Ashraf Fayadh" OR "Manal Al Dowayan" OR "Dana Awartani" OR "Shadia Alem" OR "Sarah Abu Abdallah" OR "Sarah Mohanna Al Abdali" OR "Zahrah Al Ghamdi" OR "Safeya Binzagr"`
 - **Film:** `"Haifaa Al-Mansour" OR "Haifaa Al Mansour"`
 - **Fashion:** `"Waad Aloqaili" OR "Yahya Albishri" OR "Razan Alazzouni" OR "Mona Al Shebil" OR "Adnan Akbar" OR "Tima Abid" OR "Kawthar Alhoraish" OR "Eman Alajlan" OR "Khadija Al Sunaydi"`
+- **Commission Leadership (added 2026-07-21, partially verified only — see caveat below):** `"Dina Amin" OR "Sultan Al-Bazie" OR "Hamed Fayez"`. These three are independently confirmed as of 2026-07-21: Dina Amin (Visual Arts Commission CEO since 2020, confirmed still serving via a July 2025 interview), Sultan Al-Bazie (Theatre and Performing Arts Commission CEO, confirmed via the commission's own official site), Hamed Fayez (Vice Minister, already covered above). **The other 8 commissions' CEOs are NOT yet in this list** — research hit a genuine conflict (the Film Commission shows as led by "Abdullah Al-Eyaf" on one source and "Abdullah Alqahtani" on another, not resolved here) and found no confirmed-current name at all for Heritage, Museums, Culinary Arts, Architecture and Design, Literature/Publishing/Translation, Libraries, or Fashion Commission. The Music Commission's only found name (Paul Pacifico) is from a 2022 appointment announcement and needs re-verification, not just re-use, since executive tenures in this space can be short. **Do not add a name to this Boolean without independently verifying it's current** — an unverified or stale name in a government digest's own search list is worse than not having it. Complete this list via a dedicated research pass, or ideally by pulling the confirmed-current roster directly from the Ministry's own site or a trusted internal source, rather than incremental web searches.
 
 *Places* — named heritage and archaeological sites, verified against
 UNESCO's official list (Saudi Arabia currently has 8 inscribed World
@@ -357,6 +381,22 @@ covered named sites, including three from Saudi Arabia's tentative list
 - **Heritage sites (one combined query — named places don't dilute each other the way broad topics do):** `(Hegra OR "Al-Hijr" OR "Madain Salih" OR "Mada'in Salih" OR Diriyah OR "At-Turaif" OR "Historic Jeddah" OR "Al-Balad" OR "Jubbah rock art" OR "Rock Art in the Hail Region" OR "Al-Ahsa Oasis" OR "Hima Cultural Area" OR "Najran rock art" OR "Al-Faw archaeological" OR AlUla OR Dadan OR "Jabal Ikmah" OR "Hejaz Railway" OR "Farasan Islands" OR "Rijal Almaa")`
   Classify hits under **Heritage** unless the story is clearly museum-led (→
   Museums) or architecture/design-led (→ Architecture and Design).
+- **Named Museums (added 2026-07-21, one combined query):** `("Black Gold Museum" OR "JAX District" OR SAMOCA OR "Saudi Arabia Museum of Contemporary Art" OR Ithra OR "King Abdulaziz Center for World Culture" OR "National Museum of Saudi Arabia" OR "Al Masmak" OR "Masmak Palace" OR "Masmak Fort")`.
+  Verified 2026-07-21: Black Gold Museum (KAPSARC, Riyadh — oil/energy
+  told through contemporary art, Zaha Hadid-designed building); JAX District
+  / SAMOCA (Diriyah — Saudi Arabia's first dedicated contemporary art
+  museum); Ithra / King Abdulaziz Center for World Culture (Dhahran — Saudi
+  Aramco-built cultural centre with museum, library, cinema, theatre);
+  National Museum of Saudi Arabia (Riyadh, part of the King Abdulaziz
+  Historical Center); Al Masmak Palace Museum (Riyadh, the 1865 fort central
+  to the Kingdom's founding narrative). Classify hits under **Museums**
+  unless clearly heritage-preservation-led (→ Heritage) or architecture/
+  design-led (→ Architecture and Design). This list is a starting point, not
+  exhaustive — Saudi Arabia has more named museums beyond these five (e.g.
+  Royal Art Complex, Digital Art Museum, Borderless Jeddah, the Prince
+  Mohammad bin Salman International Center for Arabic Calligraphy) that
+  weren't independently verified in this pass; add them once confirmed
+  rather than assuming they're still open/correctly named.
 
 **Negative/reputational coverage** — run as separate searches per theme, not
 one combined query (a combined query drowns culture-adjacent reputational
@@ -561,7 +601,7 @@ Two blocks, in this order:
    headlines, no links, no subheadings.
 2. **Full summaries** — the same three sections again, this time with the
    analytical bullets. Within Saudi Arabia/Regional and Global, group
-   articles under the approved bilingual commission labels (see table below).
+   articles under the approved commission labels (see table below).
    **Negative Articles has no commission subheadings** — its bullets sit
    directly under the section heading.
 
@@ -585,31 +625,38 @@ Do not invent thematic labels (no "tourism and hospitality", "creative
 economy", etc.); anything not clearly fitting a commission goes under
 General.
 
-### Classification rules and bilingual labels
+### Classification rules and commission labels
 
-Every commission label is written as `English (Arabic)` in the full-summary
-section (headline bullets stay English-only, since they're just the article
-headline). Labels confirmed against real production:
+**Changed 2026-07-21: labels are plain English, colon-terminated (e.g.
+"Heritage:"), NOT bilingual.** A bilingual `English (Arabic)` convention was
+used between 2026-07-20 and 2026-07-21, reverse-engineered from the 19 July
+real edition — but a separately-reviewed, chronologically earlier real
+edition (16 July) used no Arabic anywhere, and the user confirmed directly
+that this is correct: the whole document gets translated into Arabic as a
+separate downstream step, so the English edition's own labels don't need to
+carry Arabic at all. Every commission label below is written as `Label:` in
+the full-summary section (headline bullets stay label-free, since they're
+just the article headline). Labels confirmed against real production:
 
-| English | Arabic | Classification rule |
-|---|---|---|
-| General | عام | Fallback for anything not fitting a specific commission; **also the home for general/macro/business/policy coverage of Saudi Arabia from elite press** (Bloomberg, FT, Semafor, The Economist, WSJ, Axios, Politico) surfaced by the General/Macro Press search above — see the Stage 3 ordering rule for how these lead the Saudi Arabia/Regional section |
-| Heritage | التراث | Archaeology, UNESCO, monuments, preservation, intangible heritage, cultural memory |
-| Museums | المتاحف | Museums, museum programming, museum-led exhibitions |
-| Visual Arts | الفنون البصرية | Galleries, biennales, artists, exhibitions, art markets, unless museum-led |
-| Film | الأفلام | Cinema, production, rebates, festivals, filmmaking |
-| Fashion | الأزياء | Designers, fashion weeks, style, luxury fashion, fashion education |
-| Music | الموسيقى | Music industry, artists, concerts, releases |
-| Theatre and Performing Arts | المسرح والفنون الأدائية | Theatre, dance, opera, stage/live performance |
-| Literature, Publishing, and Translation | الأدب والنشر والترجمة | Books, authors, publishing, translation, manuscripts, unless library-specific |
-| Libraries | المكتبات | Libraries, archives, library policy |
-| Culinary Arts | فنون الطهي | Food, cuisine, gastronomy, chefs, culinary heritage, food festivals |
-| Architecture and Design | فنون العمارة والتصميم | Architecture, design, urbanism, built environment |
+| Label | Classification rule |
+|---|---|
+| General: | Fallback for anything not fitting a specific commission; **also the home for general/macro/business/policy coverage of Saudi Arabia from elite press** (Bloomberg, FT, Semafor, The Economist, WSJ, Axios, Politico, and the rest of the General/Macro Press list) surfaced by the General/Macro Press search above — see the Stage 3 ordering rule for how these lead the Saudi Arabia/Regional section |
+| Heritage: | Archaeology, UNESCO, monuments, preservation, intangible heritage, cultural memory |
+| Museums: | Museums, museum programming, museum-led exhibitions |
+| Visual Arts: | Galleries, biennales, artists, exhibitions, art markets, unless museum-led |
+| Film: | Cinema, production, rebates, festivals, filmmaking |
+| Fashion: | Designers, fashion weeks, style, luxury fashion, fashion education |
+| Music: | Music industry, artists, concerts, releases |
+| Theatre and Performing Arts: | Theatre, dance, opera, stage/live performance |
+| Literature, Publishing, and Translation: | Books, authors, publishing, translation, manuscripts, unless library-specific |
+| Libraries: | Libraries, archives, library policy |
+| Culinary Arts: | Food, cuisine, gastronomy, chefs, culinary heritage, food festivals |
+| Architecture and Design: | Architecture, design, urbanism, built environment |
 
 If a story fits multiple labels, use the most specific and strategically
-relevant one — a judgment call, not a keyword match. If Arabic-label
-convention drifts in a future reference edition, re-derive from that edition
-rather than this table.
+relevant one — a judgment call, not a keyword match. If the label convention
+drifts in a future reference edition, re-derive from that edition rather
+than this table.
 
 ### Bullet format (confirmed against real production)
 
@@ -710,10 +757,11 @@ MoC ownership of stories where the Ministry isn't stated as involved.
 - GB English throughout.
 - No raw URLs anywhere in the body text.
 - No casual phrasing, no unsupported claims, no overly long dense paragraphs.
-- Article summaries, headline bullets, and Risks/Opportunities prose are
-  written in English. Arabic appears **only** inside commission subheadings
-  in the `English (Arabic)` bilingual format confirmed above — never
-  elsewhere in the body text.
+- **The entire document is written in English — no Arabic anywhere**
+  (changed 2026-07-21; a prior bilingual-labels convention is superseded,
+  see the "FORMAT CONFIRMED AGAINST REAL PRODUCTION" note above). The
+  Ministry's own downstream process produces a full Arabic translation
+  separately; this pipeline's output should never contain Arabic text.
 
 ## Stage 3.5: adversarial review (single pass)
 
@@ -723,7 +771,8 @@ from an editor's perspective, checking:
 - Every hard rule above: source exclusion (no Saudi-owned outlets, and no
   Israeli outlets of any kind, slipped through), link-in-outlet-name-only,
   no raw URLs, GB English, no invented labels, no banned inflated phrases,
-  bilingual commission labels present and correctly paired.
+  approved commission labels used correctly, no Arabic anywhere in the
+  document.
 - The standing preferences in `reports/editorial_learnings.md`, so edits the
   team has made before are caught pre-delivery.
 - Headline bullets appear first (before full summaries) and match the
@@ -765,11 +814,12 @@ It checks: no excluded-outlet source slipped through (Saudi-owned outlets,
 Stage 2, enforced identically as a hard fail**), every article link
 **actually resolves live** (not just correct formatting — see below), no raw
 URLs in body text, link lives only in the outlet name, three main sections
-present and in order, only approved bilingual commission labels used
-(correct English/Arabic pairing), no invented labels, Negative Articles has
-no commission subheadings, headline bullets present **before** the full
-summaries and match the article order and count, GB spelling scan, no
-banned inflated phrases, Risks/Opportunities structure (at least one
+present and in order, only approved commission labels used, no Arabic
+anywhere in the document (hard fail — see Tone discipline above), no
+invented labels, Negative Articles has no commission subheadings, headline
+bullets present **before** the full summaries and match the article order
+and count, GB spelling scan, no banned inflated phrases, Risks/Opportunities
+structure (at least one
 numbered item per subsection with a headline, Source, and Consideration),
 no reused headlines/links against the register (rolling 60-day window — see
 Stage 6), the minimum-coverage ladder below, and the fixture-safety guard

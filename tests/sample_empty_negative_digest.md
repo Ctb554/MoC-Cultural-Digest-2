@@ -10,14 +10,14 @@
 
 # Saudi Arabia/Regional
 
-## Museums (المتاحف)
+## Museums:
 - The Museums Commission has opened a new conservation lab in Riyadh, expanding in-house capacity for object treatment that was previously outsourced abroad. Building conservation capacity domestically is a concrete, verifiable step in the Kingdom's museum-sector development that stands apart from announcement-only project news. ([Culture Sector Briefing](https://www.culturesectorbriefing.invalid/articles/riyadh-conservation-lab))
 
 # Negative Articles
 
 # Global
 
-## Film (الأفلام)
+## Film:
 - An independent film festival in Lisbon has announced an expanded archive-restoration strand, adding funding and lab access for restoring films from smaller national archives across Europe. The initiative reflects growing festival-sector interest in archival preservation as a programming strand in its own right, not just a curatorial afterthought. ([Lisbon Festival Notes](https://www.lisbonfestivalnotes.invalid/articles/archive-restoration-strand))
 
 # Risks and Opportunities

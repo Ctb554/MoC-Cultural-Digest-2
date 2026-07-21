@@ -14,10 +14,10 @@
 
 # Saudi Arabia/Regional
 
-## Architecture and Design (فنون العمارة والتصميم)
+## Architecture and Design:
 - Saudi Arabia's Hail Region was highlighted at the Baku Forum for combining cultural heritage, urban development, and sustainable tourism. The presentation focused on UNESCO-recognized sites and infrastructure modernization designed to balance preservation with economic growth. It positions Hail within the Kingdom's wider heritage-led development strategy. ([Travel and Tour World](https://www.travelandtourworld.com/news/article/example))
 
-## Heritage (التراث)
+## Heritage:
 - A centuries-old manuscript is on display as part of a heritage exhibition in Jeddah, drawing attention to Islamic manuscript traditions and the craftsmanship behind preserving historic texts. The display situates the Kingdom's religious and cultural heritage within a broader narrative of preservation and public access. ([Siasat](https://www.siasat.com/example))
 
 # Negative Articles
@@ -25,7 +25,7 @@
 
 # Global
 
-## Museums (المتاحف)
+## Museums:
 - Hong Kong's M+ museum and Paris's Centre Pompidou have announced a strategic partnership focused on exhibitions, research, and collection-sharing. The agreement reflects growing emphasis on international museum cooperation between Asian and European cultural institutions. ([ArtForum](https://www.artforum.com/example))
 
 # Risks and Opportunities

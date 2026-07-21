@@ -12,10 +12,10 @@
 
 # Saudi Arabia/Regional
 
-## Heritage (التراث)
+## Heritage:
 - Diriyah's historic At-Turaif district reported a record year of visitor numbers, with conservation officials crediting expanded night-time programming and a new interpretive centre for the increase. The figures give the Kingdom a concrete, verifiable data point to cite when positioning Diriyah as a heritage-tourism anchor rather than only a construction-in-progress narrative. ([Regional Heritage Wire](https://www.regionalheritagewire.invalid/articles/diriyah-record-visitors))
 
-## Architecture and Design (فنون العمارة والتصميم)
+## Architecture and Design:
 - A regional design biennale drew participation from several Gulf-based architecture firms presenting projects that blend traditional building techniques with contemporary materials. The showing signals a maturing regional design sector that Saudi institutions can benchmark against as they build out their own architecture and design programming. ([Gulf Design Review](https://www.gulfdesignreview.invalid/articles/regional-biennale-2027))
 
 # Negative Articles
@@ -23,7 +23,7 @@
 
 # Global
 
-## Museums (المتاحف)
+## Museums:
 - A major national museum in Seoul has opened a new wing dedicated to textile conservation, combining public-facing galleries with a working conservation lab visible to visitors. The project reflects a broader museum-sector trend of making conservation work itself part of the visitor experience rather than an unseen backroom function. ([Seoul Culture Times](https://www.seoulculturetimes.invalid/articles/textile-conservation-wing))
 
 # Risks and Opportunities
