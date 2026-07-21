@@ -1,0 +1,34 @@
+{
+  "edition_date": "2026-07-21",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "negative_hits_found_in_window": 0,
+  "notes": "All 13 negative themes plus the full watchdog/NGO sweep run as separate WebSearches. No article with a publication date of 2026-07-20 or 2026-07-21 surfaced in any result set. Nearest-dated items all fell outside the 24h window (Amnesty Filipino domestic workers report 2026-07-09; Carney-visit human-rights coverage 2026-07-08/09; OPEC/oil coverage 2026-07-06). Standing NGO index/country-report pages are not in-window news. Saudi-owned and Israeli outlets excluded. Empty Negative Articles section is the correct, honest outcome for this window."
+}
