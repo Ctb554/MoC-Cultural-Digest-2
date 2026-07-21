@@ -217,6 +217,55 @@ how to spend Tavily credits:**
   credits over the first few weeks rather than assuming the original
   "1-2 credits per edition" estimate still holds.
 
+### RSS pre-filter (Saudi Arabia/Regional only, added 2026-07-20)
+
+Before running the search Booleans below, run
+`scripts/rss_saudi_filter.py --hours 24 --output /tmp/rss_candidates.json`.
+This is a supplement to the WebSearch-based sweep, not a replacement for
+it — it exists because WebSearch depends on a search engine having already
+indexed an outlet's latest article, which can lag by hours; an outlet's own
+RSS feed updates the instant it publishes. The script pulls ~20 outlets'
+own feeds directly (BBC, Guardian, NYT, DW, Middle East Eye,
+The Diplomat, Foreign Policy, HeritageDaily, Arkeonews, The Art Newspaper,
+Dezeen, ArchDaily, Variety, The Hollywood Reporter, Deadline, WWD, Billboard,
+Publishers Weekly, Eater — see the script's `OUTLET_FEEDS` dict for the
+current list), filters to items mentioning "Saudi" or "KSA" as a whole word
+within the last 24 hours, and writes candidates to a JSON file.
+
+**Every candidate from this script is unverified and must still pass every
+normal Stage 2 verification gate** (real, in-window confirmed via WebFetch,
+non-Saudi-owned, not previously used) before it can be written into the
+digest — this script finds candidates, it does not decide what's true.
+Treat its output the same way as any other search result: a starting point
+to verify, not a finished fact.
+
+**Feed URL reliability caveat, important for the first several real runs:**
+this script was built in a sandboxed environment without general internet
+access, so its feed URLs could not be live-tested against the real outlets
+before being added here — they're either independently verified or are
+long-standing, well-documented feed patterns for these outlets, but some
+may have changed or 404 in practice. **The first few real runs should treat
+this as a live test**: check which feeds actually resolved (the script logs
+failures to stderr) versus which came back empty or errored, and report
+this in the run log. An outlet whose feed consistently fails should either
+have its URL corrected or be removed from `OUTLET_FEEDS` and left to the
+existing WebSearch-based sweep instead — a feed failure here is not fatal,
+since every outlet remains covered by the normal outlet sweep regardless.
+
+Outlets known to have **no reliable public RSS feed** (Bloomberg, Reuters,
+FT, WSJ, Semafor, Axios, Politico, Al-Monitor, AGBI, Amwaj.media, MEED,
+Gulf News, Arabian Business, The National, Nikkei Asia, Al Jazeera, and most
+smaller sector trade press) are deliberately not in this script — they rely
+entirely on the existing WebSearch-based outlet sweep below, same as before
+this addition. **Al Jazeera was removed from this script's outlet list on
+2026-07-20** after real operational evidence surfaced from a separate,
+already-running RSS project: its feed had gone stale (stopped returning
+fresh items) around 2026-06-17. Bloomberg, Reuters, AP, Politico, Gulf News,
+MEED, and The National being confirmed stale in that same project's history
+corroborates their exclusion here rather than contradicting it — this
+script's own "should be correct" confidence is always subordinate to real
+operational evidence like this when the two conflict.
+
 ### Search Booleans to run
 
 **MoC / Minister Boolean:**
