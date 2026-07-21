@@ -1,0 +1,310 @@
+# =============================================================================
+# MoC Daily Cultural Digest — SOURCE POOL
+# =============================================================================
+# Purpose:
+#   1. global_sources  -> the pool of credible non-Saudi outlets to search for
+#      the GLOBAL culture section (fixes the persistent Global-breadth shortfall)
+#   2. excluded_saudi   -> outlets that must NEVER be used as a source, because
+#      an entity in their ownership chain is Saudi state / PIF / royal family /
+#      a Saudi media conglomerate. Match on domain AND on parent, not on name.
+#   3. permitted_regional -> non-Saudi MENA outlets that ARE allowed
+#   4. low_trust_permitted -> allowed but treat cautiously for Saudi-gov stories
+#
+# RULE OF THUMB (encode in SKILL.md too):
+#   Ownership is a chain. Exclude a title if ANY parent / majority shareholder /
+#   ultimate controlling party is a Saudi state entity, PIF, the royal family,
+#   or a Saudi media conglomerate (SRMG, MBC, Rotana, SBC, Okaz Org., Aramco).
+#   This holds regardless of the title's name, language, or city of publication
+#   (many publish from London, Dubai or Cairo). For any lifestyle / fashion /
+#   culture title with an Arabic or neutral-sounding name, VERIFY THE PARENT
+#   before use.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# 1. GLOBAL SOURCE POOL  (existing = already in the Tier-1 site filter;
+#    trade = new deepened additions; consumer/vertical = new general additions)
+# -----------------------------------------------------------------------------
+global_sources:
+
+  newswires_general:
+    existing:
+      - reuters.com
+      - apnews.com
+      - afp.com
+      - bloomberg.com
+      - bbc.com
+      - theguardian.com
+      - nytimes.com
+      - washingtonpost.com
+      - ft.com
+      - xinhuanet.com
+      - chinadaily.com.cn
+      - cgtn.com
+      - thehindu.com
+      - indianexpress.com
+      - ekathimerini.com
+      - ansa.it
+      - repubblica.it
+      - corriere.it
+      - ilsole24ore.com
+      - dw.com
+      - spiegel.de
+      - faz.net
+      - lemonde.fr
+      - lefigaro.fr
+      - france24.com
+
+  visual_arts_museums_market:
+    existing:
+      - theartnewspaper.com
+      - artforum.com
+      - artreview.com
+      - frieze.com
+      - artbasel.com
+    added_general:
+      - news.artnet.com          # Artnet News — 24h art-market newswire
+      - artnews.com              # ARTnews (Penske)
+      - hyperallergic.com        # daily art news + criticism
+      - apollo-magazine.com      # Apollo — museum-world news
+      - artdaily.com             # high-volume daily art wire
+      - smithsonianmag.com       # arts + archaeology
+      - e-flux.com               # institutional announcements/exhibitions
+    added_trade:
+      - ocula.com                # gallery/market trade + Asia coverage
+      - artasiapacific.com       # Asia-Pacific art trade
+      - museumsassociation.org   # Museums Journal (UK museum-sector trade)
+      - blooloop.com             # attractions & museum-experience trade
+      - attractionsmanagement.com
+
+  film_cinema:
+    added_general:
+      - variety.com
+      - hollywoodreporter.com
+      - deadline.com
+      - screendaily.com          # Screen International — strong MENA/Saudi
+      - indiewire.com
+      - thewrap.com
+      - sightandsoundmagazine.com # BFI Sight & Sound
+      - lwlies.com               # Little White Lies
+    added_trade:
+      - cineuropa.org            # European film industry trade
+      - c21media.net             # global TV content trade
+      - broadcastnow.co.uk       # UK broadcast/TV trade
+      - realscreen.com           # documentary & unscripted trade
+      - kidscreen.com            # kids content trade
+      - animationmagazine.net    # animation trade
+
+  music:
+    added_general:
+      - pitchfork.com
+      - rollingstone.com
+      - billboard.com            # global Billboard (NOT SRMG's Billboard Arabia)
+      - nme.com
+      - consequence.net
+      - stereogum.com
+      - gramophone.co.uk         # classical
+      - residentadvisor.net      # electronic
+      - mixmag.net
+    added_trade:
+      - musicbusinessworldwide.com # MBW — leading music-industry trade
+      - musicweek.com            # UK music trade
+      - pollstar.com             # live/touring trade
+      - iq-mag.net               # IQ — international live-music trade
+      - completemusicupdate.com  # CMU
+
+  theatre_performing_arts:
+    added_general:
+      - playbill.com
+      - broadwayworld.com
+      - thestage.co.uk           # The Stage (UK trade)
+      - whatsonstage.com
+      - bachtrack.com            # classical/opera/dance
+    added_trade:
+      - americantheatre.org      # TCG — US theatre-sector trade
+      - artsprofessional.co.uk   # UK arts-sector trade (policy/funding)
+      - dancemagazine.com        # dance trade
+      - pointemagazine.com       # ballet trade
+      - livedesignonline.com     # live production trade
+
+  architecture_design:
+    existing:
+      - archdaily.com
+      - dezeen.com
+      - domusweb.it
+      - architecturaldigest.com
+      - designboom.com
+    added_general:
+      - archpaper.com            # The Architect's Newspaper
+      - wallpaper.com
+      - architecturalrecord.com
+      - metropolismag.com
+      - frameweb.com
+      - architectural-review.com
+    added_trade:
+      - bdonline.co.uk           # Building Design (UK architecture trade)
+      - architectsjournal.co.uk  # Architects' Journal (UK trade)
+      - worldarchitecturenews.com
+      - designweek.co.uk         # UK design trade
+      - iconeye.com              # Icon
+
+  fashion:
+    existing:
+      - voguebusiness.com
+      - wwd.com
+      - fashionnetwork.com
+      - fashionunited.com
+    added_general:
+      - businessoffashion.com    # BoF
+      - hypebeast.com
+      - harpersbazaar.com        # global/US (NOT the Arabia licensed edition)
+    added_trade:
+      - drapersonline.com        # Drapers (UK fashion trade)
+      - sourcingjournal.com      # supply-chain trade
+
+  literature_publishing:
+    added_general:
+      - lithub.com               # Literary Hub
+      - themillions.com
+    added_trade:
+      - thebookseller.com        # UK book trade
+      - publishersweekly.com     # US book trade
+      - publishingperspectives.com # intl publishing trade (rights/fairs/translation)
+      - shelf-awareness.com
+      - kirkusreviews.com
+
+  heritage_archaeology:
+    added_general:
+      - archaeology.org          # Archaeology Magazine
+      - heritagedaily.com
+      - livescience.com          # archaeology desk
+      - sciencedaily.com         # archaeology desk
+      - smithsonianmag.com
+      - whc.unesco.org           # UNESCO World Heritage newsroom
+    added_trade:
+      - the-past.com             # Current Archaeology / Current World Archaeology
+      - museumsheritage.com      # Museums + Heritage Advisor (UK trade)
+
+  culinary_arts_gastronomy:
+    existing:
+      - eater.com
+      - saveur.com
+    added_general:
+      - foodandwine.com
+      - bonappetit.com
+    added_trade:
+      - finedininglovers.com     # S.Pellegrino
+      - theworlds50best.com      # 50 Best press/news
+      - guide.michelin.com       # Michelin newsroom
+      - thecaterer.com           # UK hospitality trade
+      - nrn.com                  # Nation's Restaurant News (US trade)
+
+  cross_sector_policy_creative_economy:
+    added_general:
+      - theconversation.com      # culture/heritage desk
+    added_trade:
+      - campaignlive.com         # Campaign (global creative/advertising trade)
+      # Campaign Middle East is listed under permitted_regional
+
+# -----------------------------------------------------------------------------
+# 2. EXCLUDED SAUDI-OWNED / CONTROLLED OUTLETS
+#    (match domain OR parent; verify parent for neutral-named titles)
+# -----------------------------------------------------------------------------
+excluded_saudi:
+
+  # --- SRMG (Saudi Research and Media Group; ultimate controlling party PIF) ---
+  srmg_news:
+    - aawsat.com            # Asharq Al-Awsat (+ English/Turkish/Persian/Urdu)
+    - asharq.com            # Asharq News / Asharq Business w/ Bloomberg
+    - arabnews.com          # Arab News (+ Français/Pakistan/Japan)
+    - independentarabia.com # Independent Arabia (+ Turkish/Persian/Urdu)
+    - majalla.com           # Al Majalla / The Majalla
+    - akhbaar24.com
+  srmg_economy:
+    - aleqt.com             # Al Eqtisadiah
+    - argaam.com            # Argaam
+  srmg_sport:
+    - arriyadiyah.com       # Arriyadhiah
+    - sport24.co
+  srmg_lifestyle:           # <-- the high-risk "invisible" set (neutral names)
+    - hiamag.com            # Hia
+    - sayidaty.net          # Sayidaty
+    - abouther.com          # About Her
+    - aljamila.com          # Aljamila
+    - arrajol.com           # Arrajol
+    - ahlanwasahlan.com     # Ahlan Wa Sahlan
+    # Robb Report Arabia, LIST Magazine — verify current domains before add
+  srmg_music_culture:
+    # Billboard Arabia is SRMG-owned — EXCLUDE. Do not confuse with billboard.com
+    - billboardarabia.com
+    - mangaarabia.com       # Manga Arabia
+    - thmanyah.com          # Thmanyah / Thamaniya (podcasts; SRMG raising stake)
+
+  # --- MBC Group (PIF owns 54% since 18 Sep 2025) ---
+  mbc_news:
+    - alarabiya.net         # Al Arabiya — MBC/PIF-owned, Riyadh HQ. NOT permitted.
+    - english.alarabiya.net
+    - alhadath.net          # Al Hadath
+  mbc_streaming_studios:
+    - shahid.net            # Shahid / Shahid VIP
+    # MBC Studios, MBC Talent — editorial channels treated as Saudi source
+
+  # --- Rotana (Prince Alwaleed bin Talal / Kingdom Holding) ---
+  rotana:
+    - rotana.net
+
+  # --- Royal-family / prince-owned press ---
+  royal_family_press:
+    - okaz.com.sa           # Okaz
+    - saudigazette.com.sa   # Saudi Gazette (Okaz Organization)
+    - alwatan.com.sa        # Al Watan
+    # Al-Hayat (ceased 2020; archive may surface) — treat as Saudi-owned
+
+  # --- Long-established Saudi dailies (press-establishment structures) ---
+  saudi_dailies:
+    - al-jazirah.com        # Al-Jazirah
+    - alriyadh.com          # Al-Riyadh
+    - al-madina.com         # Al-Madina
+    - alyaum.com            # Al-Yaum
+    - albiladdaily.com      # Al Bilad (Jeddah) — NOTE: separate Bahraini "Al Bilad"
+
+  # --- Nominally private but state-aligned digital ---
+  state_aligned_digital:
+    - sabq.org              # Sabq
+
+  # --- State broadcast / agency ---
+  state_broadcast_agency:
+    - spa.gov.sa            # Saudi Press Agency
+    - sbc.sa                # Saudi Broadcasting Authority / SBC
+    - ekhbariya.net         # Al-Ekhbariya
+    # Al-Thaqafeya (culture channel, SRMG-managed) — treat as Saudi source
+
+# -----------------------------------------------------------------------------
+# 3. PERMITTED NON-SAUDI REGIONAL OUTLETS  (allowed)
+# -----------------------------------------------------------------------------
+permitted_regional:
+  - thenationalnews.com     # The National (Abu Dhabi) — permitted
+  - campaignme.com          # Campaign Middle East — permitted
+  - newarab.com             # The New Arab / Al-Araby (Qatari-owned; non-Saudi)
+  - middleeasteye.net       # Middle East Eye (non-Saudi)
+
+# -----------------------------------------------------------------------------
+# 4. PERMITTED BUT LOW-TRUST FOR SAUDI-GOVERNMENT-RELATED STORIES
+#    (not Saudi-owned by parent, but run heavy Saudi promotional content)
+# -----------------------------------------------------------------------------
+low_trust_permitted:
+  - voguearabia.com         # since Jan 2025 run directly by Condé Nast; Saudi-heavy readership
+  - harpersbazaararabia.com # ITP Media Group (Dubai)
+  - gqmiddleeast.com        # ITP Media Group
+  - admiddleeast.com        # ITP Media Group
+  - timeoutriyadh.com       # ITP / Time Out (promotional)
+
+# -----------------------------------------------------------------------------
+# NOTE ON CINEMA CHAINS (subjects vs. sources):
+#   Muvi Cinemas (Fawaz Al Hokair Group) is SAUDI-OWNED -> its editorial/press
+#   channels are a Saudi source, but the chain is a valid STORY SUBJECT.
+#   VOX (Majid Al Futtaim / UAE) and AMC (US) are NOT Saudi.
+#
+# CAVEAT: ownership is dynamic. Re-verify parents quarterly (MBC 54% PIF completed
+#   Sep 2025; SRMG Thmanyah stake 51%->75% announced May 2026; Vogue Arabia moved
+#   to direct Condé Nast Jan 2025).
+# =============================================================================
