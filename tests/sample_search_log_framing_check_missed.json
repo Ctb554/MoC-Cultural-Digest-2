@@ -1,0 +1,14 @@
+{
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights", "labour/workers", "sportswashing", "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics", "oil", "academic freedom",
+    "tourism criticism", "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism", "investment scrutiny", "soft power criticism",
+    "general reputation risk", "watchdog/NGO monitoring"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": false,
+  "negative_hits_found_in_window": 0,
+  "note": "Reproduces the real 2026-07-21 regression: today's lead Regional story (Houthi blockade) named Saudi Arabia in a geopolitical/security context, so the framing check was applicable, but it was not actually run -- Al Jazeera's adversarial framing of the same story was missed as a result."
+}

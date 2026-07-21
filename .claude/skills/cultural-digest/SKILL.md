@@ -367,11 +367,39 @@ verification gates (real, in-window, not previously used).
 - **Theatre and Performing Arts:** `("Saudi Arabia" OR Saudi) AND ("The Stage" OR Playbill OR "American Theatre")`. New category added 2026-07-20 — this commission previously had no dedicated named-outlet search at all, only the generic Commissions Boolean.
 - **Travel/lifestyle (heritage and tourism crossover):** `("Saudi Arabia" OR Saudi) AND ("Condé Nast Traveler" OR "Travel and Leisure" OR AFAR OR "Travel and Tour World" OR "Hotelier Middle East" OR "Outlook Traveller")`
 
+**Named Festivals, Venues & Programs (added 2026-07-21, from a 6-month
+coverage-frequency review of international media Feb-Jul 2026).** The broad
+Saudi Culture Boolean and the Commissions Boolean above miss most of the
+specific recurring cultural programs driving actual coverage volume, because
+articles about them rarely use generic phrasing like "Saudi culture" — a
+piece on Wadi AlFann or Riyadh Fashion Week is Saudi-culture coverage but
+won't be caught by either existing Boolean. Run as one combined query (named
+programs don't dilute each other the way broad topics do, same reasoning as
+the Heritage sites query above):
+`("Diriyah Contemporary Art Biennale" OR "Diriyah Biennale" OR "Islamic Arts Biennale" OR "Desert X AlUla" OR "Wadi AlFann" OR "Wadi Al-Fann" OR "AlUla Arts Festival" OR "Winter at Tantora" OR "Riyadh Fashion Week" OR "Saudi 100 Brands" OR "Tuwaiq Sculpture" OR "Riyadh Art" OR "Noor Riyadh" OR "Zarqa Al Yamama" OR "Royal Diriyah Opera House" OR "Saudi Founding Day" OR "Year of Handicrafts" OR "Riyadh University of Arts" OR "Royal Institute of Traditional Arts")`
+Classify hits by their actual subject matter using the standard commission
+rules (a Diriyah Biennale story → Visual Arts; Riyadh Fashion Week → Fashion;
+Zarqa Al Yamama/Royal Diriyah Opera House → Theatre and Performing Arts;
+Riyadh University of Arts/Royal Institute of Traditional Arts → General
+unless the story is sector-specific). **Coverage-frequency finding this list
+is based on:** over the six months reviewed, the Diriyah Contemporary Art
+Biennale (3rd edition, JAX District, Jan-May 2026), the Venice Biennale Saudi
+Pavilion, and the AlUla cluster (Desert X AlUla, Wadi AlFann's permanent
+land-art commissions, AlUla Arts Festival) generated near-continuous
+international coverage; Riyadh Fashion Week/Saudi 100 Brands, Tuwaiq
+Sculpture, and the Saudi Cultural Years program (Calligraphy → Coffee →
+Poetry → Camel → Handicrafts → the current "Year of AI") generated strong
+recurring seasonal coverage. Re-verify this list periodically the same way as
+the People/Places lists below — festival names and editions change year to
+year.
+
 *People* — named cultural figures, by sector:
 - **Visual Arts:** `"Ahmed Mater" OR "Abdulnasser Gharem" OR "Ashraf Fayadh" OR "Manal Al Dowayan" OR "Dana Awartani" OR "Shadia Alem" OR "Sarah Abu Abdallah" OR "Sarah Mohanna Al Abdali" OR "Zahrah Al Ghamdi" OR "Safeya Binzagr"`
 - **Film:** `"Haifaa Al-Mansour" OR "Haifaa Al Mansour"`
 - **Fashion:** `"Waad Aloqaili" OR "Yahya Albishri" OR "Razan Alazzouni" OR "Mona Al Shebil" OR "Adnan Akbar" OR "Tima Abid" OR "Kawthar Alhoraish" OR "Eman Alajlan" OR "Khadija Al Sunaydi"`
 - **Commission Leadership (added 2026-07-21, partially verified only — see caveat below):** `"Dina Amin" OR "Sultan Al-Bazie" OR "Hamed Fayez"`. These three are independently confirmed as of 2026-07-21: Dina Amin (Visual Arts Commission CEO since 2020, confirmed still serving via a July 2025 interview), Sultan Al-Bazie (Theatre and Performing Arts Commission CEO, confirmed via the commission's own official site), Hamed Fayez (Vice Minister, already covered above). **The other 8 commissions' CEOs are NOT yet in this list** — research hit a genuine conflict (the Film Commission shows as led by "Abdullah Al-Eyaf" on one source and "Abdullah Alqahtani" on another, not resolved here) and found no confirmed-current name at all for Heritage, Museums, Culinary Arts, Architecture and Design, Literature/Publishing/Translation, Libraries, or Fashion Commission. The Music Commission's only found name (Paul Pacifico) is from a 2022 appointment announcement and needs re-verification, not just re-use, since executive tenures in this space can be short. **Do not add a name to this Boolean without independently verifying it's current** — an unverified or stale name in a government digest's own search list is worse than not having it. Complete this list via a dedicated research pass, or ideally by pulling the confirmed-current roster directly from the Ministry's own site or a trusted internal source, rather than incremental web searches.
+- **Fashion Commission (added 2026-07-21):** `"Burak Cakmak"`. Confirmed as Fashion Commission CEO via a direct WWD interview (Oct 2025) discussing Riyadh Fashion Week's growth; this fills the Fashion Commission gap the entry above flags as missing.
+- **Non-commission cultural bodies (added 2026-07-21, from the 6-month coverage-frequency review — not commission CEOs, but named figures generating regular international coverage of Saudi cultural programs):** `"Aya Al-Bakree" OR "Suzan Alyahya" OR "Antonia Carver"`. Aya Al-Bakree is CEO of the Diriyah Biennale Foundation (organiser of both the Diriyah Contemporary Art Biennale and the Islamic Arts Biennale) — confirmed via SCMP coverage of the 2026 Diriyah Biennale. Suzan Alyahya is CEO of the Royal Institute of Traditional Arts (Wrth), a Quality of Life Program initiative under the Ministry — confirmed via the institute's own site. Antonia Carver directs Art Jameel (Hayy Jameel, Jeddah) and curated the Saudi Pavilion at the 2026 Venice Biennale — she is not a Saudi government employee, but her name recurs across Saudi Pavilion and Art Jameel coverage often without the words "Saudi culture" appearing. **None of these three should be read as MoC staff or as implying Ministry ownership of their institutions** — the Diriyah Biennale Foundation and Wrth are PIF/Quality-of-Life-Program bodies, and Art Jameel is an independent philanthropic foundation; attribute accurately per the do-not-overclaim rule elsewhere in this playbook.
 
 *Places* — named heritage and archaeological sites, verified against
 UNESCO's official list (Saudi Arabia currently has 8 inscribed World
@@ -405,6 +433,35 @@ workers, sportswashing, PIF scrutiny, Saudi-Iran/regional geopolitics, oil,
 academic freedom, tourism criticism, religious tourism/Mecca commercialization,
 Vision 2030 criticism, investment scrutiny, soft power criticism, general
 reputation risk.
+
+**Adversarial-framing check on the day's own top Regional story (added
+2026-07-21, closes a real regression).** The themed searches above will
+usually miss this case: a comparison against a real prior edition (21 July
+2026) showed that when the General/Macro Press sweep's lead story concerns
+Saudi Arabia directly (e.g. a regional-security or geopolitical event), one
+edition correctly pulled a Negative Articles item from it while a later
+automated run did not, leaving Negative Articles empty on a day where a real
+negative item existed. The cause: none of the themed searches above are
+built to catch "the same story, framed adversarially by a different outlet"
+— they are categorical (human rights, labour, PIF, etc.), not comparative.
+**Required step:** whenever the General/Macro Press sweep surfaces a lead
+story that names Saudi Arabia in a geopolitical/security/conflict context,
+check 2-3 additional outlets' coverage of that *same* underlying event
+specifically for framing that casts Saudi Arabia as aggressor, oppressor, or
+otherwise adversarially (watch in particular for outlets with a documented
+state-alignment or adversarial-source caveat elsewhere in this playbook,
+e.g. Al Jazeera, Middle East Eye, Iranian state media) — this is a distinct
+check from corroborating facts, and from the themed searches above. If such
+framing exists, it goes in its own Negative Articles item citing the
+framing outlet, even though the underlying event is the same one already
+covered in Saudi Arabia/Regional/General. Do not treat "we already covered
+this story in General" as a reason to skip this check or as grounds to
+leave Negative Articles empty — same-event coverage in two sections, each
+capturing a different angle (factual event vs. adversarial framing), is the
+correct pattern, not a duplicate to avoid. Record in `search_log.json`
+whether this check was run and what it found, using the same
+`negative_hits_found_in_window` field — a hit found this way counts toward
+that total exactly like a themed-search hit.
 
 **Watchdog/NGO monitoring — made mechanical 2026-07-20, same fix as the
 other two outlet lists above.** This was previously one combined query
@@ -442,9 +499,19 @@ audit failure, not a free pass. Minimum schema:
 {
   "negative_searches_run": true,
   "negative_themes_searched": ["human rights", "labour/workers", "...", "watchdog/NGO monitoring"],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
   "negative_hits_found_in_window": 0
 }
 ```
+
+`adversarial_framing_check_applicable` is `true` only when the General/Macro
+Press sweep's lead story names Saudi Arabia in a geopolitical/security/
+conflict context (see the Adversarial-framing check above); `false` on a day
+with no such lead story, in which case `adversarial_framing_check_run` may
+also be `false` without penalty. When applicable is `true`, `run` must also
+be `true` or the empty-Negative-Articles justification does not hold —
+same fail-closed principle as `negative_searches_run` below.
 
 Set `negative_searches_run: true` only once every theme in this section
 (including the watchdog/NGO search) was actually run this cycle — not
@@ -563,8 +630,31 @@ below for why this stays a warning rather than a block.
 - Avoid weak, hyper-local, or poor-quality outlets and raw press-release
   wires (e.g. PR Newswire, EIN Presswire) unless they're the only source for
   a genuinely significant story.
-- Use the most authoritative/international source when multiple outlets
-  cover the same story; do not pad with weak duplicates.
+- **Use the most authoritative/international source when multiple outlets
+  cover the same story; do not pad with weak duplicates.** This rule has one
+  genuine ambiguity, exposed by comparing two real 21 July 2026 editions of
+  the same underlying event (a Houthi naval blockade on Saudi Arabia): one
+  edition wrote three bullets (Nikkei on the oil-export exposure, Bloomberg
+  on the coalition's protective response, Euronews on the Bab el-Mandeb
+  chokepoint's tourism/heritage exposure); the other wrote one bullet
+  (Nikkei only), explicitly reasoning "use the single most authoritative
+  source, don't pad duplicates." Both readings are defensible under the rule
+  as it was written before this clarification — **this is the resolution:**
+  "duplicate coverage" means multiple outlets reporting the *same fact* with
+  no material difference in angle (e.g. three wire services all reporting
+  "X happened" with the same details) — collapse these to one bullet citing
+  the most authoritative source. It does NOT mean multiple outlets covering
+  the same underlying event from **materially different, individually
+  newsworthy angles** (e.g. one outlet on the market/economic exposure,
+  another on the security/diplomatic response, another on the
+  tourism/reputational exposure) — these are distinct analytical angles on
+  one event and each earns its own bullet, citing its own source, the same
+  way the "Adversarial-framing check" above treats a differently-framed
+  angle on the same event as its own Negative Articles item rather than a
+  duplicate to fold away. The test: would removing this bullet lose an
+  analytical point the digest doesn't make anywhere else? If yes, it is not
+  a duplicate. If the bullet would say nothing beyond what another bullet on
+  the same event already says, it is a duplicate — collapse it.
 - Do not pad with weak stories if Saudi/MoC coverage is genuinely limited on
   a given day — a short Saudi/Regional section is more honest than a padded
   one, per the original brief's explicit instruction on this point.

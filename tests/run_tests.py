@@ -210,6 +210,48 @@ def test_empty_negative_ladder():
     check("missing search log entirely -> fails (fail-closed default)", not result.ok(), "expected failure")
 
 
+def test_adversarial_framing_check_regression():
+    """
+    Regression test for the real 2026-07-21 incident: an automated run left
+    Negative Articles empty on a day where the lead Regional story (a Houthi
+    naval blockade on Saudi Arabia) carried adversarial framing in another
+    outlet's coverage (Al Jazeera's "oppressive siege" framing) -- a prior,
+    non-automated edition correctly captured this as its own Negative item;
+    the automated run's themed negative searches genuinely found nothing
+    in-window and so passed the (then-only) negative_searches_run check,
+    even though the actual gap was never having checked for adversarial
+    framing of the day's own top story in the first place.
+    """
+    print("\n== Adversarial-framing check: closes the 2026-07-21 regression ==")
+    md_path = TESTS_DIR / "sample_empty_negative_digest.md"
+    missed_log = str(TESTS_DIR / "sample_search_log_framing_check_missed.json")
+    satisfied_log = str(TESTS_DIR / "sample_search_log_framing_check_satisfied.json")
+
+    result = run_audit_on(md_path, search_log_path=missed_log)
+    check("applicable-but-not-run framing check -> fails (this is the regression)",
+          not result.ok(), "expected failure")
+    check("failure message names the framing-check gap specifically",
+          any("adversarial_framing_check" in f for f in result.hard_failures),
+          result.hard_failures)
+    check("coverage_ladder marks Negative Articles empty-unjustified-FAIL",
+          result.coverage_ladder.get("Negative Articles", {}).get("rung") == "empty-unjustified-FAIL",
+          result.coverage_ladder)
+
+    result = run_audit_on(md_path, search_log_path=satisfied_log)
+    check("applicable-and-run framing check -> passes", result.ok(), result.hard_failures)
+    check("coverage_ladder marks Negative Articles empty-justified",
+          result.coverage_ladder.get("Negative Articles", {}).get("rung") == "empty-justified",
+          result.coverage_ladder)
+
+    # Backward compatibility: an old-schema log with no framing-check fields
+    # at all (framing check not yet applicable/reported) must still pass
+    # exactly as before this fix -- this is what every pre-2026-07-21 log
+    # looks like, and none of them should start failing retroactively.
+    result = run_audit_on(md_path, search_log_path=CONFIRMED_LOG)
+    check("old-schema log (no framing-check fields) still passes -- backward compatible",
+          result.ok(), result.hard_failures)
+
+
 def test_minimum_coverage_cannot_be_waived_for_saudi_or_global():
     print("\n== Minimum coverage: Saudi/Regional and Global can never be waived ==")
     md = """# Headlines, 1 January 2028
@@ -404,6 +446,7 @@ TESTS = [
     test_url_resolution_pass_and_fail_logic,
     test_cli_crash_path_writes_status_and_exits_nonzero,
     test_empty_negative_ladder,
+    test_adversarial_framing_check_regression,
     test_minimum_coverage_cannot_be_waived_for_saudi_or_global,
     test_israeli_outlet_hard_fail,
     test_register_rolling_window,

@@ -352,6 +352,20 @@ def check_minimum_coverage(blocks, result, search_log_path=None):
     else:
         search_log = load_search_log(search_log_path)
         searches_confirmed_run = bool(search_log and search_log.get("negative_searches_run") is True)
+
+        # Added 2026-07-21, closing a real regression: themed negative
+        # searches alone can legitimately find nothing while the day's own
+        # top Regional story still carries adversarial framing from a
+        # different outlet (e.g. Al Jazeera framing a Houthi-blockade story
+        # as Saudi Arabia besieging Yemen) -- a case the themed searches are
+        # not built to catch. When the log says this check was applicable,
+        # it must also say it was run, or the empty-Negative justification
+        # does not hold, same fail-closed principle as negative_searches_run.
+        framing_applicable = bool(search_log and search_log.get("adversarial_framing_check_applicable") is True)
+        framing_run = bool(search_log and search_log.get("adversarial_framing_check_run") is True)
+        framing_check_satisfied = (not framing_applicable) or framing_run
+
+        searches_confirmed_run = searches_confirmed_run and framing_check_satisfied
         result.coverage_ladder["Negative Articles"] = {
             "count": 0, "minimum_required": 0, "met": searches_confirmed_run,
             "rung": "empty-justified" if searches_confirmed_run else "empty-unjustified-FAIL",
@@ -362,6 +376,18 @@ def check_minimum_coverage(blocks, result, search_log_path=None):
                 f"{search_log_path} confirming the negative/watchdog "
                 f"searches were run and returned nothing in-window -- this "
                 f"is a legitimate outcome, not a sourcing failure"
+            )
+        elif framing_applicable and not framing_run:
+            result.fail(
+                "'Negative Articles' is empty and the search log flags "
+                f"adversarial_framing_check_applicable=true (today's lead "
+                f"Regional story names Saudi Arabia in a geopolitical/"
+                f"security context) but adversarial_framing_check_run is "
+                f"not true -- this is the exact gap that produced a real "
+                f"regression on 2026-07-21 (a Houthi-blockade story with "
+                f"adversarial Al Jazeera framing was missed); run the check "
+                f"described in Stage 2's 'Adversarial-framing check' before "
+                f"treating this section as legitimately empty"
             )
         else:
             result.fail(
