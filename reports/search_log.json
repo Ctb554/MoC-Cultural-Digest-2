@@ -1,0 +1,34 @@
+{
+  "edition_date": "2026-07-21",
+  "coverage_window_utc": ["2026-07-20T08:30:00Z", "2026-07-21T08:30:00Z"],
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "negative_hits_found_in_window": 5,
+  "notes": "In-window negative/reputational coverage was dominated entirely by the 20 July 2026 Houthi Red Sea naval blockade declaration on Saudi Arabia (surfacing under both the Saudi-Iran/regional-geopolitics and oil themes). All other watchdog/NGO and negative-theme results were out-of-window (RSF 2026 Index in April, Freedom House 2026 report in May, Amnesty items 9 July / June, various annual reports). Israeli outlets excluded per hard rule; Saudi-owned outlets excluded per hard rule."
+}
