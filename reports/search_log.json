@@ -1,0 +1,34 @@
+{
+  "edition_date": "2026-07-21",
+  "coverage_window": "2026-07-20 to 2026-07-21 (last 24 hours from run start)",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "negative_hits_found_in_window": 0,
+  "notes": "All 13 negative/reputational themes plus the watchdog/NGO monitoring list were searched separately (never combined). No critical or reputational coverage of Saudi Arabia from a non-excluded (non-Saudi-owned, non-Israeli) outlet could be date-confirmed as published 2026-07-20 or 2026-07-21. Nearest candidates were all out of window (e.g. ABC News 09 Jul, Al Arabiya 16 Jul, Al Jazeera 14 Jul; NGO material from earlier in 2026). No criticism was manufactured to fill the section."
+}
