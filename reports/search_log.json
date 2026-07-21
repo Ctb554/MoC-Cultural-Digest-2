@@ -1,0 +1,34 @@
+{
+  "edition_date": "2026-07-21",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics (Yemen/Houthi)",
+    "oil/OPEC",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "negative_hits_found_in_window": 3,
+  "notes": "All 13 reputational themes and all 9 watchdog/NGO organisations were searched individually. The only in-window (2026-07-20/21) reputational coverage was the Houthi maritime-blockade story and its adversarial framing of Saudi Arabia (Al Jazeera, NBC/Reuters, Euronews). All NGO/watchdog material surfaced was pre-window (5-15 July) and rejected. One negative item selected for the digest (Al Jazeera 'what to know' explainer carrying the Houthi siege narrative)."
+}
