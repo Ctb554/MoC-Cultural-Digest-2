@@ -1,0 +1,37 @@
+{
+  "edition_date": "2026-07-22",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/migrant workers",
+    "sportswashing",
+    "PIF (Public Investment Fund) scrutiny",
+    "Saudi-Iran / regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism / Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_finding": "Lead Regional story (Houthi maritime embargo on Saudi Arabia) names Saudi Arabia in a security/geopolitical context. Checked Al Jazeera and Middle East Eye framing of the same event; Al Jazeera (Qatari state-funded) in-window coverage platforms the Houthi characterisation of Saudi actions as an 'unjust and oppressive siege' and references Saudi airstrikes on Sanaa airport, casting the Kingdom as a party to the conflict. Captured as one Negative Articles item.",
+  "negative_hits_found_in_window": 1,
+  "notes": "Themed negative searches and all 9 watchdog/NGO searches returned no in-window (2026-07-21/22) reputational items outside the security cluster; every negative item found (Amnesty Filipino domestic workers 9 Jul, CPJ 10 Jul, tourism-risk 15 Jul/Mar, RSF Index Apr) was out of window. The one in-window negative item comes from the adversarial-framing check on the day's lead security story."
+}
