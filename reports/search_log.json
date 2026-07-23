@@ -1,0 +1,43 @@
+{
+  "edition_date": "2026-07-23",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_notes": "Lead Regional stories (US-Saudi civil nuclear deal; Houthi tanker strikes on Saudi vessels in the Red Sea) name Saudi Arabia in a geopolitical/security context. Checked Al Jazeera (largely factual/neutral on both events), Middle East Eye (Qatar-linked), and Iranian state media (Press TV). Two adversarially-framed in-window items confirmed and included in Negative Articles: Middle East Eye (Saudi framed as reckless proliferation risk) and Press TV (Saudi framed as aggressor/besieger under 'siege for a siege').",
+  "negative_hits_found_in_window": 3,
+  "negative_hits_detail": [
+    "Middle East Eye - nuclear proliferation-risk framing (adversarial-framing check)",
+    "Press TV (Iranian state media) - 'siege for a siege' aggressor framing (adversarial-framing check)",
+    "AGBI - Sindalah/NEOM giga-project delivery-scrutiny feature (themed: Vision 2030 delivery / investment scrutiny), surfaced via the General/Macro Press outlet sweep"
+  ],
+  "themed_negative_and_watchdog_direct_hits": 0,
+  "notes": "All 13 negative themes and all 9 watchdog/NGO organizations were searched individually; none produced a standalone in-window (2026-07-22 06:00 UTC to 2026-07-23) hit from an eligible outlet. The three Negative Articles items all derive from the day's two lead Saudi stories (two via the adversarial-framing check) plus one giga-project delivery-scrutiny feature surfaced via the outlet sweep. Israeli outlets (e.g. Haaretz coverage of the nuclear deal's Israeli-concern angle) and Saudi-owned outlets were excluded per the hard source-eligibility rules."
+}
