@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-07-24T06:32:16.526861+00:00",
+  "markdown_path": "reports/MoC_Daily_Cultural_Digest_24Jul26_D1.md",
+  "reader_used": "tavily",
+  "delivery_result": "dropbox: uploaded to 05_Claude Test (test folder)",
+  "url_resolution_check": "enabled",
+  "register_window_days": 60,
+  "run_error": null,
+  "section_item_counts": {
+    "Saudi Arabia/Regional": 5,
+    "Global": 4,
+    "Negative Articles": 2
+  },
+  "minimum_coverage_ladder": {
+    "Saudi Arabia/Regional": {
+      "count": 5,
+      "minimum_required": 1,
+      "met": true,
+      "rung": "has-content"
+    },
+    "Global": {
+      "count": 4,
+      "minimum_required": 1,
+      "met": true,
+      "rung": "has-content"
+    },
+    "Negative Articles": {
+      "count": 2,
+      "minimum_required": 0,
+      "met": true,
+      "rung": "has-content"
+    }
+  },
+  "audit": {
+    "result": "pass",
+    "hard_failures": [],
+    "warnings": []
+  },
+  "named_entity_lists_last_verified": "2026-07-20",
+  "named_entity_lists_days_old": 4,
+  "stale_named_entity_lists": false
+}

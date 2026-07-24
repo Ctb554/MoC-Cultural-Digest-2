@@ -1,0 +1,37 @@
+{
+  "edition_date": "2026-07-24",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_finding": "Lead Regional story is the US-Saudi civilian nuclear 123 agreement (signed 22-23 July 2026) alongside the Houthi Red Sea tanker attacks. Checked additional outlets for adversarial framing of Saudi Arabia on the same event: Guardian carried a Kenneth Roth (former HRW head) opinion piece framing the deal against the Kingdom's rights record; Foreign Policy and NYT framed it as triggering a Middle East nuclear arms race; Al Jazeera (Qatari state-funded, flagged) questioned the deal's security implications and normalisation strings. These are captured as Negative Articles items.",
+  "negative_hits_found_in_window": 2,
+  "notes": "Watchdog/NGO sweep run one-by-one across all nine organisations; every organisation had recent Saudi material (Amnesty executions/Filipino domestic workers, HRW abusive labour governance, Freedom House 'Not Free' 9/100, RSF/CPJ jailed-journalist tallies, CIVICUS 'Closed' rating, ALQST/DAWN/PEN advocacy) but none published a report dated inside the 24-hour coverage window; recorded as run, not as in-window hits. In-window negative coverage of Saudi Arabia is confined to critical/adversarial framing of the nuclear deal."
+}
