@@ -1,0 +1,55 @@
+{
+  "edition_date": "2026-07-25",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_finding": "Lead Regional story is the Saudi-led coalition strike on Hodeidah (a Saudi geopolitical/security event). Checked additional outlets' framing of the same event; Middle East Eye (opaque funding, widely linked to Qatar) foregrounds the Houthi 'Saudi attack ... escalation for escalation' framing, casting Saudi Arabia as the party driving the confrontation. Captured as its own Negative Articles item citing the framing outlet, with the Qatar-linkage caveat noted.",
+  "negative_hits_found_in_window": 2,
+  "negative_hits": [
+    {
+      "theme": "soft power criticism",
+      "outlet": "The A.V. Club",
+      "headline": "\"Principled Al\" Yankovic turned down seven-figure offer to perform at Riyadh Comedy Festival",
+      "url": "https://www.avclub.com/weird-al-yankovic-riyadh-comedy-festival",
+      "date": "2026-07-24",
+      "classification": "culture-adjacent"
+    },
+    {
+      "theme": "Saudi-Iran/regional geopolitics (adversarial framing check)",
+      "outlet": "Middle East Eye",
+      "headline": "Houthis say Saudi attack on Hodeidah will lead to 'escalation for escalation'",
+      "url": "https://www.middleeasteye.net/live-blog/live-blog-update/houthis-say-saudi-attack-hodeidah-will-lead-escalation-escalation",
+      "date": "2026-07-25",
+      "classification": "pure geopolitics / adversarial framing"
+    }
+  ],
+  "notes": "All 9 watchdog orgs and 11 of 13 negative themes returned nothing in-window; only soft-power (Weird Al) and the regional-security event (with adversarial MEE framing) fell inside the 24h window. RSS pre-filter (scripts/rss_saudi_filter.py) ran: 19 outlets attempted, 7 candidates; feeds that failed to parse this run: HeritageDaily, Arkeonews, The Art Newspaper, Publishers Weekly (all remain covered by the WebSearch outlet sweep)."
+}
