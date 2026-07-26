@@ -1,0 +1,36 @@
+{
+  "edition_date": "2026-07-26",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_notes": "Lead Regional story (Saudi-Houthi military exchange, Aramco Jizan/Yanbu strikes) names Saudi Arabia in a geopolitical/security context. Checked Al Jazeera, Middle East Eye and Al-Monitor coverage of the same Hodeida-strike event for framing casting Saudi Arabia as aggressor; Middle East Eye (Qatar-linked) framed the Saudi strikes as aggression against civilian infrastructure ('the Saudi regime committed a major folly'). Captured as its own Negative Articles item citing the framing outlet.",
+  "negative_hits_found_in_window": 2
+}
