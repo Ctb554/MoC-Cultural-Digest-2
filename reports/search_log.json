@@ -1,0 +1,32 @@
+{
+  "edition_date": "2026-07-27",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing/artwashing",
+    "PIF scrutiny",
+    "Vision 2030 criticism",
+    "Saudi-Iran/regional geopolitics",
+    "oil/energy-corridor exposure",
+    "tourism criticism / Mecca commercialization",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_finding": "Lead Regional story (Houthi strikes on Saudi oil facilities / US-Iran war) names Saudi Arabia in a geopolitical/security context. Al Jazeera (Qatari state-funded, 2026-07-26) frames Saudi Arabia as a coalition combatant (its own air strikes on Hodeidah, decade in the Yemen civil war) rather than solely as the target of Houthi fire; captured as a Negative Articles item.",
+  "negative_hits_found_in_window": 1,
+  "notes": "Themed negative and watchdog/NGO searches returned no items published within the 24h window (all NGO reports and reputational-theme coverage predate the window). The single in-window negative item comes from the adversarial-framing check on the day's lead Regional story."
+}
