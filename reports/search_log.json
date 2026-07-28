@@ -1,0 +1,37 @@
+{
+  "edition_date": "2026-07-28",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_finding": "Lead Regional story (Iran-backed drone/missile strikes on Saudi oil infrastructure at Abqaiq/Yanbu/Jazan and Saudi's defensive posture) names Saudi Arabia in a geopolitical/security context. Checked Al Jazeera, Middle East Eye and Iranian state media (Press TV) for framing casting Saudi Arabia as aggressor. Al Jazeera and MEE framed Saudi as victim/responder in-window; the Saudi-as-aggressor 'Hodeidah strikes' framing was all 24-25 July (out of window, already covered in prior editions). Press TV (Iranian state) supplied an in-window (27 Jul) adversarial framing of Saudi Arabia as aggressor ('reciprocal siege'), captured as a Negative Articles item.",
+  "negative_hits_found_in_window": 1,
+  "notes": "Genuinely quiet day for Saudi-culture-specific coverage: sector/people/place named-entity sweep returned zero in-window items. All 9 watchdog NGOs searched individually; none issued an in-window Saudi statement. General/Macro Press (34 outlets) and Global direct outlet sweep (23 outlets) worked through in full, one outlet at a time. Reader path: Tavily used for bot-walled NYT and WWD."
+}

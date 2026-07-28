@@ -88,3 +88,19 @@ never expiring -- so malformed entries never silently lose protection.
 2026-07-27 | reconciled-from-Dropbox | newsweek.com |  | https://www.newsweek.com/antoni-gaudi-118-year-old-lost-nyc-skyscraper-design-interiors-unveiled-12240546
 2026-07-27 | reconciled-from-Dropbox | theartnewspaper.com |  | https://www.theartnewspaper.com/2026/07/27/peru-earthquake-damages-16th-century-church-iglesia-apostol-santiago
 2026-07-27 | reconciled-from-Dropbox | theguardian.com |  | https://www.theguardian.com/commentisfree/2026/jul/26/the-guardian-view-on-a-us-saudi-nuclear-agreement-an-offer-that-further-erodes-international-safeguards
+
+<!-- 2026-07-28 edition (MoC_Daily_Cultural_Digest_28Jul26_D1) -->
+2026-07-28 | Saudi Arabia/Regional | The Week | Why drone attack on world's largest oil processing plant in Saudi's Abqaiq poses geopolitical risk | https://www.theweek.in/news/middle-east/2026/07/27/saudi-arabia-oil-refinery-attack-abqaiq-fire-impact.html
+2026-07-28 | Saudi Arabia/Regional | Al-Monitor | Red Sea shipping slows after Houthi attack on Saudi Arabia, data shows | https://www.al-monitor.com/originals/2026/07/red-sea-shipping-slows-after-houthi-attack-saudi-arabia-data-shows
+2026-07-28 | Saudi Arabia/Regional | AGBI | Yanbu attacks expose Saudi oil export vulnerability | https://www.agbi.com/analysis/oil-and-gas/2026/07/yanbu-attacks-expose-saudi-oil-export-vulnerability/
+2026-07-28 | Saudi Arabia/Regional | The New York Times | How the Houthis Cornered Saudi Arabia Into a New Battle | https://www.nytimes.com/2026/07/27/world/middleeast/houthis-saudi-arabia-iran-war.html
+2026-07-28 | Negative Articles | Press TV | Saudi oil loading falls 40% at Red Sea port amid Yemen's reciprocal siege | https://www.presstv.co.uk/Detail/2026/07/27/773191/Saudi-oil-loading-volumes-fall-40--
+2026-07-28 | Global | Arkeonews | Unique Medieval 'House on Wheels' from the Kimak Khaganate Unearthed in Kazakhstan | https://arkeonews.net/unique-medieval-house-on-wheels-from-the-kimak-khaganate-unearthed-in-kazakhstan/
+2026-07-28 | Global | Archaeology Magazine | Funerary Complex Unearthed in Northern Egypt | https://archaeology.org/news/2026/07/27/funerary-complex-unearthed-in-northern-egypt/
+2026-07-28 | Global | The Art Newspaper | Music, Fashion, Film—Photography? Charli xcx image acquired by London's National Portrait Gallery | https://www.theartnewspaper.com/2026/07/27/music-fashion-film-photography-charli-xcx-image-acquired-by-londons-national-portrait-gallery
+2026-07-28 | Global | Blooloop | Franklin Institute Unveils Immersive 'Star Wars' Exhibition | https://blooloop.com/news/franklin-institute-unveils-star-wars
+2026-07-28 | Global | Hyperallergic | Betye Saar, Who Opened Portals Between Worlds, Dies at 99 | https://hyperallergic.com/betye-saar-who-opened-portals-between-worlds-dies-at-99/
+2026-07-28 | Global | The Art Newspaper | Low Kee Hong chosen to curate Biennale of Sydney's next edition | https://www.theartnewspaper.com/2026/07/27/biennale-sydney-curator-2028-low-kee-hong
+2026-07-28 | Global | WWD | 75 Fashion Deals and Counting for 2026, According to Capstone Fashion Report | https://wwd.com/business-news/mergers-acquisitions/fashion-ma-deals-2026-capstone-report-1239083357/
+2026-07-28 | Global | ArchDaily | From Data to Digital Twins: Japan's PLATEAU Project Offers Open-Access Models of More Than 250 Cities | https://www.archdaily.com/1040412/from-data-to-digital-twins-japans-plateau-project-offers-open-access-models-of-more-than-250-cities
+2026-07-28 | Global | The Bookseller | Atlantic Books acquires story of Keir Starmer's 'unfulfilled premiership' | https://www.thebookseller.com/rights/atlantic-books-acquires-story-of-keir-starmers-unfulfilled-premiership
