@@ -1,0 +1,34 @@
+{
+  "edition_date": "2026-07-28",
+  "coverage_window": "last 24 hours from run start (~2026-07-27T07:48Z to 2026-07-28T07:48Z)",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights / executions",
+    "labour / migrant workers / NEOM",
+    "sportswashing / PIF scrutiny",
+    "Vision 2030 / tourism criticism / NEOM scale-back",
+    "academic freedom",
+    "religious tourism / Mecca commercialization",
+    "soft power criticism",
+    "investment scrutiny",
+    "Saudi-Iran / regional geopolitics",
+    "oil",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_finding": "Lead Regional story (Saudi-Houthi/Red Sea conflict) names Saudi Arabia in a geopolitical/security context, so the check was applicable and run. In-window (27-28 Jul) eligible coverage of the same event was factual or Saudi-defensive (e.g. Al Jazeera 27 Jul 'Saudi Arabia defends against drone strikes'); explicit Saudi-as-aggressor framing (Hodeidah strikes) was 24 Jul and out of window, and the one Israeli-outlet hit (jpost) is a hard exclusion. The one in-window adversarial/critical item is the Foreign Policy op-ed on the US-Saudi nuclear deal, included as the single Negative Articles item.",
+  "negative_hits_found_in_window": 1,
+  "notes": "First real edition (bootstrap): empty do-not-reuse register and editorial learnings. RSS pre-filter ran; feeds that failed to parse this run: HeritageDaily, Arkeonews, The Art Newspaper, Publishers Weekly (all still covered by the WebSearch outlet sweep). In-window window was dominated by the Saudi-Houthi/Red Sea security-and-oil crisis; Saudi-specific culture coverage from eligible (non-Saudi-owned) outlets was genuinely sparse, and global-culture coverage clustered on 24 Jul (just outside the window), so the Global section is intentionally not padded."
+}
