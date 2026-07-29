@@ -1,0 +1,38 @@
+{
+  "edition_date": "2026-07-29",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_note": "Lead Regional story = US-Saudi joint strikes on Iran-backed militias in Iraq (28 Jul). Checked Al Jazeera, Middle East Eye, Press TV. Strongest adversarial framing = Middle East Eye 'Iraqi paramilitary force condemns Saudi-US attacks on headquarters' (29 Jul), included as a Negative Articles item.",
+  "negative_hits_found_in_window": 4,
+  "negative_hits_included": 2,
+  "negative_hits_included_notes": "Middle East Eye (adversarial framing of lead event) and Human Rights Watch (executions of Ethiopian migrants). HRW 'Strikes Endangering Civilians' (28 Jul) and Al Jazeera Iraq-strikes (weak/factual adversarial) verified in-window but not included to avoid duplicative war-framing."
+}
