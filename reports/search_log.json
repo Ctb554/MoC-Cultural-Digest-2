@@ -1,0 +1,36 @@
+{
+  "edition_date": "2026-07-30",
+  "coverage_window_hours": 24,
+  "run_start": "2026-07-30T06:10:00+00:00",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "soft power criticism",
+    "censorship/press freedom",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "DAWN",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "negative_hits_found_in_window": 1,
+  "notes": "Lead Regional story of the window is the joint US-Saudi strikes on Iran-backed militias in Iraq (29 Jul 2026), which names Saudi Arabia in a geopolitical/security context, so the adversarial-framing check was applicable and was run. It found in-window adversarial framing (Al Jazeera and Iraqi official bodies casting the strikes as a 'flagrant violation of sovereignty', PMF deaths, protests calling for the Saudi ambassador's expulsion) -> one Negative Articles item. Themed human-rights/labour/watchdog searches surfaced substantive material (HRW Ethiopian-migrant executions, Amnesty Filipino domestic workers, Freedom House 'Not Free' 9/100) but the concrete items were dated 27-28 Jul, i.e. just OUTSIDE the strict 24h window, so they are used as Risk context rather than as separate in-window Negative bullets."
+}
