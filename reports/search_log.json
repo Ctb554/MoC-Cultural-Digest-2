@@ -1,0 +1,36 @@
+{
+  "edition_date": "2026-07-31",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "DAWN",
+    "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "negative_hits_found_in_window": 2,
+  "note": "Adversarial-framing check was applicable (the day's lead Regional story names Saudi Arabia in a geopolitical/security context: the Red Sea maritime coalition and a prepared offensive against the Houthis). The check was run against Al Jazeera, Middle East Eye and Iranian state media (Press TV/Tasnim/Tehran Times/Mehr). Al Jazeera's in-window pieces were neutral/explanatory; MEE's Saudi-blockade coverage and Iranian state media's hostile items were all dated 24-29 July (out of window). One in-window adversarial framing was found (Antiwar.com, 30 July, citing a Houthi official casting Saudi Arabia as the escalating aggressor) and is carried in Negative Articles. Separately, an in-window human-rights item (BBC, 30 July, the Ahmed al-Doush case) was surfaced by RSS pre-filter and web search and is also carried in Negative Articles. No watchdog/NGO published a Saudi-specific item dated 30-31 July."
+}
