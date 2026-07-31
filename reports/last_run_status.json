@@ -2,7 +2,7 @@
   "timestamp": "2026-07-31T06:28:29.674161+00:00",
   "markdown_path": "reports/MoC_Daily_Cultural_Digest_31Jul26_D1.md",
   "reader_used": "tavily",
-  "delivery_result": "not_attempted",
+  "delivery_result": "success: uploaded to Dropbox test folder (05_Claude Test)",
   "url_resolution_check": "enabled",
   "register_window_days": 60,
   "run_error": null,
