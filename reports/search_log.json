@@ -1,0 +1,39 @@
+{
+  "edition_date": "2026-08-01",
+  "coverage_window": "2026-07-31T06:12Z to 2026-08-01T06:12Z",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "executions/death penalty",
+    "press freedom/journalists",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030/NEOM criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_notes": "Lead Regional story names Saudi Arabia in a geopolitical/security context (Houthi-Saudi maritime flare-up/blockade). Checked Al Jazeera and Middle East Eye coverage of the same event. In-window (31 Jul/1 Aug) adversarial framing found: Middle East Eye (Qatar-linked), relaying Iran's state news agency, amplifying the Houthi armed-forces claim that eight Saudi tankers were forced to reroute and that Yemeni forces would keep striking Saudi vessels -- an adversarial 'effective siege on the Kingdom' framing. Included as the Negative Articles item. Earlier adversarial Hodeidah-strike coverage (Saudi-as-aggressor) existed 24-29 Jul but is out of the 24h window.",
+  "negative_hits_found_in_window": 1,
+  "notes": "Watchdog/NGO reports on executions, migrant executions, labour, and civilian-endangering strikes are all real and current but dated 28 Jul or earlier -- out of the strict 24h window, so not used as in-window items. No in-window Saudi-specific negative story from an eligible outlet besides the single adversarial-framing item above."
+}
