@@ -1,0 +1,36 @@
+{
+  "edition_date": "2026-08-02",
+  "coverage_window_utc": "2026-08-01T06:09:00Z to 2026-08-02T06:09:00Z",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil/OPEC",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "negative_hits_found_in_window": 0,
+  "note": "Every negative theme and all nine watchdog organisations were searched individually. No credible, source-eligible outlet published in-window (2026-08-01 06:09Z to 2026-08-02 06:09Z) Saudi-negative coverage. The day's substantive adversarial cluster (joint Saudi-US strikes on Iraq near Karbala; potential Saudi escalation against Yemen's Houthis) is real but its credible coverage (Al Jazeera, Middle East Eye, NPR, Washington Post) is all dated 2026-07-27 to 2026-07-31 -- outside the 24h window. The adversarial-framing check was applicable (the lead Regional story names Saudi Arabia in a geopolitical/security context) and was run: the only technically in-window adversarial item found was a low-credibility Russian propaganda aggregator (news-pravda.com reposting RT/Telegram) casting Saudi Arabia as massing for an offensive on Yemen. It was excluded on source-eligibility grounds (poor-quality/non-credible outlet per SKILL.md Stage 2), not counted, and not written into the digest; including such a source in a Ministry deliverable would be actively misleading. A Tehran Times candidate was unverifiable (HTTP 503 on repeated fetches) and therefore not counted. Negative Articles is legitimately empty this cycle."
+}
