@@ -1,0 +1,45 @@
+{
+  "edition_date": "2026-08-04",
+  "coverage_window_utc": "2026-08-03T06:09:00Z/2026-08-04T06:09:00Z",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/migrant workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics (adversarial framing)",
+    "oil/energy criticism",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft-power/culture-washing criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_outlets_checked": [
+    "Al Jazeera",
+    "Middle East Eye",
+    "Press TV",
+    "Tasnim",
+    "Mehr",
+    "Fars"
+  ],
+  "adversarial_framing_finding": "No adversarially-framed piece on the day's lead Saudi geopolitical story (US-Iran war / energy-shipping) with a confirmed in-window (2026-08-03 06:09Z .. 2026-08-04 06:09Z) publication timestamp. The nearest adversarial items (Iranian state media casting the Gulf states as complicit; a Mehr/Tasnim 'blackmail the Gulf rulers' line) were dated 2026-08-02 or earlier, one day before the window opens.",
+  "negative_hits_found_in_window": 0,
+  "note": "Negative Articles is legitimately empty this edition: all 13 themes, all 9 watchdog organisations, and the adversarial-framing check on the day's lead Regional story were run and returned nothing with a confirmed in-window publication date. A culture digest must not manufacture criticism to fill a quota."
+}
