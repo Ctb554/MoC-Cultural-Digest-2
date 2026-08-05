@@ -1,0 +1,37 @@
+{
+  "edition_date": "2026-08-05",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_finding": "Lead Regional story (Aramco Q2 earnings amid the US-Iran war / Strait of Hormuz closure) names Saudi Arabia in a geopolitical/security context, so the check was applicable and was run. Checked Middle East Eye, The New Arab and Al Jazeera coverage of the same event: none framed Saudi Arabia as aggressor/oppressor; all frame Iran as the disruptor and Saudi as beneficiary/victim of the disruption. No adversarial-framing item resulted.",
+  "negative_hits_found_in_window": 1,
+  "negative_hits_note": "One genuine in-window reputational item: The Guardian (2026-08-04), 'Elon Musk's X latest to block Saudi dissident accounts inside kingdom' (human rights / digital repression; ALQST quoted). The Aramco/Iran-war cluster (Middle East Eye, CNN) is macro/oil coverage that frames Iran as aggressor, not adversarial to Saudi Arabia, and is not counted as a negative-on-Saudi hit. No standalone in-window statement from any of the nine watchdog NGOs."
+}
