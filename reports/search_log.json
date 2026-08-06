@@ -1,0 +1,37 @@
+{
+  "edition_date": "2026-08-06",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers rights",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_finding": "Lead Regional story (Houthi strikes on Saudi oil tankers / Red Sea blockade) names Saudi Arabia in a security/conflict context. Checked additional outlets for adversarial framing: Iranian state media (Press TV) casts Saudi Arabia as the aggressor 'blockading' Yemen and frames Houthi tanker strikes as 'retaliatory' -- captured as a Negative Articles item citing Press TV.",
+  "negative_hits_found_in_window": 1,
+  "notes": "Themed negative/watchdog searches surfaced no in-window Saudi-critical items other than the Houthi tanker-strike event itself. The X/Twitter dissident-account geo-blocking story (Saudi-as-oppressor framing) fell just outside the 24h window (2026-08-04) and was already used in the 2026-08-05 edition. The one Negative item this cycle comes from the adversarial-framing check on the day's lead Regional story."
+}

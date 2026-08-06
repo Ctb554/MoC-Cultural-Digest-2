@@ -256,3 +256,19 @@ never expiring -- so malformed entries never silently lose protection.
 2026-08-05 | reconstructed | freepressjournal.in | (reconstructed from delivered edition 2026-08-05) | https://www.freepressjournal.in/amp/bhopal/bhopal-brics-summit-to-discuss-digital-heritage-platform-unesco-nominations
 2026-08-05 | reconstructed | theguardian.com | (reconstructed from delivered edition 2026-08-05) | https://www.theguardian.com/business/ng-interactive/2026/aug/04/revealed-major-oil-firms-make-93bn-profits-amid-war-and-climate-crisis
 2026-08-05 | reconstructed | whatsonsaudiarabia.com | (reconstructed from delivered edition 2026-08-05) | https://whatsonsaudiarabia.com/2026/08/worlds-largest-date-festival-in-saudi-arabia/
+
+<!-- Edition 2026-08-06 -->
+2026-08-06 | Saudi Arabia/Regional | The New York Times | Houthis Threaten to Expand Red Sea Attacks, and Claim Strikes on Saudi Tankers | https://www.nytimes.com/2026/08/05/world/middleeast/houthis-claim-attack-saudi-arabia-tanker.html
+2026-08-06 | Saudi Arabia/Regional | Bloomberg | Trump Fuels Hopes of Hormuz Opening With Hints Deal Is Close | https://www.bloomberg.com/news/articles/2026-08-05/trump-fuels-hopes-of-hormuz-reopening-with-hints-a-deal-is-near
+2026-08-06 | Saudi Arabia/Regional | Bloomberg | Saudi Arabia Can End Houthi Blockade in the Red Sea | https://www.bloomberg.com/opinion/articles/2026-08-05/saudi-arabia-can-end-houthi-blockade-in-the-red-sea
+2026-08-06 | Saudi Arabia/Regional | Blooloop | Guggenheim Abu Dhabi appoints Valerie Hillings as inaugural director | https://blooloop.com/news/guggenheim-abu-dhabi-new-director
+2026-08-06 | Negative Articles | Press TV | Yemen will expand attacks if Saudi-led blockade continues: Analyst | https://www.presstv.co.uk/Detail/2026/08/05/773774/Yemen-attack-Saudi-Arabia-Saudi-blockade-Red-Sea-Bab-al-Mandeb-
+2026-08-06 | Global | Archaeology Magazine | Megalithic 'Giant's Tomb' Uncovered in Sardinia | https://archaeology.org/news/2026/08/05/megalithic-giants-tomb-uncovered-in-sardinia/
+2026-08-06 | Global | Arkeonews | Rare Runestone Found Beneath a Medieval Chapel in the Faroe Islands | https://arkeonews.net/rare-runestone-found-beneath-a-medieval-chapel-in-the-faroe-islands/
+2026-08-06 | Global | Arkeonews | Archaeologists Discover a 3,200-Year-Old Ceremonial Kitchen in Azerbaijan, Unique in the Caucasus | https://arkeonews.net/archaeologists-discover-a-3200-year-old-ceremonial-kitchen-in-azerbaijan-unique-in-the-caucasus/
+2026-08-06 | Global | Arkeonews | Child Burial Discovered Beneath the Temple of Zeus in Crimea - Was It a Sacrifice? | https://arkeonews.net/child-burial-discovered-beneath-the-temple-of-zeus-in-crimea-was-it-a-sacrifice/
+2026-08-06 | Global | ARTnews | Art Week NYC Names 76 Participating Galleries for Inaugural Event in November | https://www.artnews.com/art-news/news/art-week-nyc-names-2026-participating-galleries-list-1234794276/
+2026-08-06 | Global | Hyperallergic | Art Orgs That Received More COVID-Era Funding Outperforming Others, Study Finds | https://hyperallergic.com/art-orgs-that-received-more-covid-era-funding-outperforming-others-study-finds/
+2026-08-06 | Global | Hyperallergic | Advocates Rally to Stop Sale of Glasgow's Centre for Contemporary Arts | https://hyperallergic.com/advocates-rally-to-stop-sale-of-glasgows-centre-for-contemporary-arts/
+2026-08-06 | Global | Dezeen | MAD scatters boulder-like galleries across green-roofed museum in Shenzhen | https://www.dezeen.com/2026/08/05/shenzhen-bay-culture-square-mad/
+2026-08-06 | Global | The Stage | Soho Underbelly Boulevard owner submits plans for immersive space in West End | https://www.thestage.co.uk/news/soho-underbelly-boulevard-owner-submits-plans-for-immersive-space-in-west-end
