@@ -1,0 +1,25 @@
+{
+  "edition_date": "2026-08-07",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "negative_hits_found_in_window": 1,
+  "notes": "Adversarial-framing check applicable because the General/Macro Press lead names Saudi Arabia in a geopolitical/security context (Houthi escalation; Saudi-Turkey-Pakistan defence pact). One in-window adversarial-framing item found (Al Jazeera, 2026-08-06, framing Saudi Arabia as instigator of the Yemen escalation) and placed in Negative Articles. All 13 reputational themes and all 9 watchdog/NGO organisations (Amnesty International, Human Rights Watch, Freedom House, RSF, CPJ, CIVICUS, ALQST, DAWN, PEN International) searched individually; no other in-window hit. In-window Iranian state-media items existed but were bot-walled or out-of-window and could not be date-verified, so none were used."
+}
