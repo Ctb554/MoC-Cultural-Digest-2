@@ -1,0 +1,38 @@
+{
+  "edition_date": "2026-08-09",
+  "coverage_window": "2026-08-08T05:10Z to 2026-08-09T05:10Z (last 24 hours)",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "nuclear proliferation / defence-pact criticism",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_note": "Lead Regional story names Saudi Arabia in a geopolitical/security context (Iran/Hormuz conflict, ADNOC tanker strike, Aramco Jizan fire, Makkah defence pact). Checked Al Jazeera, Middle East Eye and Iranian/Houthi framing of the same events. In-window adversarial framing found: Al Jazeera (8 Aug) analysis casting the trilateral defence pact as potentially destabilising/escalatory with nuclear-proliferation questions. Included as a Negative Articles item.",
+  "negative_hits_found_in_window": 1,
+  "notes": "Watchdog/NGO orgs (CPJ, Freedom House, DAWN, ALQST, CIVICUS, RSF, Amnesty, HRW, PEN) returned only annual reports or pre-window statements (latest CPJ item Jan 2026); no in-window 8-9 Aug 2026 statement. Houthi 'war of aggression' framing of Saudi's Yemen build-up was dated 7 Aug (out of window). Israeli outlets (Times of Israel, Jerusalem Post) surfaced in results and were excluded per hard rule."
+}

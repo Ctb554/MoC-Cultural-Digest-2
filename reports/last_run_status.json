@@ -1,0 +1,47 @@
+{
+  "timestamp": "2026-08-09T05:32:35.829638+00:00",
+  "markdown_path": "reports/MoC_Digest_2026-08-09.md",
+  "reader_used": "tavily",
+  "delivery_result": "dropbox: success -> /2026/01- Account Management/03- Reporting/02_Daily Monitoring/05_Claude Test/MoC_Digest_2026-08-09.docx",
+  "url_resolution_check": "enabled",
+  "register_window_days": 60,
+  "run_error": null,
+  "section_item_counts": {
+    "Saudi Arabia/Regional": 4,
+    "Global": 5,
+    "Negative Articles": 1
+  },
+  "minimum_coverage_ladder": {
+    "Saudi Arabia/Regional": {
+      "count": 4,
+      "minimum_required": 1,
+      "met": true,
+      "rung": "has-content"
+    },
+    "Global": {
+      "count": 5,
+      "minimum_required": 1,
+      "met": true,
+      "rung": "has-content"
+    },
+    "Negative Articles": {
+      "count": 1,
+      "minimum_required": 0,
+      "met": true,
+      "rung": "has-content"
+    }
+  },
+  "audit": {
+    "result": "pass",
+    "hard_failures": [],
+    "warnings": []
+  },
+  "named_entity_lists_last_verified": "2026-07-20",
+  "named_entity_lists_days_old": 20,
+  "stale_named_entity_lists": false,
+  "delivery_channels": {
+    "dropbox": "success (05_Claude Test)",
+    "repo_commit": "pending (branch claude/festive-ptolemy-fatad2)"
+  },
+  "note": "Audit gate PASS ran against the register BEFORE Stage 6 append; register was empty at gate time. Delivery result recorded post-upload without re-running the reuse check (which would false-positive on this edition's own just-appended entries)."
+}
