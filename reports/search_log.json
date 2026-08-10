@@ -1,0 +1,36 @@
+{
+  "edition_date": "2026-08-10",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk/censorship",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_notes": "Lead Regional story (9 Aug Houthi drone strike on Saudi Aramco Jazan refinery, amid Saudi-Turkey-Pakistan defence pact and Strait of Hormuz crisis) names Saudi Arabia in a geopolitical/security context, so the check is applicable. Ran it: Al Jazeera and Middle East Eye both frame the strike as Houthi retaliation for Saudi drone incursions over Saada/Hajjah, casting Saudi Arabia as the provoking actor. One Negative Articles item written citing Al Jazeera (Middle East Eye noted in prose as echoing). Iranian state media (Press TV/Tehran Times/Mehr) did not surface an in-window item on this event.",
+  "negative_hits_found_in_window": 1
+}
