@@ -1,0 +1,38 @@
+{
+  "edition_date": "2026-08-12",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil/OPEC",
+    "academic freedom/censorship",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft-power/artwashing criticism",
+    "general reputation risk",
+    "Riyadh factory fire follow-up",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_finding": "Al Jazeera (Qatari state-funded) framed the Bab al-Mandeb ship attack within a 'cycle of mutual military escalation', attributing the collapse of an earlier lull to a reported Saudi air strike on Sanaa airport, casting Saudi military action as the proximate trigger. Included as a Negative Articles item.",
+  "negative_hits_found_in_window": 2,
+  "notes": "Themed negative/reputational and watchdog searches (each run individually) returned no standalone in-window Aug 11-12 hits; the Riyadh factory fire coverage that killed ~16 Bangladeshi workers is dated 9-10 Aug (out of window, no in-window follow-up found). The two Negative Articles items are: (1) the adversarial-framing hit above (Al Jazeera), and (2) Middle East Eye reporting Emirati backlash to the new Saudi-Turkey-Pakistan defence pact. Iranian state media (Press TV, Tehran Times, Mehr, IRNA) were unreachable (HTTP 503 / proxy block) and could not be checked - recorded as an unchecked gap, not evidence of absence."
+}
