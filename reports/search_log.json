@@ -1,0 +1,36 @@
+{
+  "edition_date": "2026-08-13",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "negative_hits_found_in_window": 1,
+  "notes": "Themed negative and watchdog/NGO searches surfaced only evergreen reference pages and older reports (e.g. Amnesty July Filipino domestic-workers report, ALQST Feb annual report, RSF 2026 Index, Freedom House FIW 2026, PEN 2025 Freedom to Write) - no fresh, in-window (12-13 Aug 2026), eligible negative NEWS article. The single in-window negative item is an adversarial-framing hit on the day's lead Regional story (the Mecca defence pact): Middle East Eye reporting that Saudi Arabia opposed Egypt's inclusion in the pact. Al Jazeera's in-window Saudi coverage was all 20 Jul - 9 Aug (already used in prior editions)."
+}
