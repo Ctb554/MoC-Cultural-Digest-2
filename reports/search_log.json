@@ -1,0 +1,37 @@
+{
+  "edition_date": "2026-08-14",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_found": false,
+  "negative_hits_found_in_window": 0,
+  "notes": "All negative themes and watchdog organisations searched individually. No in-window (2026-08-13/14) negative or reputational story about Saudi Arabia found; all watchdog/negative material was out-of-window background (Amnesty Jun/Jul, HRW Apr/May, RSF 2026 Index, Freedom House May, CIVICUS Mar). Adversarial-framing check ran and was applicable to the day's lead Regional story (Saudi-Iraq security dialogue in Riyadh, ~Aug 13-14): all adversarial framing casting Saudi Arabia as aggressor (Al Jazeera, Iran International, Tehran Times) was dated Jul 29 or Aug 7 and is OUT OF WINDOW; the only in-window coverage of the dialogue frames Saudi Arabia neutrally-to-favourably as the target of cross-border drone attacks. Empty Negative Articles section is a legitimate, evidenced outcome, not a skipped search."
+}

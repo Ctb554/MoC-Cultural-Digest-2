@@ -1,0 +1,46 @@
+{
+  "timestamp": "2026-08-14T05:49:49.262921+00:00",
+  "markdown_path": "reports/MoC_Daily_Cultural_Digest_14Aug26_D1.md",
+  "reader_used": "none",
+  "delivery_result": "dropbox_success:05_Claude Test",
+  "url_resolution_check": "enabled",
+  "register_window_days": 60,
+  "run_error": null,
+  "section_item_counts": {
+    "Saudi Arabia/Regional": 3,
+    "Global": 6,
+    "Negative Articles": 0
+  },
+  "minimum_coverage_ladder": {
+    "Saudi Arabia/Regional": {
+      "count": 3,
+      "minimum_required": 1,
+      "met": true,
+      "rung": "has-content"
+    },
+    "Global": {
+      "count": 6,
+      "minimum_required": 1,
+      "met": true,
+      "rung": "has-content"
+    },
+    "Negative Articles": {
+      "count": 0,
+      "minimum_required": 0,
+      "met": true,
+      "rung": "empty-justified"
+    }
+  },
+  "audit": {
+    "result": "pass",
+    "hard_failures": [],
+    "warnings": [
+      "'Negative Articles' is empty; justified by reports/search_log.json confirming the negative/watchdog searches were run and returned nothing in-window -- this is a legitimate outcome, not a sourcing failure",
+      "Global section has 6 items (target 8-10); the direct-outlet sweep and broad topic search were both run in full and only 6 verified in-window items existed -- short but not padded, per the never-pad principle"
+    ]
+  },
+  "audit_note": "The Stage 5 gate PASSED against the do-not-reuse register in its pre-append state (register had zero prior real entries). Today's 9 links were then appended (Stage 6). A second audit run after the append reports register 'reuse' FAILs, but those are self-collisions against this edition's own just-added entries -- an expected artifact of the Stage-5-gate-before-Stage-6-append ordering, not genuine prior-edition reuse. This edition is the first real edition; no genuine reuse is possible.",
+  "named_entity_lists_last_verified": "2026-07-20",
+  "named_entity_lists_days_old": 25,
+  "stale_named_entity_lists": false
+}
