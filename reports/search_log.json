@@ -1,0 +1,37 @@
+{
+  "edition_date": "2026-08-15",
+  "coverage_window": "2026-08-14T05:09Z to 2026-08-15T05:09Z",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil/economy criticism",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders",
+    "Committee to Protect Journalists",
+    "CIVICUS",
+    "ALQST",
+    "DAWN",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_found": true,
+  "negative_hits_found_in_window": 1,
+  "notes": "Lead Regional story (Houthi strikes on al-Makha and on an Aramco site in Najran, 2026-08-14) names Saudi Arabia in a security/conflict context, so the adversarial-framing check applied. Press TV (Iranian state media) framed Saudi Arabia as aggressor in-window and was captured as the single Negative Articles item. Al Jazeera and Middle East Eye covered the same event in-window but did not frame Saudi Arabia adversarially. All 13 negative themes and 9 watchdog/NGO organisations were searched individually; no other in-window negative hit surfaced from an allowed outlet."
+}
