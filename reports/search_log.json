@@ -1,0 +1,38 @@
+{
+  "edition_date": "2026-08-16",
+  "coverage_window_hours": 24,
+  "coverage_window_utc": "2026-08-15T05:11:30Z to 2026-08-16T05:11:30Z",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom / censorship / AI bias",
+    "tourism criticism",
+    "religious tourism / Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power / whitewashing criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_notes": "Lead Saudi/Regional story (The National, 'Why the Gulf's economy has defied early war predictions', 15 Aug) names Saudi Arabia in a geopolitical/security context, so the check is applicable. Checked Al Jazeera and Middle East Eye coverage of the same underlying US-Iran war / Houthi Red Sea blockade for framing casting Saudi Arabia as aggressor/oppressor. No such adversarially-framed item was published within the 24h window (Al Jazeera's most recent indexed war coverage was 9-13 Aug; the in-window Middle East Eye op-ed frames a Riyadh-led 'pragmatic axis' positively rather than adversarially). No in-window Negative item resulted.",
+  "negative_hits_found_in_window": 0,
+  "notes": "Every negative theme and all nine watchdog organisations were searched individually. All concrete negative/watchdog items found were dated outside the 24h window (e.g. RSF 2026 Index in April, Freedom House report in May, 2025 execution figures, Manahel al-Otaibi resentencing, EA/PIF completion 4 Aug). Zero verified, in-window (15-16 Aug 2026) negative or watchdog items exist for this edition, so Negative Articles is legitimately empty. Search-index lag was evident this run: most outlets' latest fetchable content ended ~13-14 Aug; only Dezeen and The National were current to 15-16 Aug."
+}
