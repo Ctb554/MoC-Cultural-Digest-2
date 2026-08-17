@@ -1,0 +1,25 @@
+{
+  "edition_date": "2026-08-17",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "negative_hits_found_in_window": 1,
+  "note": "Framing check was applicable (the lead Regional story, the Saudi-Turkiye-Pakistan Mecca Joint Defence Agreement endorsed by Trump, names Saudi Arabia in a geopolitical/security context) and was actually run, checking Al Jazeera, Middle East Eye and Iranian state media for adversarial framing of the same in-window security context. It produced one in-window negative item: a Press TV (Iranian state media, 16 Aug 2026) piece framing Saudi Arabia adversarially over the Yemen conflict, included as the single Negative Articles item. All other negative themes and all nine watchdog/NGO searches (Amnesty, HRW, Freedom House, RSF, CPJ, CIVICUS, ALQST, DAWN, PEN International) returned only out-of-window material (Jan-Jul 2026 or earlier)."
+}
