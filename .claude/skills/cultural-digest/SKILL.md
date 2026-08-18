@@ -326,23 +326,36 @@ not pad or force a result, and every hit still passes the standard
 verification gates (real, in-window, not previously used).
 
 *Outlets* — pairs `"Saudi Arabia" OR Saudi` with named prestige/trade press, by sector:
-- **General/Macro Press (leads the Saudi Arabia/Regional section — see Stage 3 ordering rule; targets and outlet list both expanded 2026-07-20).** Rewritten to fix the same dilution problem the Global section had before its direct outlet sweep: previously this was one combined query across ~25 outlets at once (`("Saudi Arabia" OR Saudi OR KSA) AND (Bloomberg OR "Financial Times" OR ...)`), which underperforms for exactly the same reason a single "Direct outlet sweep" call for Global would have — one giant OR-query buries individual outlets' results rather than actually checking each one. **Go through the outlets below one at a time, in order, each its own search pairing that single outlet's name with "Saudi Arabia" — not one combined query.** Work through the entire list every run; don't stop early once the target below is hit, since a later outlet in the list might still turn up something better than an earlier one. Record which outlets yielded nothing, same as the Global sweep:
+- **General/Macro Press (repurposed 2026-08-18 as a Negative Articles feed — it no longer leads Saudi Arabia/Regional; see the "Saudi Arabia/Regional no longer leads with geopolitical/macro coverage" note under Stage 3).** Confirmed against the 18 August real reference edition: Saudi Arabia/Regional does not carry a block of generic geopolitical/macro items at all any more. This outlet sweep is **not deleted** — the mechanism (checking Bloomberg, FT, Reuters, BBC, and the rest, one at a time, for anything about Saudi Arabia) still runs, but its purpose changes: **it now feeds Negative Articles, not Saudi Arabia/Regional.** Go through the outlets below one at a time, in order, each its own search pairing that single outlet's name with "Saudi Arabia" — not one combined query. Work through the entire list every run; record which outlets yielded nothing, same as the Global sweep:
   Bloomberg, Financial Times, Semafor, The Economist, Wall Street Journal,
   Axios, Politico, Reuters, Associated Press, AFP, New York Times, The Times,
   Sunday Times, The Telegraph, BBC, Guardian, Washington Post, CNBC, Deutsche
   Welle, Le Monde, Le Figaro, Der Spiegel, Nikkei Asia, Foreign Policy,
   Foreign Affairs, The Diplomat, AGBI, Arabian Business, Al-Monitor,
   Amwaj.media, MEED, Gulf News, Middle East Eye, Al Jazeera.
-  **Target: 3-4 verified, in-window geopolitical/general-news items about
-  Saudi Arabia to lead the Saudi Arabia/Regional section**, per the Stage 3
-  ordering rule below — this is the concrete number the ordering rule's "up
-  to 3-4" cap was always meant to describe, made explicit and tied directly
-  to working through the outlet list above, not left as a vague ceiling.
-  Same discipline as everywhere else in this playbook: hit the target with
-  real, verified items or fall genuinely short — never pad with a weak or
-  marginal story to reach 3-4.
+  **What to do with a hit:** every hit from this sweep gets evaluated against
+  the same reputational-sensitivity question as everything else destined for
+  Negative Articles — does it carry a reputational edge (security risk,
+  governance/rights angle, economic/investment scrutiny, sportswashing,
+  diplomatic friction, etc.)? If yes, it is a Negative Articles candidate,
+  same verification gates as any other Negative Articles item (real,
+  in-window, non-Saudi-owned, not previously used). **If no — a trade deal,
+  a GDP report, a routine diplomatic visit with no reputational edge — it
+  does not go in the digest at all.** It does not go under "General:" in
+  Saudi Arabia/Regional (see the redefinition of that label below), and it
+  is not padding for Negative Articles either; a story with no reputational
+  angle is simply not digest content any more, full stop. **This sweep is
+  one discovery channel feeding Negative Articles' existing reputational
+  judgement, not a 14th named theme** — Negative Articles' own set of 13
+  themes plus Watchdog/NGO monitoring (below) is unchanged; treat a hit from
+  this sweep as you would a hit surfaced by any one of those themes, filed
+  under whichever theme it actually fits (PIF scrutiny, Saudi-Iran/regional
+  geopolitics, investment scrutiny, etc.), not as its own separate category.
+  There is no item-count target for this sweep any more — some days it
+  contributes zero Negative Articles items, and that is a normal outcome to
+  record in `search_log.json`, not a shortfall.
   BBC, Guardian, Washington Post, CNBC, DW, Le Monde, Le Figaro, and Der
-  Spiegel were missing from this Saudi-paired list entirely until this
+  Spiegel were missing from this Saudi-paired list entirely until a 2026-07-20
   revision — they previously only existed in the generic Global-culture
   outlet list (which doesn't pair them with Saudi Arabia at all), the exact
   same gap Reuters and AP had before the 2026-07-20 fix earlier that day.
@@ -434,34 +447,33 @@ academic freedom, tourism criticism, religious tourism/Mecca commercialization,
 Vision 2030 criticism, investment scrutiny, soft power criticism, general
 reputation risk.
 
-**Adversarial-framing check on the day's own top Regional story (added
-2026-07-21, closes a real regression).** The themed searches above will
-usually miss this case: a comparison against a real prior edition (21 July
-2026) showed that when the General/Macro Press sweep's lead story concerns
-Saudi Arabia directly (e.g. a regional-security or geopolitical event), one
-edition correctly pulled a Negative Articles item from it while a later
-automated run did not, leaving Negative Articles empty on a day where a real
-negative item existed. The cause: none of the themed searches above are
-built to catch "the same story, framed adversarially by a different outlet"
-— they are categorical (human rights, labour, PIF, etc.), not comparative.
-**Required step:** whenever the General/Macro Press sweep surfaces a lead
-story that names Saudi Arabia in a geopolitical/security/conflict context,
-check 2-3 additional outlets' coverage of that *same* underlying event
-specifically for framing that casts Saudi Arabia as aggressor, oppressor, or
-otherwise adversarially (watch in particular for outlets with a documented
-state-alignment or adversarial-source caveat elsewhere in this playbook,
-e.g. Al Jazeera, Middle East Eye, Iranian state media) — this is a distinct
-check from corroborating facts, and from the themed searches above. If such
-framing exists, it goes in its own Negative Articles item citing the
-framing outlet, even though the underlying event is the same one already
-covered in Saudi Arabia/Regional/General. Do not treat "we already covered
-this story in General" as a reason to skip this check or as grounds to
-leave Negative Articles empty — same-event coverage in two sections, each
-capturing a different angle (factual event vs. adversarial framing), is the
-correct pattern, not a duplicate to avoid. Record in `search_log.json`
-whether this check was run and what it found, using the same
-`negative_hits_found_in_window` field — a hit found this way counts toward
-that total exactly like a themed-search hit.
+**Adversarial-framing check on the day's top Saudi geopolitical/security
+story, if one exists (added 2026-07-21, closes a real regression; updated
+2026-08-18 for the General/Macro Press repurposing above).** The themed
+searches above will usually miss this case: a comparison against a real
+prior edition (21 July 2026) showed that when a Saudi-related
+regional-security or geopolitical event was in the news, one edition
+correctly pulled a Negative Articles item from it while a later automated
+run did not, leaving Negative Articles empty on a day where a real negative
+item existed. The cause: none of the themed searches above are built to
+catch "the same story, framed adversarially by a different outlet" — they
+are categorical (human rights, labour, PIF, etc.), not comparative. This
+check's trigger no longer depends on Saudi Arabia/Regional having a lead
+item (that concept is gone as of 18 August — see Stage 3) — it triggers off
+the General/Macro Press sweep above finding **any** story that names Saudi
+Arabia in a geopolitical/security/conflict context, whether or not that
+story ends up used anywhere in the digest. **Required step:** when the
+General/Macro Press sweep surfaces such a story, check 2-3 additional
+outlets' coverage of that *same* underlying event specifically for framing
+that casts Saudi Arabia as aggressor, oppressor, or otherwise adversarially
+(watch in particular for outlets with a documented state-alignment or
+adversarial-source caveat elsewhere in this playbook, e.g. Al Jazeera,
+Middle East Eye, Iranian state media) — this is a distinct check from
+corroborating facts, and from the themed searches above. If such framing
+exists, it goes in its own Negative Articles item citing the framing outlet.
+Record in `search_log.json` whether this check was run and what it found,
+using the same `negative_hits_found_in_window` field — a hit found this way
+counts toward that total exactly like a themed-search hit.
 
 **Watchdog/NGO monitoring — made mechanical 2026-07-20, same fix as the
 other two outlet lists above.** This was previously one combined query
@@ -506,9 +518,9 @@ audit failure, not a free pass. Minimum schema:
 ```
 
 `adversarial_framing_check_applicable` is `true` only when the General/Macro
-Press sweep's lead story names Saudi Arabia in a geopolitical/security/
+Press sweep finds a story that names Saudi Arabia in a geopolitical/security/
 conflict context (see the Adversarial-framing check above); `false` on a day
-with no such lead story, in which case `adversarial_framing_check_run` may
+with no such story, in which case `adversarial_framing_check_run` may
 also be `false` without penalty. When applicable is `true`, `run` must also
 be `true` or the empty-Negative-Articles justification does not hold —
 same fail-closed principle as `negative_searches_run` below.
@@ -695,19 +707,31 @@ Two blocks, in this order:
    **Negative Articles has no commission subheadings** — its bullets sit
    directly under the section heading.
 
-**Saudi Arabia/Regional ordering rule:** lead the section with a **target of
-3-4** General items sourced from the General/Macro Press search (the full
-outlet list above — Bloomberg, FT, BBC, Reuters, AP, Guardian, and the rest,
-each checked individually, not a combined query) — broad, high-authority
-geopolitical and general-news context on Saudi Arabia, not necessarily
-culture-specific — before moving into the more specific commission
-subsections (Heritage, Visual Arts, etc.). This gives the section a strong
-opening anchor. Hit the target with real, verified items; use fewer only if
-that many genuinely don't exist after working through the entire outlet
-list. Never pad to reach the count — the same "don't force it" principle
-applies here as everywhere else in this playbook. The headline-bullet block
-at the top of the document inherits this same ordering automatically, since
-it must match the full summary's article order.
+**Saudi Arabia/Regional no longer leads with generic geopolitical/macro
+coverage (changed 2026-08-18, confirmed against the 18 August real reference
+edition).** Earlier versions of this playbook had Saudi Arabia/Regional lead
+with a target of 3-4 General items sourced from a Bloomberg/FT/BBC/Reuters/AP
+sweep — broad geopolitical and macro-economic context on Saudi Arabia, not
+necessarily culture-specific. **That lead-in block is removed.** The 18
+August reference edition confirms real practice has moved on: Saudi
+Arabia/Regional no longer carries this block at all. Concretely:
+- Generic Saudi macro/economic/political coverage — a trade deal, a GDP
+  report, a diplomatic visit with no reputational edge — **does not appear
+  in the digest at all going forward**, in any section, unless it is
+  reputationally sensitive.
+- When it is reputationally sensitive, it belongs in **Negative Articles**,
+  not Saudi Arabia/Regional — see the repurposed General/Macro Press sweep
+  above, which now feeds Negative Articles instead of Regional.
+- Saudi Arabia/Regional now opens directly with its commission subsections
+  (Heritage, Visual Arts, Film, etc.) — there is no mandated opening anchor
+  or item-count target for the section as a whole. Its content is driven by
+  what the Named Entity searches and the Creative culture retrieval section
+  (Stage 2, below) actually find that day.
+- The headline-bullet block at the top of the document still inherits
+  whatever order the full summary ultimately uses, since it must match the
+  full summary's article order — that mechanical rule is unchanged, only
+  what determines the order (no more forced General-first lead-in) has
+  changed.
 
 Then a final **Risks and Opportunities** section (see format below).
 
@@ -730,7 +754,7 @@ just the article headline). Labels confirmed against real production:
 
 | Label | Classification rule |
 |---|---|
-| General: | Fallback for anything not fitting a specific commission; **also the home for general/macro/business/policy coverage of Saudi Arabia from elite press** (Bloomberg, FT, Semafor, The Economist, WSJ, Axios, Politico, and the rest of the General/Macro Press list) surfaced by the General/Macro Press search above — see the Stage 3 ordering rule for how these lead the Saudi Arabia/Regional section |
+| General: | **Redefined 2026-08-18 — no longer a home for macro/political press.** A catch-all for genuine Saudi general-interest, hospitality, lifestyle, or cross-commission cultural/business stories that don't cleanly fit one specific commission — e.g. a hotel opening that incorporates a named Saudi artist's work and traditional textile patterns, or a story that touches both fashion and food. It is **NOT** a bucket for plain macro/political/economic press (a trade deal, a GDP report, a diplomatic visit) — that no longer belongs in Saudi Arabia/Regional at all unless it is reputationally sensitive, in which case it goes in Negative Articles instead (see the repurposed General/Macro Press sweep and the Stage 3 note on this). When a "General" candidate has a clear primary cultural angle (art, design, heritage, etc.), prefer filing it under that specific commission instead of General — General is for stories that genuinely don't reduce to one commission, not a default first guess |
 | Heritage: | Archaeology, UNESCO, monuments, preservation, intangible heritage, cultural memory |
 | Museums: | Museums, museum programming, museum-led exhibitions |
 | Visual Arts: | Galleries, biennales, artists, exhibitions, art markets, unless museum-led |
