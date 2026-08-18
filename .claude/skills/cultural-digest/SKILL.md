@@ -526,6 +526,53 @@ comes in under target, treat the warning as a prompt to confirm the
 creative retrieval above was actually worked this cycle (not skipped),
 not as license to manufacture content.
 
+### Google News RSS culture feed (`scripts/gnews_culture_feed.py`, added 2026-08-18)
+
+An optional, best-effort **first pass** for the Creative culture retrieval
+section above — not a replacement for the live WebSearch/WebFetch work, and
+deliberately not pointed at the geopolitical/General bucket at all. Run it
+before starting the manual creative-retrieval searches:
+
+```
+python3 scripts/gnews_culture_feed.py --hours 24 --output /tmp/gnews_culture.json
+```
+
+**Why this exists:** Google News RSS supports the same Boolean-ish operators
+already used elsewhere in this playbook (quoted phrases, `when:` windows)
+and, critically, a genuine Arabic locale (`hl=ar&gl=SA&ceid=SA:ar`) — the
+same structural Arabic-coverage gap that motivated making the three core
+Booleans bilingual. It runs 27 English queries and 15 Arabic queries across
+the three creative-retrieval angles (reviews/criticism, named figures
+abroad, Saudi work/brands at international events), filters to items inside
+the coverage window, and writes candidates to a JSON file.
+
+**Everything from this script is unverified — same discipline as the RSS
+pre-filter above, with two extra caveats specific to this tool:**
+- **Redirect links, never citable directly.** Every candidate's link is an
+  opaque `news.google.com/rss/articles/...` redirect, not the publisher's
+  own URL. **The redirect must be resolved to the real publisher URL before
+  anything is verified or cited** — a digest bullet citing a
+  `news.google.com` link would fail the normal Stage 5 audit (raw-URL and
+  link-placement checks) and must never happen. Resolving the redirect,
+  confirming in-window and non-Saudi-owned **on the resolved domain**, and
+  passing every other normal Stage 2 verification gate are all still
+  required — this script finds leads, it does not verify them.
+- **Real, documented staleness.** Third-party testing of Google News RSS
+  (July 2026, 48 queries) found a median item age of ~6.6 days, with only
+  ~7.6% of items under 6 hours old — weak for a 24-hour digest window. Many
+  queries returning zero in-window candidates on any given day is the
+  **expected, normal** result of that staleness, not a sign the script is
+  broken. **Do not treat an empty feed as "no culture today"** — always
+  fall back to the manual WebSearch-based creative retrieval above
+  regardless of what this script returns.
+
+**Not load-bearing.** This is undocumented, unstable, best-effort
+scaffolding (no API contract, no status page, and Google News RSS's own
+format has changed without notice before) — if it breaks or its output
+looks wrong, the culture layer simply falls back to normal WebSearch
+creative retrieval; nothing else in this pipeline depends on it working.
+Requires the `feedparser` package (`pip install -r requirements.txt`).
+
 **Negative/reputational coverage** — run as separate searches per theme, not
 one combined query (a combined query drowns culture-adjacent reputational
 stories under pure geopolitics on any heavy news day): human rights, labour/

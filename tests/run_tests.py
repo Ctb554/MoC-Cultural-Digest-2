@@ -528,6 +528,37 @@ def test_build_docx_still_works():
         check("docx file created", out.exists(), "missing")
 
 
+# --- gnews_culture_feed.py -----------------------------------------------------
+
+def test_gnews_culture_feed_imports_and_builds_valid_urls():
+    print("\n== gnews_culture_feed.py: imports cleanly, builds valid locale URLs ==")
+    try:
+        import gnews_culture_feed as gnews  # noqa: PLC0415 -- deliberately deferred; SCRIPTS_DIR is on sys.path
+    except ModuleNotFoundError as exc:
+        check("gnews_culture_feed imports cleanly", False,
+              f"{exc} -- run `pip install -r requirements.txt` (feedparser is a "
+              f"declared dependency, not stdlib)")
+        return
+    check("gnews_culture_feed imports cleanly", True)
+
+    en_url = gnews.build_feed_url('"Saudi film" review', 24, "en", "US")
+    check("English URL has the 24h window operator", "when%3A24h" in en_url, en_url)
+    check("English URL uses the en-US/US locale (ceid=US:en)", "ceid=US%3Aen" in en_url, en_url)
+
+    ar_url = gnews.build_feed_url("الفن السعودي معرض", 24, "ar", "SA")
+    check("Arabic URL sets hl=ar", "hl=ar" in ar_url, ar_url)
+    check("Arabic URL sets gl=SA", "gl=SA" in ar_url, ar_url)
+    check("Arabic URL uses the SA/ar locale (ceid=SA:ar)", "ceid=SA%3Aar" in ar_url, ar_url)
+
+    check("both query lists are non-empty",
+          len(gnews.CULTURE_QUERIES_EN) > 0 and len(gnews.CULTURE_QUERIES_AR) > 0,
+          (len(gnews.CULTURE_QUERIES_EN), len(gnews.CULTURE_QUERIES_AR)))
+    check("no geopolitical/General queries leaked into the culture query lists",
+          not any("geopolit" in q.lower() or "diplomat" in q.lower()
+                  for q in gnews.CULTURE_QUERIES_EN + gnews.CULTURE_QUERIES_AR),
+          "found a non-culture query")
+
+
 TESTS = [
     test_clean_fixture_fails_only_on_fixture_safety,
     test_realistic_fixture_passes_cleanly,
@@ -543,6 +574,7 @@ TESTS = [
     test_register_rolling_window,
     test_run_status_file_pass_and_crash_shapes,
     test_build_docx_still_works,
+    test_gnews_culture_feed_imports_and_builds_valid_urls,
 ]
 
 
