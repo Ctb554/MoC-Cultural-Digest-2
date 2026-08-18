@@ -302,6 +302,96 @@ Consideration: Something.
         Path(path).unlink()
 
 
+def _digest_with_saudi_regional_labels(labels_and_bullets):
+    """
+    Builds a minimal, otherwise-valid digest markdown string whose Saudi
+    Arabia/Regional section has one ## <label> subheading per
+    (label, bullet_count) pair in labels_and_bullets. Global and Negative
+    Articles are populated just enough to clear their own minimum-coverage
+    floors so only the culture-commission target is under test.
+    """
+    saudi_sections = ""
+    for label, count in labels_and_bullets:
+        bullets = "\n".join(
+            f"- Placeholder bullet {i}. ([Wire](https://www.placeholderwire.invalid/{label}-{i}))"
+            for i in range(count)
+        )
+        saudi_sections += f"\n## {label}\n{bullets}\n"
+
+    return f"""# Headlines, 18 August 2026
+
+## Saudi Arabia/Regional
+- Placeholder headline
+
+## Negative Articles
+
+## Global
+- Placeholder global headline
+
+# Saudi Arabia/Regional
+{saudi_sections}
+# Negative Articles
+
+# Global
+
+## Museums:
+- Placeholder global bullet. ([Wire](https://www.placeholderwire.invalid/global))
+
+# Risks and Opportunities
+
+## Risks
+
+1. **A risk**
+Paragraph.
+Source: [Wire](https://www.placeholderwire.invalid/global)
+Consideration: Something.
+
+## Opportunities
+
+1. **An opportunity**
+Paragraph.
+Source: [Wire](https://www.placeholderwire.invalid/global)
+Consideration: Something.
+"""
+
+
+def test_saudi_culture_commission_target():
+    print("\n== Culture-commission target: General-only warns, 3+ real commissions doesn't ==")
+
+    general_only_md = _digest_with_saudi_regional_labels([("General:", 2)])
+    with tempfile.NamedTemporaryFile("w", suffix=".md", delete=False) as f:
+        f.write(general_only_md)
+        general_only_path = f.name
+    try:
+        result = run_audit_on(general_only_path, search_log_path=CONFIRMED_LOG)
+        check("General-only Saudi/Regional still passes hard checks (not a failure)",
+              result.ok(), result.hard_failures)
+        ladder = result.coverage_ladder.get("Saudi Arabia/Regional (culture-commission target)", {})
+        check("culture-commission count is 0 (General items don't count)",
+              ladder.get("count") == 0, ladder)
+        check("culture-commission target marked not met (WARN rung)",
+              ladder.get("rung") == "target-shortfall-WARN", ladder)
+        check("a warning names the culture-commission shortfall",
+              any("real culture-commission label" in w for w in result.warnings), result.warnings)
+    finally:
+        Path(general_only_path).unlink()
+
+    real_commissions_md = _digest_with_saudi_regional_labels([("Heritage:", 2), ("Film:", 1)])
+    with tempfile.NamedTemporaryFile("w", suffix=".md", delete=False) as f:
+        f.write(real_commissions_md)
+        real_commissions_path = f.name
+    try:
+        result = run_audit_on(real_commissions_path, search_log_path=CONFIRMED_LOG)
+        check("3 items under real commissions passes hard checks", result.ok(), result.hard_failures)
+        ladder = result.coverage_ladder.get("Saudi Arabia/Regional (culture-commission target)", {})
+        check("culture-commission count is 3", ladder.get("count") == 3, ladder)
+        check("culture-commission target marked met", ladder.get("rung") == "target-met", ladder)
+        check("no warning about the culture-commission shortfall",
+              not any("real culture-commission label" in w for w in result.warnings), result.warnings)
+    finally:
+        Path(real_commissions_path).unlink()
+
+
 # --- Item 5: Israeli-outlet posture -------------------------------------------
 
 def test_israeli_outlet_hard_fail():
@@ -438,6 +528,98 @@ def test_build_docx_still_works():
         check("docx file created", out.exists(), "missing")
 
 
+# --- gnews_culture_feed.py -----------------------------------------------------
+
+def test_gnews_culture_feed_imports_and_builds_valid_urls():
+    print("\n== gnews_culture_feed.py: imports cleanly, builds valid locale URLs ==")
+    try:
+        import gnews_culture_feed as gnews  # noqa: PLC0415 -- deliberately deferred; SCRIPTS_DIR is on sys.path
+    except ModuleNotFoundError as exc:
+        check("gnews_culture_feed imports cleanly", False,
+              f"{exc} -- run `pip install -r requirements.txt` (feedparser is a "
+              f"declared dependency, not stdlib)")
+        return
+    check("gnews_culture_feed imports cleanly", True)
+
+    en_url = gnews.build_feed_url('"Saudi film" review', 24, "en", "US")
+    check("English URL has the 24h window operator", "when%3A24h" in en_url, en_url)
+    check("English URL uses the en-US/US locale (ceid=US:en)", "ceid=US%3Aen" in en_url, en_url)
+
+    ar_url = gnews.build_feed_url("الفن السعودي معرض", 24, "ar", "SA")
+    check("Arabic URL sets hl=ar", "hl=ar" in ar_url, ar_url)
+    check("Arabic URL sets gl=SA", "gl=SA" in ar_url, ar_url)
+    check("Arabic URL uses the SA/ar locale (ceid=SA:ar)", "ceid=SA%3Aar" in ar_url, ar_url)
+
+    check("both query lists are non-empty",
+          len(gnews.CULTURE_QUERIES_EN) > 0 and len(gnews.CULTURE_QUERIES_AR) > 0,
+          (len(gnews.CULTURE_QUERIES_EN), len(gnews.CULTURE_QUERIES_AR)))
+    check("no geopolitical/General queries leaked into the culture query lists",
+          not any("geopolit" in q.lower() or "diplomat" in q.lower()
+                  for q in gnews.CULTURE_QUERIES_EN + gnews.CULTURE_QUERIES_AR),
+          "found a non-culture query")
+
+
+# --- Risks/Opportunities clustering (item 4: 18 August format update) --------
+
+def _split_ro_subsections(risks_and_opportunities_lines):
+    """Splits the Risks and Opportunities H1 body into {## subsection: [lines]}."""
+    subsections = {}
+    current = None
+    for line in risks_and_opportunities_lines:
+        if line.startswith("## "):
+            current = line[3:].strip()
+            subsections[current] = []
+        elif current is not None:
+            subsections[current].append(line)
+    return subsections
+
+
+def test_clustered_risk_opportunity_item_passes_structure_check():
+    print("\n== Risks/Opportunities clustering: multi-story item still passes the structure check ==")
+    md_path = TESTS_DIR / "sample_clustered_risk_digest.md"
+    md_text = md_path.read_text(encoding="utf-8")
+    blocks = ar.split_h1_blocks(md_text)
+
+    # The structural check itself (bold headline + paragraph + Source +
+    # Consideration per item) must not care whether an item covers one
+    # story or several -- clustering is a content-writing convention, not
+    # a format change, and this proves the existing check doesn't need to
+    # change to accommodate it.
+    result = ar.AuditResult()
+    ar.check_risks_and_opportunities(blocks, result)
+    check("clustered Risks/Opportunities structure passes with no hard failures",
+          result.ok(), result.hard_failures)
+
+    result = run_audit_on(md_path, search_log_path=CONFIRMED_LOG)
+    check("full audit passes (culture-commission shortfall is a warning, not a failure)",
+          result.ok(), result.hard_failures)
+
+    # Confirm the clustering itself is really there: one Risk item citing 3
+    # outlets (the fourth, unrelated LIV Golf story is folded into the SAME
+    # item's paragraph, not cited separately) and one Opportunity item
+    # citing 3 outlets spanning 3 different commissions.
+    ro_lines = next(lines for name, lines in blocks if name == "Risks and Opportunities")
+    subsections = _split_ro_subsections(ro_lines)
+
+    risk_items = [l for l in subsections.get("Risks", []) if ar.NUMBERED_ITEM_RE.match(l.strip())]
+    check("Risks subsection has exactly one clustered item despite covering 4 stories",
+          len(risk_items) == 1, risk_items)
+    risk_source_line = next(l for l in subsections.get("Risks", []) if l.strip().startswith("Source:"))
+    check("clustered Risk item's Source line lists all 3 contributing outlets",
+          all(name in risk_source_line for name in
+              ["Regional Security Monitor", "Asia Shipping Bulletin", "Gulf Sports Wire"]),
+          risk_source_line)
+
+    opportunity_items = [l for l in subsections.get("Opportunities", []) if ar.NUMBERED_ITEM_RE.match(l.strip())]
+    check("Opportunities subsection has exactly one clustered item despite covering 3 stories",
+          len(opportunity_items) == 1, opportunity_items)
+    opp_source_line = next(l for l in subsections.get("Opportunities", []) if l.strip().startswith("Source:"))
+    check("clustered Opportunity item's Source line lists all 3 contributing outlets across 3 commissions",
+          all(name in opp_source_line for name in
+              ["Culinary Trade Digest", "Retail Fashion Weekly", "Dhaka Entertainment Wire"]),
+          opp_source_line)
+
+
 TESTS = [
     test_clean_fixture_fails_only_on_fixture_safety,
     test_realistic_fixture_passes_cleanly,
@@ -448,10 +630,13 @@ TESTS = [
     test_empty_negative_ladder,
     test_adversarial_framing_check_regression,
     test_minimum_coverage_cannot_be_waived_for_saudi_or_global,
+    test_saudi_culture_commission_target,
     test_israeli_outlet_hard_fail,
     test_register_rolling_window,
     test_run_status_file_pass_and_crash_shapes,
     test_build_docx_still_works,
+    test_gnews_culture_feed_imports_and_builds_valid_urls,
+    test_clustered_risk_opportunity_item_passes_structure_check,
 ]
 
 

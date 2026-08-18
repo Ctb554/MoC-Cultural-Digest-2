@@ -87,6 +87,10 @@ articles.
    arbitrary news domains; a custom allowlist can't anticipate them.
 3. **Environment variables**: `TAVILY_API_KEY` if using it, plus the three
    Dropbox variables and `DROPBOX_DEST_FOLDER` if using Dropbox delivery.
+4. **Python dependencies**: `pip install -r requirements.txt` (added
+   2026-08-18 — `scripts/rss_saudi_filter.py` and
+   `scripts/gnews_culture_feed.py` both require `feedparser`, which is not
+   part of the standard library; a fresh clone has no other way to get it).
 
 ## 4. Create the daily routine
 

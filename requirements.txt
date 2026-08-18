@@ -1,0 +1,8 @@
+# Python dependencies for this pipeline's scripts. Added 2026-08-18: no
+# requirements file existed before this, even though scripts/rss_saudi_filter.py
+# (2026-07-21) and scripts/gnews_culture_feed.py (2026-08-18) both hard-depend
+# on feedparser -- a fresh clone had no declared way to get it. Install with:
+#   pip install -r requirements.txt
+
+python-docx>=1.2.0   # scripts/build_docx.py
+feedparser>=6.0.14    # scripts/rss_saudi_filter.py, scripts/gnews_culture_feed.py
