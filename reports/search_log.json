@@ -1,0 +1,41 @@
+{
+  "edition_date": "2026-08-18",
+  "coverage_window": "2026-08-17 to 2026-08-18 (last 24 hours from run start)",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_notes": "Lead Regional story is a Houthi missile strike on a Saudi vessel in the Red Sea (NYT, 17 Aug 2026) - a geopolitical/security context, so the check is applicable. Checked Al Jazeera (Qatari state-funded), Middle East Eye (Qatar-linked), and Iranian state media (Press TV/Tehran Times/Tasnim) for in-window framing casting Saudi Arabia as aggressor/oppressor. Finding: all IN-WINDOW (17-18 Aug) eligible coverage frames the Iran-backed Houthis as the aggressor and Saudi Arabia as the party under attack (sympathetic to Saudi, not adversarial). The adversarial-toward-Saudi framing (Houthis' 'oppressive siege'/'an eye for an eye' retaliation narrative; Saudi-led coalition airstrike criticism) appears only in OUT-OF-WINDOW articles (20-22 Jul, 9-12 Aug 2026) and historical pieces (2018/2022/2024), which fail the in-window gate. No in-window eligible article frames Saudi adversarially on this event; therefore no Negative Articles item is generated from the adversarial-framing check.",
+  "negative_hits_found_in_window": 0,
+  "negative_notes": "Every negative theme and all 9 watchdog NGOs were searched. All negative-for-Saudi material found (record executions, migrant/labour abuse, sportswashing, Vision 2030 downsizing, press-freedom rankings, war-driven tourism/investment reputation risk) is OUT-OF-WINDOW (Jan-Jul 2026 or earlier, or undated NGO landing/annual-report pages) or from EXCLUDED/weak sources (Times of Israel - Israeli outlet, hard exclusion; Sanad/MEDC/eturbonews advocacy or trade blogs). AGBI's 'Houthi strikes threaten Saudi investment plans' (negative-for-Saudi, credible) is dated 11 Aug 2026, outside the 24h window. No in-window, eligible, non-excluded Negative Article exists for this edition; Negative Articles is legitimately empty per the Stage 5 minimum-coverage ladder.",
+  "excluded_outlets_encountered": [
+    "Times of Israel (Israeli - hard exclusion)",
+    "Arab News / Asharq Al-Awsat (aawsat) / Saudi Gazette / SPA / thesauditimes / alriyadhdaily / saudistandard (Saudi-owned - excluded)"
+  ]
+}
