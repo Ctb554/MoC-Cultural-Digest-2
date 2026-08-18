@@ -559,6 +559,67 @@ def test_gnews_culture_feed_imports_and_builds_valid_urls():
           "found a non-culture query")
 
 
+# --- Risks/Opportunities clustering (item 4: 18 August format update) --------
+
+def _split_ro_subsections(risks_and_opportunities_lines):
+    """Splits the Risks and Opportunities H1 body into {## subsection: [lines]}."""
+    subsections = {}
+    current = None
+    for line in risks_and_opportunities_lines:
+        if line.startswith("## "):
+            current = line[3:].strip()
+            subsections[current] = []
+        elif current is not None:
+            subsections[current].append(line)
+    return subsections
+
+
+def test_clustered_risk_opportunity_item_passes_structure_check():
+    print("\n== Risks/Opportunities clustering: multi-story item still passes the structure check ==")
+    md_path = TESTS_DIR / "sample_clustered_risk_digest.md"
+    md_text = md_path.read_text(encoding="utf-8")
+    blocks = ar.split_h1_blocks(md_text)
+
+    # The structural check itself (bold headline + paragraph + Source +
+    # Consideration per item) must not care whether an item covers one
+    # story or several -- clustering is a content-writing convention, not
+    # a format change, and this proves the existing check doesn't need to
+    # change to accommodate it.
+    result = ar.AuditResult()
+    ar.check_risks_and_opportunities(blocks, result)
+    check("clustered Risks/Opportunities structure passes with no hard failures",
+          result.ok(), result.hard_failures)
+
+    result = run_audit_on(md_path, search_log_path=CONFIRMED_LOG)
+    check("full audit passes (culture-commission shortfall is a warning, not a failure)",
+          result.ok(), result.hard_failures)
+
+    # Confirm the clustering itself is really there: one Risk item citing 3
+    # outlets (the fourth, unrelated LIV Golf story is folded into the SAME
+    # item's paragraph, not cited separately) and one Opportunity item
+    # citing 3 outlets spanning 3 different commissions.
+    ro_lines = next(lines for name, lines in blocks if name == "Risks and Opportunities")
+    subsections = _split_ro_subsections(ro_lines)
+
+    risk_items = [l for l in subsections.get("Risks", []) if ar.NUMBERED_ITEM_RE.match(l.strip())]
+    check("Risks subsection has exactly one clustered item despite covering 4 stories",
+          len(risk_items) == 1, risk_items)
+    risk_source_line = next(l for l in subsections.get("Risks", []) if l.strip().startswith("Source:"))
+    check("clustered Risk item's Source line lists all 3 contributing outlets",
+          all(name in risk_source_line for name in
+              ["Regional Security Monitor", "Asia Shipping Bulletin", "Gulf Sports Wire"]),
+          risk_source_line)
+
+    opportunity_items = [l for l in subsections.get("Opportunities", []) if ar.NUMBERED_ITEM_RE.match(l.strip())]
+    check("Opportunities subsection has exactly one clustered item despite covering 3 stories",
+          len(opportunity_items) == 1, opportunity_items)
+    opp_source_line = next(l for l in subsections.get("Opportunities", []) if l.strip().startswith("Source:"))
+    check("clustered Opportunity item's Source line lists all 3 contributing outlets across 3 commissions",
+          all(name in opp_source_line for name in
+              ["Culinary Trade Digest", "Retail Fashion Weekly", "Dhaka Entertainment Wire"]),
+          opp_source_line)
+
+
 TESTS = [
     test_clean_fixture_fails_only_on_fixture_safety,
     test_realistic_fixture_passes_cleanly,
@@ -575,6 +636,7 @@ TESTS = [
     test_run_status_file_pass_and_crash_shapes,
     test_build_docx_still_works,
     test_gnews_culture_feed_imports_and_builds_valid_urls,
+    test_clustered_risk_opportunity_item_passes_structure_check,
 ]
 
 

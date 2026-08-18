@@ -941,45 +941,91 @@ Written **first**, before the full summaries. Exact article headline (verify
 by opening the link), in the same order the full summary will later use, no
 links, no subheadings, only the three main sections, English only.
 
-### Risks and Opportunities (confirmed against real production)
+### Risks and Opportunities (confirmed against real production; clustering rewritten 2026-08-18)
 
-**Multiple numbered items per subsection** (two is typical, not a fixed
-count) — not a single paragraph each. Every item has a short bold headline
-naming the specific risk or opportunity, then an analytical paragraph, then
-Source and Consideration lines:
+**Each item SYNTHESIZES multiple related same-day stories into one combined
+narrative, rather than one item per individual story** — confirmed from the
+18 August 2026 real reference edition. Concrete real examples from that
+edition: one Risk item combined **three** separate stories (a Houthi
+missile strike, Asian refiners avoiding the Red Sea, Aramco rerouting near
+Oman) into a single "Red Sea security escalation... widens the reputational
+backdrop" narrative citing all three sources together, **plus a fourth,
+substantively unrelated story** (LIV Golf's cancellation) folded into the
+same item as a second paragraph because both bear on the same reputational
+theme even though they're different topics. One Opportunity item combined
+**three** stories across **three different commissions** (Culinary Arts'
+dates carnival, Fashion's Selfridges takeover, Film's Bollywood casting)
+into one "Saudi culture converting into international commercial reach"
+narrative with a single combined Source line spanning all three articles.
+
+**Cluster related same-day stories by THEME** (e.g. "Red Sea security",
+"cultural exports scaling commercially") — not one item per story. This
+means **fewer, richer items per edition than before, not more**: 1-3
+well-synthesized items per subsection is the new norm, not one item per
+individual story.
+
+Each item keeps the same structure as before — short bold headline,
+analytical paragraph, Source line, Consideration line — but now the
+paragraph weaves multiple stories together, and the Source line lists
+**every contributing article's outlet, comma-separated**. This needs no
+change to `scripts/build_docx.py`'s parser: it already handles multiple
+comma-separated `[Outlet](url)` links in one Source line, since that format
+was already part of the original spec for citing more than one source per
+item.
 
 ```
 Risks and Opportunities
 
 Risks
 
-1. [Short bold headline naming the specific risk]
-[Analytical paragraph synthesizing the risk from today's coverage.]
-Source: Outlet, Outlet
+1. [Short bold headline naming the clustered theme, e.g. "Red Sea security escalation"]
+[Analytical paragraph weaving together the related stories that make up
+this theme — a missile strike, shipping rerouting, a knock-on story that
+shares the same reputational thread even if the underlying topic differs.]
+Source: Outlet, Outlet, Outlet
 Consideration: [What the Ministry should consider in response.]
 
-2. [Short bold headline naming a second risk, if the day's coverage supports it]
+2. [A second clustered theme, if the day's coverage genuinely supports one]
 [Paragraph.]
 Source: Outlet
 Consideration: [Response.]
 
 Opportunities
 
-1. [Short bold headline naming the specific opportunity]
-[Analytical paragraph synthesizing the opportunity from today's coverage.]
-Source: Outlet, Outlet, Outlet, Outlet
+1. [Short bold headline naming the clustered theme, e.g. "Saudi culture converting into international commercial reach"]
+[Analytical paragraph weaving together stories that may span several
+different commissions — a culinary festival, a fashion retail takeover, a
+film casting story — united by one shared narrative about commercial/
+cultural reach, not by sharing a single commission.]
+Source: Outlet, Outlet, Outlet
 Consideration: [How the Ministry can build on this coverage.]
-
-2. [Short bold headline naming a second opportunity, if supported]
-[Paragraph.]
-Source: Outlet
-Consideration: [Response.]
 ```
 
-Each subsection (Risks, Opportunities) restarts its own numbering at 1. Item
-count should reflect what the day's coverage actually supports — don't force
-a second item if only one genuine risk or opportunity exists, and don't
-inflate beyond what's honestly supported by sourced material.
+Each subsection (Risks, Opportunities) restarts its own numbering at 1 —
+**this is unchanged**; see the note on the 18 August reference's own
+numbering below. Item count should reflect what the day's coverage
+genuinely supports — don't force a second item if only one genuine cluster
+exists, and don't inflate beyond what's honestly supported by sourced
+material. Clustering is about combining *genuinely related* stories into
+one richer narrative, not about hitting a lower item count for its own
+sake — a story with no real thematic relationship to anything else that day
+still gets its own item.
+
+**A note on the 18 August reference's numbering, flagged rather than
+silently followed:** that edition numbered its single Risk item "1." and
+its single Opportunity item "2." — i.e. continuous numbering across both
+subsections, not restarting. Weighed against restart-at-1 numbering
+confirmed consistently across every other real edition referenced in this
+playbook (19, 20, 21 July, and the font-correction reference edition), and
+against the fact that this is precisely the single-item-per-subsection
+scenario where a human manually typing up a report is most likely to let a
+running count slip from one subsection into the next, **this reads more
+like a transcription slip than a deliberate new convention** — restart-at-1
+numbering is retained unchanged, both in this playbook and in
+`scripts/audit_report.py`'s structure check. If a future reference edition
+repeats continuous numbering with more than one item in a subsection (where
+a slip is far less plausible), re-open this question against that stronger
+evidence rather than this single ambiguous data point.
 
 Risk angles to draw from: regional conflict/security instability, geopolitical
 spillover, human rights scrutiny, labour rights, sportswashing, PIF-linked
