@@ -77,6 +77,16 @@ APPROVED_COMMISSIONS = [
 # Build the exact "Label:" strings expected in the markdown
 APPROVED_LABEL_STRINGS = {f"{label}:" for label in APPROVED_COMMISSIONS}
 
+# Culture-commission target (added 2026-08-18, WARN-only -- see
+# check_minimum_coverage and SKILL.md's Creative culture retrieval section).
+# Every approved label EXCEPT "General:" -- General was redefined 2026-08-18
+# as a narrow catch-all (hospitality/lifestyle/cross-commission stories),
+# no longer a home for macro/political press, so it deliberately does not
+# count toward the culture-commission target: a section padded entirely with
+# General items should still warn, not read as satisfying the target.
+SAUDI_CULTURE_TARGET_COUNT = 3
+CULTURE_COMMISSION_LABEL_STRINGS = APPROVED_LABEL_STRINGS - {"General:"}
+
 # Domains excluded per the source-eligibility rule (Saudi-owned outlets).
 EXCLUDED_SAUDI_DOMAINS = [
     "arabnews.com", "saudigazette.com.sa", "spa.gov.sa", "aleqt.com",
@@ -380,14 +390,15 @@ def check_minimum_coverage(blocks, result, search_log_path=None):
         elif framing_applicable and not framing_run:
             result.fail(
                 "'Negative Articles' is empty and the search log flags "
-                f"adversarial_framing_check_applicable=true (today's lead "
-                f"Regional story names Saudi Arabia in a geopolitical/"
-                f"security context) but adversarial_framing_check_run is "
-                f"not true -- this is the exact gap that produced a real "
-                f"regression on 2026-07-21 (a Houthi-blockade story with "
-                f"adversarial Al Jazeera framing was missed); run the check "
-                f"described in Stage 2's 'Adversarial-framing check' before "
-                f"treating this section as legitimately empty"
+                f"adversarial_framing_check_applicable=true (the General/"
+                f"Macro Press sweep found a story naming Saudi Arabia in a "
+                f"geopolitical/security context) but adversarial_framing_"
+                f"check_run is not true -- this is the exact gap that "
+                f"produced a real regression on 2026-07-21 (a Houthi-"
+                f"blockade story with adversarial Al Jazeera framing was "
+                f"missed); run the check described in Stage 2's "
+                f"'Adversarial-framing check' before treating this section "
+                f"as legitimately empty"
             )
         else:
             result.fail(
@@ -398,6 +409,51 @@ def check_minimum_coverage(blocks, result, search_log_path=None):
                 f"otherwise this looks like a skipped search, not a quiet "
                 f"news day"
             )
+
+    check_saudi_culture_commission_target(blocks, result)
+
+
+def check_saudi_culture_commission_target(blocks, result):
+    """
+    Culture-commission target (added 2026-08-18, WARN-only -- never a hard
+    failure). Counts Saudi Arabia/Regional items filed under a real
+    commission label OTHER than "General:" (General was redefined 2026-08-18
+    to a narrow hospitality/lifestyle/cross-commission catch-all, no longer
+    a home for macro/political press -- see SKILL.md's Creative culture
+    retrieval section). This is separate from the minimum-coverage ladder
+    above: a section that clears its >=1-article floor with only General
+    items would still represent a shortfall in genuine culture-commission
+    sourcing, which is exactly what this check surfaces. Intentionally a
+    warning, not a gate -- some days genuinely don't have
+    SAUDI_CULTURE_TARGET_COUNT items to report, and this pipeline never
+    pads to hit a number.
+    """
+    culture_count = 0
+    for h1_name, h1_lines in blocks:
+        if h1_name != "Saudi Arabia/Regional":
+            continue
+        for label, bullets in get_h2_bullets(h1_lines).items():
+            if label in CULTURE_COMMISSION_LABEL_STRINGS:
+                culture_count += len(bullets)
+
+    met = culture_count >= SAUDI_CULTURE_TARGET_COUNT
+    result.coverage_ladder["Saudi Arabia/Regional (culture-commission target)"] = {
+        "count": culture_count, "minimum_required": SAUDI_CULTURE_TARGET_COUNT,
+        "met": met, "rung": "target-met" if met else "target-shortfall-WARN",
+    }
+    if not met:
+        result.warn(
+            f"Saudi Arabia/Regional has only {culture_count} item(s) under a "
+            f"real culture-commission label (target: "
+            f"{SAUDI_CULTURE_TARGET_COUNT}) -- 'General:' items don't count "
+            f"toward this target, by design (see SKILL.md's Creative "
+            f"culture retrieval section). This is a warning, not a "
+            f"failure: confirm the creative retrieval work (reviews/"
+            f"criticism angle, named Saudi figures covered abroad, Saudi "
+            f"work/brands at international events) was actually worked "
+            f"this cycle before accepting the shortfall as genuine -- do "
+            f"not pad to hit the number"
+        )
 
 
 def check_links_and_sources(blocks, result, recent_register_urls, stale_register_urls,

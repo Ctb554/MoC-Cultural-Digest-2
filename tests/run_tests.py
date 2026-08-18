@@ -302,6 +302,96 @@ Consideration: Something.
         Path(path).unlink()
 
 
+def _digest_with_saudi_regional_labels(labels_and_bullets):
+    """
+    Builds a minimal, otherwise-valid digest markdown string whose Saudi
+    Arabia/Regional section has one ## <label> subheading per
+    (label, bullet_count) pair in labels_and_bullets. Global and Negative
+    Articles are populated just enough to clear their own minimum-coverage
+    floors so only the culture-commission target is under test.
+    """
+    saudi_sections = ""
+    for label, count in labels_and_bullets:
+        bullets = "\n".join(
+            f"- Placeholder bullet {i}. ([Wire](https://www.placeholderwire.invalid/{label}-{i}))"
+            for i in range(count)
+        )
+        saudi_sections += f"\n## {label}\n{bullets}\n"
+
+    return f"""# Headlines, 18 August 2026
+
+## Saudi Arabia/Regional
+- Placeholder headline
+
+## Negative Articles
+
+## Global
+- Placeholder global headline
+
+# Saudi Arabia/Regional
+{saudi_sections}
+# Negative Articles
+
+# Global
+
+## Museums:
+- Placeholder global bullet. ([Wire](https://www.placeholderwire.invalid/global))
+
+# Risks and Opportunities
+
+## Risks
+
+1. **A risk**
+Paragraph.
+Source: [Wire](https://www.placeholderwire.invalid/global)
+Consideration: Something.
+
+## Opportunities
+
+1. **An opportunity**
+Paragraph.
+Source: [Wire](https://www.placeholderwire.invalid/global)
+Consideration: Something.
+"""
+
+
+def test_saudi_culture_commission_target():
+    print("\n== Culture-commission target: General-only warns, 3+ real commissions doesn't ==")
+
+    general_only_md = _digest_with_saudi_regional_labels([("General:", 2)])
+    with tempfile.NamedTemporaryFile("w", suffix=".md", delete=False) as f:
+        f.write(general_only_md)
+        general_only_path = f.name
+    try:
+        result = run_audit_on(general_only_path, search_log_path=CONFIRMED_LOG)
+        check("General-only Saudi/Regional still passes hard checks (not a failure)",
+              result.ok(), result.hard_failures)
+        ladder = result.coverage_ladder.get("Saudi Arabia/Regional (culture-commission target)", {})
+        check("culture-commission count is 0 (General items don't count)",
+              ladder.get("count") == 0, ladder)
+        check("culture-commission target marked not met (WARN rung)",
+              ladder.get("rung") == "target-shortfall-WARN", ladder)
+        check("a warning names the culture-commission shortfall",
+              any("real culture-commission label" in w for w in result.warnings), result.warnings)
+    finally:
+        Path(general_only_path).unlink()
+
+    real_commissions_md = _digest_with_saudi_regional_labels([("Heritage:", 2), ("Film:", 1)])
+    with tempfile.NamedTemporaryFile("w", suffix=".md", delete=False) as f:
+        f.write(real_commissions_md)
+        real_commissions_path = f.name
+    try:
+        result = run_audit_on(real_commissions_path, search_log_path=CONFIRMED_LOG)
+        check("3 items under real commissions passes hard checks", result.ok(), result.hard_failures)
+        ladder = result.coverage_ladder.get("Saudi Arabia/Regional (culture-commission target)", {})
+        check("culture-commission count is 3", ladder.get("count") == 3, ladder)
+        check("culture-commission target marked met", ladder.get("rung") == "target-met", ladder)
+        check("no warning about the culture-commission shortfall",
+              not any("real culture-commission label" in w for w in result.warnings), result.warnings)
+    finally:
+        Path(real_commissions_path).unlink()
+
+
 # --- Item 5: Israeli-outlet posture -------------------------------------------
 
 def test_israeli_outlet_hard_fail():
@@ -448,6 +538,7 @@ TESTS = [
     test_empty_negative_ladder,
     test_adversarial_framing_check_regression,
     test_minimum_coverage_cannot_be_waived_for_saudi_or_global,
+    test_saudi_culture_commission_target,
     test_israeli_outlet_hard_fail,
     test_register_rolling_window,
     test_run_status_file_pass_and_crash_shapes,

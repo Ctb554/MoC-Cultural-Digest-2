@@ -439,6 +439,93 @@ covered named sites, including three from Saudi Arabia's tentative list
   weren't independently verified in this pass; add them once confirmed
   rather than assuming they're still open/correctly named.
 
+### Creative culture retrieval (Saudi Arabia/Regional, rebuilt 2026-08-18)
+
+**This section existed once, was lost to a force-push before it ever landed
+on `main`, and is rebuilt here from scratch.** It exists because the Named
+Entity searches above — even fully worked, one outlet/person/place at a
+time — systematically miss a real, distinct category of coverage: stories
+where Saudi Arabia is genuinely present in the culture story but is
+incidental to the *outlet's own beat*, so no keyword search built around
+"Saudi + [commission]" or "Saudi + [named outlet]" will ever surface them.
+
+**Concrete evidence this is real, not hypothetical** (from the 18 August
+2026 real reference edition — note how varied and unexpected these actual
+used sources were): `hospemag.me` (a hospitality trade site),
+`Castelvetranonews.it` (a small Italian **local** news site, in an
+advertorial about food fairs that merely *named* the Saudi Food Show in
+passing), PR Newswire (an EU trade campaign's press release mentioning
+Saudi culinary imports as one data point), GQ Middle East, YUNG (a fashion
+site), and `bdnews24.com` (a Bangladeshi news outlet — because Bollywood
+stars joined the cast of a Saudi film). None of these outlets would ever
+surface from a "Saudi Film Commission" or "Saudi Fashion Commission"
+keyword search; they were found by searching the **story** (a fashion
+takeover, a dates carnival, a film casting announcement), with Saudi Arabia
+appearing incidentally within it.
+
+**Three retrieval angles, run in addition to (not instead of) the Named
+Entity searches above:**
+
+1. **Reviews/criticism angle.** Search for reviews and criticism that
+   mention Saudi work without "Saudi" being the outlet's main beat at all —
+   a film review, an art critique, a restaurant/chef feature, a fashion
+   piece. The outlet doesn't cover Saudi Arabia as a subject; it covers
+   film, art, food, or fashion, and a Saudi work or figure happens to be
+   what it's reviewing this week.
+2. **Named Saudi figures covered abroad.** Search prominent Saudi cultural
+   names (artists, designers, directors, chefs — see the People lists
+   above, and add newly prominent names as they surface) in the context of
+   international press coverage: profiles, casting news, awards, festival
+   mentions — even in outlets with no Saudi focus at all. The search target
+   is the person, not the outlet.
+3. **Saudi work/brands at international commercial and cultural events.**
+   Follow the **event or commercial story** rather than only searching
+   "Saudi + [commission]": department-store takeovers (e.g. a Selfridges
+   Corner Shop takeover), trade fairs, festivals, casting announcements,
+   retail placements. Search "[Event/brand name] Saudi" or just the event
+   itself and look for the Saudi angle within results, not the reverse.
+
+**Smaller, local, regional, and advertorial-style sources are explicitly
+permitted for this angle** — a small Italian local-news advertorial or a
+trade-press release is exactly the kind of source the 18 August evidence
+above shows this retrieval actually depends on. "Small or promotional-toned
+outlet" is **not** itself a disqualifier, unlike "Saudi-owned" or
+"excluded/blocked," which still are. **Every normal Stage 2 verification
+gate still fully applies without exception**: real (confirmed via WebFetch
+or a second source for bot-walled outlets), in-window, non-Saudi-owned, not
+previously used. Being small or promotional in tone changes nothing about
+those gates — it only means the outlet itself isn't grounds for rejection.
+
+**Arabic-language sources are explicitly in scope for this section** (find,
+verify, and summarise to English — the output digest stays English-only,
+per this pipeline's existing English-only rule; do not paste untranslated
+Arabic into a bullet). A non-Saudi-owned Arabic-language outlet covering a
+Saudi cultural story is exactly the kind of coverage this section exists to
+catch, the same structural gap that motivated making the three core
+Booleans bilingual (see above).
+
+**An optional first-pass tool exists for this section:**
+`scripts/gnews_culture_feed.py` (see its own section below) can surface
+candidate leads across English and Arabic Google News RSS before you start
+manual searching. Its candidates are unverified and its links are
+`news.google.com` redirects that must be resolved to the real publisher URL
+before anything from it is cited — treat it exactly like the RSS pre-filter
+above: a discovery aid, never a source of finished facts.
+
+**Hard target: at least 3 genuine Saudi culture-commission items per
+edition** — items filed under a real commission subheading **other than
+"General:"** (Heritage, Museums, Visual Arts, Film, Fashion, Music, Theatre
+and Performing Arts, Literature/Publishing/Translation, Libraries, Culinary
+Arts, or Architecture and Design). This is counted **separately from, and
+in addition to**, whatever Negative Articles reputational items exist that
+day — the two counts don't offset each other. This target is enforced as a
+**WARN-level check in `scripts/audit_report.py`, never a hard fail** — see
+Stage 5. Falling short is a normal, honest outcome on a genuinely thin day;
+**do not pad** General items or force weak matches to hit 3. If the count
+comes in under target, treat the warning as a prompt to confirm the
+creative retrieval above was actually worked this cycle (not skipped),
+not as license to manufacture content.
+
 **Negative/reputational coverage** — run as separate searches per theme, not
 one combined query (a combined query drowns culture-adjacent reputational
 stories under pure geopolitics on any heavy news day): human rights, labour/
@@ -985,6 +1072,20 @@ This ladder replaces the earlier undocumented assumption (never actually
 implemented) that every section hard-fails on empty; that would have forced
 Negative Articles to be padded with weak or manufactured criticism on a
 genuinely quiet news day, which is worse than an honest empty section.
+
+### Culture-commission target (WARN only, added 2026-08-18)
+
+`SAUDI_CULTURE_TARGET_COUNT = 3`: `scripts/audit_report.py` counts Saudi
+Arabia/Regional items filed under any approved commission label **other
+than `General:`** and emits a **warning** (never a hard failure) if the
+count is below 3. This checks that the Creative culture retrieval work
+above (Stage 2) was actually done, not just that Saudi Arabia/Regional has
+*some* content — a section that hits its minimum-coverage floor with only
+`General:` items would pass the ladder above but still represents a
+shortfall in genuine culture-commission sourcing, which this check exists
+to surface. It is intentionally a warning: some days genuinely don't have 3
+culture-commission items to report, and this pipeline never pads to hit a
+number.
 
 ## Stage 6: housekeeping and delivery
 
