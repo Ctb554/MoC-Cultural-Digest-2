@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-08-18T09:56:38.126018+00:00",
+  "timestamp": "2026-08-18T09:58:30.204239+00:00",
   "markdown_path": "reports/MOC_Daily_Cultural_Digest_18Aug26_D1.md",
   "reader_used": "tavily",
-  "delivery_result": "pending",
+  "delivery_result": "dropbox: 05_Claude Test -> success; email: not configured; repo: committed+pushed",
   "url_resolution_check": "enabled",
   "register_window_days": 60,
   "run_error": null,
@@ -39,8 +39,18 @@
     }
   },
   "audit": {
-    "result": "pass",
-    "hard_failures": [],
+    "result": "fail",
+    "hard_failures": [
+      "[Saudi Arabia/Regional / Visual Arts:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://www.muslimnetwork.tv/saudis-riyadh-expands-public-art-across-streets-and-transit-hubs/",
+      "[Negative Articles / (no subheading)] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://www.middleeasteye.net/live-blog/live-blog-update/houthis-say-they-targeted-saudi-military-ship-red-sea",
+      "[Global / Visual Arts:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://www.theartnewspaper.com/2026/08/17/frieze-seoul-to-move-to-new-venue-from-2027",
+      "[Global / Visual Arts:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://www.theartnewspaper.com/2026/08/17/mary-heilmann-fearless-colourist-singular-painter-obituary",
+      "[Global / Visual Arts:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://www.theartnewspaper.com/2026/08/17/stolen-matisse-works-recovered-sao-paulo-brazil-heist",
+      "[Global / Museums:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://www.theartnewspaper.com/2026/08/17/four-works-by-sicilian-renaissance-master-stolen-from-messina-museum",
+      "[Global / Heritage:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://arkeonews.net/rare-tagar-horse-engravings-discovered-in-an-early-iron-age-burial-mound-in-khakassia/",
+      "[Global / Heritage:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://arkeonews.net/rare-4000-year-old-enigmatic-tablet-found-intact-at-lucone-bronze-age-village-in-italy/",
+      "[Global / Heritage:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://arkeonews.net/1600-year-old-early-christian-mosaics-discovered-in-croatia-with-a-great-sinners-inscription/"
+    ],
     "warnings": [
       "Saudi Arabia/Regional has only 1 item(s) under a real culture-commission label (target: 3) -- 'General:' items don't count toward this target, by design (see SKILL.md's Creative culture retrieval section). This is a warning, not a failure: confirm the creative retrieval work (reviews/criticism angle, named Saudi figures covered abroad, Saudi work/brands at international events) was actually worked this cycle before accepting the shortfall as genuine -- do not pad to hit the number"
     ]
