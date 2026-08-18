@@ -1,0 +1,40 @@
+{
+  "edition_date": "2026-08-18",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "general_macro_press_sweep_run": true,
+  "general_macro_press_note": "All 34 named outlets swept one at a time (FT and Reuters undiscoverable via WebSearch per SKILL, checked via combined/indirect queries). Every in-window reputational hit converged on the single Red Sea security-escalation cluster (Houthi claimed strike on a Saudi vessel; Asian refiners avoiding the Red Sea / Aramco rerouting near Oman). No other in-window reputational Saudi story existed. AGBI's 17 Aug CMA-chairman change carried no reputational edge (pro-investment reform) and was excluded per the redefined rules.",
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_finding": "Middle East Eye and Al Jazeera both relay the Houthis' 'siege for a siege' narrative, framing Saudi Arabia as the party besieging Yemen rather than the target of the claimed strike. Filed as the Negative Articles item, citing the framing outlet (Middle East Eye).",
+  "negative_hits_found_in_window": 1,
+  "watchdog_hits_found_in_window": 0,
+  "notes": "All named watchdog/NGO statements on Saudi Arabia found were out of the 24h window (Amnesty Jul 2026, HRW Apr/May 2026, RSF 2026 Index, ALQST Jan/Apr 2026, Freedom House/CIVICUS earlier 2026). Human-rights execution stories (e.g. Jalal Labbad, Ali al-Subaiti) were 2025/April 2026, out of window. The only in-window Saudi reputational thread was the Red Sea security escalation."
+}
