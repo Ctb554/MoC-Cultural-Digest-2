@@ -1,0 +1,37 @@
+{
+  "edition_date": "2026-08-19",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_finding": "Iran-war/Houthi/Red Sea security context surfaced in-window, but in-window (Aug 18) coverage frames Saudi Arabia as the victim of Houthi attacks (Aramco Jazan/Jizan refinery targeting); aggressor-framed items casting Saudi Arabia as attacker (Al Jazeera Hodeidah strikes, US-Saudi strikes condemnation) are late-July, out of window. No in-window aggressor/oppressor framing found.",
+  "negative_hits_found_in_window": 0,
+  "notes": "Negative Articles section legitimately empty this edition. Reputationally-relevant material (Saudi oil-export vulnerability, refiners refusing Red Sea cargoes near Oman, oil-profiteering-during-war framing) is real and active but dated 2026-08-13 to 2026-08-17, just outside the 24-hour window. Nothing manufactured or padded. Near-misses dropped: Bloomberg 'Asian Refiners Ask to Pick Up Saudi Oil Outside Risky Red Sea' and 'Saudis Offer to Sell Oil Near Oman' (both 2026-08-17); AGBI 'Oil giants hoard $56bn profit windfall from Iran war' (2026-08-13); Foreign Policy 'Strategic Blunders Have Plagued Saudi Arabia's Approach to the Middle East' (2026-08-05)."
+}

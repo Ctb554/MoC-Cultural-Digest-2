@@ -1,0 +1,52 @@
+{
+  "timestamp": "2026-08-19T05:32:01.280901+00:00",
+  "markdown_path": "reports/MoC_Daily_Cultural_Digest_2026-08-19_D1.md",
+  "reader_used": "tavily",
+  "delivery_result": "pending",
+  "url_resolution_check": "enabled",
+  "register_window_days": 60,
+  "run_error": null,
+  "section_item_counts": {
+    "Saudi Arabia/Regional": 2,
+    "Global": 6,
+    "Negative Articles": 0,
+    "Saudi Arabia/Regional (culture-commission target)": 2
+  },
+  "minimum_coverage_ladder": {
+    "Saudi Arabia/Regional": {
+      "count": 2,
+      "minimum_required": 1,
+      "met": true,
+      "rung": "has-content"
+    },
+    "Global": {
+      "count": 6,
+      "minimum_required": 1,
+      "met": true,
+      "rung": "has-content"
+    },
+    "Negative Articles": {
+      "count": 0,
+      "minimum_required": 0,
+      "met": true,
+      "rung": "empty-justified"
+    },
+    "Saudi Arabia/Regional (culture-commission target)": {
+      "count": 2,
+      "minimum_required": 3,
+      "met": false,
+      "rung": "target-shortfall-WARN"
+    }
+  },
+  "audit": {
+    "result": "pass",
+    "hard_failures": [],
+    "warnings": [
+      "'Negative Articles' is empty; justified by reports/search_log.json confirming the negative/watchdog searches were run and returned nothing in-window -- this is a legitimate outcome, not a sourcing failure",
+      "Saudi Arabia/Regional has only 2 item(s) under a real culture-commission label (target: 3) -- 'General:' items don't count toward this target, by design (see SKILL.md's Creative culture retrieval section). This is a warning, not a failure: confirm the creative retrieval work (reviews/criticism angle, named Saudi figures covered abroad, Saudi work/brands at international events) was actually worked this cycle before accepting the shortfall as genuine -- do not pad to hit the number"
+    ]
+  },
+  "named_entity_lists_last_verified": "2026-07-20",
+  "named_entity_lists_days_old": 30,
+  "stale_named_entity_lists": false
+}
