@@ -1,0 +1,40 @@
+{
+  "edition_date": "2026-08-20",
+  "coverage_window": "2026-08-19 to 2026-08-20",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "general_macro_press_sweep_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_finding": "Saudi geopolitical/security stories (Houthi Red Sea blockade, Iran war, Hormuz shipping) were present in the sweep; 2-3 additional outlets (Al Jazeera, Middle East Eye, Iranian state framing, Guardian, HRW) were checked for aggressor/oppressor framing. Adversarial framing of Saudi Arabia exists but is concentrated OUTSIDE the 24h window (late July/early August). No in-window (2026-08-19/20) article casting Saudi Arabia as aggressor/oppressor was found; the one in-window Al Jazeera Hormuz piece framed Saudi Arabia neutrally.",
+  "negative_hits_found_in_window": 2,
+  "negative_hits_notes": "Two in-window reputational items (both AGBI): Vision 2030 renewables execution risk (2026-08-20) and Red Sea resort opening vs. tourism downturn (2026-08-19). One additional marginal, neutrally-framed Al Jazeera Hormuz-shipping item (2026-08-20) used only in the Risks synthesis as security-backdrop context, not as a standalone Negative Articles bullet. Watchdog/NGO monitoring and all 13 themed searches returned zero in-window hits from eligible (non-Saudi-owned, non-Israeli) outlets.",
+  "rss_prefilter_run": true,
+  "gnews_culture_feed_run": true
+}
