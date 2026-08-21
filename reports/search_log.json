@@ -1,0 +1,41 @@
+{
+  "edition_date": "2026-08-21",
+  "coverage_window_hours": 24,
+  "coverage_window_utc": ["2026-08-20T05:10:00Z", "2026-08-21T05:10:00Z"],
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "general_macro_press_sweep_run": true,
+  "general_macro_press_outlets_checked": [
+    "Bloomberg", "Financial Times", "Semafor", "The Economist", "Wall Street Journal",
+    "Axios", "Politico", "Reuters", "Associated Press", "AFP", "New York Times",
+    "The Times", "Sunday Times", "The Telegraph", "BBC", "Guardian", "Washington Post",
+    "CNBC", "Deutsche Welle", "Le Monde", "Le Figaro", "Der Spiegel", "Nikkei Asia",
+    "Foreign Policy", "Foreign Affairs", "The Diplomat", "AGBI", "Arabian Business",
+    "Al-Monitor", "Amwaj.media", "MEED", "Gulf News", "Middle East Eye", "Al Jazeera"
+  ],
+  "watchdog_ngos_checked": [
+    "Amnesty International", "Human Rights Watch", "Freedom House",
+    "Reporters Without Borders", "Committee to Protect Journalists", "CIVICUS",
+    "ALQST", "DAWN", "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_notes": "General/Macro Press sweep surfaced numerous stories naming Saudi Arabia in a geopolitical/security context (Red Sea/Houthi blockade, Iran war, Mecca defence pact, oil rerouting), so the check is applicable. Cross-checked framing of the same underlying Red Sea/Iran energy situation across Middle East Eye, Al Jazeera, Washington Post, CNBC and Bloomberg. The overwhelming majority of this coverage is dated 4-19 August, OUTSIDE the 24h window. The one clearly in-window (20 August) reputationally-relevant item is Middle East Eye's sanctions/energy-price piece, which frames Saudi Arabia as an exposed party rather than aggressor; it is used as the single Negative Articles item, with the outlet's Qatar-linked funding flagged. No in-window outlet framing casting Saudi Arabia as aggressor/oppressor was found.",
+  "negative_hits_found_in_window": 1,
+  "notes": "First real edition; do-not-reuse register and editorial_learnings empty. Reader path: TAVILY_API_KEY present but not required this run (all selected articles verified via WebFetch or second-source corroboration for the paywalled WWD item). RSS pre-filter and gnews culture feed both run as first-pass discovery aids; all candidates re-verified through normal Stage 2 gates. Watchdog/NGO and film/music/theatre sector searches returned no confirmed in-window (20-21 Aug) hits."
+}
