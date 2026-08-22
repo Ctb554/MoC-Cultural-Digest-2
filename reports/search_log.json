@@ -1,0 +1,32 @@
+{
+  "date": "2026-08-22",
+  "coverage_window_hours": 24,
+  "negative_searches_run": false,
+  "negative_searches_run_note": "The 34-outlet General/Macro Press sweep (one search per outlet), the watchdog/NGO sweep (9 organisations, one search each), the adversarial-framing check, and 11 of the 13 themed negative searches were all run this cycle. Two themed queries (soft power criticism; general reputation risk) were not run as dedicated searches because the shared WebSearch budget was exhausted (200/200) before they could be issued; adjacent ground was covered via the investment-scrutiny and PIF/reputation-risk searches. Set to false per SKILL.md's strict rule that any skipped theme requires false. This is moot for the minimum-coverage ladder because Negative Articles is non-empty (2 verified in-window items).",
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "watchdog/NGO monitoring"
+  ],
+  "negative_themes_not_run_as_dedicated_query": [
+    "soft power criticism",
+    "general reputation risk"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_note": "Both in-window negatives are security/geopolitical, so the check is applicable. Additional outlets' framing of the same underlying events was checked: Semafor already records Saudi Arabia conducting US-backed airstrikes against armed groups on Iraqi soil (an aggressor framing) and is carried as its own Negative Articles item; Middle East Eye's Yanbu piece frames the Kingdom as an exposed party. Amwaj.media carried a 'Saudi bombing of Iraq' headline but returned HTTP 429 with an unverifiable date, so it was excluded rather than cited unverified. No additional verifiable in-window adversarial-framing article surfaced beyond the Semafor item already listed.",
+  "negative_hits_found_in_window": 2,
+  "macro_outlets_swept": 32,
+  "macro_outlet_hits": ["Middle East Eye", "Semafor"],
+  "watchdog_ngo_hits_in_window": 0,
+  "notes": "First real edition; do-not-reuse register reconstructed from the last four delivered Dropbox editions (18-21 Aug). Shared WebSearch budget reached 200/200 during sourcing. RSS pre-filter feed failures this run: HeritageDaily, Arkeonews, The Art Newspaper, Publishers Weekly (feeds did not parse); all remain covered by the WebSearch outlet sweep."
+}
