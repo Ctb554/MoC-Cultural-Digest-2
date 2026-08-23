@@ -1,0 +1,30 @@
+{
+  "edition_date": "2026-08-23",
+  "coverage_window": "2026-08-22T06:23Z to 2026-08-23T06:23Z (last 24h from run start)",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_notes": "In-window Saudi geopolitical/security story exists: MBS official visit to France (energy-route diversification / Strait of Hormuz), The National 2026-08-22. Checked framing across Al Jazeera, Al-Monitor, Gulf News, The National; all neutral/positive. No framing casting Saudi Arabia as aggressor/oppressor found. The Saudi-led Red Sea maritime coalition story is pre-window (Aug 14); only weak in-window echoes (Vietnam.vn, Yemeni outlets), not usable.",
+  "negative_hits_found_in_window": 0,
+  "general_macro_press_sweep": "34 outlets swept one-by-one paired with Saudi Arabia; zero in-window reputational keepers. Nearest miss: Bloomberg 'Saudis Shuttle Oil North on Sinokor Tankers to Evade Houthis' 2026-08-21 (one day pre-window). Reuters/FT not discoverable via WebSearch.",
+  "watchdog_ngo_sweep": "9 orgs swept one-by-one (Amnesty, HRW, Freedom House, RSF, CPJ, CIVICUS, ALQST, DAWN, PEN International); zero in-window. Nearest miss: Amnesty al-Labbad juvenile-execution statement dates to Aug 2025, one year out of window.",
+  "rss_prefilter_note": "scripts/rss_saudi_filter.py checked 19 outlets, 3 candidates (all Middle East Eye, geopolitical/non-culture). Feeds that failed to parse: HeritageDaily, Arkeonews, The Art Newspaper, Publishers Weekly (report to maintainers; each remains covered by WebSearch sweep).",
+  "gnews_feed_note": "scripts/gnews_culture_feed.py ran 42 queries, 118 in-window candidates (mostly noise / Saudi-owned / out-of-window on resolution). No non-Saudi in-window culture keeper survived verification.",
+  "reader_path": "tavily (available; not required this edition as no bot-walled premium wire was selected)"
+}
