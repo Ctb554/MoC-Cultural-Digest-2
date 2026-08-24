@@ -1,0 +1,35 @@
+{
+  "edition_date": "2026-08-24",
+  "coverage_window_utc": ["2026-08-23T05:11:00Z", "2026-08-24T05:11:00Z"],
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "general_macro_press_sweep_run": true,
+  "watchdog_ngo_sweep_run": true,
+  "watchdog_ngos_searched": [
+    "Amnesty International", "Human Rights Watch", "Freedom House",
+    "Reporters Without Borders", "Committee to Protect Journalists",
+    "CIVICUS", "ALQST", "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "watchdog_hits_found_in_window": 0,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_result": "Applicable (macro sweep surfaced Saudi geopolitical/security stories around the Red Sea/Houthi escalation). Checked Al Jazeera, Middle East Eye and Press TV for in-window aggressor-framing of the same events; all such aggressor-framed items were dated 6-20 Aug 2026, outside the coverage window. No in-window adversarial-framing item found.",
+  "negative_hits_found_in_window": 1,
+  "notes": "Genuinely thin late-August (Sunday) window. Saudi culture-commission stories in-window were largely carried only by Saudi-owned outlets (Arab News, Asharq Al-Awsat, SPA) and thus excluded; the AlUla/France cultural-cooperation story (24 Aug) appeared only on Arab News (Saudi-owned) and was excluded. Leads surfaced by the GNews/RSS discovery scripts (Tabuk 3,600-yr pottery study, 1,293 underwater heritage sites, Thikra/AlUla dance, Jordan children's film-festival Saudi win) all resolved to real publication dates before 23 Aug on eligible outlets (Google News RSS staleness) and were rejected. Reader path: Tavily (used to confirm bot-walled Bloomberg and Deadline items)."
+}
