@@ -1,0 +1,25 @@
+{
+  "edition_date": "2026-08-26",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "negative_hits_found_in_window": 2,
+  "notes": "General/Macro Press sweep (all 34 outlets, one at a time) surfaced two in-window reputational items: (1) US-Saudi civil nuclear agreement submitted to Congress with Trump conditioning it on Saudi recognition of Israel and proliferation concerns raised (AP via US News, 25 Aug; CNBC, 26 Aug); (2) adversarial-framing item - Houthi leader Abdel-Malik al-Houthi casting Saudi Arabia as committing 'tyranny' and 'aggressive occupation' of Yemen (Middle East Eye, 26 Aug), the new in-window development in the ongoing Red Sea/Houthi security thread. Watchdog/NGO sweep (all 9 orgs, one at a time) and all 13 themed searches otherwise returned nothing in-window from an eligible outlet. Adversarial-framing check applicable (active Saudi geopolitical/security story present) and run; it found the MEE item. Already-used Amzan-tanker (25 Aug edition) and tanker-rerouting (24 Aug edition) stories excluded as duplicates."
+}

@@ -1,0 +1,34 @@
+{
+    "timestamp": "2026-08-26T05:46:00+00:00",
+    "markdown_path": "reports/MoC_Daily_Cultural_Digest_26Aug26_D1.md",
+    "reader_used": "tavily",
+    "delivery_result": "uploaded: Dropbox 05_Claude Test (team namespace 4361675552), team-visible path /C_Clients/C_MoC/2026/01- Account Management/03- Reporting/02_Daily Monitoring/05_Claude Test/MoC_Daily_Cultural_Digest_26Aug26_D1.docx",
+    "url_resolution_check": "enabled",
+    "register_window_days": 60,
+    "run_error": null,
+    "note_on_status": "Authoritative Stage 5 gate ran against the prior-edition register (empty on this first repo edition) and PASSED before Stage 6 appended today's entries and before delivery. A post-append re-run of the audit will report reuse failures for today's own links; that is an ordering artifact, not a real failure. This file reflects the authoritative pre-append PASS.",
+    "section_item_counts": {
+        "Saudi Arabia/Regional": 1,
+        "Global": 8,
+        "Negative Articles": 2,
+        "Saudi Arabia/Regional (culture-commission target)": 1
+    },
+    "minimum_coverage_ladder": {
+        "Saudi Arabia/Regional": {"count": 1, "minimum_required": 1, "met": true, "rung": "has-content"},
+        "Global": {"count": 8, "minimum_required": 1, "met": true, "rung": "has-content"},
+        "Negative Articles": {"count": 2, "minimum_required": 0, "met": true, "rung": "has-content"},
+        "Saudi Arabia/Regional (culture-commission target)": {"count": 1, "minimum_required": 3, "met": false, "rung": "target-shortfall-WARN"}
+    },
+    "audit": {
+        "result": "pass",
+        "hard_failures": [],
+        "warnings": [
+            "Saudi Arabia/Regional has only 1 item(s) under a real culture-commission label (target: 3) -- 'General:' items don't count toward this target, by design. Confirmed the creative retrieval work was actually worked this cycle; the shortfall is genuine (thin culture day; the AlUla Odysseus lead was out-of-window, Villa Hegra and the Paris cultural centre had no eligible non-Saudi source). No padding applied."
+        ]
+    },
+    "named_entity_lists_last_verified": "2026-07-20",
+    "named_entity_lists_days_old": 37,
+    "stale_named_entity_lists": false,
+    "rss_feed_failures": ["HeritageDaily", "Arkeonews", "The Art Newspaper", "Publishers Weekly"],
+    "delivery_channels": {"dropbox": "uploaded", "email": "not configured"}
+}
