@@ -1,0 +1,37 @@
+{
+  "edition_date": "2026-08-27",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngo_searched": [
+    "Amnesty International", "Human Rights Watch", "Freedom House",
+    "Reporters Without Borders (RSF)", "Committee to Protect Journalists (CPJ)",
+    "CIVICUS", "ALQST", "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "watchdog_ngo_hits_in_window": 0,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_finding": "General/Macro Press sweep surfaced two in-window Saudi geopolitical/security stories (Persian Gulf oil rerouting under Red Sea/Houthi threat; US-Saudi civil-nuclear accord sent to Congress). Checked additional outlets including Al Jazeera, Middle East Eye, PressTV and Tehran Times for aggressor/oppressor framing; no in-window (2026-08-26/27) adversarially-framed coverage found on either event.",
+  "negative_hits_found_in_window": 3,
+  "negative_hits": [
+    "Energy Live News (2026-08-26) - Saudi renewable sector migrant-labour backlash (labour/human rights)",
+    "New York Times (2026-08-26) - Saudi Arabia reroutes oil exports away from Red Sea under Houthi threat (oil/security)",
+    "France 24 (2026-08-26) - US-Saudi civil-nuclear agreement sent to Congress; proliferation/enrichment + Israel-normalisation framing (geopolitical scrutiny)"
+  ]
+}
