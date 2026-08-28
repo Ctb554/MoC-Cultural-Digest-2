@@ -1,0 +1,45 @@
+{
+  "edition_date": "2026-08-28",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/migrant workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil/OPEC",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "general_macro_press_sweep_run": true,
+  "general_macro_press_outlets_swept": [
+    "Bloomberg", "Financial Times", "Semafor", "The Economist", "Wall Street Journal",
+    "Axios", "Politico", "Reuters", "Associated Press", "AFP", "New York Times",
+    "The Times", "Sunday Times", "The Telegraph", "BBC", "Guardian", "Washington Post",
+    "CNBC", "Deutsche Welle", "Le Monde", "Le Figaro", "Der Spiegel", "Nikkei Asia",
+    "Foreign Policy", "Foreign Affairs", "The Diplomat", "AGBI", "Arabian Business",
+    "Al-Monitor", "Amwaj.media", "MEED", "Gulf News", "Middle East Eye", "Al Jazeera"
+  ],
+  "watchdog_ngos_swept": [
+    "Amnesty International", "Human Rights Watch", "Freedom House",
+    "Reporters Without Borders", "Committee to Protect Journalists", "CIVICUS",
+    "ALQST", "DAWN", "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_finding": "The General/Macro Press sweep surfaced a live Saudi security/geopolitical story (NYT: Saudi Arabia prepared for a possible military response / 'new war' with the Houthis). Framing check run against Al Jazeera, Middle East Eye and Iranian state media (Press TV/Tehran Times): none carried an in-window (27-28 Aug) aggressor-framing article on this angle. Aggressor-framing amplification found in-window via TASS (Russian state media) and Jerusalem Post; JPost hard-excluded (Israeli outlet). TASS item included as its own Negative Articles item.",
+  "negative_hits_found_in_window": 3,
+  "negative_items_used": [
+    "New York Times - Saudi Response to Houthis' Attacks on Ships May Be a New War (27 Aug)",
+    "TASS - Saudi Arabia preparing for new war with Houthis in Yemen (27 Aug, adversarial framing)",
+    "Al Jazeera - World Cup 2034 hosts Saudi Arabia back Infantino amid FIFA crisis (27 Aug, sportswashing)"
+  ],
+  "notes": "Window was thin. Many in-window Saudi reputational leads clustered on/before 26 Aug (out of window) or duplicated prior editions (nuclear-to-Congress, Red Sea rerouting, Houthi tanker strike, migrant-labour report) and were excluded. Do-not-reuse enforced manually against the 25/26/27 Aug delivered editions (git register is empty; Dropbox test folder is the live continuity store)."
+}
