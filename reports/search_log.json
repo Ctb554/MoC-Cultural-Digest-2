@@ -1,0 +1,37 @@
+{
+  "edition_date": "2026-08-29",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom/censorship",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_finding": "General/Macro Press sweep surfaced Saudi Arabia in geopolitical/security contexts (Red Sea/Houthi oil-logistics disruption; US-Saudi nuclear deal; Iran's 28 Aug cooperation offer). Checked framing of the in-window Iran-Saudi cooperation story across Bloomberg, Iran Front Page and other outlets; the in-window regional-security news was de-escalatory rather than casting Saudi Arabia as aggressor, so it produced no distinct in-window adversarial-framing Negative Articles item. The dominant adversarial/reputational Saudi geopolitical coverage (Houthi blockade, airstrikes on Iraqi militias) fell outside the 24h window (21-26 Aug).",
+  "negative_hits_found_in_window": 1,
+  "notes": "First real edition (do-not-reuse register previously empty). Genuinely thin day for in-window (28 Aug), non-Saudi-owned Saudi cultural coverage: most Saudi macro/security items were 21-26 Aug (out of window) and most fresh in-window culture items were from Saudi-owned outlets (excluded). RSS pre-filter feeds that failed to parse: HeritageDaily, Arkeonews, The Art Newspaper, Publishers Weekly. Reader path: Tavily (used to read bot-walled Middle East Online and to confirm dates)."
+}
