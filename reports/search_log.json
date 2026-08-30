@@ -1,0 +1,35 @@
+{
+  "edition_date": "2026-08-30",
+  "coverage_window": "2026-08-29T05:00:00Z/2026-08-30T05:00:00Z",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics (Houthi/Red Sea/Aramco)",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Reporters Without Borders (RSF)",
+    "ALQST",
+    "PEN (America/International)",
+    "Freedom House"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_note": "A live Saudi geopolitical/security story exists this cycle (Houthi Red Sea blockade / drone strikes on Aramco's Jazan refinery / Saudi oil-logistics rerouting). Framing was checked across multiple outlets (Al Jazeera, NPR, Bloomberg, Fortune, Long War Journal; Israeli jpost.com surfaced and was excluded per the hard Israeli-outlet rule). However, the most recent datable coverage of this story is 2026-08-23 (Bloomberg) and 2026-08-09 (Jazan refinery strike) -- both OUTSIDE the 24h coverage window. No in-window adversarial-framing item was found.",
+  "negative_hits_found_in_window": 0,
+  "notes": "All 13 negative themes plus watchdog/NGO monitoring were run this cycle. Every result returned was out-of-window (older reports/analyses: HRW World Report 2026, PEN Freedom to Write 2025, Amnesty June 2026, academic PDFs, PIF/sportswashing analyses) or from an excluded outlet. Zero reputational items fall inside the 2026-08-29/30 window. This is an honest empty-Negative-Articles outcome -- but note the edition was NOT delivered for an unrelated reason (see reports/last_run_status.json: Saudi Arabia/Regional had no eligible in-window culture content, a minimum-coverage-ladder hard fail)."
+}

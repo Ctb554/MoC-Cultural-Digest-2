@@ -1,0 +1,96 @@
+{
+  "timestamp": "2026-08-30T05:35:00Z",
+  "edition_date": "2026-08-30",
+  "coverage_window": "2026-08-29T05:00:00Z/2026-08-30T05:00:00Z",
+  "coverage_window_hours": 24,
+  "run_outcome": "FAIL_NO_DELIVERY",
+  "stage_reached": "Stage 2 (sourcing) -> Stage 5 minimum-coverage ladder would hard-fail; no document built, nothing delivered",
+  "section_counts": {
+    "Saudi Arabia/Regional": 0,
+    "Negative Articles": 0,
+    "Global": 2
+  },
+  "coverage_ladder": {
+    "Saudi Arabia/Regional": {
+      "count": 0,
+      "minimum_required": 1,
+      "met": false,
+      "rung": "empty-FAIL"
+    },
+    "Global": {
+      "count": 2,
+      "minimum_required": 1,
+      "met": true,
+      "rung": "has-content"
+    },
+    "Negative Articles": {
+      "count": 0,
+      "minimum_required": 0,
+      "met": true,
+      "rung": "empty-justified"
+    },
+    "Saudi Arabia/Regional (culture-commission target)": {
+      "count": 0,
+      "minimum_required": 3,
+      "met": false,
+      "rung": "warn"
+    }
+  },
+  "audit": {
+    "result": "fail",
+    "hard_failures": [
+      "Minimum-coverage ladder: 'Saudi Arabia/Regional' has 0 eligible in-window articles; it must have at least one (a short section is fine, an empty one is not; there is no empty exception). No branded digest was built or delivered."
+    ],
+    "warnings": [
+      "Culture-commission target: 0 Saudi Arabia/Regional items under a real commission label (target 3).",
+      "Global section below the 8-10 target (2 genuine in-window items found in a quiet late-August window)."
+    ]
+  },
+  "url_check": {
+    "ran": false,
+    "reason": "No document was built; nothing to check."
+  },
+  "register_window_days": 60,
+  "reader_used": "tavily",
+  "delivery_result": "not_attempted",
+  "stale_named_entity_lists": false,
+  "named_entity_lists_last_verified": "2026-07-20",
+  "named_entity_lists_age_days": 41,
+  "capability_check": {
+    "web": "pass (WebSearch + WebFetch both functional on real news domains)",
+    "template": "n/a (builds from scratch; no pinned branded template)",
+    "priors": "first real edition -- reports/ has the do-not-reuse register and editorial_learnings only; register empty ('First real edition appends here'); no prior digest to ingest",
+    "reader_path": "TAVILY_API_KEY set (used, advanced depth, for bot-walled premium sources)",
+    "delivery_credentials": "Dropbox app key/secret/refresh token all set; email vars unset",
+    "rss_prefilter": "ran; 19 outlets, 0 in-window Saudi candidates; 4 feeds failed to parse (HeritageDaily, Arkeonews, The Art Newspaper, Publishers Weekly)",
+    "gnews_culture_feed": "ran; 42 queries, 111 in-window candidates -- all either Saudi-owned outlets (excluded), non-Saudi celebrity/entertainment noise, or resolving to out-of-window / low-quality sources"
+  },
+  "run_error": null,
+  "reason": "No eligible, in-window, quality Saudi Arabia/Regional cultural content exists for this 24-hour window (2026-08-29/30). Every genuine Saudi culture story this cycle is either OUT OF WINDOW or available ONLY in hard-excluded Saudi-owned outlets. Global had genuine in-window content (weekend box office; music charts), but an empty Saudi Arabia/Regional section is a hard failure on the minimum-coverage ladder with no exception. Per SKILL/task, the run stops and reports the failure rather than padding with out-of-window items or excluded (Saudi-owned) sources, both of which are prohibited.",
+  "evidence": {
+    "saudi_culture_stories_out_of_window": [
+      "Royal Institute of Traditional Arts (Wrth) at Homo Faber Biennial, Venice -- Arab News dated 2026-08-27 21:29 UTC (out of window) AND only in Saudi-owned outlets (Arab News, SPA, Riyadh Daily). Michelangelo Foundation / Homo Faber official sites carry no dated Saudi item.",
+      "Saudi Fashion Commission x Swarovski x Art of Heritage 'Saudi Heritage Revival' (Jewellery & Handcrafted Heritage) -- 2026-08-27, only Saudi-owned outlets (Asharq Al-Awsat, Arab News, SPA).",
+      "Museums Al Masmak reopening / Al Mahd 1,774 archaeological finds -- June/July 2026 (out of window).",
+      "Red Sea Fund (Saudi)-backed Venice 2026 Spotlight title 'Conversation With The Sea' -- Screen Daily preview 2026-08-26 (out of window)."
+    ],
+    "saudi_culture_stories_saudi_owned_only": [
+      "Museums Commission virtual meeting on the future of specialised museums -- 2026-08-30 (in window) but only Makkah Newspaper and alsaudi.news (Saudi-owned, excluded).",
+      "Multiple Arabic-language Saudi culture items in the gnews feed -- Al Riyadh, Al Jazirah (Saudi), Makkah, alsaudi.news (all Saudi-owned, excluded)."
+    ],
+    "gcc_benchmarking_out_of_window": [
+      "NYUAD 'memory and belonging' exhibition, Abu Dhabi -- The National 2026-08-28 (outside 24h window).",
+      "Abu Dhabi Congress of Arabic and Creative Industries -- The National 2026-08-28 (outside 24h window).",
+      "Abu Dhabi International Book Fair 2026 (Balkans guest of honour) programme -- The National 2026-08-19 (out of window)."
+    ],
+    "rejected_low_quality_or_inappropriate": [
+      "ad-hoc-news.de At-Turaif feature -- SEO content-farm republishing evergreen travel filler, not a news event; also carries reputationally-sensitive Wahhabism framing. Rejected.",
+      "AllHipHop 'Catholic Cardi B Found Spiritual Connection In Saudi Arabia' (2026-08-29, eligible) -- celebrity gossip mixing a US rapper's Catholic faith with Makkah/'holy sand' commentary; reputationally inappropriate for a Saudi government cultural deliverable. Rejected.",
+      "Egyptian film 'El Set Lama' strong Saudi box office (2026-08-29, small Arabic outlets) -- muddy sourcing, film opened 2026-08-19 (not a clean 24h story), marginal MoC-culture relevance. Rejected."
+    ],
+    "global_in_window_found": [
+      "Weekend box office 2026-08-29/30: 'Spider-Man: Brand New Day' 5th week at No.1; 'Coyote vs. Acme' ~$14M; 'The Dog Stars' flops (Variety, Deadline).",
+      "Music charts w/e 2026-08-29: KATSEYE's 'WILD' first No.1 on Billboard 200; Shakira & Burna Boy FIFA World Cup song tops Global 200 (Billboard)."
+    ]
+  }
+}
