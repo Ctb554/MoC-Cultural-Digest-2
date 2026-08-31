@@ -1,0 +1,23 @@
+{
+  "edition_date": "2026-08-31",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "tourism criticism",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "negative_hits_found_in_window": 1,
+  "notes": "General/Macro Press sweep run outlet-by-outlet where reachable (Bloomberg, Semafor, Axios, AP/Guardian/BBC via topic search, Reuters, Al Jazeera, Middle East Eye). Economist, FT, WSJ, Politico were not reachable via the search crawler (host_not_allowed) and FT is a known dead-end per SKILL. Watchdog/NGO sweep run (Amnesty, HRW, Freedom House, RSF, CPJ, ALQST, DAWN). The dominant live reputational theme (2026 Iran-Saudi/Gulf war, Red Sea/Houthi threat to oil exports, LIV Golf/PIF pullback, Vision 2030 labour scrutiny, al-Otaibi re-sentencing) is real but almost entirely dated 7-28 August, i.e. outside the 24h window. The one in-window (30 Aug) reputationally-edged story is the Mecca defence pact's first trilateral meeting (Middle East Eye); adversarial-framing check run against it (checked SCMP, Foreign Policy, Atlantic Council, PBS, and MEE's own UAE-backlash coverage)."
+}
