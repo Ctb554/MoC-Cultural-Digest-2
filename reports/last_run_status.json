@@ -1,0 +1,50 @@
+{
+    "timestamp": "2026-09-01T05:35:35.342750+00:00",
+    "markdown_path": "reports/MoC_Daily_Cultural_Digest_2026-09-01.md",
+    "reader_used": "none",
+    "delivery_result": "dropbox:uploaded to 05_Claude Test; email:not configured",
+    "url_resolution_check": "enabled",
+    "register_window_days": 60,
+    "run_error": null,
+    "section_item_counts": {
+        "Saudi Arabia/Regional": 3,
+        "Global": 6,
+        "Negative Articles": 2,
+        "Saudi Arabia/Regional (culture-commission target)": 3
+    },
+    "minimum_coverage_ladder": {
+        "Saudi Arabia/Regional": {
+            "count": 3,
+            "minimum_required": 1,
+            "met": true,
+            "rung": "has-content"
+        },
+        "Global": {
+            "count": 6,
+            "minimum_required": 1,
+            "met": true,
+            "rung": "has-content"
+        },
+        "Negative Articles": {
+            "count": 2,
+            "minimum_required": 0,
+            "met": true,
+            "rung": "has-content"
+        },
+        "Saudi Arabia/Regional (culture-commission target)": {
+            "count": 3,
+            "minimum_required": 3,
+            "met": true,
+            "rung": "target-met"
+        }
+    },
+    "audit": {
+        "result": "pass",
+        "hard_failures": [],
+        "warnings": []
+    },
+    "named_entity_lists_last_verified": "2026-07-20",
+    "named_entity_lists_days_old": 43,
+    "stale_named_entity_lists": false,
+    "delivery_note": "Stage 5 audit gate passed before the do-not-reuse register was appended (Stage 6 step 1). Status regenerated against the pre-append register snapshot with the delivery result; the committed register on disk carries today's 11 entries for future-edition reuse blocking."
+}

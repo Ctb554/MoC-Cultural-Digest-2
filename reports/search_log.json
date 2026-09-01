@@ -1,0 +1,44 @@
+{
+  "edition_date": "2026-09-01",
+  "coverage_window_hours": 24,
+  "coverage_window_utc": "2026-08-31T05:00:00Z to 2026-09-01T05:14:00Z",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "general_macro_press_sweep_run": true,
+  "general_macro_press_outlets_swept": 34,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_result": "Applicable: the macro sweep surfaced Saudi Arabia in a geopolitical/security context (2026 Iran war fallout). Adversarial framing exists in the ecosystem but the only in-window echo was Press TV (Iranian state media, excluded) on the $8bn loan story; the eligible in-window macro items (Bloomberg $8bn loans, MEE LIV Golf) were captured via themed/macro searches. No separate adversarial-framing Negative item added.",
+  "negative_hits_found_in_window": 2,
+  "negative_hits": [
+    {"outlet": "Middle East Eye", "headline": "Saudi-backed LIV Golf preparing for bankruptcy filing", "theme": "sportswashing/PIF scrutiny"},
+    {"outlet": "Bloomberg", "headline": "Saudis Explore About $8 Billion in Loans as War Strains Finances", "theme": "investment scrutiny"}
+  ],
+  "notes": "First real edition; do-not-reuse register empty. Genuinely quiet 24h window: most hard-edged war/finance material fell just outside the window (early-to-late August). No content padded or manufactured."
+}
