@@ -1,0 +1,25 @@
+{
+  "edition_date": "2026-09-02",
+  "coverage_window_utc": "2026-09-01T05:13:00Z/2026-09-02T05:13:00Z",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "negative_hits_found_in_window": 1,
+  "notes": "General/Macro Press sweep run one outlet at a time across the full list (Bloomberg, FT, Semafor, Economist, WSJ, Axios, Politico, Reuters, AP, AFP, NYT, The Times, Sunday Times, Telegraph, BBC, Guardian, WaPo, CNBC, DW, Le Monde, Le Figaro, Der Spiegel, Nikkei Asia, Foreign Policy, Foreign Affairs, The Diplomat, AGBI, Arabian Business, Al-Monitor, Amwaj.media, MEED, Gulf News, Middle East Eye, Al Jazeera). Watchdog/NGO sweep run one org at a time (Amnesty, HRW, Freedom House, RSF, CPJ, CIVICUS, ALQST, DAWN, PEN International). One in-window reputational item found (Bloomberg Saudi dollar-bond offering, 2026-09-01, fiscal-strain/deficit angle amid the 2026 Iran-war economic hit). Adversarial-framing check applicable (Saudi in active regional security context) and run against Al Jazeera, Middle East Eye and Iranian state media; adversarial 'aggressor' framing exists but all such coverage is dated pre-2026-09-01, out of window. Most genuinely damaging material (executions, labour abuse, sportswashing, Neom standstill) is out of window and correctly excluded on date; no criticism was manufactured."
+}
