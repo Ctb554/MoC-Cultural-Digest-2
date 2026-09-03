@@ -1,0 +1,38 @@
+{
+  "edition_date": "2026-09-03",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_finding": "The day's top Saudi geopolitical/security story (Iranian attack on the Saudi Bahri tanker Sidr in the Strait of Hormuz, 2 Filipino crew killed) frames Saudi Arabia as the victim. Checked Al Jazeera (Qatari state), Al-Monitor, Iran International and Iranian state media for adversarial framing casting Saudi Arabia as aggressor/oppressor: none found in-window. Iranian state media's 'unauthorised route / naval mine' counter-claim exists but the located article is dated 2026-07-26 (out of window). No adversarial-framing Negative Articles candidate resulted.",
+  "negative_hits_found_in_window": 0,
+  "negative_notes": "All 13 themes and 9 watchdog/NGO organisations searched individually. The only in-window macro/security hit was the Iran-tanker attack (Saudi as victim, no adverse reputational angle for Saudi) plus an AGBI sukuk raise (no reputational edge). Per the no-manufacture rule, no negative/reputational item was forced in; Negative Articles is legitimately empty this edition. The tanker/Hormuz security escalation is carried in the Risks section as a regional-security reputational backdrop.",
+  "notes": "First real edition; do-not-reuse register empty at run start. Sourced live via WebSearch/WebFetch plus rss_saudi_filter.py and gnews_culture_feed.py discovery aids. RSS feed failures logged: HeritageDaily, Arkeonews, The Art Newspaper, Publishers Weekly (feed did not parse cleanly). Reader path available: Tavily."
+}
