@@ -1,0 +1,43 @@
+{
+  "run_date": "2026-09-04",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "general_macro_press_sweep_outlets_checked": [
+    "Bloomberg", "Financial Times", "Semafor", "The Economist", "Wall Street Journal",
+    "Axios", "Politico", "Reuters", "Associated Press", "AFP", "New York Times",
+    "The Times", "Sunday Times", "The Telegraph", "BBC", "Guardian", "Washington Post",
+    "CNBC", "Deutsche Welle", "Le Monde", "Le Figaro", "Der Spiegel", "Nikkei Asia",
+    "Foreign Policy", "Foreign Affairs", "The Diplomat", "AGBI", "Arabian Business",
+    "Al-Monitor", "Amwaj.media", "MEED", "Gulf News", "Middle East Eye", "Al Jazeera"
+  ],
+  "watchdog_ngo_orgs_checked": [
+    "Amnesty International", "Human Rights Watch", "Freedom House",
+    "Reporters Without Borders", "Committee to Protect Journalists", "CIVICUS",
+    "ALQST", "Democracy for the Arab World Now (DAWN)", "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_notes": "General/Macro Press sweep surfaced the day's top Saudi geopolitical/security story: an Iranian strike on the Saudi-owned tanker Sidr near the Strait of Hormuz (3 Sept). Checked Al Jazeera (Qatari-funded) and Middle East Eye framing of the same event: both frame Saudi Arabia as the victim of the attack ('Saudi Arabia condemns deadly Iranian attack'), not as aggressor/oppressor. Broader ongoing Yemen-war framing (Saudi-led coalition vs Houthis) exists in Al Jazeera coverage but is not a new in-window item distinct from the tanker story. No separate adversarially-framed Negative item warranted; the tanker story itself is filed under Saudi-Iran/regional geopolitics.",
+  "negative_hits_found_in_window": 2,
+  "negative_items_used": [
+    "Iranian attack on Saudi-owned tanker Sidr, two Filipino seafarers killed, Strait of Hormuz (The Philippine Star, 3 Sept 2026)",
+    "Saudi-UAE cross-border payment delays amid Iran-sanctions compliance scrutiny (AGBI, 3 Sept 2026)"
+  ],
+  "notes": "Most themed and watchdog searches returned only pre-window material (2024-Aug 2026 reports and analyses); no new in-window hits from those. The two negative items used are both in-window (3 Sept 2026) and from non-Saudi, non-Israeli outlets."
+}
