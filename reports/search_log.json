@@ -1,0 +1,21 @@
+{
+  "run_date": "2026-09-05",
+  "coverage_window": "last 24 hours (4-5 September 2026)",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights", "labour/workers", "sportswashing", "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics", "oil", "academic freedom",
+    "tourism criticism", "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism", "investment scrutiny", "soft power criticism",
+    "general reputation risk", "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International", "Human Rights Watch", "Freedom House",
+    "Reporters Without Borders", "Committee to Protect Journalists",
+    "CIVICUS", "ALQST", "DAWN", "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "negative_hits_found_in_window": 4,
+  "note": "Framing check was applicable: the General/Macro Press sweep found multiple stories naming Saudi Arabia in a geopolitical/security context (US $5bn munitions sale, Yemen Houthi push toward the Red Sea strait, Strait of Hormuz tanker attacks, Turkey-Saudi-Pakistan 'Mecca' defence pact). Additional outlets' framing of the same events (Al Jazeera, Middle East Eye, AP, NYT) was checked for adversarial 'Saudi as aggressor' framing; this cycle's adversarial framing targeted Iran/US/Houthis rather than Saudi Arabia, so no separate adversarially-framed Negative item beyond the arms-sale scrutiny already captured. Two Negative Articles items used (arms sale; mass deportations of foreign workers), so the empty-section justification path does not apply this edition."
+}
