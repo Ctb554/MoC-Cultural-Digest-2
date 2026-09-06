@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-09-06T05:40:00+00:00",
+  "coverage_window": "2026-09-05 to 2026-09-06 (last 24h from run start)",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights (detention/executions)",
+    "labour/workers (migrant/kafala)",
+    "sportswashing (LIV Golf/football)",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom/censorship/free speech",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International", "Human Rights Watch", "Freedom House",
+    "Reporters Without Borders (RSF)", "Committee to Protect Journalists (CPJ)",
+    "CIVICUS", "ALQST", "DAWN", "PEN International"
+  ],
+  "general_macro_press_outlets_checked": [
+    "Bloomberg", "Financial Times", "Semafor", "The Economist", "Wall Street Journal",
+    "Axios", "Politico", "Reuters", "Associated Press", "AFP", "New York Times",
+    "The Telegraph", "Washington Post", "CNBC", "Deutsche Welle"
+  ],
+  "general_macro_press_note": "Full-list sweep; the dominant in-window Saudi story across nearly every outlet was the 2026 Iran-war cluster (Yemen fighting, Saudi oil-export collapse, US arms sale, drone-strike exposure). Remaining listed outlets (Le Monde, Le Figaro, Der Spiegel, Nikkei Asia, Foreign Policy, Foreign Affairs, The Diplomat, AGBI, Arabian Business, Al-Monitor, Amwaj.media, MEED, Gulf News, Middle East Eye, Al Jazeera) surfaced the same cluster with no additional distinct in-window reputational angle; Al Jazeera Sept 5 Yemen coverage framed Houthi missile strikes as the cause of civilian deaths, not Saudi forces.",
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_finding": "Checked Al Jazeera (Qatari), Iranian state media and Middle East Eye framing of the Sept 5 Yemen fighting / Saudi role. No prominent in-window framing casting Saudi Arabia as aggressor/oppressor; Al Jazeera's Sept 5 items attribute civilian casualties to Houthi missile strikes near Taiz. Times of Israel carried the story but is a hard-excluded source. No separate adversarial Negative item warranted.",
+  "negative_hits_found_in_window": 3,
+  "negative_hits_used": [
+    "US State Dept approves $5bn JDAM/bomb sale to Saudi Arabia (Gulf News, 5 Sep)",
+    "Yemen fighting kills 60+ near Red Sea gateway, Saudi-backed forces vs Houthis (The Guardian, 5 Sep)"
+  ]
+}
