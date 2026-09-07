@@ -1,0 +1,41 @@
+{
+  "edition_date": "2026-09-07",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_note": "The dominant in-window Saudi geopolitical/security story is the ongoing 2026 regional war, in which Saudi Arabia is a participant and a target. Allowed outlets (AGBI, The National, Bloomberg) frame Saudi Arabia as target/defender and cover the economic spillover. Adversarial framing checked across Qatari-aligned and Iranian-state outlets: Middle East Eye (Qatar-linked) amplified an unverified Houthi military-spokesman claim to have downed a Saudi CH-4 drone over al-Jawf (2026-09-07); this is surfaced as its own Negative Articles item with explicit attribution and ownership caveat. No citable in-window Iranian-state 'Saudi as aggressor' article surfaced within the window.",
+  "negative_hits_found_in_window": 3,
+  "negative_hits_used": [
+    "AGBI - Saudi construction push hit by costly detour around Hormuz (2026-09-07, economic scrutiny)",
+    "AGBI - Saudi-Turkish electricity corridor likely to be costly and complex (2026-09-07, economic scrutiny)",
+    "Middle East Eye - Yemen's Houthis say Saudi CH-4 drone downed over al-Jawf (2026-09-07, adversarial-framing/security setback; Qatar-aligned)"
+  ]
+}
