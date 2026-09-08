@@ -1,0 +1,41 @@
+{
+  "edition_date": "2026-09-08",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders",
+    "Committee to Protect Journalists",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_notes": "General/Macro Press sweep surfaced an in-window Saudi geopolitical/security story (Houthi strikes on southern Saudi cities, 73 wounded). Checked multiple outlets' framing of the same event: CNN/WTOP/Al-Monitor report it factually (Houthi attacks on the kingdom); Middle East Eye (Qatari-linked) foregrounds Houthi accusations that Saudi air raids struck a prison, casting Riyadh as aggressor. Adversarial framing found and captured as a Negative Articles item citing the framing outlet.",
+  "negative_hits_found_in_window": 2,
+  "negative_hits": [
+    "BBC - Did the FBI bury evidence of alleged Saudi agent's role in 9/11? (9/11 families' lawsuit / al-Bayoumi)",
+    "Al-Monitor + Middle East Eye - Houthi strikes on Abha/Khamis Mushait/Jazan/Najran wound 73; adversarial Saudi-as-aggressor framing"
+  ],
+  "notes": "Most negative-theme and watchdog searches returned evergreen/background material (2024-early 2026), not in-window (7-8 Sep 2026) items. General/Macro Press outlet sweep run per outlet; premium/agency domains FT, WSJ, Economist, Politico, Reuters, AP, Telegraph, Spiegel were not accessible to the search agent (recorded, matches SKILL's Reuters/FT note). In-window macro hits (sukuk issuance, OPEC output, AI-firm IPO, business-law reforms) carried no reputational edge and were excluded per the repurposed General/Macro Press rule. Israeli and Saudi-owned outlets excluded throughout."
+}
