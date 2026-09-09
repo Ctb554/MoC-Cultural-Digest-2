@@ -1,51 +1,51 @@
 {
-  "timestamp": "2026-09-09T05:33:07.607047+00:00",
-  "markdown_path": "reports/MoC_Digest_2026-09-09.md",
-  "reader_used": "none",
-  "delivery_result": "pending",
-  "url_resolution_check": "enabled",
-  "register_window_days": 60,
-  "run_error": null,
-  "section_item_counts": {
-    "Saudi Arabia/Regional": 3,
-    "Global": 7,
-    "Negative Articles": 5,
-    "Saudi Arabia/Regional (culture-commission target)": 2
-  },
-  "minimum_coverage_ladder": {
-    "Saudi Arabia/Regional": {
-      "count": 3,
-      "minimum_required": 1,
-      "met": true,
-      "rung": "has-content"
+    "timestamp": "2026-09-09T05:33:07.607047+00:00",
+    "markdown_path": "reports/MoC_Digest_2026-09-09.md",
+    "reader_used": "none",
+    "delivery_result": "dropbox: uploaded to '05_Claude Test' as MoC_Digest_2026-09-09.docx",
+    "url_resolution_check": "enabled",
+    "register_window_days": 60,
+    "run_error": null,
+    "section_item_counts": {
+        "Saudi Arabia/Regional": 3,
+        "Global": 7,
+        "Negative Articles": 5,
+        "Saudi Arabia/Regional (culture-commission target)": 2
     },
-    "Global": {
-      "count": 7,
-      "minimum_required": 1,
-      "met": true,
-      "rung": "has-content"
+    "minimum_coverage_ladder": {
+        "Saudi Arabia/Regional": {
+            "count": 3,
+            "minimum_required": 1,
+            "met": true,
+            "rung": "has-content"
+        },
+        "Global": {
+            "count": 7,
+            "minimum_required": 1,
+            "met": true,
+            "rung": "has-content"
+        },
+        "Negative Articles": {
+            "count": 5,
+            "minimum_required": 0,
+            "met": true,
+            "rung": "has-content"
+        },
+        "Saudi Arabia/Regional (culture-commission target)": {
+            "count": 2,
+            "minimum_required": 3,
+            "met": false,
+            "rung": "target-shortfall-WARN"
+        }
     },
-    "Negative Articles": {
-      "count": 5,
-      "minimum_required": 0,
-      "met": true,
-      "rung": "has-content"
+    "audit": {
+        "result": "pass",
+        "hard_failures": [],
+        "warnings": [
+            "Saudi Arabia/Regional has only 2 item(s) under a real culture-commission label (target: 3) -- 'General:' items don't count toward this target, by design (see SKILL.md's Creative culture retrieval section). This is a warning, not a failure: confirm the creative retrieval work (reviews/criticism angle, named Saudi figures covered abroad, Saudi work/brands at international events) was actually worked this cycle before accepting the shortfall as genuine -- do not pad to hit the number"
+        ]
     },
-    "Saudi Arabia/Regional (culture-commission target)": {
-      "count": 2,
-      "minimum_required": 3,
-      "met": false,
-      "rung": "target-shortfall-WARN"
-    }
-  },
-  "audit": {
-    "result": "pass",
-    "hard_failures": [],
-    "warnings": [
-      "Saudi Arabia/Regional has only 2 item(s) under a real culture-commission label (target: 3) -- 'General:' items don't count toward this target, by design (see SKILL.md's Creative culture retrieval section). This is a warning, not a failure: confirm the creative retrieval work (reviews/criticism angle, named Saudi figures covered abroad, Saudi work/brands at international events) was actually worked this cycle before accepting the shortfall as genuine -- do not pad to hit the number"
-    ]
-  },
-  "named_entity_lists_last_verified": "2026-07-20",
-  "named_entity_lists_days_old": 51,
-  "stale_named_entity_lists": false
+    "named_entity_lists_last_verified": "2026-07-20",
+    "named_entity_lists_days_old": 51,
+    "stale_named_entity_lists": false
 }
