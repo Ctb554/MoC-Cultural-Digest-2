@@ -1,0 +1,67 @@
+{
+  "timestamp": "2026-09-10T05:25:33.778820+00:00",
+  "markdown_path": "reports/MoC_Daily_Cultural_Digest_10Sep26_D1.md",
+  "reader_used": "tavily",
+  "delivery_result": "pending",
+  "url_resolution_check": "enabled",
+  "register_window_days": 60,
+  "run_error": null,
+  "section_item_counts": {
+    "Saudi Arabia/Regional": 3,
+    "Global": 8,
+    "Negative Articles": 3,
+    "Saudi Arabia/Regional (culture-commission target)": 1
+  },
+  "minimum_coverage_ladder": {
+    "Saudi Arabia/Regional": {
+      "count": 3,
+      "minimum_required": 1,
+      "met": true,
+      "rung": "has-content"
+    },
+    "Global": {
+      "count": 8,
+      "minimum_required": 1,
+      "met": true,
+      "rung": "has-content"
+    },
+    "Negative Articles": {
+      "count": 3,
+      "minimum_required": 0,
+      "met": true,
+      "rung": "has-content"
+    },
+    "Saudi Arabia/Regional (culture-commission target)": {
+      "count": 1,
+      "minimum_required": 3,
+      "met": false,
+      "rung": "target-shortfall-WARN"
+    }
+  },
+  "audit": {
+    "result": "fail",
+    "hard_failures": [
+      "[Saudi Arabia/Regional / General:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://www.meed.com/why-global-capital-is-committing-to-saudi-arabias-birthplace",
+      "[Saudi Arabia/Regional / General:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://www.khaleejtimes.com/world/gulf/saudi-arabia-national-day-2026-public-holiday",
+      "[Saudi Arabia/Regional / Heritage:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://www.khaleejtimes.com/uae/2000-year-old-sharjah-coastal-network-added-unesco-tentative-list",
+      "[Negative Articles / (no subheading)] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://www.wsls.com/news/world/2026/09/09/yemens-houthi-rebels-say-saudi-backed-forces-launched-airstrikes-and-other-key-mideast-news/",
+      "[Negative Articles / (no subheading)] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://www.aljazeera.com/news/2026/9/9/pakistan-warns-mecca-defense-pact-will-activate-after-houthi-attacks",
+      "[Negative Articles / (no subheading)] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://www.semafor.com/article/09/09/2026/saudi-arabia-could-give-un-nuclear-watchdog-greater-inspection-powers",
+      "[Global / Visual Arts:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://www.theartnewspaper.com/2026/09/09/artists-jenny-holzer-and-andy-goldsworthy-among-winners-of-2026-praemium-imperiale-awards",
+      "[Global / Visual Arts:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://www.artnews.com/art-news/market/leilah-babirye-joins-salon-94-industry-moves-september-9-2026-1234797601/",
+      "[Global / Visual Arts:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://news.artnet.com/market/art-world-new-season-recalibration-2806419",
+      "[Global / Heritage:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://archaeology.org/news/2026/09/09/roman-era-mosaic-floor-unearthed-in-northern-turkey/",
+      "[Global / Film:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://variety.com/2026/film/festivals/beyond-fest-2026-primtetime-victorian-pscyho-1236855248/",
+      "[Global / Film:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://deadline.com/2026/09/wildwood-afi-fest-2026-opening-film-1237072469/",
+      "[Global / Fashion:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://wwd.com/fashion-news/fashion-features/cfda-fashion-award-nominees-honorees-2026-1239203108/",
+      "[Global / Architecture and Design:] Reused link from a prior edition's do-not-reuse register (within the last 60 days): https://www.dezeen.com/2026/09/09/emea-regional-showcases-dezeen-awards/"
+    ],
+    "warnings": [
+      "Saudi Arabia/Regional has only 1 item(s) under a real culture-commission label (target: 3) -- 'General:' items don't count toward this target, by design (see SKILL.md's Creative culture retrieval section). This is a warning, not a failure: confirm the creative retrieval work (reviews/criticism angle, named Saudi figures covered abroad, Saudi work/brands at international events) was actually worked this cycle before accepting the shortfall as genuine -- do not pad to hit the number",
+      "Possible American spelling found (2x): pattern '\\bdefense\\b' -- digest should be GB English"
+    ]
+  },
+  "named_entity_lists_last_verified": "2026-07-20",
+  "named_entity_lists_days_old": 52,
+  "stale_named_entity_lists": false
+}

@@ -1,0 +1,29 @@
+{
+  "edition_date": "2026-09-10",
+  "coverage_window_utc": ["2026-09-09T05:07:00Z", "2026-09-10T05:07:00Z"],
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights", "labour/workers", "sportswashing", "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics", "oil", "academic freedom",
+    "tourism criticism", "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism", "investment scrutiny", "soft power criticism",
+    "general reputation risk", "watchdog/NGO monitoring"
+  ],
+  "general_macro_press_sweep_outlets_searched": 34,
+  "general_macro_press_sweep_complete": true,
+  "watchdog_ngo_orgs_searched": [
+    "Amnesty International", "Human Rights Watch", "Freedom House",
+    "Reporters Without Borders", "Committee to Protect Journalists",
+    "CIVICUS", "ALQST", "DAWN", "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_finding": "In-window Saudi security/conflict story present (Sept 9 Saudi airstrikes on Yemen + Mecca defence pact). Saudi-as-aggressor counter-frame found in-window (AP: Saudi-backed forces launched 32 airstrikes across 4 Yemeni provinces); Al Jazeera (Qatari-aligned) coverage present but prevailing framing casts Houthis/Iran as aggressor. No in-window Iranian-state-media Saudi-as-oppressor item surfaced.",
+  "negative_hits_found_in_window": 3,
+  "global_direct_outlet_sweep_outlets_searched": 23,
+  "global_direct_outlet_sweep_complete": true,
+  "global_hits_found_in_window": 8,
+  "saudi_regional_in_window_items": 3,
+  "saudi_culture_commission_items": 1,
+  "notes": "First real edition (empty do-not-reuse register). Genuinely thin 24h window for Saudi culture-commission coverage from allowed (non-Saudi-owned) outlets: Diriyah Biennale JAX autumn-programming story appeared only in Saudi-owned outlets (unusable); Red Sea Film Foundation at Venice dated Sept 4 (out of window); Black Gold Museum coverage Apr-May 2026. Creative-retrieval angles (reviews/criticism, Saudi figures abroad, Saudi work at intl events) worked, not skipped. Al-Monitor URL for the Reuters conflict exclusive timed out on live check and was dropped; conflict covered by AP + Al Jazeera instead."
+}
