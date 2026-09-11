@@ -1,0 +1,37 @@
+{
+  "edition_date": "2026-09-11",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngo_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders",
+    "Committee to Protect Journalists",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_finding": "General/Macro Press sweep plus the RSS pre-filter surfaced an in-window Saudi geopolitical/security story (the Yemen/Houthi/Red Sea escalation). Checked multiple outlets on the same event: Al Jazeera (Qatari-funded) foregrounds Houthi claims of 54 Saudi air raids in 12 hours and civilian-harm allegations, an adversarial framing casting Saudi Arabia as an active combatant; The Guardian and Bloomberg report the territorial/market angles more neutrally. The adversarially-framed Al Jazeera item is included as its own Negative Articles bullet.",
+  "negative_hits_found_in_window": 4,
+  "notes": "Classic reputational material (executions, migrant labour, PIF/Wall Street pitch, Vision 2030/NEOM, sportswashing) is real and recent but dated 2026-09-08 or earlier, i.e. out of the 24-hour window; no in-window NGO statement surfaced. All in-window negative coverage clusters on the Saudi-Houthi/Yemen escalation (Al Jazeera, The Guardian, Middle East Eye, Bloomberg). Haaretz coverage of the same escalation was excluded per the Israeli-outlet hard rule; Saudi-owned outlets excluded per the source-eligibility rule."
+}
