@@ -1,0 +1,41 @@
+{
+  "edition_date": "2026-09-12",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "general_macro_press_sweep_run": true,
+  "general_macro_press_outlets_swept": 34,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_finding": "No qualifying standalone adversarial item in-window. The day's top Saudi geopolitical/security story (East-West/Petroline pipeline shutdown after drone strikes from Iraq; Houthi advance along Yemen's Red Sea coast and seizure of Mayyun Island threatening Bab al-Mandeb) was checked across Al Jazeera (x2), Middle East Eye, and Washington Post. Al Jazeera and Middle East Eye framed Saudi Arabia as victim/neutral this cycle; the Washington Post headline foregrounded Iran's 'oppression' rhetoric aimed at the US/Israel, not Saudi Arabia. No in-window piece editorially cast Saudi Arabia as aggressor/oppressor, so no adversarial-framing Negative Articles item was manufactured.",
+  "negative_hits_found_in_window": 13,
+  "negative_hits_used": 5,
+  "themed_and_watchdog_hits_in_window": 0,
+  "notes": "Themed negative searches (13) and watchdog/NGO searches (9) all run individually; every hit was out-of-window (freshest 2026-09-08 to 2026-09-10) so they contributed zero in-window items. All in-window negative coverage came from the General/Macro Press sweep (security escalation, distinct angles) plus the creative-retrieval reviews/criticism angle (Terry Strada / Red Sea International Film Festival, Showbiz411). Negative Articles is NOT empty (5 items), so the empty-section justification path is not relied upon; this log is recorded per Stage 2's requirement to log negative/watchdog results regardless of outcome."
+}
