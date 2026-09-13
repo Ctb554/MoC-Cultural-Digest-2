@@ -1,0 +1,33 @@
+{
+  "edition_date": "2026-09-13",
+  "coverage_window_utc": ["2026-09-12T05:10:00Z", "2026-09-13T05:10:00Z"],
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International", "Human Rights Watch", "Freedom House",
+    "Reporters Without Borders (RSF)", "Committee to Protect Journalists (CPJ)",
+    "CIVICUS", "ALQST", "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "watchdog_in_window_hits": 0,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_finding": "In-window Saudi geopolitical/security story present (Iraq-origin drone attack shutting the East-West oil pipeline; Houthi attacks on Saudi soil and the Yemen front). Adversarial framing casting Saudi Arabia as aggressor found in Iranian state media (Press TV, 'Islamic Resistance in Iraq' framing the strike as retaliation for 'Riyadh's blockade/siege' of Yemen), used as its own Negative Articles item. Al Jazeera framed Saudi Arabia as victim of the pipeline attack and used symmetric language on the Yemen fighting.",
+  "negative_hits_found_in_window": 6,
+  "notes": "The entire in-window negative field belongs to a single story: the Iraq-origin drone attack that shut Saudi Arabia's East-West crude pipeline, plus the concurrent Houthi/Yemen front and Bab el-Mandeb disruption. No watchdog/NGO produced an in-window statement on Saudi Arabia; no human-rights, labour, sportswashing, PIF, Vision 2030, tourism, Mecca, academic-freedom or soft-power item fell inside the window. Negative Articles is therefore built from distinct newsworthy angles on that one security/energy story, not padded."
+}
