@@ -1,0 +1,37 @@
+{
+  "edition_date": "2026-09-14",
+  "coverage_window": "2026-09-13T05:07Z to 2026-09-14T05:07Z",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders",
+    "Committee to Protect Journalists",
+    "CIVICUS",
+    "ALQST",
+    "DAWN",
+    "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_finding": "General/Macro Press sweep surfaced multiple Saudi geopolitical/security stories (Red Sea pipeline, Houthi-Saudi fighting). Checked framing across Middle East Eye and Al Jazeera: Middle East Eye (Qatar-linked) amplified Houthi claims that Saudi Arabia launched over 50 strikes in 24 hours, casting the Kingdom as aggressor. Used as a Negative Articles item.",
+  "negative_hits_found_in_window": 6,
+  "notes": "Watchdog/NGO monitoring: all 9 organisations searched individually; only older (out-of-window) reports found, none in the 24h window. Themed negative searches (human rights, labour, sportswashing, PIF, academic freedom, Mecca commercialization, soft power, investment/Neom, Vision 2030/tourism) returned only out-of-window/background material; LIV Golf bankruptcy (Sep 8) and PIF Wall Street pitch (Sep 8) both pre-window. The only in-window Negative content is the Red Sea/southern-border security-and-oil cluster (9/13-9/14)."
+}
