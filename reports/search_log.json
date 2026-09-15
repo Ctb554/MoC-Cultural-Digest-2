@@ -1,0 +1,37 @@
+{
+  "edition_date": "2026-09-15",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_finding": "General/Macro Press sweep surfaced the day's top Saudi geopolitical/security story (Houthi escalation, East-West pipeline strike, Saudi retaliatory airstrikes in Yemen). Checked multiple outlets' framing: Al Jazeera (Qatari state-funded), 2026-09-14, foregrounds Saudi-backed forces' airstrikes across Yemeni governorates (Mocha/Dhubab, Taiz) casting Saudi Arabia as a party inflicting harm; HRW (2026-09-15) frames conflict attacks as likely war crimes and names the Saudi-led coalition. In-window adversarial-framing item included as its own Negative Articles bullet (Al Jazeera).",
+  "negative_hits_found_in_window": 9,
+  "notes": "Coverage window dominated by the Houthi/Iran escalation against Saudi Arabia (Red Sea island seizures, East-West/Petroline pipeline drone strike forcing shutdown, oil price spike toward ~$110, Saudi retaliatory airstrikes in Yemen). Most in-window reputational hits are variants of this cluster, spanning distinct angles: territorial/security escalation (Guardian), oil-export/economic vulnerability (The National, CNBC, AGBI, Semafor), diplomatic setback with Iran (Foreign Policy), Saudi-as-aggressor framing (Al Jazeera), rights/humanitarian (HRW), and legitimacy op-ed (Eurasia Review). Saudi-owned outlets (Arab News, Asharq/aawsat, SPA, Saudi Gazette, Al Arabiya, ajel.sa, alriyadh) and Israeli outlets (Times of Israel etc.) excluded per source-eligibility rules. The al-Jawf prison-strike story and several humanitarian pieces (Common Dreams, earlier Al Jazeera/MEE) were found OUT of window (2026-09-07 to 09-13) and excluded on date."
+}
