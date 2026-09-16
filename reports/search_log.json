@@ -1,0 +1,29 @@
+{
+  "edition_date": "2026-09-16",
+  "coverage_window": "2026-09-15T00:00:00Z to 2026-09-16 (last 24h)",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "general_macro_press_sweep_run": true,
+  "general_macro_press_outlets_swept": 34,
+  "watchdog_ngo_orgs_swept": 9,
+  "watchdog_ngo_hits_in_window": 0,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_finding": "Applicable: a major Saudi geopolitical/security story (Saudi-Houthi/Yemen escalation, drone intercepted near Mecca, East-West oil pipeline shut) was in the news this window. Checked Al Jazeera, Middle East Eye, Iranian state media. Press TV (Iranian state) carried explicit aggressor/'regime' framing (in-window, used). Al Jazeera carried Houthi civilian-harm allegations (in-window, used). Middle East Eye's aggressor-framed live blog was dated 2026-09-07, out of window (excluded).",
+  "negative_hits_found_in_window": 6
+}
