@@ -1,0 +1,42 @@
+{
+  "edition_date": "2026-09-17",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "macro_press_sweep_run": true,
+  "macro_press_outlets_checked": [
+    "Bloomberg", "Financial Times", "Semafor", "The Economist", "Wall Street Journal",
+    "Axios", "Politico", "Reuters", "Associated Press", "AFP", "New York Times",
+    "The Times", "Sunday Times", "The Telegraph", "BBC", "Guardian", "Washington Post",
+    "CNBC", "Deutsche Welle", "Le Monde", "Le Figaro", "Der Spiegel", "Nikkei Asia",
+    "Foreign Policy", "Foreign Affairs", "The Diplomat", "AGBI", "Arabian Business",
+    "Al-Monitor", "Amwaj.media", "MEED", "Gulf News", "Middle East Eye", "Al Jazeera"
+  ],
+  "watchdog_ngos_checked": [
+    "Amnesty International", "Human Rights Watch", "Freedom House",
+    "Reporters Without Borders", "Committee to Protect Journalists", "CIVICUS",
+    "ALQST", "Democracy for the Arab World Now (DAWN)", "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "negative_hits_found_in_window": 4,
+  "notes": "Cycle dominated by the escalating Saudi-Houthi/Red Sea conflict. New in-window (16 Sep) negative developments used: US declines direct military backing after meeting Houthi leaders (Guardian); global oil-price surge as pipeline stays shut (NYT); US Level-3 'reconsider travel' advisory (Express Tribune); adversarial framing from Iranian state media Press TV (Yemeni strikes on Aramco/King Khalid Air Base, 'blockade'/'liberation' framing). Non-conflict themes (human rights, sportswashing, PIF, Vision 2030) returned only cumulative/older material, no fresh in-window items. Watchdog sweep: HRW's 15 Sep item concerned Houthi (not Saudi) war crimes and was already used in the 16 Sep edition; ALQST flagged a September Neom-displacement report not confirmable to the 24h window; Amnesty/Freedom House/CIVICUS/PEN cumulative only. Israeli outlets (Times of Israel, i24NEWS, Israel Hayom, Haaretz) surfaced in searches and were hard-excluded per source-eligibility policy.",
+  "reader_path": "tavily",
+  "rss_prefilter_feed_failures": ["HeritageDaily", "Arkeonews", "The Art Newspaper", "Publishers Weekly"],
+  "continuity_note": "Repo reports/ register was empty despite 60 delivered editions in the Dropbox test folder through 16 Sep; do-not-reuse working set reconstructed from the 7 most recent Dropbox editions (10-16 Sep, 99 unique article URLs) for this run's reuse check."
+}
