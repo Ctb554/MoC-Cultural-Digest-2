@@ -1,0 +1,37 @@
+{
+  "edition_date": "2026-09-18",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders",
+    "Committee to Protect Journalists",
+    "CIVICUS",
+    "ALQST",
+    "DAWN",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_notes": "General/Macro Press sweep surfaced a major in-window Saudi geopolitical/security story (Saudi-Houthi escalation; downed Saudi jet; US F-35 sale approval). Checked Al Jazeera (Qatari state-funded), Middle East Eye (opaque, Qatar-linked), DW and France 24 for framing casting Saudi Arabia adversarially. Found: Al Jazeera framed the conflict as mutual 'trade attacks' emphasising civilian (including child) casualties; Houthi sources claimed 100+ Saudi airstrikes on Yemen; captured as a Negative Articles item.",
+  "negative_hits_found_in_window": 5,
+  "notes": "Dominant in-window reputational cluster: US State Dept approval of the $24.3bn F-35 sale to Saudi Arabia (intelligence/China-espionage and Israel military-edge concerns, congressional opposition); Saudi-Houthi military escalation (downed Saudi jet, civilian casualties); East-West oil pipeline attack and oil-market disruption; Semafor's 'well-timed' uranium find near Medina (nuclear scrutiny). Themed searches for labour, sportswashing, PIF, Vision 2030, tourism, Mecca commercialization, soft power, academic freedom and the watchdog/NGO sweep surfaced only ongoing/background material dated before the 17-18 Sep window, not fresh in-window items."
+}
