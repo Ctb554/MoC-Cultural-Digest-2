@@ -1,0 +1,42 @@
+{
+  "edition_date": "2026-09-19",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "general_macro_press_sweep_run": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_finding": "Multiple Saudi geopolitical/security stories surfaced (new Riyadh capital strike; Pakistan/Turkey defence-pledge; DW disinformation fact-check; ongoing Houthi saga). Framing of the new Riyadh strike across Gulf News, Malay Mail, Nukta and wire pickup casts Saudi Arabia as the target/victim, not aggressor. Al Jazeera's new (18 Sep) adversarial angle is the Pakistan defence-pledge piece (vulnerability/hollow-alliance framing), used as a Negative item. No new (18-19 Sep) Saudi-as-aggressor civilian-casualty story surfaced; such stories that exist are out-of-window and part of the already-covered saga.",
+  "negative_hits_found_in_window": 2,
+  "negative_items_used": [
+    "Saudi Arabia issues air raid alert in Riyadh, explosions heard (Gulf News, 19 Sep)",
+    "Pakistan pledges full committment to defence of Saudi Arabia (Al Jazeera, 18 Sep)"
+  ],
+  "notes": "First real committed edition. Repo continuity store held no prior editions; delivery Dropbox folder held 63 delivered editions (20 Jul-18 Sep 2026). Recent editions (13-18 Sep) reconciled into the do-not-reuse register before sourcing. Coverage window (18-19 Sep 2026) was genuinely thin for non-Saudi-outlet Saudi-culture coverage: in-window Saudi culture news (National Day campaigns, MoC MoUs, Ithra programme) sat entirely behind hard-excluded Saudi-owned outlets. Culture-commission count is 2 (Visual Arts, Architecture and Design), below the WARN target of 3 -- an honest thin-day outcome, not padded. Discovery aids run: scripts/rss_saudi_filter.py (7 candidates, 4 feeds failed to parse: HeritageDaily, Arkeonews, The Art Newspaper, Publishers Weekly) and scripts/gnews_culture_feed.py (163 raw candidates, mostly noise)."
+}

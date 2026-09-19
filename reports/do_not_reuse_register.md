@@ -106,3 +106,16 @@ URLs); headline/section fields are marked reconciled because a verified
 2026-09-18 | archived (reconciled) | time.com | (reconciled from delivered edition) | https://time.com/collection/time100-art/2026/dana-awartani/
 2026-09-18 | archived (reconciled) | washingtonian.com | (reconciled from delivered edition) | https://washingtonian.com/2026/09/17/michelin-adds-4-new-restaurants-to-its-dc-guide/
 2026-09-18 | archived (reconciled) | whowhatwear.com | (reconciled from delivered edition) | https://www.whowhatwear.com/fashion/live/london-fashion-week-spring-summer-2027
+
+<!-- 2026-09-19 edition (first real committed edition) -->
+2026-09-19 | Saudi Arabia/Regional | SSBCrack | Emerging Artists Showcase Innovative Works at Diriyah's 'Continuum' Exhibition | https://news.ssbcrack.com/emerging-artists-showcase-innovative-works-at-diriyahs-continuum-exhibition/
+2026-09-19 | Saudi Arabia/Regional | Michelin Guide | The 2026 MICHELIN Key Hotels: A Guide to the Global Selection | https://guide.michelin.com/sa/en/article/travel/all-the-key-hotels-in-the-world-michelin-guide
+2026-09-19 | Negative Articles | Gulf News | Saudi Arabia issues air raid alert in Riyadh, explosions heard | https://gulfnews.com/world/gulf/saudi/saudi-arabia-issues-air-raid-alert-in-riyadh-explosions-heard-1.500680175
+2026-09-19 | Negative Articles | Al Jazeera | Pakistan pledges full committment to defence of Saudi Arabia | https://www.aljazeera.com/news/2026/9/18/pakistan-pledges-full-committment-to-defence-of-saudi-arabia
+2026-09-19 | Global | The Art Newspaper | Cave markings discovered in Ireland could transform understanding of when humans first settled there | https://www.theartnewspaper.com/2026/09/18/cave-markings-discovered-in-ireland-could-transform-understanding-of-when-humans-first-settled-there
+2026-09-19 | Global | Archaeology Magazine | Possible Zoroastrian Fire Altar Unearthed in Uzbekistan | https://archaeology.org/news/2026/09/18/possible-zoroastrian-fire-altar-unearthed-in-uzbekistan/
+2026-09-19 | Global | HeritageDaily | Major new discoveries beneath the forest canopy near Machu Picchu | https://www.heritagedaily.com/2026/09/major-new-discoveries-beneath-the-forest-canopy-near-machu-picchu/159286
+2026-09-19 | Global | The Art Newspaper | Dutch museum puts all 88 of its Van Gogh paintings on display for the first time in more than two decades | https://www.theartnewspaper.com/2026/09/18/all-the-van-goghs-opening-in-the-netherlands
+2026-09-19 | Global | The Art Newspaper | ArtRio opens amid political uncertainty as Brazil's art market continues to grow | https://www.theartnewspaper.com/2026/09/18/artrio-fair-rio-de-janeiro-growing-market-presidential-election
+2026-09-19 | Global | ARTnews | Art Basel Parent Group's First Half Revenue Climbed As It Opened Qatar | https://www.artnews.com/art-news/market/art-basel-parent-group-mch-first-half-2026-revenue-climbed-1234798809/
+2026-09-19 | Global | The Art Newspaper | Malba picks architect for expansion that will double its exhibition space | https://www.theartnewspaper.com/2026/09/17/malba-museum-buenos-aires-frida-escobedo-architect-expansion
