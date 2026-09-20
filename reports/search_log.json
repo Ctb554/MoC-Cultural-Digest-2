@@ -1,0 +1,25 @@
+{
+  "run_date": "2026-09-20",
+  "coverage_window": "last 24h from run start (approx 2026-09-19 05:05 UTC to 2026-09-20 05:05 UTC)",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "negative_hits_found_in_window": 8,
+  "notes": "Day dominated by the 19 Sep Houthi ballistic-missile attack on Riyadh (fuel depot fire at King Khalid International Airport). Adversarial-framing check applicable: General/Macro Press sweep surfaced many Saudi geopolitical/security stories; checked framing across WSJ, Guardian, CNN, Al Jazeera and Middle East Eye on the same underlying event. Watchdog/NGO sweep run per-org (Amnesty, HRW, Freedom House, RSF, CPJ, CIVICUS, ALQST, DAWN, PEN International); no new in-window Saudi-specific NGO finding beyond the security cluster. Excluded Saudi-owned (Arab News, SPA, Asharq/aawsat, Saudi Gazette) and Israeli outlets (timesofisrael surfaced in a music-sector search and was rejected)."
+}
