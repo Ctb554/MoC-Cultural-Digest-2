@@ -1,0 +1,37 @@
+{
+  "edition_date": "2026-09-21",
+  "coverage_window_utc": ["2026-09-20T05:07:00Z", "2026-09-21T05:07:00Z"],
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_finding": "General/Macro Press sweep surfaced an in-window Saudi security story (Houthi missile attack on Riyadh; Saudi airstrikes in Yemen). Checked Al Jazeera, Middle East Eye and Iranian state media (Press TV) on the same event. Press TV (Iranian state, in-window 2026-09-20) casts Saudi Arabia as aggressor ('732 Saudi airstrikes', 'unfair and tyrannical siege ~12 years'); filed as its own Negative Articles item citing the framing outlet. Al Jazeera Inside Story (2026-09-20) was victim-framed, not adversarial. Middle East Eye 'blockade for blockade' (2026-09-20) carries Houthi grievance framing.",
+  "negative_hits_found_in_window": 9,
+  "notes": "Window dominated by one story: Houthi missile attack on Riyadh + Saudi strikes in Yemen. All 9 watchdog/NGO searches returned nothing in-window (evergreen or out-of-window reports only). Reputational themes other than Saudi-Iran/regional geopolitics (5), general reputation risk (13) and one oil/climate soft-power piece returned nothing in-window. No manufactured criticism. Guardian 'Saudi oil scientists / IPCC climate reports' (2026-09-21) filed as a distinct oil/soft-power reputational item."
+}
