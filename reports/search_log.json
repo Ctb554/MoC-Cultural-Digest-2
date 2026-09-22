@@ -1,0 +1,46 @@
+{
+  "edition_date": "2026-09-22",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "DAWN",
+    "PEN International"
+  ],
+  "watchdog_note": "All watchdog/NGO organisations searched; every hit was out-of-window/stale (no watchdog finding published 2026-09-21/22).",
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_finding": "Middle East Eye (Saudi-as-aggressor framing of a strike on a civilian market near Bab al-Mandeb) and Al Jazeera (Saudi military-dependence framing of UK refuelling); both flagged as Doha-linked. Used the Middle East Eye item as the Negative Articles adversarial-framing item.",
+  "negative_hits_found_in_window": 4,
+  "general_macro_outlets_yielding_nothing_in_window": [
+    "Financial Times",
+    "Wall Street Journal",
+    "Semafor",
+    "Reuters (no in-window standalone Saudi piece surfaced)",
+    "Associated Press (AP wire dated 2026-09-20, out of window)",
+    "BBC (could not be verified from cloud IP; syndication out of window)"
+  ],
+  "notes": "Window dominated by the Houthi-Saudi military escalation (Red Sea / Bab al-Mandeb) and its knock-on hit to Saudi soft power (Red Sea International Film Festival postponed to 2027). Themed human-rights/PIF/labour/sportswashing/Mecca-commercialization searches returned only stale (pre-window) material. Negative Articles is non-empty (4 verified items), so this log documents the searches for the record rather than to justify an empty section."
+}
