@@ -1,0 +1,27 @@
+{
+  "edition_date": "2026-09-23",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "general_macro_press_sweep_run": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_result": "No in-window coverage casting Saudi Arabia as aggressor/oppressor was found. The in-window Houthi/Red Sea story was framed with Saudi Arabia as the target of attacks (e.g. Al Jazeera framed the Houthis as aggressors; G7 demanded the Houthis halt strikes). No adversarial-framing Negative item was warranted.",
+  "negative_hits_found_in_window": 3,
+  "notes": "Themed watchdog/NGO and reputational-theme searches returned nothing verifiably published in-window (2026-09-22/23); the strongest reputational threads (PIF Wall Street pitch, cascading-crises op-ed, WaPo 'limits of Trump's friendship') all dated 2026-09-08 to 2026-09-19 and are out of window. The in-window reputational items used in Negative Articles came from the General/Macro Press sweep (its designated feed post-2026-08-18): Bloomberg (East-West pipeline restart after 10 Sep drone attack) and Semafor (Saudi warnings as Houthi attacks intensify), both 2026-09-22. Al Jazeera's in-window 'UK to refuel Saudi jets' piece was found but not used (Qatari-state framing caveat; Saudi-sympathetic angle)."
+}
