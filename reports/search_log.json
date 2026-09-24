@@ -1,0 +1,33 @@
+{
+  "edition_date": "2026-09-24",
+  "generated_at": "2026-09-24T05:20:00+00:00",
+  "coverage_window": "2026-09-23T05:00:00Z to 2026-09-24T05:00:00Z",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "General/Macro Press outlet sweep (Bloomberg, FT, Reuters, AP, AFP, BBC, Guardian, WaPo, Economist, WSJ, Axios, Politico, NYT, The Times, Telegraph, CNBC, DW, Le Monde, Le Figaro, Der Spiegel, Nikkei, Foreign Policy, Foreign Affairs, The Diplomat, AGBI, Arabian Business, Al-Monitor, Amwaj, MEED, Gulf News, Middle East Eye, Al Jazeera, Semafor)",
+    "watchdog/NGO monitoring (Amnesty, HRW, Freedom House, RSF, CPJ, CIVICUS, ALQST, DAWN, PEN International)"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "negative_hits_found_in_window": 2,
+  "notes": "Themed negative searches and the watchdog/NGO sweep returned nothing in-window (all hits were evergreen or pre-window, e.g. HRW Riyadh Comedy Festival piece dated 2025-09-23, exactly one year outside window). The General/Macro Press outlet sweep DID surface in-window (2026-09-23) stories naming Saudi Arabia in a geopolitical/security context amid an active Houthi/Iran escalation, so the adversarial-framing check was applicable and was run: AFP (via The Manila Times) 'Riyadh attacks key port city - Houthis' foregrounds Saudi as attacker (Houthi claim) alongside the humanitarian toll, and Al Jazeera (Qatari state-funded) framed UK refuelling support through a Western-complicity lens. Both were verified in-window via WebFetch and are carried as the two Negative Articles items. Amwaj.media's 23 Sep hedging analysis was reviewed and folded into the Risks synthesis rather than run as a separate item.",
+  "other_sweeps_run": {
+    "rss_saudi_filter": "ran; 19 outlets attempted, 1 candidate (Middle East Eye, geopolitical); 4 feeds failed to parse (HeritageDaily, Arkeonews, The Art Newspaper, Publishers Weekly) - those outlets remain covered by WebSearch sweep",
+    "gnews_culture_feed": "ran; 42 queries, 245 in-window candidates surfaced as a first pass (redirect links resolved and re-verified before use)",
+    "named_entity_searches": "ran (sector outlet Booleans, People, Places, Festivals/Venues, creative-culture retrieval)",
+    "global_direct_outlet_sweep": "ran; full 23-outlet list worked one at a time; nothing-in-window recorded for Ocula, Artnet News, The Bookseller, Eater, Michelin"
+  }
+}
