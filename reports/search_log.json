@@ -1,0 +1,39 @@
+{
+  "edition_date": "2026-09-25",
+  "coverage_window_hours": 24,
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_orgs_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders (RSF)",
+    "Committee to Protect Journalists (CPJ)",
+    "CIVICUS",
+    "ALQST",
+    "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_notes": "General/Macro Press sweep surfaced the Houthi-Saudi security escalation as the dominant in-window geopolitical story. Adversarial (Saudi-as-aggressor) framing checked across additional outlets: it exists, concentrated in Press TV (Iranian state media, 24 Sep) and, out of window (18-22 Sep), Al Jazeera, Middle East Eye and Al-Monitor relaying Houthi claims of Saudi airstrikes on Yemen. The only strictly in-window aggressor-framing items were from Press TV, which is not an eligible listed outlet, so no separate Negative Articles bullet was cited from it; the check was run and recorded.",
+  "negative_hits_found_in_window": 4,
+  "negative_hits_used": 3,
+  "watchdog_hits_found_in_window": 0,
+  "notes": "First real edition (do-not-reuse register empty). Strict 24h window (2026-09-24 05:00 UTC to 2026-09-25 05:05 UTC) is restrictive: much of the Houthi/oil/security cluster predates the window (8-22 Sep) and was excluded. In-window reputational hits used: Foreign Policy 'Saudi Arabia Bribed the Wrong People' (24 Sep, resolves 200); Bloomberg 'France to Send Troops...to Protect Saudi Oil Plant' (24 Sep, bot-walled + corroborated); Reuters 'Oil prices settle up ~3% as Houthi attack...' (24 Sep, Yahoo republish, resolves). Considered but dropped: MoC AI-ethics-in-culture guide (only Saudi-owned + weak Arabic-wire sourcing, failed source-eligibility); Red Sea International Film Festival postponement (announcement ~21 Sep, out of window); LIONS Riyadh festival (announced 17 Sep, out of window); Conde Nast Traveller travel-safety (publisher domain not verifiable via crawler)."
+}
