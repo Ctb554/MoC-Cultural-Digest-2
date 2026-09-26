@@ -708,3 +708,17 @@ never expiring -- so malformed entries never silently lose protection.
 2026-09-25 | Regional/Global | variety.com | (headline n/a - reconstructed) | https://variety.com/2026/tv/news/charlie-brooker-new-series-title-blackmere-rory-kinnear-cast-1236874481/
 2026-09-25 | Regional/Global | deadline.com | (headline n/a - reconstructed) | https://deadline.com/2026/09/david-ellison-paramount-elon-musk-investment-warner-merger-1237111566/
 2026-09-25 | Regional/Global | philstar.com | (headline n/a - reconstructed) | https://www.philstar.com/lifestyle/food-and-leisure/2026/09/24/2558639/michelin-guide-recognize-philippine-restaurants-anew-october
+
+<!-- 2026-09-26 edition (first digest produced by this automation) -->
+2026-09-26 | Saudi Arabia/Regional | The Business Standard | 11 Bangladeshi apparel firms join Saudi Arabia fashion and textiles expo | https://www.tbsnews.net/events/11-bangladeshi-apparel-firms-join-saudi-arabia-fashion-and-textiles-expo-1553581
+2026-09-26 | Saudi Arabia/Regional | Al-Bilad | Firdaws 3 art exhibition opens in Bahrain with Bahraini and Saudi participation | https://www.albiladpress.com/news/2026/6556/spaces/1022016.html
+2026-09-26 | Negative Articles | Semafor | Saudi Arabia intercepts Houthi missiles | https://www.semafor.com/article/09/25/2026/saudi-arabia-intercepts-houthi-missiles
+2026-09-26 | Negative Articles | The Spokesman-Review | Saudis have not ruled out developing nuclear weapons, U.S. intelligence assesses | https://www.spokesman.com/stories/2026/sep/25/saudis-have-not-ruled-out-developing-nuclear-weapo/
+2026-09-26 | Global | Archaeology Magazine | Pyramid-Shaped Tomb Unearthed in Egypt's Dakhleh Oasis | https://archaeology.org/news/2026/09/25/pyramid-shaped-tomb-unearthed-in-egypts-dakhleh-oasis/
+2026-09-26 | Global | Archaeology Magazine | Artifacts in Etruscan Tomb Reflect Mediterranean Trade | https://archaeology.org/news/2026/09/25/artifacts-in-etruscan-tomb-reflect-mediterranean-trade/
+2026-09-26 | Global | designboom | Celeste Boursier-Mougenot brings his floating ceramic orchestra outdoors in Athens | https://www.designboom.com/art/celeste-boursier-mougenot-floating-ceramic-orchestra-outdoors-athens-clinamen-onassis-mandra/
+2026-09-26 | Global | ArtAsiaPacific | Imelda Cajipe Endaya becomes first woman to receive the Philippines Order of National Artists for Visual Arts | https://www.artasiapacific.com/news/weekly-news-roundup-september-25-2026/
+2026-09-26 | Global | ArchDaily | Frida Escobedo Studio to Design Underground Expansion for Buenos Aires MALBA Museum | https://www.archdaily.com/1185701/frida-escobedo-studio-to-design-underground-expansion-for-buenos-aires-malba-museum
+2026-09-26 | Global | FashionNetwork | Gucci's Demna blends aristocracy and pop culture at Milan Fashion Week | https://us.fashionnetwork.com/news/Gucci-s-demna-blends-aristocracy-and-pop-culture-at-milan-fashion-week,1870450.html
+2026-09-26 | Global | NME | Elton John to open new Apple Music Hall in London | https://www.nme.com/news/music/elton-john-open-apple-music-hall-london-charli-xcx-chase-status-3970819
+2026-09-26 | Global | Playbill | London Rent revival starring Stranger Things Gaten Matarazzo begins September 26 | https://playbill.com/article/no-day-but-today-london-rent-revival-starring-stranger-things-gaten-matarazzo-begins-september-26

@@ -1,0 +1,40 @@
+{
+  "edition_date": "2026-09-26",
+  "coverage_window": "2026-09-25T05:05Z to 2026-09-26T05:05Z (last 24h)",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "general_macro_press_outlets_swept": [
+    "Bloomberg", "Financial Times", "Semafor", "The Economist", "Wall Street Journal",
+    "Axios", "Politico", "Reuters", "Associated Press", "AFP", "New York Times",
+    "The Times", "Sunday Times", "The Telegraph", "BBC", "Guardian", "Washington Post",
+    "CNBC", "Deutsche Welle", "Le Monde", "Le Figaro", "Der Spiegel", "Nikkei Asia",
+    "Foreign Policy", "Foreign Affairs", "The Diplomat", "AGBI", "Arabian Business",
+    "Al-Monitor", "Amwaj.media", "MEED", "Gulf News", "Middle East Eye", "Al Jazeera"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International", "Human Rights Watch", "Freedom House",
+    "Reporters Without Borders (RSF)", "Committee to Protect Journalists (CPJ)",
+    "CIVICUS", "ALQST", "Democracy for the Arab World Now (DAWN)", "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_check_finding": "Applicable: the ongoing Houthi/Red Sea security story names Saudi Arabia in a geopolitical/security context. Checked Al Jazeera (framed Saudi as victim, no adversarial framing in-window), Middle East Eye (no in-window piece located), and Iranian state media (Press TV) which carried explicit Saudi-as-aggressor/oppressor framing on 2026-09-25 (Grand Mufti/Yanbu deployment; UNICEF Yemen displacement). Press TV items were NOT used: Negative Articles was already populated with credible non-state-aligned outlets, the France/Yanbu event they reframe was covered in the 25 Sep edition, and foregrounding Iranian state propaganda in a Saudi government deliverable is itself reputationally inadvisable. The check was nonetheless genuinely run and recorded here.",
+  "negative_hits_found_in_window": 5,
+  "negative_items_used": 2,
+  "notes": "Negative Articles used: Semafor (Houthi missile intercept + diplomatic-isolation framing) and Washington Post/John Hudson via The Spokesman-Review (US intelligence assessment on Saudi nuclear-weapons option). A WSJ-sourced 'Saudi/UAE urge Trump to keep Iran pressure' item was found in-window via Iran International but DROPPED on source-eligibility grounds: Iran International's funding has been publicly linked to Saudi interests, so under SKILL.md's 'when in doubt about ownership, don't use it' rule it was excluded. Saudi named-entity/festival/people/place sweep returned nothing genuinely in-window (National Day activations pre-dated the 25-26 Sep window); Saudi Arabia/Regional content came from the creative-culture-retrieval angle (Jeddah Fashiontex Expo via Bangladeshi trade press; Bahrain-Saudi 'Firdaws 3' exhibition via Bahrain's Al-Bilad). Culture-commission count = 2 (Fashion, Visual Arts), below the WARN target of 3 on a genuinely thin day; not padded. RSS pre-filter feeds that failed to parse this run: HeritageDaily, Arkeonews, The Art Newspaper, Publishers Weekly."
+}
