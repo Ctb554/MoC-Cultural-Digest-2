@@ -2,7 +2,7 @@
   "timestamp": "2026-09-27T05:31:12.123741+00:00",
   "markdown_path": "reports/MoC_Digest_2026-09-27.md",
   "reader_used": "tavily",
-  "delivery_result": "not_attempted",
+  "delivery_result": "success: uploaded to Dropbox 05_Claude Test folder (MoC_Digest_2026-09-27.docx); repo commit pushed to branch claude/festive-ptolemy-7gtvkl",
   "url_resolution_check": "enabled",
   "register_window_days": 60,
   "run_error": null,
@@ -45,5 +45,10 @@
   },
   "named_entity_lists_last_verified": "2026-07-20",
   "named_entity_lists_days_old": 69,
-  "stale_named_entity_lists": false
+  "stale_named_entity_lists": false,
+  "delivery_channels": {
+    "dropbox": "success (test folder)",
+    "email": "skipped: not configured",
+    "repo_commit": "success"
+  }
 }
