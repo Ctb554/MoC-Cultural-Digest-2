@@ -1,0 +1,37 @@
+{
+  "edition_date": "2026-09-28",
+  "coverage_window_utc": "2026-09-27T05:10:00Z/2026-09-28T05:10:00Z",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International",
+    "Human Rights Watch",
+    "Freedom House",
+    "Reporters Without Borders",
+    "Committee to Protect Journalists",
+    "CIVICUS",
+    "ALQST",
+    "DAWN",
+    "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_finding": "In-window Saudi geopolitical/security story present (Saudi airstrikes on Taiz, Yemen, 27 Sep). Adversarial Saudi-as-aggressor framing found in Middle East Eye (Qatari-linked) and Iranian state media (Tasnim); AFP wire more balanced (attributes casualty claims to Houthi sources, notes Yemeni-government strikes); Al Jazeera framed the Houthis as the escalating party. One adversarial-framing item written into Negative Articles citing Middle East Eye.",
+  "negative_hits_found_in_window": 2,
+  "general_macro_press_sweep_note": "34 outlets checked one at a time paired with Saudi Arabia. Window dominated by a single security cluster (Taiz strikes + Iran mediation offer); no reputationally-edged macro/economic hits in window. Watchdog/NGO and themed searches returned nothing in-window (all nearest items dated Jun-Aug 2026)."
+}
