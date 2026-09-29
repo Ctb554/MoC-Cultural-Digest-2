@@ -1,0 +1,33 @@
+{
+  "edition_date": "2026-09-29",
+  "coverage_window_hours": 24,
+  "coverage_window": "2026-09-28T05:06Z to 2026-09-29T05:06Z",
+  "negative_searches_run": true,
+  "negative_themes_searched": [
+    "human rights",
+    "labour/workers",
+    "sportswashing",
+    "PIF scrutiny",
+    "Saudi-Iran/regional geopolitics",
+    "oil",
+    "academic freedom",
+    "tourism criticism",
+    "religious tourism/Mecca commercialization",
+    "Vision 2030 criticism",
+    "investment scrutiny",
+    "soft power criticism",
+    "general reputation risk",
+    "watchdog/NGO monitoring"
+  ],
+  "watchdog_ngos_searched": [
+    "Amnesty International", "Human Rights Watch", "Freedom House",
+    "Reporters Without Borders", "Committee to Protect Journalists",
+    "CIVICUS", "ALQST", "Democracy for the Arab World Now (DAWN)",
+    "PEN International"
+  ],
+  "adversarial_framing_check_applicable": true,
+  "adversarial_framing_check_run": true,
+  "adversarial_framing_finding": "General/Macro Press sweep surfaced the renewed Houthi-Saudi war in Yemen. Checked multiple outlets' framing of the 28 Sep Saudi airstrikes on a market in Taiz: The Nation (Pakistan)/AFP wire and Al Jazeera frame Saudi Arabia as the aggressor (Houthi-sourced civilian-casualty claims); The National (UAE) counter-frames the Houthis as the aggressor. The adversarial-framing item is included in Negative Articles citing The Nation.",
+  "negative_hits_found_in_window": 2,
+  "notes": "Themed keyword and watchdog/NGO searches via WebSearch returned no NEW standalone in-window reputational items beyond the Yemen-war cluster; that cluster was surfaced via the outlets' own RSS feeds (NYT, Guardian) and direct outlet checks. WebSearch under-indexed the same-day (28-29 Sep) window this run; RSS feeds (rss_saudi_filter, gnews_culture_feed) and direct WebFetch were the reliable in-window discovery paths."
+}
